@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
-    internal class Persona
+    internal abstract class Persona
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -27,12 +27,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         // Constructor principal
         protected Persona(
             string nombre,
-            string identificacion,
+            string documento,
             string telefono,
             string correo)
         {
             Nombre = nombre;
-            Documento = identificacion;
+            Documento = documento;
             Telefono = telefono;
             CorreoElectronico = correo;
         }
