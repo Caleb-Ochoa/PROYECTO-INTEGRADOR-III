@@ -8,9 +8,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public long Documento { get; set; }
+        public string Documento { get; set; }
         public string CorreoElectronico { get; set; }
-        public long Telefono { get; set; }
+        public string Telefono { get; set; }
         public string Direccion { get; set; }
 
         // Constructor vacío protegido
@@ -18,13 +18,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         protected Persona()
         {
             Nombre = string.Empty;
-            Identificacion = string.Empty;
+            Documento = string.Empty;
             Telefono = string.Empty;
-            Correo = string.Empty;
+            CorreoElectronico = string.Empty;
         }
-        public Persona()
-        {
-        }
+        
 
         // Constructor principal
         protected Persona(
@@ -34,12 +32,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             string correo)
         {
             Nombre = nombre;
-            Identificacion = identificacion;
+            Documento = identificacion;
             Telefono = telefono;
-            Correo = correo;
+            CorreoElectronico = correo;
         }
 
-        public Persona(int id, string nombre, string correoElectronico, long telefono, string direccion)
+        public Persona(int id, string nombre, string correoElectronico, string telefono, string direccion)
         {
             Id = id;
             Nombre = nombre;
