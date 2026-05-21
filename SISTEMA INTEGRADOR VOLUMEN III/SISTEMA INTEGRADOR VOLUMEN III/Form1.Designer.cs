@@ -30,37 +30,52 @@
         {
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(395, 176);
+            label1.Location = new Point(593, 246);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(381, 62);
+            label1.Size = new Size(310, 51);
             label1.TabIndex = 0;
             label1.Text = "QUE MIRA BOBO";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(296, 75);
+            label2.Location = new Point(444, 105);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(70, 28);
             label2.TabIndex = 1;
             label2.Text = "label2";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(506, 459);
+            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(165, 28);
+            label3.TabIndex = 2;
+            label3.Text = "QUE MISA SOLO";
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(1370, 749);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            Margin = new Padding(5, 6, 5, 6);
             Name = "Form1";
-            Text = "Form1";
+            Text = "MIRA SOLO";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -69,5 +84,6 @@
 
         private Label label1;
         private Label label2;
+        private Label label3;
     }
 }

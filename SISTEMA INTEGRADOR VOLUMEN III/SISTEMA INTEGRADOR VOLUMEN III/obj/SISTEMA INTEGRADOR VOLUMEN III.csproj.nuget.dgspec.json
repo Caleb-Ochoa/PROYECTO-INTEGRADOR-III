@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DEIVY\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {}
+    "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DEIVY\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {
+    "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DEIVY\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+        "projectUniqueName": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
         "projectName": "SISTEMA INTEGRADOR VOLUMEN III",
-        "projectPath": "C:\\Users\\DEIVY\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
-        "packagesPath": "C:\\Users\\DEIVY\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DEIVY\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\",
+        "projectPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+        "packagesPath": "C:\\Users\\cocho\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\DEIVY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cocho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
