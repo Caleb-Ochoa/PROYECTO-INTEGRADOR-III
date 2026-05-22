@@ -87,6 +87,7 @@
             chkMostrar.TabIndex = 4;
             chkMostrar.Text = "Mostrar Contraseña";
             chkMostrar.UseVisualStyleBackColor = true;
+            chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
             // 
             // btnIngresar
             // 
@@ -98,6 +99,7 @@
             btnIngresar.TabIndex = 5;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // btnCrear
             // 
@@ -108,6 +110,7 @@
             btnCrear.TabIndex = 6;
             btnCrear.Text = "Crear Cuenta";
             btnCrear.UseVisualStyleBackColor = true;
+            btnCrear.Click += btnCrear_Click;
             // 
             // label3
             // 

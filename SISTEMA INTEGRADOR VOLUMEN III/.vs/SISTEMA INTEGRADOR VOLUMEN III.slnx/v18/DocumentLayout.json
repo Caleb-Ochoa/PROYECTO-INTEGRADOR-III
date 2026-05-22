@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\sistema integrador volumen iii\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\repository\\personarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\repository\\personarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\models\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\interfaces\\ihashservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\interfaces\\ihashservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|c:\\users\\cocho\\downloads\\git hub\\proyecto-integrador-iii\\sistema integrador volumen iii\\sistema integrador volumen iii\\interfaces\\ipersonarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D60F6D-635C-343A-A2D3-991EE95DDFA5}|SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj|solutionrelative:sistema integrador volumen iii\\interfaces\\ipersonarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,20 +50,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Persona.cs",
-              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Persona.cs",
-              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Persona.cs",
-              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Persona.cs",
-              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Persona.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAcwD8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T21:02:10.397Z",
+              "WhenOpened": "2026-05-22T02:50:00.299Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
               "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Form1.cs",
@@ -48,6 +72,84 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T17:44:09.382Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Models\\Usuario.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:38:55.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Models\\Persona.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Models\\Persona.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Models\\Persona.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Models\\Persona.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:38:41.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PersonaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Repository\\PersonaRepository.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Repository\\PersonaRepository.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Repository\\PersonaRepository.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Repository\\PersonaRepository.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAcwBIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:39:05.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:41:48.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IHashService.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IHashService.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IHashService.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IHashService.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IHashService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:41:52.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPersonaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IPersonaRepository.cs",
+              "RelativeDocumentMoniker": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IPersonaRepository.cs",
+              "ToolTip": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IPersonaRepository.cs",
+              "RelativeToolTip": "SISTEMA INTEGRADOR VOLUMEN III\\Interfaces\\IPersonaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-22T02:41:55.912Z",
+              "EditorCaption": ""
             }
           ]
         }
