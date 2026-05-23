@@ -20,10 +20,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         public string Direccion { get; set; }
 
         // Usuario para login
-        public string Usuario { get; set; }
+        //public string Usuario { get; set; }
 
         // Contraseña encriptada
-        public string PasswordHash { get; set; }
+        //public string PasswordHash { get; set; }
 
         // =========================
         // CONSTRUCTOR VACÍO
@@ -36,8 +36,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             CorreoElectronico = string.Empty;
             Telefono = string.Empty;
             Direccion = string.Empty;
-            Usuario = string.Empty;
-            PasswordHash = string.Empty;
+            //Usuario = string.Empty;
+            //PasswordHash = string.Empty;
         }
 
         // =========================
@@ -50,9 +50,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             string documento,
             string correoElectronico,
             string telefono,
-            string direccion,
-            string usuario,
-            string passwordHash)
+            string direccion)
+            //string usuario,
+            //string passwordHash
         {
             Id = id;
             Nombre = nombre;
@@ -60,8 +60,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             CorreoElectronico = correoElectronico;
             Telefono = telefono;
             Direccion = direccion;
-            Usuario = usuario;
-            PasswordHash = passwordHash;
+            //Usuario = usuario;
+            //PasswordHash = passwordHash;
         }
 
         // =========================
@@ -77,7 +77,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
                 $"Correo: {CorreoElectronico}\n" +
                 $"Telefono: {Telefono}\n" +
                 $"Direccion: {Direccion}\n" +
-                $"Usuario: {Usuario}";
+                //$"Usuario: {Usuario}";
         }
     }
 }
