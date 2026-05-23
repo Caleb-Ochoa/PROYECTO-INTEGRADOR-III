@@ -3,11 +3,11 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
-    public partial class Form1 : Form
+    public partial class Logui : Form
     {
         private PersonaRepository repository;
 
-        public Form1()
+        public Logui()
         {
             InitializeComponent();
 

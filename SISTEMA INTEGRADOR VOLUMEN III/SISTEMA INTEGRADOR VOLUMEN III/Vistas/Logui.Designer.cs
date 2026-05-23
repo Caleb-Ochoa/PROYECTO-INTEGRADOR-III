@@ -1,6 +1,6 @@
 ﻿namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
-    partial class Form1
+    partial class Logui
     {
         /// <summary>
         ///  Required designer variable.
