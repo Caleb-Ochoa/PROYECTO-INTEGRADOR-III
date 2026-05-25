@@ -9,5 +9,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces
         bool Login(string usuario, string password);
 
         void Registrar(string usuario, string password);
+        void ChangePassword(string usuario, string nuevaPassword);
     }
 }
