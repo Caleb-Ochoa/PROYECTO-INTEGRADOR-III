@@ -19,15 +19,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 
         public string Direccion { get; set; }
 
-        // Usuario para login
-        //public string Usuario { get; set; }
-
-        // Contraseña encriptada
-        //public string PasswordHash { get; set; }
-
-        // =========================
-        // CONSTRUCTOR VACÍO
-        // =========================
+        
 
         protected Persona()
         {
@@ -76,7 +68,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
                 $"Documento: {Documento}\n" +
                 $"Correo: {CorreoElectronico}\n" +
                 $"Telefono: {Telefono}\n" +
-                $"Direccion: {Direccion}\n" +
+                $"Direccion: {Direccion}\n";
                 //$"Usuario: {Usuario}";
         }
     }
