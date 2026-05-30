@@ -9,21 +9,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         public double Area { get; set; }
 
         public double Volumen { get; set; }
+        public decimal CostoTotal { get; set; }
 
-        public DateTime Fecha { get; set; }
+        public ResultadoCalculo()
+        {
+        }
 
-        public ResultadoCalculo(double area, double volumen)
+        public ResultadoCalculo(
+            double area,
+            double volumen,
+            decimal costoTotal)
         {
             Area = area;
             Volumen = volumen;
-            Fecha = DateTime.Now;
-        }
-
-        public override string ToString()
-        {
-            return $"Área: {Area}\n" +
-                   $"Volumen: {Volumen}\n" +
-                   $"Fecha: {Fecha}";
+            CostoTotal = costoTotal;
         }
     }
 }

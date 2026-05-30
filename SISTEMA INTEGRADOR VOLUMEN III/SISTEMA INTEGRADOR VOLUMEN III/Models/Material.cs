@@ -6,31 +6,25 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
     internal class Material
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Nombre { get; set; }
 
-        public double CostoMetroCubico { get; set; }
+        public decimal CostoMetroCubico { get; set; }
 
-        public bool Estado { get; set; }
-
-        public Material(string nombre, double costoMetroCubico, bool estado)
+        public Material()
         {
-            Id = Guid.NewGuid();
-
-            Nombre = nombre;
-
-            CostoMetroCubico = costoMetroCubico;
-
-            Estado = estado;
+            Nombre = string.Empty;
         }
 
-        public override string ToString()
+        public Material(
+            int id,
+            string nombre,
+            decimal costoMetroCubico)
         {
-            return $"ID: {Id}\n" +
-                   $"Nombre: {Nombre}\n" +
-                   $"Costo por m³: {CostoMetroCubico}\n" +
-                   $"Estado: {(Estado ? "Disponible" : "No disponible")}";
+            Id = id;
+            Nombre = nombre;
+            CostoMetroCubico = costoMetroCubico;
         }
     }
 }

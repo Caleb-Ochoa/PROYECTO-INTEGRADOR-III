@@ -5,8 +5,10 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces
 {
-    internal interface IUsuarioRepository
+    internal interface IFacturaService
     {
-        Usuario? GetByUsername(string username);
+        Factura GenerarFactura(int cotizacionId);
+
+        void AnularFactura(int facturaId);
     }
 }

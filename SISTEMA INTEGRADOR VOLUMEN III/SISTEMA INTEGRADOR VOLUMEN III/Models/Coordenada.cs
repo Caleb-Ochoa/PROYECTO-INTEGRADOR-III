@@ -6,22 +6,27 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
     internal class Coordenada
     {
+        public int Id { get; set; }
         public double X { get; set; }
 
         public double Y { get; set; }
 
         public double Z { get; set; }
 
-        public Coordenada(double x, double y, double z)
+        public Coordenada()
         {
+        }
+
+        public Coordenada(
+            int id,
+            double x,
+            double y,
+            double z)
+        {
+            Id = id;
             X = x;
             Y = y;
             Z = z;
-        }
-
-        public override string ToString()
-        {
-            return $"X: {X}, Y: {Y}, Z: {Z}";
         }
     }
 }

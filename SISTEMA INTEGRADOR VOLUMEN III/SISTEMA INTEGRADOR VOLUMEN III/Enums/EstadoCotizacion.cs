@@ -6,8 +6,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Enums
 {
     internal enum EstadoCotizacion
     {
-        Pendiente,
-        Aprobada,
-        Rechazada
+        Activa,
+        Facturada,
+        Cancelada
     }
 }

@@ -4,10 +4,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces
 {
-    internal interface IHashService
+    internal interface ICotizacionRepository
     {
-        string Hash(string textoPlano);
-
-        bool Verify(string textoPlano, string hashGuardado);
     }
 }

@@ -6,8 +6,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Enums
 {
     internal enum EstadoFactura
     {
-        Pendiente,
-        Pagada,
-        Cancelada
+        Emitida,
+        Anulada
     }
 }

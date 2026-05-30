@@ -6,42 +6,29 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
     internal class Terreno
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+        public int ClienteId { get; set; }
 
         public string Nombre { get; set; }
 
         public List<Coordenada> Coordenadas { get; set; }
 
-        public double Area { get; set; }
-
-        public double Volumen { get; set; }
-
-        public Terreno(string nombre, double area, double volumen)
+        public Terreno()
         {
-            Id = Guid.NewGuid();
-
-            Nombre = nombre;
-
-            Area = area;
-
-            Volumen = volumen;
-
+            Nombre = string.Empty;
             Coordenadas = new List<Coordenada>();
         }
 
-        // Método para agregar coordenadas
-        public void AgregarCoordenada(Coordenada c)
+        public Terreno(
+            int id,
+            int clienteId,
+            string nombre,
+            List<Coordenada> coordenadas)
         {
-            Coordenadas.Add(c);
-        }
-
-        public override string ToString()
-        {
-            return $"ID: {Id}\n" +
-                   $"Nombre: {Nombre}\n" +
-                   $"Área: {Area}\n" +
-                   $"Volumen: {Volumen}\n" +
-                   $"Cantidad Coordenadas: {Coordenadas.Count}";
+            Id = id;
+            ClienteId = clienteId;
+            Nombre = nombre;
+            Coordenadas = coordenadas ?? new List<Coordenada>();
         }
     }
 }

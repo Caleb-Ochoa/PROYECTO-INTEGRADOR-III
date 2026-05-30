@@ -5,10 +5,10 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces
 {
-    internal interface IPersonaRepository
+    internal interface ICalculoService
     {
-        void Agregar(Persona persona);
-
-        Persona BuscarUsuario(string usuario);
+        ResultadoCalculo Calcular(
+           Terreno terreno,
+           Material material);
     }
 }

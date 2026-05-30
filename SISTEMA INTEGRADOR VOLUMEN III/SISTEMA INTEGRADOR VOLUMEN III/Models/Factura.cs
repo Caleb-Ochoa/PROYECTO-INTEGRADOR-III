@@ -7,49 +7,42 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
     internal class Factura
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public string NumeroFactura { get; set; }
+        public string CodigoFiscal { get; set; }
 
-        public Cotizacion Cotizacion { get; set; }
+        public int CotizacionId { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public decimal Total { get; set; }
 
-        public double Total { get; set; }
+        public DateTime FechaEmision { get; set; }
 
         public EstadoFactura Estado { get; set; }
 
-        public DateTime Fecha { get; set; }
+
+        public Factura()
+        {
+            CodigoFiscal = string.Empty;
+            FechaEmision = DateTime.Now;
+            Estado = EstadoFactura.Emitida;
+        }
+
 
         public Factura(
-            string numeroFactura,
-            Cotizacion cotizacion,
-            Cliente cliente,
+            int id,
+            string codigoFiscal,
+            int cotizacionId,
+            decimal total,
+            DateTime fechaEmision,
             EstadoFactura estado)
         {
-            Id = Guid.NewGuid();
-
-            NumeroFactura = numeroFactura;
-
-            Cotizacion = cotizacion;
-
-            Cliente = cliente;
-
-            Total = cotizacion.CostoTotal;
-
+            Id = id;
+            CodigoFiscal = codigoFiscal;
+            CotizacionId = cotizacionId;
+            Total = total;
+            FechaEmision = fechaEmision;
             Estado = estado;
-
-            Fecha = DateTime.Now;
         }
 
-        public override string ToString()
-        {
-            return $"ID: {Id}\n" +
-                   $"Número Factura: {NumeroFactura}\n" +
-                   $"Cliente: {Cliente.Nombre}\n" +
-                   $"Total: {Total}\n" +
-                   $"Estado: {Estado}\n" +
-                   $"Fecha: {Fecha}";
-        }
     }
 }

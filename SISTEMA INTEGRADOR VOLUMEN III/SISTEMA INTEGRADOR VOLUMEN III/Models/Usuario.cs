@@ -26,14 +26,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             int id,
             string nombre,
             string documento,
-            string correo,
+            string correoElectronico,
             string telefono,
             string direccion,
             string username,
             string passwordHash,
             Rol rol,
             EstadoUsuario estado)
-            : base(id, nombre, documento, correo, telefono, direccion)
+            : base(
+                id,
+                nombre,
+                documento,
+                correoElectronico,
+                telefono,
+                direccion)
         {
             Username = username;
             PasswordHash = passwordHash;

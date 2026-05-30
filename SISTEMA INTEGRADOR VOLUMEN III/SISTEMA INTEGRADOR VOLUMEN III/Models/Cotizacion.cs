@@ -7,61 +7,48 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
     internal class Cotizacion
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public int ClienteId { get; set; }
 
-        public Terreno Terreno { get; set; }
+        public int TerrenoId { get; set; }
 
-        public Material Material { get; set; }
+        public int MaterialId { get; set; }
 
         public double Volumen { get; set; }
 
-        public double PrecioUnitario { get; set; }
-
-        public double CostoTotal { get; set; }
-
-        public EstadoCotizacion Estado { get; set; }
+        public decimal CostoTotal { get; set; }
 
         public DateTime Fecha { get; set; }
 
-        public Cotizacion(
-            Cliente cliente,
-            Terreno terreno,
-            Material material,
-            double volumen,
-            EstadoCotizacion estado)
+        public EstadoCotizacion Estado { get; set; }
+
+
+        public Cotizacion()
         {
-            Id = Guid.NewGuid();
-
-            Cliente = cliente;
-
-            Terreno = terreno;
-
-            Material = material;
-
-            Volumen = volumen;
-
-            PrecioUnitario = material.CostoMetroCubico;
-
-            CostoTotal = Volumen * PrecioUnitario;
-
-            Estado = estado;
-
             Fecha = DateTime.Now;
+            Estado = EstadoCotizacion.Activa;
         }
 
-        public override string ToString()
+
+        public Cotizacion(
+            int id,
+            int clienteId,
+            int terrenoId,
+            int materialId,
+            double volumen,
+            decimal costoTotal,
+            DateTime fecha,
+            EstadoCotizacion estado)
         {
-            return $"ID: {Id}\n" +
-                   $"Cliente: {Cliente.Nombre}\n" +
-                   $"Terreno: {Terreno.Nombre}\n" +
-                   $"Material: {Material.Nombre}\n" +
-                   $"Volumen: {Volumen}\n" +
-                   $"Precio Unitario: {PrecioUnitario}\n" +
-                   $"Costo Total: {CostoTotal}\n" +
-                   $"Estado: {Estado}\n" +
-                   $"Fecha: {Fecha}";
+            Id = id;
+            ClienteId = clienteId;
+            TerrenoId = terrenoId;
+            MaterialId = materialId;
+            Volumen = volumen;
+            CostoTotal = costoTotal;
+            Fecha = fecha;
+            Estado = estado;
         }
     }
 }
