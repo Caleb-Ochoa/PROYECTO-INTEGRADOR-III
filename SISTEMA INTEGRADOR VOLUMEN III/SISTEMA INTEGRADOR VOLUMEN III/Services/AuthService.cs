@@ -1,52 +1,110 @@
-﻿using System;
+﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 {
     internal class AuthService : IAuthService
     {
-        private readonly IUsuarioRepository repository;
+        private readonly DataManager<Usuario> dataManager;
 
         private readonly IHashService hashService;
 
-        public AuthService(IUsuarioRepository repository, IHashService hashService)
+        public AuthService(DataManager<Usuario> dataManager, IHashService hashService)
         {
-            this.repository = repository;
+            this.dataManager = dataManager;
             this.hashService = hashService;
         }
-
-        public void ChangePassword(string usuario, string nuevaPassword)
+        public Usuario? Login(string username, string password)
         {
-            string passwordHash = hashService.GenerarHash(nuevaPassword);
+            Usuario? usuario = dataManager.GetByUsername(username);
 
-            repository.ActualizarPassword(
-                usuario,
-                passwordHash
-            );
+            if (usuario == null)
+            {
+                return null;
+            }
+
+            if (usuario.Estado ==EstadoUsuario.Inactivo)
+            {
+                throw new Exception("El usuario está inactivo.");
+            }
+
+            bool passwordCorrecta = hashService.Verify(password,usuario.PasswordHash);
+
+            if (!passwordCorrecta)
+            {
+                return null;
+            }
+
+            return usuario;
         }
 
-        public bool Login(string usuario, string password)
+        public void Registrar(Usuario usuario, string password)
         {
-            string passwordHash = hashService.GenerarHash(password);
+            ValidarUsuario(usuario);
 
-            return repository.ValidarUsuario(
-                usuario,
-                passwordHash
-            );
-            
+            ValidarPassword(password);
+
+            Usuario? existente = usuarioRepository.GetByUsername(usuario.Username);
+
+            if (existente != null)
+            {
+                throw new Exception("El nombre de usuario ya existe.");
+            }
+
+            usuario.PasswordHash = hashService.Hash(password);
+
+            //usuarioRepository.Add(usuario);
         }
 
-        public void Registrar(string usuario, string password)
+        private void ValidarUsuario(Usuario usuario)
         {
-            string passwordHash = hashService.GenerarHash(password);
+            if (string.IsNullOrWhiteSpace(usuario.Nombre))
+            {
+                throw new Exception("El nombre es obligatorio.");
+            }
 
-            repository.GuardarUsuario(
-                usuario,
-                passwordHash
-            );
+            if (string.IsNullOrWhiteSpace(usuario.Documento))
+            {
+                throw new Exception("El documento es obligatorio.");
+            }
+
+            if (string.IsNullOrWhiteSpace( usuario.Username))
+            {
+                throw new Exception( "El username es obligatorio.");
+            }
         }
-        
+
+        private void ValidarPassword(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                throw new Exception("La contraseña es obligatoria.");
+            }
+
+            if (password.Length < 8)
+            {
+                throw new Exception( "La contraseña debe tener mínimo 8 caracteres.");
+            }
+
+            if (!password.Any(char.IsUpper))
+            {
+                throw new Exception("La contraseña debe contener al menos una mayúscula.");
+            }
+
+            if (!password.Any(char.IsDigit))
+            {
+                throw new Exception("La contraseña debe contener al menos un número.");
+            }
+
+            if (!password.Any( c => !char.IsLetterOrDigit(c)))
+            {
+                throw new Exception("La contraseña debe contener al menos un carácter especial.");
+            }
+        }
     }
 }

@@ -8,25 +8,28 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 {
     internal class HashService : IHashService
     {
-        public string GenerarHash(string texto)
+        public string Hash(string textoPlano)
         {
-            
-        
-            using (SHA256 sha256 = SHA256.Create())
+            using SHA256 sha256 = SHA256.Create();
+
+            byte[] bytesTexto =Encoding.UTF8.GetBytes(textoPlano);
+
+            byte[] bytesHash =sha256.ComputeHash(bytesTexto);
+
+            StringBuilder resultado =new StringBuilder();
+
+            foreach (byte b in bytesHash)
             {
-                byte[] bytes = sha256.ComputeHash(
-                    Encoding.UTF8.GetBytes(texto));
-
-                StringBuilder sb = new StringBuilder();
-
-                foreach (byte b in bytes)
-                {
-                    sb.Append(b.ToString("x2"));
-                }
-
-                return sb.ToString();
+                resultado.Append(b.ToString("x2"));
             }
+
+            return resultado.ToString();
         }
-    
+
+        public bool Verify(string textoPlano, string hashGuardado)
+        {
+            string hashCalculado = Hash(textoPlano);
+            return hashCalculado == hashGuardado;
+        }
     }
 }
