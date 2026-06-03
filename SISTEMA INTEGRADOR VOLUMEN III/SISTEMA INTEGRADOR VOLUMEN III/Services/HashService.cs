@@ -10,26 +10,25 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
     {
         public string Hash(string textoPlano)
         {
-            using SHA256 sha256 = SHA256.Create();
+            if (string.IsNullOrEmpty(textoPlano))
+                throw new ArgumentException("No se puede hashear un texto vacío.");
 
-            byte[] bytesTexto =Encoding.UTF8.GetBytes(textoPlano);
-
-            byte[] bytesHash =sha256.ComputeHash(bytesTexto);
-
-            StringBuilder resultado =new StringBuilder();
-
-            foreach (byte b in bytesHash)
-            {
-                resultado.Append(b.ToString("x2"));
-            }
-
-            return resultado.ToString();
+            using SHA256 sha = SHA256.Create();
+            byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
+            var sb = new StringBuilder(64);
+            foreach (byte b in bytes) sb.Append(b.ToString("x2"));
+            return sb.ToString();
         }
 
         public bool Verify(string textoPlano, string hashGuardado)
         {
-            string hashCalculado = Hash(textoPlano);
-            return hashCalculado == hashGuardado;
+            if (string.IsNullOrEmpty(textoPlano) || string.IsNullOrEmpty(hashGuardado))
+                return false;
+            // Comparación en tiempo constante para evitar timing attacks
+            string calculado = Hash(textoPlano);
+            return CryptographicOperations.FixedTimeEquals(
+                Encoding.UTF8.GetBytes(calculado),
+                Encoding.UTF8.GetBytes(hashGuardado));
         }
     }
 }

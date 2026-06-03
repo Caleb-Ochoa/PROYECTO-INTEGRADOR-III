@@ -5,106 +5,110 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 {
     internal class AuthService : IAuthService
     {
-        private readonly DataManager<Usuario> dataManager;
+        private readonly DataManager<Usuario> _dm;
+        private readonly IHashService _hash;
 
-        private readonly IHashService hashService;
+        public AuthService(DataManager<Usuario> dm, IHashService hash)
+        { _dm = dm; _hash = hash; }
 
-        public AuthService(DataManager<Usuario> dataManager, IHashService hashService)
-        {
-            this.dataManager = dataManager;
-            this.hashService = hashService;
-        }
+        // ── Login ────────────────────────────────────────────────────────
         public Usuario? Login(string username, string password)
         {
-            Usuario? usuario = dataManager.GetByUsername(username);
-
-            if (usuario == null)
-            {
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 return null;
-            }
 
-            if (usuario.Estado ==EstadoUsuario.Inactivo)
-            {
-                throw new Exception("El usuario está inactivo.");
-            }
+            Usuario? usuario = _dm.GetAll()
+                .FirstOrDefault(u => string.Equals(u.Username, username.Trim(),
+                    StringComparison.OrdinalIgnoreCase));
 
-            bool passwordCorrecta = hashService.Verify(password,usuario.PasswordHash);
+            if (usuario == null) return null;
 
-            if (!passwordCorrecta)
-            {
-                return null;
-            }
+            if (usuario.Estado == EstadoUsuario.Inactivo)
+                throw new InvalidOperationException("INACTIVO");
 
-            return usuario;
+            return _hash.Verify(password, usuario.PasswordHash) ? usuario : null;
         }
 
+        // ── Registrar ────────────────────────────────────────────────────
         public void Registrar(Usuario usuario, string password)
         {
-            ValidarUsuario(usuario);
-
+            ValidarCamposObligatorios(usuario);
             ValidarPassword(password);
 
-            Usuario? existente = usuarioRepository.GetByUsername(usuario.Username);
+            List<Usuario> todos = _dm.GetAll();
 
-            if (existente != null)
-            {
-                throw new Exception("El nombre de usuario ya existe.");
-            }
+            if (todos.Any(u => string.Equals(u.Username, usuario.Username.Trim(),
+                    StringComparison.OrdinalIgnoreCase)))
+                throw new InvalidOperationException("El nombre de usuario ya existe.");
 
-            usuario.PasswordHash = hashService.Hash(password);
+            if (todos.Any(u => string.Equals(u.Documento, usuario.Documento.Trim())))
+                throw new InvalidOperationException("Ya existe un usuario con ese documento.");
 
-            //usuarioRepository.Add(usuario);
+            usuario.Username = usuario.Username.Trim();
+            usuario.PasswordHash = _hash.Hash(password);
+            usuario.Id = _dm.GetNextId();
+
+            todos.Add(usuario);
+            _dm.Save(todos);    // ← BUG CORREGIDO: ahora sí persiste
         }
 
-        private void ValidarUsuario(Usuario usuario)
+        // ── Cambiar contraseña (el propio usuario) ────────────────────────
+        public void CambiarPassword(Usuario usuario, string nuevaPassword)
         {
-            if (string.IsNullOrWhiteSpace(usuario.Nombre))
-            {
-                throw new Exception("El nombre es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Documento))
-            {
-                throw new Exception("El documento es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace( usuario.Username))
-            {
-                throw new Exception( "El username es obligatorio.");
-            }
+            ValidarPassword(nuevaPassword);
+            List<Usuario> todos = _dm.GetAll();
+            Usuario? existente = todos.FirstOrDefault(u => u.Id == usuario.Id);
+            if (existente == null)
+                throw new InvalidOperationException("Usuario no encontrado.");
+            existente.PasswordHash = _hash.Hash(nuevaPassword);
+            _dm.Save(todos);
         }
 
-        private void ValidarPassword(string password)
+        // ── Restablecer contraseña (admin) ────────────────────────────────
+        public void RestablecerPassword(Usuario usuario, string nuevaPassword)
+        {
+            ValidarPassword(nuevaPassword);
+            List<Usuario> todos = _dm.GetAll();
+            Usuario? existente = todos.FirstOrDefault(u => u.Id == usuario.Id);
+            if (existente == null)
+                throw new InvalidOperationException("Usuario no encontrado.");
+            existente.PasswordHash = _hash.Hash(nuevaPassword);
+            _dm.Save(todos);
+        }
+
+        // ── Validaciones privadas ─────────────────────────────────────────
+        private static void ValidarCamposObligatorios(Usuario u)
+        {
+            if (string.IsNullOrWhiteSpace(u.Nombre))
+                throw new ArgumentException("El nombre es obligatorio.");
+            if (string.IsNullOrWhiteSpace(u.Documento))
+                throw new ArgumentException("El documento es obligatorio.");
+            if (string.IsNullOrWhiteSpace(u.Username))
+                throw new ArgumentException("El nombre de usuario es obligatorio.");
+            if (string.IsNullOrWhiteSpace(u.CorreoElectronico))
+                throw new ArgumentException("El correo es obligatorio.");
+            if (!Regex.IsMatch(u.CorreoElectronico, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                throw new ArgumentException("El correo no tiene un formato válido.");
+        }
+
+        public static void ValidarPassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password))
-            {
-                throw new Exception("La contraseña es obligatoria.");
-            }
-
+                throw new ArgumentException("La contraseña es obligatoria.");
             if (password.Length < 8)
-            {
-                throw new Exception( "La contraseña debe tener mínimo 8 caracteres.");
-            }
-
+                throw new ArgumentException("La contraseña debe tener mínimo 8 caracteres.");
             if (!password.Any(char.IsUpper))
-            {
-                throw new Exception("La contraseña debe contener al menos una mayúscula.");
-            }
-
+                throw new ArgumentException("Debe contener al menos una letra mayúscula.");
             if (!password.Any(char.IsDigit))
-            {
-                throw new Exception("La contraseña debe contener al menos un número.");
-            }
-
-            if (!password.Any( c => !char.IsLetterOrDigit(c)))
-            {
-                throw new Exception("La contraseña debe contener al menos un carácter especial.");
-            }
+                throw new ArgumentException("Debe contener al menos un número.");
+            if (password.All(c => char.IsLetterOrDigit(c)))
+                throw new ArgumentException("Debe contener al menos un carácter especial.");
         }
     }
 }

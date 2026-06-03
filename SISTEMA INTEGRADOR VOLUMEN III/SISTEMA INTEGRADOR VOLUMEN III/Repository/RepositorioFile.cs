@@ -7,29 +7,65 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
 {
     internal class RepositorioFile<T> : IRepository<T> where T : class, new()
     {
-        private readonly Func<string, T> FromText;
-        public RepositorioFile(string source, Func<string, T> fromString)
+        private readonly Func<string, T> _parser;
+
+        public string Source { get; }
+
+        public RepositorioFile(string source, Func<string, T> parser)
         {
-            this.Source = source;
-            this.FromText = fromString;
+            Source = source;
+            _parser = parser;
         }
-        public string Source { get; set; }
+
         public List<T> GetAll()
         {
             if (!File.Exists(Source))
-            {
                 return new List<T>();
+
+            var resultado = new List<T>();
+            string[] lineas = File.ReadAllLines(Source);
+            for (int i = 0; i < lineas.Length; i++)
+            {
+                string linea = lineas[i].Trim();
+                if (string.IsNullOrWhiteSpace(linea)) continue;
+                try
+                {
+                    resultado.Add(_parser(linea));
+                }
+                catch (Exception ex)
+                {
+                    // Registra línea corrupta en log pero NO aborta la carga
+                    LogError($"[RepositorioFile] Error en '{Source}' línea {i + 1}: {ex.Message}");
+                }
             }
-            return File.ReadAllLines(Source).Select(line => FromText(line)).ToList();
+            return resultado;
         }
+
         public void Sync(List<T> entities)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (T entity in entities)
+            try
             {
-                sb.Append(entity.ToString());
+                // Escritura atómica: primero a .tmp, luego reemplaza
+                string tmpPath = Source + ".tmp";
+                File.WriteAllLines(tmpPath, entities.Select(e => e.ToString() ?? string.Empty));
+                if (File.Exists(Source)) File.Delete(Source);
+                File.Move(tmpPath, Source);
             }
-            File.WriteAllText(Source, sb.ToString());
+            catch (Exception ex)
+            {
+                throw new IOException($"No se pudo guardar '{Source}': {ex.Message}", ex);
+            }
+        }
+
+        private static void LogError(string mensaje)
+        {
+            try
+            {
+                string logPath = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory, "errores.log");
+                File.AppendAllText(logPath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {mensaje}{Environment.NewLine}");
+            }
+            catch { /* no lanzar excepciones dentro del manejo de errores */ }
         }
     }
 }
