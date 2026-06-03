@@ -42,7 +42,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             VistaRegistro = new RegistroAdmin();
 
-            VistaRegistro.BtnRegistrar.Click += (sender, e) =>
+            VistaRegistro.btnRegistrar.Click += (sender, e) =>
             {
                 RegistrarAdmin();
             };
@@ -57,7 +57,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             if (line[3] != line[4])
             {
-                VistaRegistro.MostrarError("Las contraseñas no coinciden.");
+                VistaRegistro.MostrarError("Las contraseñas no coinciden");
                 return;
             }
 
@@ -97,15 +97,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             VistaLogin = new Logui();
 
-            VistaLogin.BtnIngresar.Click += (sender, e) =>
+            VistaLogin.btnIngresarSesion.Click += (sender, e) =>
             {
                 Autenticar();
             };
 
             VistaLogin.ChkMostrarPassword.CheckedChanged += (sender, e) =>
             {
-                VistaLogin.TxtPassword.PasswordChar =
-                    VistaLogin.ChkMostrarPassword.Checked ? '\0' : '●';
+                VistaLogin.TxtPassword.PasswordChar = VistaLogin.ChkMostrarPassword.Checked ? '\0' : '●';
             };
 
             Application.Run(VistaLogin);

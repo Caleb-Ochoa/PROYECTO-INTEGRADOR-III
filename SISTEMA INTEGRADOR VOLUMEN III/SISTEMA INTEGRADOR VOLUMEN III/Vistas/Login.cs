@@ -3,44 +3,39 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
-    public partial class Logui : Form
+    public partial class Login : Form
     {
         private PersonaRepository repository;
 
-        public Logui()
+        public Login()
         {
             InitializeComponent();
 
             repository = new PersonaRepository();
-
             txtContraseña.PasswordChar = '*';
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void btnIngresarSesion_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
             string password = txtContraseña.Text.Trim();
 
-            Persona personaEncontrada =
-                repository.BuscarUsuario(usuario);
+            Persona personaEncontrada = repository.BuscarUsuario(usuario);
 
             if (personaEncontrada == null)
             {
-                MessageBox.Show(
-                    "Usuario no encontrado");
+                MessageBox.Show("Usuario no encontrado");
 
                 return;
             }
 
             if (personaEncontrada.PasswordHash == password)
             {
-                MessageBox.Show(
-                    "Inicio de sesión exitoso");
+                MessageBox.Show("Inicio de sesión exitoso");
             }
             else
             {
-                MessageBox.Show(
-                    "Contraseña incorrecta");
+                MessageBox.Show("Contraseña incorrecta");
             }
         }
 
@@ -58,8 +53,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.Trim() == "" ||
-            txtContraseña.Text.Trim() == "")
+            if (txtUsuario.Text.Trim() == "" || txtContraseña.Text.Trim() == "")
             {
                 MessageBox.Show("Complete todos los campos");
                 return;
