@@ -13,7 +13,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 {
     internal class CtlUsuario
     {
-        public Logui? VistaLogin { get; set; }
+        public Login? VistaLogin { get; set; }
         public RegistroAdmin? VistaRegistro { get; set; }
 
         private DataManager<Usuario> dataManager;
@@ -42,12 +42,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             VistaRegistro = new RegistroAdmin();
 
-            VistaRegistro.btnRegistrar.Click += (sender, e) =>
+            VistaRegistro.btnRegistarAdmin.Click += (sender, e) =>
             {
                 RegistrarAdmin();
             };
 
-            Application.Run(VistaRegistro);
+            //Application.Run(VistaRegistro);
+            VistaRegistro.ShowDialog();
         }
 
         private void RegistrarAdmin()
@@ -79,6 +80,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 authService.Registrar(usuario, line[3]);
                 usuarios = dataManager.GetAll();   // recargar lista actualizada
 
+                VistaRegistro.Hide();
+
                 MessageBox.Show(
                     "Administrador registrado.\nAhora puede iniciar sesión.",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -95,19 +98,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         // ── FLUJO 2: Login normal ────────────────────────────────────────
         private void AbrirLogin()
         {
-            VistaLogin = new Logui();
+            VistaLogin = new Login();
 
             VistaLogin.btnIngresarSesion.Click += (sender, e) =>
             {
                 Autenticar();
             };
-
-            VistaLogin.ChkMostrarPassword.CheckedChanged += (sender, e) =>
+            
+            VistaLogin.chkMostrar.CheckedChanged += (sender, e) =>
             {
-                VistaLogin.TxtPassword.PasswordChar = VistaLogin.ChkMostrarPassword.Checked ? '\0' : '●';
+                VistaLogin.txtContraseña.PasswordChar = VistaLogin.chkMostrar.Checked ? '\0' : '●';
             };
 
-            Application.Run(VistaLogin);
+            //Application.Run(VistaLogin);
+            VistaLogin.ShowDialog();
         }
 
         private void Autenticar()

@@ -15,8 +15,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        public string[] GetInput()
         {
+            return new string[]
+            {
+                txtNombreCompleto.Text.Trim(),           // line[0]
+                txtUsuarioAdmin.Text.Trim(),     // line[1] (En tu captura se ve "txtUsuarioAdmin" arriba a la derecha)
+                txtCorreoAdmin.Text.Trim(),           // line[2]
+                txtContraseñaAdmin.Text,                // line[3]
+                txtConfirmarContraseña.Text        // line[4]
+            };
         }
+
+        /// Muestra un mensaje de advertencia en pantalla si algo falla.
+        /// </summary>
+        public void MostrarError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
     }
 }

@@ -86,7 +86,7 @@
             chkMostrar.TabIndex = 4;
             chkMostrar.Text = "Mostrar Contraseña";
             chkMostrar.UseVisualStyleBackColor = true;
-            chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
+            //chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
             // 
             // btnIngresarSesion
             // 
@@ -98,7 +98,7 @@
             btnIngresarSesion.TabIndex = 5;
             btnIngresarSesion.Text = "Ingresar";
             btnIngresarSesion.UseVisualStyleBackColor = false;
-            btnIngresarSesion.Click += btnIngresarSesion_Click;
+            //btnIngresarSesion.Click += btnIngresarSesion_Click;
             // 
             // label4
             // 
@@ -130,7 +130,7 @@
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
-            // VistaLogin
+            // Login
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -146,7 +146,7 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             Margin = new Padding(5, 6, 5, 6);
-            Name = "VistaLogin";
+            Name = "Login";
             Text = "INICIO SESION";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -158,11 +158,11 @@
         private Label label1;
         private Label label2;
         private TextBox txtUsuario;
-        private TextBox txtContraseña;
-        private CheckBox chkMostrar;
-        private Button btnIngresarSesion;
         private Label label4;
         private PictureBox pictureBox1;
         private Label label3;
+        public CheckBox chkMostrar;
+        public Button btnIngresarSesion;
+        public TextBox txtContraseña;
     }
 }

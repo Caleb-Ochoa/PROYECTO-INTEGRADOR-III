@@ -160,7 +160,6 @@
             label7.TabIndex = 12;
             label7.Text = "Debe registrar el administrador principal antes de iniciar sesión. ";
             label7.TextAlign = ContentAlignment.TopCenter;
-            label7.Click += label7_Click;
             // 
             // pictureBox1
             // 
@@ -210,9 +209,9 @@
         private TextBox txtCorreoAdmin;
         private TextBox txtContraseñaAdmin;
         private TextBox txtConfirmarContraseña;
-        private Button btnRegistarAdmin;
         private Label label6;
         private Label label7;
         private PictureBox pictureBox1;
+        public Button btnRegistarAdmin;
     }
 }

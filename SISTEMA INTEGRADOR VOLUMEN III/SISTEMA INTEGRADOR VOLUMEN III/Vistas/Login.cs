@@ -5,85 +5,46 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     public partial class Login : Form
     {
-        private PersonaRepository repository;
+        
 
         public Login()
         {
             InitializeComponent();
 
-            repository = new PersonaRepository();
-            txtContraseña.PasswordChar = '*';
+            
+        }
+        public string[] GetInput()
+        {
+            return new string[]
+            {
+                txtUsuario.Text.Trim(), // line[0] - Reemplaza por el Name real de tu TextBox de Usuario
+                txtContraseña.Text        // line[1] - El TextBox de contraseña que pusiste público
+            };
         }
 
-        private void btnIngresarSesion_Click(object sender, EventArgs e)
+        /// Muestra un cuadro de diálogo en caso de datos incorrectos o bloqueos.
+        /// </summary>
+        public void RowError(string mensaje) // Nota: En tu CtlUsuario llamaste a "MostrarError"
         {
-            string usuario = txtUsuario.Text.Trim();
-            string password = txtContraseña.Text.Trim();
-
-            Persona personaEncontrada = repository.BuscarUsuario(usuario);
-
-            if (personaEncontrada == null)
-            {
-                MessageBox.Show("Usuario no encontrado");
-
-                return;
-            }
-
-            if (personaEncontrada.PasswordHash == password)
-            {
-                MessageBox.Show("Inicio de sesión exitoso");
-            }
-            else
-            {
-                MessageBox.Show("Contraseña incorrecta");
-            }
+            MessageBox.Show(mensaje, "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void chkMostrar_CheckedChanged(object sender, EventArgs e)
+        // Si en tu CtlUsuario escribiste 'VistaLogin.MostrarError', usa este nombre:
+        public void MostrarError(string mensaje)
         {
-            if (chkMostrar.Checked)
-            {
-                txtContraseña.PasswordChar = '\0';
-            }
-            else
-            {
-                txtContraseña.PasswordChar = '*';
-            }
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnCrear_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Limpia el campo de contraseña si el intento falla.
+        /// </summary>
+        public void LimpiarPassword()
         {
-            if (txtUsuario.Text.Trim() == "" || txtContraseña.Text.Trim() == "")
-            {
-                MessageBox.Show("Complete todos los campos");
-                return;
-            }
-
-            Persona usuarioExistente = repository.BuscarUsuario(txtUsuario.Text);
-
-            if (usuarioExistente != null)
-            {
-                MessageBox.Show( "El usuario ya existe");
-                return;
-            }
-
-            Usuario nuevoUsuario = new Usuario(
-                1,
-                "Usuario",
-                "0000",
-                "correo@gmail.com",
-                "000000",
-                "Sin direccion",
-                txtUsuario.Text.Trim(),
-                txtContraseña.Text.Trim()
-            );
-
-            repository.Agregar(nuevoUsuario);
-
-            MessageBox.Show("Cuenta creada correctamente");
-
-            txtUsuario.Clear();
             txtContraseña.Clear();
+            txtContraseña.Focus();
         }
+
+
+        
     }
 }
