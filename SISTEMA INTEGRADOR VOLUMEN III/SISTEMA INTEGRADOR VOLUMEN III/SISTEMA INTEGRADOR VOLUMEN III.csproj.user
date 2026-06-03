@@ -4,5 +4,11 @@
     <Compile Update="Vistas\Logui.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\RegistroAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
