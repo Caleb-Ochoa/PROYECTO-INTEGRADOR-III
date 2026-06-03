@@ -7,40 +7,37 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
 {
     internal class DataManager <T> where T : class, new()
     {
-        private readonly IRepository<T> repository;
+        private readonly IRepository<T> _repo;
 
-        public DataManager(IRepository<T> repository)
-        {
-            this.repository = repository;
-        }
+        public DataManager(IRepository<T> repo) => _repo = repo;
 
-        public List<T> GetAll()
-        {
-            return repository.GetAll();
-        }
-        public void Save(List<T> entities)
-        {
-            repository.Sync(entities);
+        public List<T> GetAll() => _repo.GetAll();
 
-        }
+        public void Save(List<T> entities) => _repo.Sync(entities);
+
+        /// <summary>
+        /// Obtiene el siguiente Id sin usar reflexión: requiere que T tenga propiedad Id.
+        /// Usa la interfaz IEntidad cuando sea posible; cae a reflexión de respaldo.
+        /// </summary>
         public int GetNextId()
         {
-            List<T> entities = GetAll();
-            if (entities.Count == 0) return 1;
-            int maxId = 0;
-            foreach (T entity in entities)
+            var entities = GetAll();
+            if (!entities.Any()) return 1;
+
+            int max = 0;
+            foreach (var e in entities)
             {
-                var idProperty = entity.GetType().GetProperty("Id");
-                if (idProperty != null)
+                int id = 0;
+                if (e is Interfaces.IEntidad ie)
+                    id = ie.Id;
+                else
                 {
-                    int idValue = (int)idProperty.GetValue(entity);
-                    if (idValue > maxId)
-                    {
-                        maxId = idValue;
-                    }
+                    var prop = e.GetType().GetProperty("Id");
+                    if (prop != null) id = (int)(prop.GetValue(e) ?? 0);
                 }
+                if (id > max) max = id;
             }
-            return maxId + 1;
+            return max + 1;
         }
     }
 }

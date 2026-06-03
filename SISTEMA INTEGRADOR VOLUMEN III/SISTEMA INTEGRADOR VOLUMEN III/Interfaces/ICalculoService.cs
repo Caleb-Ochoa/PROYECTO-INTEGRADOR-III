@@ -7,8 +7,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces
 {
     internal interface ICalculoService
     {
-        ResultadoCalculo Calcular(
-           Terreno terreno,
-           Material material);
+        ResultadoCalculo Calcular(Terreno terreno, Material material);
     }
 }
