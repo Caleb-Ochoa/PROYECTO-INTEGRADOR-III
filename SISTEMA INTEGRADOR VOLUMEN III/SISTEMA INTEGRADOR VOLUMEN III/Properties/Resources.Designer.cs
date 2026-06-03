@@ -73,6 +73,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_3_jun_2026__01_26_11_p_m_ {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 3 jun 2026, 01_26_11 p.m.", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
