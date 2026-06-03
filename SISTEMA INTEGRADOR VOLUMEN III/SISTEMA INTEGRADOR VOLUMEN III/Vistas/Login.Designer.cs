@@ -1,6 +1,6 @@
 ﻿namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
-    partial class Logui
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -98,7 +98,7 @@
             btnIngresarSesion.TabIndex = 5;
             btnIngresarSesion.Text = "Ingresar";
             btnIngresarSesion.UseVisualStyleBackColor = false;
-            btnIngresarSesion.Click += btnIngresar_Click;
+            btnIngresarSesion.Click += btnIngresarSesion_Click;
             // 
             // label4
             // 
@@ -130,7 +130,7 @@
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
-            // Logui
+            // VistaLogin
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -146,7 +146,7 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             Margin = new Padding(5, 6, 5, 6);
-            Name = "Logui";
+            Name = "VistaLogin";
             Text = "INICIO SESION";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
