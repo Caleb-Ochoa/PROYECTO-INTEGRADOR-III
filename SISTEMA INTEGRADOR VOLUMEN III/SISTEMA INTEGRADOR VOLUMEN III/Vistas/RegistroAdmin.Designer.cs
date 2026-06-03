@@ -33,12 +33,12 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            button1 = new Button();
+            txtNombreCompleto = new TextBox();
+            txtUsuarioAdmin = new TextBox();
+            txtCorreoAdmin = new TextBox();
+            txtContraseñaAdmin = new TextBox();
+            txtConfirmarContraseña = new TextBox();
+            btnRegistarAdmin = new Button();
             label6 = new Label();
             label7 = new Label();
             pictureBox1 = new PictureBox();
@@ -95,51 +95,51 @@
             label5.TabIndex = 4;
             label5.Text = "Confirmar contraseña";
             // 
-            // textBox1
+            // txtNombreCompleto
             // 
-            textBox1.Location = new Point(46, 197);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 23);
-            textBox1.TabIndex = 5;
+            txtNombreCompleto.Location = new Point(46, 197);
+            txtNombreCompleto.Name = "txtNombreCompleto";
+            txtNombreCompleto.Size = new Size(242, 23);
+            txtNombreCompleto.TabIndex = 5;
             // 
-            // textBox2
+            // txtUsuarioAdmin
             // 
-            textBox2.Location = new Point(46, 256);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 23);
-            textBox2.TabIndex = 6;
+            txtUsuarioAdmin.Location = new Point(46, 256);
+            txtUsuarioAdmin.Name = "txtUsuarioAdmin";
+            txtUsuarioAdmin.Size = new Size(242, 23);
+            txtUsuarioAdmin.TabIndex = 6;
             // 
-            // textBox3
+            // txtCorreoAdmin
             // 
-            textBox3.Location = new Point(46, 314);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(242, 23);
-            textBox3.TabIndex = 7;
+            txtCorreoAdmin.Location = new Point(46, 314);
+            txtCorreoAdmin.Name = "txtCorreoAdmin";
+            txtCorreoAdmin.Size = new Size(242, 23);
+            txtCorreoAdmin.TabIndex = 7;
             // 
-            // textBox4
+            // txtContraseñaAdmin
             // 
-            textBox4.Location = new Point(46, 371);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(242, 23);
-            textBox4.TabIndex = 8;
+            txtContraseñaAdmin.Location = new Point(46, 371);
+            txtContraseñaAdmin.Name = "txtContraseñaAdmin";
+            txtContraseñaAdmin.Size = new Size(242, 23);
+            txtContraseñaAdmin.TabIndex = 8;
             // 
-            // textBox5
+            // txtConfirmarContraseña
             // 
-            textBox5.Location = new Point(46, 431);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(242, 23);
-            textBox5.TabIndex = 9;
+            txtConfirmarContraseña.Location = new Point(46, 431);
+            txtConfirmarContraseña.Name = "txtConfirmarContraseña";
+            txtConfirmarContraseña.Size = new Size(242, 23);
+            txtConfirmarContraseña.TabIndex = 9;
             // 
-            // button1
+            // btnRegistarAdmin
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button1.Location = new Point(46, 495);
-            button1.Name = "button1";
-            button1.Size = new Size(242, 34);
-            button1.TabIndex = 10;
-            button1.Text = "Registrar Administrador";
-            button1.UseVisualStyleBackColor = false;
+            btnRegistarAdmin.BackColor = SystemColors.ActiveCaption;
+            btnRegistarAdmin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRegistarAdmin.Location = new Point(46, 495);
+            btnRegistarAdmin.Name = "btnRegistarAdmin";
+            btnRegistarAdmin.Size = new Size(242, 34);
+            btnRegistarAdmin.TabIndex = 10;
+            btnRegistarAdmin.Text = "Registrar Administrador";
+            btnRegistarAdmin.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
@@ -180,12 +180,12 @@
             Controls.Add(pictureBox1);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(button1);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(btnRegistarAdmin);
+            Controls.Add(txtConfirmarContraseña);
+            Controls.Add(txtContraseñaAdmin);
+            Controls.Add(txtCorreoAdmin);
+            Controls.Add(txtUsuarioAdmin);
+            Controls.Add(txtNombreCompleto);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -205,12 +205,12 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Button button1;
+        private TextBox txtNombreCompleto;
+        private TextBox txtUsuarioAdmin;
+        private TextBox txtCorreoAdmin;
+        private TextBox txtContraseñaAdmin;
+        private TextBox txtConfirmarContraseña;
+        private Button btnRegistarAdmin;
         private Label label6;
         private Label label7;
         private PictureBox pictureBox1;

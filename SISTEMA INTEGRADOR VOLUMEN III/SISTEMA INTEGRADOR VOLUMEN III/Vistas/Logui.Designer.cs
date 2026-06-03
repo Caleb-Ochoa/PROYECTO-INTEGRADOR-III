@@ -33,7 +33,7 @@
             txtUsuario = new TextBox();
             txtContraseña = new TextBox();
             chkMostrar = new CheckBox();
-            btnIngresar = new Button();
+            btnIngresarSesion = new Button();
             label4 = new Label();
             pictureBox1 = new PictureBox();
             label3 = new Label();
@@ -88,17 +88,17 @@
             chkMostrar.UseVisualStyleBackColor = true;
             chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
             // 
-            // btnIngresar
+            // btnIngresarSesion
             // 
-            btnIngresar.BackColor = SystemColors.ActiveCaption;
-            btnIngresar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnIngresar.Location = new Point(59, 368);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(225, 31);
-            btnIngresar.TabIndex = 5;
-            btnIngresar.Text = "Ingresar";
-            btnIngresar.UseVisualStyleBackColor = false;
-            btnIngresar.Click += btnIngresar_Click;
+            btnIngresarSesion.BackColor = SystemColors.ActiveCaption;
+            btnIngresarSesion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnIngresarSesion.Location = new Point(59, 368);
+            btnIngresarSesion.Name = "btnIngresarSesion";
+            btnIngresarSesion.Size = new Size(225, 31);
+            btnIngresarSesion.TabIndex = 5;
+            btnIngresarSesion.Text = "Ingresar";
+            btnIngresarSesion.UseVisualStyleBackColor = false;
+            btnIngresarSesion.Click += btnIngresar_Click;
             // 
             // label4
             // 
@@ -138,7 +138,7 @@
             Controls.Add(label3);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
-            Controls.Add(btnIngresar);
+            Controls.Add(btnIngresarSesion);
             Controls.Add(chkMostrar);
             Controls.Add(txtContraseña);
             Controls.Add(txtUsuario);
@@ -160,7 +160,7 @@
         private TextBox txtUsuario;
         private TextBox txtContraseña;
         private CheckBox chkMostrar;
-        private Button btnIngresar;
+        private Button btnIngresarSesion;
         private Label label4;
         private PictureBox pictureBox1;
         private Label label3;
