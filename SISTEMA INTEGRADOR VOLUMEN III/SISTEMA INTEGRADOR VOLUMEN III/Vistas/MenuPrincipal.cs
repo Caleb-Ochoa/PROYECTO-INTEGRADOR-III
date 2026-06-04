@@ -62,10 +62,28 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             this.Close(); // Cierra el menú principal
         }
+        public void AbrirFormulario(Form formulario)
+        {
+            PanelContenedor.Controls.Clear();
 
+            formulario.TopLevel = false;
+
+            formulario.Dock = DockStyle.Fill;
+
+            PanelContenedor.Controls.Add(formulario);
+
+            formulario.Show();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             // Este es tu botón de "Cambiar Contraseña" según tu Designer.
+        }
+
+        private void btnGestionUsuarios_Click(object sender, EventArgs e)
+        {
+            GestionUsuario usuario = new GestionUsuario();
+
+            AbrirFormulario(usuario);
         }
     }
 }
