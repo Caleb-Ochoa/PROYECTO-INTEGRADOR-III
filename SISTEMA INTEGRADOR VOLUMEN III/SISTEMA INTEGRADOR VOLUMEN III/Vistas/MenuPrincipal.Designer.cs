@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnAdministrador = new Button();
-            btnGestionUsuarios = new Button();
+            btnGUsuarios = new Button();
             btnCotizacion = new Button();
             btnTerreno = new Button();
             btnFactura = new Button();
@@ -56,16 +56,14 @@
             btnAdministrador.Text = "Administrador";
             btnAdministrador.UseVisualStyleBackColor = true;
             // 
-            // btnGestionUsuarios
+            // btnGUsuarios
             // 
-            btnGestionUsuarios.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnGestionUsuarios.Location = new Point(14, 80);
-            btnGestionUsuarios.Name = "btnGestionUsuarios";
-            btnGestionUsuarios.Size = new Size(134, 26);
-            btnGestionUsuarios.TabIndex = 1;
-            btnGestionUsuarios.Text = "Gestión Usuarios";
-            btnGestionUsuarios.UseVisualStyleBackColor = true;
-            btnGestionUsuarios.Click += btnGestionUsuarios_Click;
+            btnGUsuarios.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnGUsuarios.Location = new Point(27, 83);
+            btnGUsuarios.Name = "btnGUsuarios";
+            btnGUsuarios.Size = new Size(109, 23);
+            btnGUsuarios.TabIndex = 10;
+            btnGUsuarios.Text = "Gestion Usuario";
             // 
             // btnCotizacion
             // 
@@ -161,7 +159,7 @@
             splitContainer1.Panel1.Controls.Add(btnFactura);
             splitContainer1.Panel1.Controls.Add(btnVolumen);
             splitContainer1.Panel1.Controls.Add(btnCotizacion);
-            splitContainer1.Panel1.Controls.Add(btnGestionUsuarios);
+            splitContainer1.Panel1.Controls.Add(btnGUsuarios);
             splitContainer1.Panel1.Controls.Add(btnClientes);
             splitContainer1.Panel1.Controls.Add(btnMateriales);
             splitContainer1.Panel1.Controls.Add(btnTerreno);
@@ -198,7 +196,7 @@
         #endregion
 
         private Button btnAdministrador;
-        private Button btnGestionUsuarios;
+        private Button btnGUsuarios;
         private Button btnCotizacion;
         private Button btnTerreno;
         private Button btnFactura;
