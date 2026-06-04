@@ -19,9 +19,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             return new string[]
             {
-                txtNombreCompleto.Text.Trim(),           // line[0]
+                txtNombreCompleto.Text.Trim(),// line[0]
+                txtDocumentoAdmin.Text.Trim(),           // line[1]
                 txtUsuarioAdmin.Text.Trim(),     // line[1] (En tu captura se ve "txtUsuarioAdmin" arriba a la derecha)
-                txtCorreoAdmin.Text.Trim(),           // line[2]
+                txtCorreoAdmin.Text.Trim(),
+                txtTelefonoAdmin.Text.Trim(),
+                txtDireccion.Text.Trim(),
                 txtContraseñaAdmin.Text,                // line[3]
                 txtConfirmarContraseña.Text        // line[4]
             };

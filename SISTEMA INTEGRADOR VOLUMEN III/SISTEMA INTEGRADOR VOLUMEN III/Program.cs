@@ -3,6 +3,7 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Services;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
@@ -35,6 +36,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             {
                 // Aquí puedes iniciar tu formulario de menú principal si lo tienes, por ejemplo:
                 // Application.Run(new FrmMenuPrincipal(ctlUsuario.UsuarioAutenticado));
+                Application.Run(new MenuPrincipal(ctlUsuario.UsuarioAutenticado));
             }
         }
     }

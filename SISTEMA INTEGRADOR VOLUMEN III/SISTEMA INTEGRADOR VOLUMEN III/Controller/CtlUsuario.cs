@@ -54,9 +54,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         private void RegistrarAdmin()
         {
             string[] line = VistaRegistro!.GetInput();
-            // line[0]=Nombre, [1]=Username, [2]=Correo, [3]=Password, [4]=Confirmar
 
-            if (line[3] != line[4])
+            // 1. Validar contraseñas (ahora son los índices 6 y 7)
+            if (line[6] != line[7])
             {
                 VistaRegistro.MostrarError("Las contraseñas no coinciden");
                 return;
@@ -64,21 +64,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             try
             {
+                // 2. Mapear los 10 campos del Usuario
                 Usuario usuario = new Usuario
                 {
                     Id = dataManager.GetNextId(),
-                    Nombre = line[0],
-                    Username = line[1],
-                    CorreoElectronico = line[2],
-                    Documento = "000000000",
-                    Telefono = "",
-                    Direccion = "",
+                    Nombre = line[0],            // Nombre Completo
+                    Documento = line[1],         // Documento
+                    Username = line[2],          // Usuario
+                    CorreoElectronico = line[3], // Correo
+                    Telefono = line[4],          // Telefono
+                    Direccion = line[5],         // Direccion
                     Rol = Rol.Administrador,
                     Estado = EstadoUsuario.Activo
                 };
 
-                authService.Registrar(usuario, line[3]);
-                usuarios = dataManager.GetAll();   // recargar lista actualizada
+                // 3. Registrar usando la contraseña (índice 6)
+                authService.Registrar(usuario, line[6]);
+
+                usuarios = dataManager.GetAll();
 
                 VistaRegistro.Hide();
 
@@ -87,7 +90,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 VistaRegistro.Close();
-                AbrirLogin();                      // luego de registrar, va al login
+                AbrirLogin();
             }
             catch (Exception ex)
             {

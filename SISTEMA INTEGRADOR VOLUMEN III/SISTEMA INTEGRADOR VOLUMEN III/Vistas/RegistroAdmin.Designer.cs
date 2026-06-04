@@ -42,6 +42,12 @@
             label6 = new Label();
             label7 = new Label();
             pictureBox1 = new PictureBox();
+            txtDocumentoAdmin = new TextBox();
+            label8 = new Label();
+            txtTelefonoAdmin = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            txtDireccion = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +55,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.Location = new Point(46, 175);
+            label1.Location = new Point(46, 140);
             label1.Name = "label1";
             label1.Size = new Size(135, 19);
             label1.TabIndex = 0;
@@ -59,7 +65,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label2.Location = new Point(46, 234);
+            label2.Location = new Point(46, 241);
             label2.Name = "label2";
             label2.Size = new Size(60, 19);
             label2.TabIndex = 1;
@@ -79,7 +85,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label4.Location = new Point(46, 349);
+            label4.Location = new Point(46, 448);
             label4.Name = "label4";
             label4.Size = new Size(84, 19);
             label4.TabIndex = 3;
@@ -89,7 +95,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label5.Location = new Point(46, 409);
+            label5.Location = new Point(46, 501);
             label5.Name = "label5";
             label5.Size = new Size(154, 19);
             label5.TabIndex = 4;
@@ -97,35 +103,35 @@
             // 
             // txtNombreCompleto
             // 
-            txtNombreCompleto.Location = new Point(46, 197);
+            txtNombreCompleto.Location = new Point(46, 162);
             txtNombreCompleto.Name = "txtNombreCompleto";
             txtNombreCompleto.Size = new Size(242, 23);
             txtNombreCompleto.TabIndex = 5;
             // 
             // txtUsuarioAdmin
             // 
-            txtUsuarioAdmin.Location = new Point(46, 256);
+            txtUsuarioAdmin.Location = new Point(46, 262);
             txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             txtUsuarioAdmin.Size = new Size(242, 23);
             txtUsuarioAdmin.TabIndex = 6;
             // 
             // txtCorreoAdmin
             // 
-            txtCorreoAdmin.Location = new Point(46, 314);
+            txtCorreoAdmin.Location = new Point(46, 316);
             txtCorreoAdmin.Name = "txtCorreoAdmin";
             txtCorreoAdmin.Size = new Size(242, 23);
             txtCorreoAdmin.TabIndex = 7;
             // 
             // txtContraseñaAdmin
             // 
-            txtContraseñaAdmin.Location = new Point(46, 371);
+            txtContraseñaAdmin.Location = new Point(46, 470);
             txtContraseñaAdmin.Name = "txtContraseñaAdmin";
             txtContraseñaAdmin.Size = new Size(242, 23);
             txtContraseñaAdmin.TabIndex = 8;
             // 
             // txtConfirmarContraseña
             // 
-            txtConfirmarContraseña.Location = new Point(46, 431);
+            txtConfirmarContraseña.Location = new Point(46, 523);
             txtConfirmarContraseña.Name = "txtConfirmarContraseña";
             txtConfirmarContraseña.Size = new Size(242, 23);
             txtConfirmarContraseña.TabIndex = 9;
@@ -134,7 +140,7 @@
             // 
             btnRegistarAdmin.BackColor = SystemColors.ActiveCaption;
             btnRegistarAdmin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnRegistarAdmin.Location = new Point(46, 495);
+            btnRegistarAdmin.Location = new Point(46, 565);
             btnRegistarAdmin.Name = "btnRegistarAdmin";
             btnRegistarAdmin.Size = new Size(242, 34);
             btnRegistarAdmin.TabIndex = 10;
@@ -145,7 +151,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.Location = new Point(61, 93);
+            label6.Location = new Point(61, 85);
             label6.Name = "label6";
             label6.Size = new Size(210, 21);
             label6.TabIndex = 11;
@@ -154,7 +160,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 8F);
-            label7.Location = new Point(46, 130);
+            label7.Location = new Point(46, 108);
             label7.Name = "label7";
             label7.Size = new Size(250, 36);
             label7.TabIndex = 12;
@@ -164,18 +170,75 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.images;
-            pictureBox1.Location = new Point(107, 12);
+            pictureBox1.Location = new Point(107, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(112, 78);
+            pictureBox1.Size = new Size(112, 76);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
+            // 
+            // txtDocumentoAdmin
+            // 
+            txtDocumentoAdmin.Location = new Point(46, 211);
+            txtDocumentoAdmin.Name = "txtDocumentoAdmin";
+            txtDocumentoAdmin.Size = new Size(242, 23);
+            txtDocumentoAdmin.TabIndex = 15;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label8.Location = new Point(46, 189);
+            label8.Name = "label8";
+            label8.Size = new Size(86, 19);
+            label8.TabIndex = 14;
+            label8.Text = "Documento";
+            // 
+            // txtTelefonoAdmin
+            // 
+            txtTelefonoAdmin.Location = new Point(46, 368);
+            txtTelefonoAdmin.Name = "txtTelefonoAdmin";
+            txtTelefonoAdmin.Size = new Size(242, 23);
+            txtTelefonoAdmin.TabIndex = 17;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label9.Location = new Point(46, 345);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 19);
+            label9.TabIndex = 16;
+            label9.Text = "Telefono";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label10.Location = new Point(46, 398);
+            label10.Name = "label10";
+            label10.Size = new Size(72, 19);
+            label10.TabIndex = 18;
+            label10.Text = "Dirección";
+            // 
+            // txtDireccion
+            // 
+            txtDireccion.Location = new Point(46, 421);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(242, 23);
+            txtDireccion.TabIndex = 19;
             // 
             // RegistroAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(352, 559);
+            ClientSize = new Size(352, 611);
+            Controls.Add(txtDireccion);
+            Controls.Add(label10);
+            Controls.Add(txtTelefonoAdmin);
+            Controls.Add(label9);
+            Controls.Add(txtDocumentoAdmin);
+            Controls.Add(label8);
             Controls.Add(pictureBox1);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -213,5 +276,11 @@
         private Label label7;
         private PictureBox pictureBox1;
         public Button btnRegistarAdmin;
+        private TextBox txtDocumentoAdmin;
+        private Label label8;
+        private TextBox txtTelefonoAdmin;
+        private Label label9;
+        private Label label10;
+        private TextBox txtDireccion;
     }
 }
