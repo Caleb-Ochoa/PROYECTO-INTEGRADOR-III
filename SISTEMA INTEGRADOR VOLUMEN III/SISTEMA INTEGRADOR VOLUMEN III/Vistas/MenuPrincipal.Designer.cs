@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAdministrador = new Button();
+            RolUsuario = new Button();
             btnGestionUsuarios = new Button();
             btnCotizacion = new Button();
             btnTerreno = new Button();
@@ -46,15 +46,15 @@
             splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnAdministrador
+            // RolUsuario
             // 
-            btnAdministrador.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAdministrador.Location = new Point(14, 15);
-            btnAdministrador.Name = "btnAdministrador";
-            btnAdministrador.Size = new Size(134, 27);
-            btnAdministrador.TabIndex = 0;
-            btnAdministrador.Text = "Administrador";
-            btnAdministrador.UseVisualStyleBackColor = true;
+            RolUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            RolUsuario.Location = new Point(14, 13);
+            RolUsuario.Name = "RolUsuario";
+            RolUsuario.Size = new Size(134, 27);
+            RolUsuario.TabIndex = 0;
+            RolUsuario.Text = "Administrador";
+            RolUsuario.UseVisualStyleBackColor = true;
             // 
             // btnGestionUsuarios
             // 
@@ -100,9 +100,9 @@
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(14, 420);
+            btnCerrarSesion.Location = new Point(679, 22);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(134, 23);
+            btnCerrarSesion.Size = new Size(120, 23);
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = "CERRAR SESIÓN";
             btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -150,14 +150,13 @@
             // 
             // splitContainer1
             // 
-            splitContainer1.Location = new Point(12, 76);
+            splitContainer1.Location = new Point(12, 60);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(btnAdministrador);
+            splitContainer1.Panel1.Controls.Add(RolUsuario);
             splitContainer1.Panel1.Controls.Add(btnCambiarContraseña);
-            splitContainer1.Panel1.Controls.Add(btnCerrarSesion);
             splitContainer1.Panel1.Controls.Add(btnFactura);
             splitContainer1.Panel1.Controls.Add(btnVolumen);
             splitContainer1.Panel1.Controls.Add(btnCotizacion);
@@ -169,23 +168,24 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(PanelContenedor);
-            splitContainer1.Size = new Size(719, 446);
-            splitContainer1.SplitterDistance = 161;
+            splitContainer1.Size = new Size(787, 462);
+            splitContainer1.SplitterDistance = 171;
             splitContainer1.TabIndex = 10;
             // 
             // PanelContenedor
             // 
             PanelContenedor.Location = new Point(3, 3);
             PanelContenedor.Name = "PanelContenedor";
-            PanelContenedor.Size = new Size(548, 440);
+            PanelContenedor.Size = new Size(606, 455);
             PanelContenedor.TabIndex = 11;
             // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(743, 534);
+            ClientSize = new Size(802, 530);
             Controls.Add(splitContainer1);
+            Controls.Add(btnCerrarSesion);
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
             splitContainer1.Panel1.ResumeLayout(false);
@@ -197,7 +197,7 @@
 
         #endregion
 
-        private Button btnAdministrador;
+        private Button RolUsuario;
         private Button btnGestionUsuarios;
         private Button btnCotizacion;
         private Button btnTerreno;
