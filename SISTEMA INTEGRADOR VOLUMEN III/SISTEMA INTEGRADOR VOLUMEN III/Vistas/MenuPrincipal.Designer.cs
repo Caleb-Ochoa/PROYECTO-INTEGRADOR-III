@@ -34,19 +34,22 @@
             btnTerreno = new Button();
             btnFactura = new Button();
             btnCerrarSesion = new Button();
-            panel1 = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            btnClientes = new Button();
-            btnMateriales = new Button();
-            btnVolumen = new Button();
             btnCambiarContraseña = new Button();
-            panel1.SuspendLayout();
+            btnVolumen = new Button();
+            btnMateriales = new Button();
+            btnClientes = new Button();
+            splitContainer1 = new SplitContainer();
+            PanelContenedor = new Panel();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // btnAdministrador
             // 
             btnAdministrador.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAdministrador.Location = new Point(12, 16);
+            btnAdministrador.Location = new Point(14, 15);
             btnAdministrador.Name = "btnAdministrador";
             btnAdministrador.Size = new Size(134, 27);
             btnAdministrador.TabIndex = 0;
@@ -56,17 +59,18 @@
             // btnGestionUsuarios
             // 
             btnGestionUsuarios.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnGestionUsuarios.Location = new Point(12, 75);
+            btnGestionUsuarios.Location = new Point(14, 80);
             btnGestionUsuarios.Name = "btnGestionUsuarios";
             btnGestionUsuarios.Size = new Size(134, 26);
             btnGestionUsuarios.TabIndex = 1;
             btnGestionUsuarios.Text = "Gestión Usuarios";
             btnGestionUsuarios.UseVisualStyleBackColor = true;
+            btnGestionUsuarios.Click += btnGestionUsuarios_Click;
             // 
             // btnCotizacion
             // 
             btnCotizacion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCotizacion.Location = new Point(12, 230);
+            btnCotizacion.Location = new Point(14, 235);
             btnCotizacion.Name = "btnCotizacion";
             btnCotizacion.Size = new Size(134, 26);
             btnCotizacion.TabIndex = 2;
@@ -76,7 +80,7 @@
             // btnTerreno
             // 
             btnTerreno.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnTerreno.Location = new Point(12, 168);
+            btnTerreno.Location = new Point(14, 173);
             btnTerreno.Name = "btnTerreno";
             btnTerreno.Size = new Size(134, 26);
             btnTerreno.TabIndex = 3;
@@ -86,7 +90,7 @@
             // btnFactura
             // 
             btnFactura.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnFactura.Location = new Point(12, 262);
+            btnFactura.Location = new Point(14, 267);
             btnFactura.Name = "btnFactura";
             btnFactura.Size = new Size(134, 27);
             btnFactura.TabIndex = 4;
@@ -96,73 +100,17 @@
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(12, 371);
+            btnCerrarSesion.Location = new Point(14, 420);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(134, 23);
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = "CERRAR SESIÓN";
             btnCerrarSesion.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnCambiarContraseña);
-            panel1.Controls.Add(btnVolumen);
-            panel1.Controls.Add(btnMateriales);
-            panel1.Controls.Add(btnClientes);
-            panel1.Controls.Add(btnAdministrador);
-            panel1.Controls.Add(btnCerrarSesion);
-            panel1.Controls.Add(btnGestionUsuarios);
-            panel1.Controls.Add(btnFactura);
-            panel1.Controls.Add(btnTerreno);
-            panel1.Controls.Add(btnCotizacion);
-            panel1.Location = new Point(12, 125);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(149, 397);
-            panel1.TabIndex = 6;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackgroundImage = Properties.Resources.ChatGPT_Image_3_jun_2026__01_26_11_p_m_;
-            flowLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
-            flowLayoutPanel1.Location = new Point(12, 9);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(719, 110);
-            flowLayoutPanel1.TabIndex = 7;
-            // 
-            // btnClientes
-            // 
-            btnClientes.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnClientes.Location = new Point(12, 107);
-            btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(134, 26);
-            btnClientes.TabIndex = 6;
-            btnClientes.Text = "Clientes";
-            btnClientes.UseVisualStyleBackColor = true;
-            // 
-            // btnMateriales
-            // 
-            btnMateriales.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnMateriales.Location = new Point(12, 139);
-            btnMateriales.Name = "btnMateriales";
-            btnMateriales.Size = new Size(134, 23);
-            btnMateriales.TabIndex = 7;
-            btnMateriales.Text = "Materiales";
-            btnMateriales.UseVisualStyleBackColor = true;
-            // 
-            // btnVolumen
-            // 
-            btnVolumen.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnVolumen.Location = new Point(12, 200);
-            btnVolumen.Name = "btnVolumen";
-            btnVolumen.Size = new Size(134, 24);
-            btnVolumen.TabIndex = 8;
-            btnVolumen.Text = "Volumen";
-            btnVolumen.UseVisualStyleBackColor = true;
-            // 
             // btnCambiarContraseña
             // 
             btnCambiarContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCambiarContraseña.Location = new Point(12, 295);
+            btnCambiarContraseña.Location = new Point(14, 300);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
             btnCambiarContraseña.Size = new Size(134, 26);
             btnCambiarContraseña.TabIndex = 9;
@@ -170,16 +118,80 @@
             btnCambiarContraseña.UseVisualStyleBackColor = true;
             btnCambiarContraseña.Click += button3_Click;
             // 
+            // btnVolumen
+            // 
+            btnVolumen.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnVolumen.Location = new Point(14, 205);
+            btnVolumen.Name = "btnVolumen";
+            btnVolumen.Size = new Size(134, 24);
+            btnVolumen.TabIndex = 8;
+            btnVolumen.Text = "Volumen";
+            btnVolumen.UseVisualStyleBackColor = true;
+            // 
+            // btnMateriales
+            // 
+            btnMateriales.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnMateriales.Location = new Point(14, 144);
+            btnMateriales.Name = "btnMateriales";
+            btnMateriales.Size = new Size(134, 23);
+            btnMateriales.TabIndex = 7;
+            btnMateriales.Text = "Materiales";
+            btnMateriales.UseVisualStyleBackColor = true;
+            // 
+            // btnClientes
+            // 
+            btnClientes.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnClientes.Location = new Point(14, 112);
+            btnClientes.Name = "btnClientes";
+            btnClientes.Size = new Size(134, 26);
+            btnClientes.TabIndex = 6;
+            btnClientes.Text = "Clientes";
+            btnClientes.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Location = new Point(12, 76);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(btnAdministrador);
+            splitContainer1.Panel1.Controls.Add(btnCambiarContraseña);
+            splitContainer1.Panel1.Controls.Add(btnCerrarSesion);
+            splitContainer1.Panel1.Controls.Add(btnFactura);
+            splitContainer1.Panel1.Controls.Add(btnVolumen);
+            splitContainer1.Panel1.Controls.Add(btnCotizacion);
+            splitContainer1.Panel1.Controls.Add(btnGestionUsuarios);
+            splitContainer1.Panel1.Controls.Add(btnClientes);
+            splitContainer1.Panel1.Controls.Add(btnMateriales);
+            splitContainer1.Panel1.Controls.Add(btnTerreno);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(PanelContenedor);
+            splitContainer1.Size = new Size(719, 446);
+            splitContainer1.SplitterDistance = 161;
+            splitContainer1.TabIndex = 10;
+            // 
+            // PanelContenedor
+            // 
+            PanelContenedor.Location = new Point(3, 3);
+            PanelContenedor.Name = "PanelContenedor";
+            PanelContenedor.Size = new Size(548, 440);
+            PanelContenedor.TabIndex = 11;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(743, 534);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(panel1);
+            Controls.Add(splitContainer1);
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
-            panel1.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -191,11 +203,11 @@
         private Button btnTerreno;
         private Button btnFactura;
         private Button btnCerrarSesion;
-        private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Button btnClientes;
         private Button btnVolumen;
         private Button btnMateriales;
         private Button btnCambiarContraseña;
+        private SplitContainer splitContainer1;
+        private Panel PanelContenedor;
     }
 }

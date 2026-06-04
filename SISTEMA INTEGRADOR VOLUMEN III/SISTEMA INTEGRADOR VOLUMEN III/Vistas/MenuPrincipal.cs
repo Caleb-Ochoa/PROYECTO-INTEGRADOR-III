@@ -14,10 +14,28 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             InitializeComponent();
         }
+        public void AbrirFormulario(Form formulario)
+        {
+            PanelContenedor.Controls.Clear();
 
+            formulario.TopLevel = false;
+
+            formulario.Dock = DockStyle.Fill;
+
+            PanelContenedor.Controls.Add(formulario);
+
+            formulario.Show();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnGestionUsuarios_Click(object sender, EventArgs e)
+        {
+            GestionUsuario usuario = new GestionUsuario();
+
+            AbrirFormulario(usuario);
         }
     }
 }

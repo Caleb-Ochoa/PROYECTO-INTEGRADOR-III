@@ -20,21 +20,21 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
 
         }
-        private void CargarUsuarios()
-        {
-            List<Usuario> usuarios = _repositorio.ObtenerTodos(); // o como lo tengas
+        //private void CargarUsuarios()
+        //{
+        //    List<Usuario> usuarios = _repositorio.ObtenerTodos(); // o como lo tengas
 
-            dgvUsuarios.Rows.Clear();
+        //    dgvUsuarios.Rows.Clear();
 
-            foreach (Usuario u in usuarios)
-            {
-                dgvUsuarios.Rows.Add(
-                    u.NombreUsuario,
-                    u.Correo,
-                    u.Rol.ToString(),       // el enum Rol que ya tienes
-                    u.Estado.ToString()     // el enum EstadoUsuario que ya tienes
-                );
-            }
-        }
+        //    foreach (Usuario u in usuarios)
+        //    {
+        //        dgvUsuarios.Rows.Add(
+        //            u.NombreUsuario,
+        //            u.Correo,
+        //            u.Rol.ToString(),       // el enum Rol que ya tienes
+        //            u.Estado.ToString()     // el enum EstadoUsuario que ya tienes
+        //        );
+        //    }
+        //}
     }
 }
