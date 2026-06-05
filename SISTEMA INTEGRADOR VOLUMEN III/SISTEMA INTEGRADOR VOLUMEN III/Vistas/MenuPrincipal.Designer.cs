@@ -1,4 +1,5 @@
-﻿namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
+﻿
+namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 {
     partial class MenuPrincipal
     {
