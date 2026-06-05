@@ -14,5 +14,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             InitializeComponent();
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
