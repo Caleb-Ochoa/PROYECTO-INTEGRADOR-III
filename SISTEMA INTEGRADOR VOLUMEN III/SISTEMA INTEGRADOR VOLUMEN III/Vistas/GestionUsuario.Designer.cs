@@ -56,9 +56,9 @@
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label1.Location = new Point(18, 29);
             label1.Name = "label1";
-            label1.Size = new Size(141, 19);
+            label1.Size = new Size(135, 19);
             label1.TabIndex = 0;
-            label1.Text = "Nombre de Usuario";
+            label1.Text = "Nombre Completo";
             // 
             // label2
             // 
@@ -76,9 +76,9 @@
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.Location = new Point(405, 29);
             label3.Name = "label3";
-            label3.Size = new Size(56, 19);
+            label3.Size = new Size(135, 19);
             label3.TabIndex = 2;
-            label3.Text = "Correo";
+            label3.Text = "Correo electronico";
             // 
             // label4
             // 

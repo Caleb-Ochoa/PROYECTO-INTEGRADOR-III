@@ -98,9 +98,9 @@
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(14, 420);
+            btnCerrarSesion.Location = new Point(606, 34);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(134, 23);
+            btnCerrarSesion.Size = new Size(122, 23);
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = "CERRAR SESIÓN";
             btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -155,7 +155,6 @@
             // 
             splitContainer1.Panel1.Controls.Add(btnAdministrador);
             splitContainer1.Panel1.Controls.Add(btnCambiarContraseña);
-            splitContainer1.Panel1.Controls.Add(btnCerrarSesion);
             splitContainer1.Panel1.Controls.Add(btnFactura);
             splitContainer1.Panel1.Controls.Add(btnVolumen);
             splitContainer1.Panel1.Controls.Add(btnCotizacion);
@@ -184,6 +183,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(743, 534);
             Controls.Add(splitContainer1);
+            Controls.Add(btnCerrarSesion);
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
             splitContainer1.Panel1.ResumeLayout(false);

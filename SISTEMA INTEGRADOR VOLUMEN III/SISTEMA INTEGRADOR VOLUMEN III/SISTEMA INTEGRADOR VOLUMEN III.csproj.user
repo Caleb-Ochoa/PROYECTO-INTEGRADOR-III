@@ -1,16 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Vistas\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\Cotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\GestionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Vistas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Materiales.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Vistas\RegistroAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\Terreno y Calculo.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
