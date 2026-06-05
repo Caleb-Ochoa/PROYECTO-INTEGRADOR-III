@@ -21,43 +21,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             this.usuario = usuario;
         }
 
-        /// <summary>
-        /// Método para meter cualquier formulario dentro de tu contenedor principal
-        /// </summary>
-        private void AbrirFormularioHijo(Form formularioHijo)
-        {
-            // 1. Si ya había un formulario abierto, lo cerramos para liberar memoria
-            if (formularioActivo != null)
-            {
-                formularioActivo.Close();
-            }
-
-            // 2. Guardamos el nuevo formulario como el activo
-            formularioActivo = formularioHijo;
-
-            // 3. Configuración para que se comporte como un control hijo
-            formularioHijo.TopLevel = false;
-            formularioHijo.FormBorderStyle = FormBorderStyle.None; // Quita los bordes de la ventana
-            formularioHijo.Dock = DockStyle.Fill;                  // Rellena todo el espacio disponible
-
-            // 4. Limpiamos el contenedor e introducimos el nuevo formulario
-            this.flowLayoutPanel1.Controls.Clear(); // <-- Limpia residuos visuales previos
-            this.flowLayoutPanel1.Controls.Add(formularioHijo);
-            this.flowLayoutPanel1.Tag = formularioHijo;
-
-            // 5. Lo traemos al frente y lo mostramos
-            formularioHijo.BringToFront();
-            formularioHijo.Show();
-        }
-
-        // ── EVENTOS DE LOS BOTONES DEL MENÚ ─────────────────────────────────
-
-        private void btnGestionUsuarios_Click(object sender, EventArgs e)
-        {
-            // Abre la pantalla de Gestión de Usuarios dentro del contenedor
-            AbrirFormularioHijo(new GestionUsuario());
-        }
-
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Close(); // Cierra el menú principal
