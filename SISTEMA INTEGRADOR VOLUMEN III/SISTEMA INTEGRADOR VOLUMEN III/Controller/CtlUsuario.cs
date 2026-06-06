@@ -68,12 +68,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Usuario usuario = new Usuario
                 {
                     Id = dataManager.GetNextId(),
-                    Nombre = line[0],            // Nombre Completo
-                    Documento = line[1],         // Documento
-                    Username = line[2],          // Usuario
-                    CorreoElectronico = line[3], // Correo
-                    Telefono = line[4],          // Telefono
-                    Direccion = line[5],         // Direccion
+                    Nombre = line[0],             // Nombre Completo
+                    Documento = line[1],          // Documento
+                    CorreoElectronico = line[2],  // Correo Electronico
+                    Telefono = line[3],           // Telefono
+                    Direccion = line[4],          // Dirección
+                    Username = line[5],           // Usuario
                     Rol = Rol.Administrador,
                     Estado = EstadoUsuario.Activo
                 };
