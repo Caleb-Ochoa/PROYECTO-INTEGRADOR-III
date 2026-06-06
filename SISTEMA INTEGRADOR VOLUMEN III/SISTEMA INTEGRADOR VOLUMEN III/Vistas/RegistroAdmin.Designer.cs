@@ -54,50 +54,50 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 10F);
             label1.Location = new Point(46, 140);
             label1.Name = "label1";
-            label1.Size = new Size(135, 19);
+            label1.Size = new Size(123, 19);
             label1.TabIndex = 0;
             label1.Text = "Nombre Completo";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 10F);
             label2.Location = new Point(46, 241);
             label2.Name = "label2";
-            label2.Size = new Size(60, 19);
+            label2.Size = new Size(56, 19);
             label2.TabIndex = 1;
             label2.Text = "Usuario";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 10F);
             label3.Location = new Point(46, 292);
             label3.Name = "label3";
-            label3.Size = new Size(134, 19);
+            label3.Size = new Size(121, 19);
             label3.TabIndex = 2;
             label3.Text = "Correo Electronico";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 10F);
             label4.Location = new Point(46, 448);
             label4.Name = "label4";
-            label4.Size = new Size(84, 19);
+            label4.Size = new Size(79, 19);
             label4.TabIndex = 3;
             label4.Text = "Contraseña";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label5.Font = new Font("Segoe UI", 10F);
             label5.Location = new Point(46, 501);
             label5.Name = "label5";
-            label5.Size = new Size(154, 19);
+            label5.Size = new Size(141, 19);
             label5.TabIndex = 4;
             label5.Text = "Confirmar contraseña";
             // 
@@ -139,7 +139,7 @@
             // btnRegistarAdmin
             // 
             btnRegistarAdmin.BackColor = SystemColors.ActiveCaption;
-            btnRegistarAdmin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRegistarAdmin.Font = new Font("Segoe UI", 10F);
             btnRegistarAdmin.Location = new Point(46, 565);
             btnRegistarAdmin.Name = "btnRegistarAdmin";
             btnRegistarAdmin.Size = new Size(242, 34);
@@ -187,10 +187,10 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label8.Font = new Font("Segoe UI", 10F);
             label8.Location = new Point(46, 189);
             label8.Name = "label8";
-            label8.Size = new Size(86, 19);
+            label8.Size = new Size(81, 19);
             label8.TabIndex = 14;
             label8.Text = "Documento";
             // 
@@ -204,20 +204,20 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label9.Font = new Font("Segoe UI", 10F);
             label9.Location = new Point(46, 345);
             label9.Name = "label9";
-            label9.Size = new Size(67, 19);
+            label9.Size = new Size(60, 19);
             label9.TabIndex = 16;
             label9.Text = "Telefono";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label10.Font = new Font("Segoe UI", 10F);
             label10.Location = new Point(46, 398);
             label10.Name = "label10";
-            label10.Size = new Size(72, 19);
+            label10.Size = new Size(65, 19);
             label10.TabIndex = 18;
             label10.Text = "Dirección";
             // 

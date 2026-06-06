@@ -50,12 +50,12 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             groupBox2 = new GroupBox();
-            label9 = new Label();
-            cmbClientesFiltrarCoti = new ComboBox();
-            label10 = new Label();
-            comboBox2 = new ComboBox();
-            button1 = new Button();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
+            comboBox2 = new ComboBox();
+            label10 = new Label();
+            cmbClientesFiltrarCoti = new ComboBox();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -113,30 +113,33 @@
             // 
             // btnLimpiarCoti
             // 
+            btnLimpiarCoti.BackColor = SystemColors.ActiveCaption;
             btnLimpiarCoti.Location = new Point(106, 469);
             btnLimpiarCoti.Name = "btnLimpiarCoti";
             btnLimpiarCoti.Size = new Size(75, 30);
             btnLimpiarCoti.TabIndex = 18;
             btnLimpiarCoti.Text = "Limpiar";
-            btnLimpiarCoti.UseVisualStyleBackColor = true;
+            btnLimpiarCoti.UseVisualStyleBackColor = false;
             // 
             // btnImprimirCoti
             // 
+            btnImprimirCoti.BackColor = SystemColors.ActiveCaption;
             btnImprimirCoti.Location = new Point(172, 437);
             btnImprimirCoti.Name = "btnImprimirCoti";
             btnImprimirCoti.Size = new Size(96, 30);
             btnImprimirCoti.TabIndex = 17;
             btnImprimirCoti.Text = "Imprimir";
-            btnImprimirCoti.UseVisualStyleBackColor = true;
+            btnImprimirCoti.UseVisualStyleBackColor = false;
             // 
             // btnGuardaeCoti
             // 
+            btnGuardaeCoti.BackColor = SystemColors.ActiveCaption;
             btnGuardaeCoti.Location = new Point(13, 437);
             btnGuardaeCoti.Name = "btnGuardaeCoti";
             btnGuardaeCoti.Size = new Size(141, 30);
             btnGuardaeCoti.TabIndex = 16;
             btnGuardaeCoti.Text = "Guardar Cotización";
-            btnGuardaeCoti.UseVisualStyleBackColor = true;
+            btnGuardaeCoti.UseVisualStyleBackColor = false;
             // 
             // cmbEstadoCoti
             // 
@@ -286,31 +289,23 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Historial de Cotizaciones";
             // 
-            // label9
+            // dataGridView1
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(14, 28);
-            label9.Name = "label9";
-            label9.Size = new Size(58, 19);
-            label9.TabIndex = 0;
-            label9.Text = "Cliente: ";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(14, 59);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(456, 434);
+            dataGridView1.TabIndex = 5;
             // 
-            // cmbClientesFiltrarCoti
+            // button1
             // 
-            cmbClientesFiltrarCoti.FormattingEnabled = true;
-            cmbClientesFiltrarCoti.Location = new Point(67, 25);
-            cmbClientesFiltrarCoti.Name = "cmbClientesFiltrarCoti";
-            cmbClientesFiltrarCoti.Size = new Size(121, 25);
-            cmbClientesFiltrarCoti.TabIndex = 1;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(194, 28);
-            label10.Name = "label10";
-            label10.Size = new Size(53, 19);
-            label10.TabIndex = 2;
-            label10.Text = "Estado:";
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.Location = new Point(380, 23);
+            button1.Name = "button1";
+            button1.Size = new Size(69, 30);
+            button1.TabIndex = 4;
+            button1.Text = "Filtrar";
+            button1.UseVisualStyleBackColor = false;
             // 
             // comboBox2
             // 
@@ -321,22 +316,31 @@
             comboBox2.TabIndex = 3;
             comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
-            // button1
+            // label10
             // 
-            button1.Location = new Point(380, 23);
-            button1.Name = "button1";
-            button1.Size = new Size(69, 30);
-            button1.TabIndex = 4;
-            button1.Text = "Filtrar";
-            button1.UseVisualStyleBackColor = true;
+            label10.AutoSize = true;
+            label10.Location = new Point(194, 28);
+            label10.Name = "label10";
+            label10.Size = new Size(53, 19);
+            label10.TabIndex = 2;
+            label10.Text = "Estado:";
             // 
-            // dataGridView1
+            // cmbClientesFiltrarCoti
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 59);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(456, 434);
-            dataGridView1.TabIndex = 5;
+            cmbClientesFiltrarCoti.FormattingEnabled = true;
+            cmbClientesFiltrarCoti.Location = new Point(67, 25);
+            cmbClientesFiltrarCoti.Name = "cmbClientesFiltrarCoti";
+            cmbClientesFiltrarCoti.Size = new Size(121, 25);
+            cmbClientesFiltrarCoti.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(14, 28);
+            label9.Name = "label9";
+            label9.Size = new Size(58, 19);
+            label9.TabIndex = 0;
+            label9.Text = "Cliente: ";
             // 
             // Cotizaciones
             // 

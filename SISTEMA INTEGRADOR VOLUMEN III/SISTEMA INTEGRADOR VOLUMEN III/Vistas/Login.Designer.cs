@@ -43,26 +43,26 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 10F);
             label1.Location = new Point(59, 187);
             label1.Name = "label1";
-            label1.Size = new Size(60, 19);
+            label1.Size = new Size(56, 19);
             label1.TabIndex = 0;
             label1.Text = "Usuario";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 10F);
             label2.Location = new Point(59, 249);
             label2.Name = "label2";
-            label2.Size = new Size(84, 19);
+            label2.Size = new Size(79, 19);
             label2.TabIndex = 1;
             label2.Text = "Contraseña";
             // 
             // txtUsuario
             // 
-            txtUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            txtUsuario.Font = new Font("Segoe UI", 10F);
             txtUsuario.Location = new Point(59, 209);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(225, 25);
@@ -86,19 +86,17 @@
             chkMostrar.TabIndex = 4;
             chkMostrar.Text = "Mostrar Contraseña";
             chkMostrar.UseVisualStyleBackColor = true;
-            //chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
             // 
             // btnIngresarSesion
             // 
             btnIngresarSesion.BackColor = SystemColors.ActiveCaption;
-            btnIngresarSesion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnIngresarSesion.Font = new Font("Segoe UI", 10F);
             btnIngresarSesion.Location = new Point(59, 368);
             btnIngresarSesion.Name = "btnIngresarSesion";
             btnIngresarSesion.Size = new Size(225, 31);
             btnIngresarSesion.TabIndex = 5;
             btnIngresarSesion.Text = "Ingresar";
             btnIngresarSesion.UseVisualStyleBackColor = false;
-            //btnIngresarSesion.Click += btnIngresarSesion_Click;
             // 
             // label4
             // 

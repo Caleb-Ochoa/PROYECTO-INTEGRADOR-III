@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
-            label2 = new Label();
-            txtNombreMaterial = new TextBox();
-            txtCostoMaterial = new TextBox();
-            btnGuardarMaterial = new Button();
             btnLimpiarMaterial = new Button();
+            btnGuardarMaterial = new Button();
+            txtCostoMaterial = new TextBox();
+            txtNombreMaterial = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
             groupBox2 = new GroupBox();
-            label3 = new Label();
-            txtBuscarMateriales = new TextBox();
-            btnBuscarMateriales = new Button();
-            btnLimpiarMateriales = new Button();
             dataGridView1 = new DataGridView();
+            btnLimpiarMateriales = new Button();
+            btnBuscarMateriales = new Button();
+            txtBuscarMateriales = new TextBox();
+            label3 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -62,14 +62,39 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del Material";
             // 
-            // label1
+            // btnLimpiarMaterial
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(135, 19);
-            label1.TabIndex = 0;
-            label1.Text = "Nombre del Material";
+            btnLimpiarMaterial.BackColor = SystemColors.ActiveCaption;
+            btnLimpiarMaterial.Location = new Point(678, 95);
+            btnLimpiarMaterial.Name = "btnLimpiarMaterial";
+            btnLimpiarMaterial.Size = new Size(75, 30);
+            btnLimpiarMaterial.TabIndex = 5;
+            btnLimpiarMaterial.Text = "Limpiar";
+            btnLimpiarMaterial.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardarMaterial
+            // 
+            btnGuardarMaterial.BackColor = SystemColors.ActiveCaption;
+            btnGuardarMaterial.Location = new Point(587, 95);
+            btnGuardarMaterial.Name = "btnGuardarMaterial";
+            btnGuardarMaterial.Size = new Size(75, 30);
+            btnGuardarMaterial.TabIndex = 4;
+            btnGuardarMaterial.Text = "Guardar";
+            btnGuardarMaterial.UseVisualStyleBackColor = false;
+            // 
+            // txtCostoMaterial
+            // 
+            txtCostoMaterial.Location = new Point(517, 53);
+            txtCostoMaterial.Name = "txtCostoMaterial";
+            txtCostoMaterial.Size = new Size(236, 25);
+            txtCostoMaterial.TabIndex = 3;
+            // 
+            // txtNombreMaterial
+            // 
+            txtNombreMaterial.Location = new Point(6, 53);
+            txtNombreMaterial.Name = "txtNombreMaterial";
+            txtNombreMaterial.Size = new Size(489, 25);
+            txtNombreMaterial.TabIndex = 2;
             // 
             // label2
             // 
@@ -80,37 +105,14 @@
             label2.TabIndex = 1;
             label2.Text = "Costo por m^3";
             // 
-            // txtNombreMaterial
+            // label1
             // 
-            txtNombreMaterial.Location = new Point(6, 53);
-            txtNombreMaterial.Name = "txtNombreMaterial";
-            txtNombreMaterial.Size = new Size(489, 25);
-            txtNombreMaterial.TabIndex = 2;
-            // 
-            // txtCostoMaterial
-            // 
-            txtCostoMaterial.Location = new Point(517, 53);
-            txtCostoMaterial.Name = "txtCostoMaterial";
-            txtCostoMaterial.Size = new Size(236, 25);
-            txtCostoMaterial.TabIndex = 3;
-            // 
-            // btnGuardarMaterial
-            // 
-            btnGuardarMaterial.Location = new Point(587, 95);
-            btnGuardarMaterial.Name = "btnGuardarMaterial";
-            btnGuardarMaterial.Size = new Size(75, 30);
-            btnGuardarMaterial.TabIndex = 4;
-            btnGuardarMaterial.Text = "Guardar";
-            btnGuardarMaterial.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiarMaterial
-            // 
-            btnLimpiarMaterial.Location = new Point(678, 95);
-            btnLimpiarMaterial.Name = "btnLimpiarMaterial";
-            btnLimpiarMaterial.Size = new Size(75, 30);
-            btnLimpiarMaterial.TabIndex = 5;
-            btnLimpiarMaterial.Text = "Limpiar";
-            btnLimpiarMaterial.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(135, 19);
+            label1.TabIndex = 0;
+            label1.Text = "Nombre del Material";
             // 
             // groupBox2
             // 
@@ -127,6 +129,42 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Materiales Registrados";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(6, 68);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(747, 273);
+            dataGridView1.TabIndex = 4;
+            // 
+            // btnLimpiarMateriales
+            // 
+            btnLimpiarMateriales.BackColor = SystemColors.ActiveCaption;
+            btnLimpiarMateriales.Location = new Point(502, 32);
+            btnLimpiarMateriales.Name = "btnLimpiarMateriales";
+            btnLimpiarMateriales.Size = new Size(75, 30);
+            btnLimpiarMateriales.TabIndex = 3;
+            btnLimpiarMateriales.Text = "Limpiar";
+            btnLimpiarMateriales.UseVisualStyleBackColor = false;
+            // 
+            // btnBuscarMateriales
+            // 
+            btnBuscarMateriales.BackColor = SystemColors.ActiveCaption;
+            btnBuscarMateriales.Font = new Font("Segoe UI", 10F);
+            btnBuscarMateriales.Location = new Point(421, 32);
+            btnBuscarMateriales.Name = "btnBuscarMateriales";
+            btnBuscarMateriales.Size = new Size(75, 30);
+            btnBuscarMateriales.TabIndex = 2;
+            btnBuscarMateriales.Text = "Buscar";
+            btnBuscarMateriales.UseVisualStyleBackColor = false;
+            // 
+            // txtBuscarMateriales
+            // 
+            txtBuscarMateriales.Location = new Point(55, 32);
+            txtBuscarMateriales.Name = "txtBuscarMateriales";
+            txtBuscarMateriales.Size = new Size(360, 25);
+            txtBuscarMateriales.TabIndex = 1;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -136,40 +174,6 @@
             label3.Size = new Size(52, 19);
             label3.TabIndex = 0;
             label3.Text = "Buscar:";
-            // 
-            // txtBuscarMateriales
-            // 
-            txtBuscarMateriales.Location = new Point(55, 32);
-            txtBuscarMateriales.Name = "txtBuscarMateriales";
-            txtBuscarMateriales.Size = new Size(360, 25);
-            txtBuscarMateriales.TabIndex = 1;
-            // 
-            // btnBuscarMateriales
-            // 
-            btnBuscarMateriales.Font = new Font("Segoe UI", 10F);
-            btnBuscarMateriales.Location = new Point(421, 32);
-            btnBuscarMateriales.Name = "btnBuscarMateriales";
-            btnBuscarMateriales.Size = new Size(75, 30);
-            btnBuscarMateriales.TabIndex = 2;
-            btnBuscarMateriales.Text = "Buscar";
-            btnBuscarMateriales.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiarMateriales
-            // 
-            btnLimpiarMateriales.Location = new Point(502, 32);
-            btnLimpiarMateriales.Name = "btnLimpiarMateriales";
-            btnLimpiarMateriales.Size = new Size(75, 30);
-            btnLimpiarMateriales.TabIndex = 3;
-            btnLimpiarMateriales.Text = "Limpiar";
-            btnLimpiarMateriales.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 68);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(747, 273);
-            dataGridView1.TabIndex = 4;
             // 
             // Materiales
             // 
