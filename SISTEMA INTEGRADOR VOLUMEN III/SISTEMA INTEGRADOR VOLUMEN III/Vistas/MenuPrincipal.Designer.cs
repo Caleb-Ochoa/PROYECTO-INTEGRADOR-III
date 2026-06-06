@@ -164,14 +164,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             PanelContenedor.Location = new Point(3, 3);
             PanelContenedor.Name = "PanelContenedor";
-            PanelContenedor.Size = new Size(548, 440);
+            PanelContenedor.Size = new Size(519, 440);
             PanelContenedor.TabIndex = 11;
             // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(743, 534);
+            ClientSize = new Size(761, 534);
             Controls.Add(splitContainer1);
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
