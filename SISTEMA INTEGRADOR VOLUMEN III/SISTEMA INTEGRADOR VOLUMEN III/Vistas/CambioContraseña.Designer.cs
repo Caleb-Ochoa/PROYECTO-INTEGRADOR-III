@@ -30,16 +30,28 @@
         {
             groupBox1 = new GroupBox();
             btnCambiarContraseña = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            txtContraseñaActual = new TextBox();
+            txtContraseñaNueva = new TextBox();
+            txtConfirNuevaContraseña = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtConfirNuevaContraseña);
+            groupBox1.Controls.Add(txtContraseñaNueva);
+            groupBox1.Controls.Add(txtContraseñaActual);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(btnCambiarContraseña);
             groupBox1.Font = new Font("Segoe UI", 10F);
             groupBox1.Location = new Point(204, 40);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(385, 379);
+            groupBox1.Size = new Size(385, 366);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cambio de Contraseña";
@@ -47,12 +59,61 @@
             // btnCambiarContraseña
             // 
             btnCambiarContraseña.BackColor = SystemColors.ActiveCaption;
-            btnCambiarContraseña.Location = new Point(98, 326);
+            btnCambiarContraseña.Location = new Point(49, 276);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
-            btnCambiarContraseña.Size = new Size(176, 30);
+            btnCambiarContraseña.Size = new Size(281, 30);
             btnCambiarContraseña.TabIndex = 0;
             btnCambiarContraseña.Text = "Actualizar Contraseña";
             btnCambiarContraseña.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(49, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(121, 19);
+            label1.TabIndex = 1;
+            label1.Text = "Contraseña Actual";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(49, 114);
+            label2.Name = "label2";
+            label2.Size = new Size(122, 19);
+            label2.TabIndex = 2;
+            label2.Text = "Nueva Contraseña";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(49, 189);
+            label3.Name = "label3";
+            label3.Size = new Size(187, 19);
+            label3.TabIndex = 3;
+            label3.Text = "Confirmar Nueva Contraseña";
+            // 
+            // txtContraseñaActual
+            // 
+            txtContraseñaActual.Location = new Point(49, 66);
+            txtContraseñaActual.Name = "txtContraseñaActual";
+            txtContraseñaActual.Size = new Size(281, 25);
+            txtContraseñaActual.TabIndex = 4;
+            // 
+            // txtContraseñaNueva
+            // 
+            txtContraseñaNueva.Location = new Point(49, 136);
+            txtContraseñaNueva.Name = "txtContraseñaNueva";
+            txtContraseñaNueva.Size = new Size(281, 25);
+            txtContraseñaNueva.TabIndex = 5;
+            // 
+            // txtConfirNuevaContraseña
+            // 
+            txtConfirNuevaContraseña.Location = new Point(49, 211);
+            txtConfirNuevaContraseña.Name = "txtConfirNuevaContraseña";
+            txtConfirNuevaContraseña.Size = new Size(281, 25);
+            txtConfirNuevaContraseña.TabIndex = 6;
+            txtConfirNuevaContraseña.TextChanged += textBox3_TextChanged;
             // 
             // CambioContraseña
             // 
@@ -63,6 +124,7 @@
             Name = "CambioContraseña";
             Text = "CambioContraseña";
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -70,5 +132,11 @@
 
         private GroupBox groupBox1;
         private Button btnCambiarContraseña;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox txtConfirNuevaContraseña;
+        private TextBox txtContraseñaNueva;
+        private TextBox txtContraseñaActual;
     }
 }
