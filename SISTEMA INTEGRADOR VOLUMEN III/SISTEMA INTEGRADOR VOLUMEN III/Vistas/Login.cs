@@ -5,16 +5,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     public partial class Login : Form
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
 
         public Login()
         {
             InitializeComponent();
+            Idioma.Aplicar(this);
 
+<<<<<<< HEAD
         }
         private void Login_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             CentrarPanel();
+=======
+>>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
         }
         public string[] GetInput()
         {
@@ -44,6 +52,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         private void label3_Click(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
         }
         private void CentrarPanel()
         {
@@ -53,6 +62,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         private void Login_Resize(object sender, EventArgs e)
         {
             CentrarPanel();
+=======
+        private void btnIdioma_Click(object sender, EventArgs e)
+        {
+            Idioma.MostrarSelector(this);
+>>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
         }
     }
 }

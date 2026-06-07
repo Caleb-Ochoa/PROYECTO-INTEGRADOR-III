@@ -13,6 +13,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public RegistroAdmin()
         {
             InitializeComponent();
+            Idioma.Aplicar(this);
         }
 
         public string[] GetInput()
@@ -37,5 +38,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void btnIdioma_Click(object sender, EventArgs e)
+        {
+            Idioma.MostrarSelector(this);
+        }
     }
 }

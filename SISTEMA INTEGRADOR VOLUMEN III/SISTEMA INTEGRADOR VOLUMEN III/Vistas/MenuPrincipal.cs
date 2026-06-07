@@ -18,6 +18,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
+            Idioma.Aplicar(this);
             _usuario = usuario;
         }
 
@@ -45,7 +46,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
         public void AbrirFormulario(Form formulario)
         {
-            if (pnlContenido.Controls.Count > 0)pnlContenido.Controls[0].Dispose();
+            if (pnlContenido.Controls.Count > 0) pnlContenido.Controls[0].Dispose();
 
             formulario.TopLevel = false;  // que no abra como ventana nueva
             formulario.FormBorderStyle = FormBorderStyle.None; // sin bordes
@@ -103,6 +104,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Login login = new Login();
             login.Show();
             this.Close();
+        }
+
+        private void btnIdioma_Click(object sender, EventArgs e)
+        {
+            Idioma.MostrarSelector(this);
         }
     }
 }
