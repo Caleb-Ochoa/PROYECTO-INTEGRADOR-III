@@ -44,17 +44,19 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblRol = new Label();
             lblNombre = new Label();
             lblAvatar = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             pnlEncabezado.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnGUsuarios
             // 
             btnGUsuarios.Font = new Font("Segoe UI", 10F);
-            btnGUsuarios.Location = new Point(10, 18);
+            btnGUsuarios.Location = new Point(13, 14);
             btnGUsuarios.Name = "btnGUsuarios";
             btnGUsuarios.Size = new Size(155, 30);
             btnGUsuarios.TabIndex = 10;
@@ -63,7 +65,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCotizacion
             // 
             btnCotizacion.Font = new Font("Segoe UI", 10F);
-            btnCotizacion.Location = new Point(10, 220);
+            btnCotizacion.Location = new Point(13, 217);
             btnCotizacion.Name = "btnCotizacion";
             btnCotizacion.Size = new Size(155, 30);
             btnCotizacion.TabIndex = 2;
@@ -73,7 +75,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnTerreno
             // 
             btnTerreno.Font = new Font("Segoe UI", 10F);
-            btnTerreno.Location = new Point(10, 171);
+            btnTerreno.Location = new Point(13, 165);
             btnTerreno.Name = "btnTerreno";
             btnTerreno.Size = new Size(155, 30);
             btnTerreno.TabIndex = 3;
@@ -83,7 +85,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnFactura
             // 
             btnFactura.Font = new Font("Segoe UI", 10F);
-            btnFactura.Location = new Point(10, 266);
+            btnFactura.Location = new Point(13, 265);
             btnFactura.Name = "btnFactura";
             btnFactura.Size = new Size(155, 30);
             btnFactura.TabIndex = 4;
@@ -93,9 +95,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
-            btnCerrarSesion.Location = new Point(27, 376);
+            btnCerrarSesion.Location = new Point(29, 371);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(122, 30);
+            btnCerrarSesion.Size = new Size(140, 30);
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = " 🚪 CERRAR SESIÓN";
             btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -103,7 +105,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCambiarContraseña
             // 
             btnCambiarContraseña.Font = new Font("Segoe UI", 10F);
-            btnCambiarContraseña.Location = new Point(10, 317);
+            btnCambiarContraseña.Location = new Point(7, 315);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
             btnCambiarContraseña.Size = new Size(174, 30);
             btnCambiarContraseña.TabIndex = 9;
@@ -114,7 +116,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnMateriales
             // 
             btnMateriales.Font = new Font("Segoe UI", 10F);
-            btnMateriales.Location = new Point(10, 124);
+            btnMateriales.Location = new Point(13, 113);
             btnMateriales.Name = "btnMateriales";
             btnMateriales.Size = new Size(155, 30);
             btnMateriales.TabIndex = 7;
@@ -124,7 +126,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnClientes
             // 
             btnClientes.Font = new Font("Segoe UI", 10F);
-            btnClientes.Location = new Point(10, 75);
+            btnClientes.Location = new Point(13, 65);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(155, 30);
             btnClientes.TabIndex = 6;
@@ -138,14 +140,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(btnCerrarSesion);
-            splitContainer1.Panel1.Controls.Add(btnCambiarContraseña);
-            splitContainer1.Panel1.Controls.Add(btnFactura);
-            splitContainer1.Panel1.Controls.Add(btnCotizacion);
-            splitContainer1.Panel1.Controls.Add(btnGUsuarios);
-            splitContainer1.Panel1.Controls.Add(btnClientes);
-            splitContainer1.Panel1.Controls.Add(btnMateriales);
-            splitContainer1.Panel1.Controls.Add(btnTerreno);
+            splitContainer1.Panel1.Controls.Add(panel1);
             // 
             // splitContainer1.Panel2
             // 
@@ -156,9 +151,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // pnlContenido
             // 
-            pnlContenido.Location = new Point(3, 3);
+            pnlContenido.Dock = DockStyle.Fill;
+            pnlContenido.Location = new Point(0, 0);
             pnlContenido.Name = "pnlContenido";
-            pnlContenido.Size = new Size(519, 417);
+            pnlContenido.Size = new Size(525, 423);
             pnlContenido.TabIndex = 11;
             // 
             // pnlEncabezado
@@ -167,9 +163,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             pnlEncabezado.Controls.Add(lblRol);
             pnlEncabezado.Controls.Add(lblNombre);
             pnlEncabezado.Controls.Add(lblAvatar);
-            pnlEncabezado.Location = new Point(12, 12);
+            pnlEncabezado.Dock = DockStyle.Top;
+            pnlEncabezado.Location = new Point(0, 0);
             pnlEncabezado.Name = "pnlEncabezado";
-            pnlEncabezado.Size = new Size(719, 81);
+            pnlEncabezado.Size = new Size(761, 93);
             pnlEncabezado.TabIndex = 11;
             // 
             // lblFecha
@@ -210,6 +207,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblAvatar.TabIndex = 0;
             lblAvatar.Text = "👑";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnCerrarSesion);
+            panel1.Controls.Add(btnGUsuarios);
+            panel1.Controls.Add(btnCambiarContraseña);
+            panel1.Controls.Add(btnClientes);
+            panel1.Controls.Add(btnFactura);
+            panel1.Controls.Add(btnMateriales);
+            panel1.Controls.Add(btnCotizacion);
+            panel1.Controls.Add(btnTerreno);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(184, 423);
+            panel1.TabIndex = 0;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -225,6 +238,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.ResumeLayout(false);
             pnlEncabezado.ResumeLayout(false);
             pnlEncabezado.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -244,5 +258,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Label lblNombre;
         private Label lblAvatar;
         private Label lblFecha;
+        private Panel panel1;
     }
 }

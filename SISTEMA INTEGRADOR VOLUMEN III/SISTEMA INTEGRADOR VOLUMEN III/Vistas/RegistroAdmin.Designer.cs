@@ -232,6 +232,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(352, 611);
             Controls.Add(txtDireccion);
             Controls.Add(label10);
@@ -255,6 +256,7 @@
             Controls.Add(label1);
             Name = "RegistroAdmin";
             Text = "RegistroAdmin";
+            WindowState = FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

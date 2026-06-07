@@ -132,6 +132,7 @@
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(348, 483);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
@@ -146,6 +147,7 @@
             Margin = new Padding(5, 6, 5, 6);
             Name = "Login";
             Text = "INICIO SESION";
+            WindowState = FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

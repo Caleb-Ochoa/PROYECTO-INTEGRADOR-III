@@ -40,6 +40,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // Ocultar botones admin si es usuario normal
             btnGUsuarios.Visible = _usuario.Rol == Rol.Administrador;
             btnCambiarContraseña.Visible = _usuario.Rol == Rol.Administrador;
+
+            this.WindowState = FormWindowState.Maximized;
         }
         public void AbrirFormulario(Form formulario)
         {
