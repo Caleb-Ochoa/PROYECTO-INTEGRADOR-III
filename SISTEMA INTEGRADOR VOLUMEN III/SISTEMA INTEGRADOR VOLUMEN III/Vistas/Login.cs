@@ -5,13 +5,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     public partial class Login : Form
     {
-        
 
         public Login()
         {
             InitializeComponent();
 
-            
+        }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            CentrarPanel();
         }
         public string[] GetInput()
         {
@@ -21,9 +24,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                 txtContraseña.Text        // line[1] - El TextBox de contraseña que pusiste público
             };
         }
-
         /// Muestra un cuadro de diálogo en caso de datos incorrectos o bloqueos.
-        /// </summary>
         public void RowError(string mensaje) // Nota: En tu CtlUsuario llamaste a "MostrarError"
         {
             MessageBox.Show(mensaje, "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -34,17 +35,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         {
             MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        /// <summary>
         /// Limpia el campo de contraseña si el intento falla.
-        /// </summary>
         public void LimpiarPassword()
         {
             txtContraseña.Clear();
             txtContraseña.Focus();
         }
+        private void label3_Click(object sender, EventArgs e)
+        {
 
-
-        
+        }
+        private void CentrarPanel()
+        {
+            pnlLogin.Left = (this.ClientSize.Width - pnlLogin.Width) / 2;
+            pnlLogin.Top = (this.ClientSize.Height - pnlLogin.Height) / 2;
+        }
+        private void Login_Resize(object sender, EventArgs e)
+        {
+            CentrarPanel();
+        }
     }
 }

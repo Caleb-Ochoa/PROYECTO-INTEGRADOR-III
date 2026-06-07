@@ -45,6 +45,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblRol = new Label();
             lblNombre = new Label();
             lblAvatar = new Label();
+            btnConfiguracion = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -95,7 +96,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
-            btnCerrarSesion.Location = new Point(29, 371);
+            btnCerrarSesion.Location = new Point(609, 48);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(140, 30);
             btnCerrarSesion.TabIndex = 5;
@@ -151,7 +152,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnCerrarSesion);
             panel1.Controls.Add(btnGUsuarios);
             panel1.Controls.Add(btnCambiarContraseña);
             panel1.Controls.Add(btnClientes);
@@ -175,6 +175,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // pnlEncabezado
             // 
+            pnlEncabezado.Controls.Add(btnConfiguracion);
+            pnlEncabezado.Controls.Add(btnCerrarSesion);
             pnlEncabezado.Controls.Add(lblFecha);
             pnlEncabezado.Controls.Add(lblRol);
             pnlEncabezado.Controls.Add(lblNombre);
@@ -223,6 +225,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblAvatar.TabIndex = 0;
             lblAvatar.Text = "👑";
             // 
+            // btnConfiguracion
+            // 
+            btnConfiguracion.BackColor = SystemColors.Menu;
+            btnConfiguracion.BackgroundImage = Properties.Resources.settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview;
+            btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;
+            btnConfiguracion.FlatStyle = FlatStyle.Flat;
+            btnConfiguracion.Font = new Font("Segoe UI", 14F);
+            btnConfiguracion.Location = new Point(697, 3);
+            btnConfiguracion.Name = "btnConfiguracion";
+            btnConfiguracion.Size = new Size(52, 36);
+            btnConfiguracion.TabIndex = 6;
+            btnConfiguracion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnConfiguracion.UseVisualStyleBackColor = false;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -260,5 +276,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Label lblAvatar;
         private Label lblFecha;
         private Panel panel1;
+        private Button btnConfiguracion;
     }
 }

@@ -29,15 +29,9 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
             groupBox1 = new GroupBox();
-            button1 = new Button();
             btnGuardarUsuario = new Button();
-            btnLimpiar = new Button();
-            cmbEstado = new ComboBox();
-            cmbRol = new ComboBox();
             txtCorreo = new TextBox();
             txtNombreUsuario = new TextBox();
             groupBox2 = new GroupBox();
@@ -45,6 +39,14 @@
             btnBuscar = new Button();
             textBox1 = new TextBox();
             label5 = new Label();
+            textBox2 = new TextBox();
+            label6 = new Label();
+            label7 = new Label();
+            textBox3 = new TextBox();
+            label8 = new Label();
+            textBox4 = new TextBox();
+            label2 = new Label();
+            txtUsuarioAdmin = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
@@ -54,122 +56,67 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(18, 29);
+            label1.Location = new Point(6, 29);
             label1.Name = "label1";
             label1.Size = new Size(123, 19);
             label1.TabIndex = 0;
             label1.Text = "Nombre Completo";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(18, 92);
-            label2.Name = "label2";
-            label2.Size = new Size(28, 19);
-            label2.TabIndex = 1;
-            label2.Text = "Rol";
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(405, 29);
+            label3.Location = new Point(6, 129);
             label3.Name = "label3";
             label3.Size = new Size(121, 19);
             label3.TabIndex = 2;
             label3.Text = "Correo electronico";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(405, 92);
-            label4.Name = "label4";
-            label4.Size = new Size(50, 19);
-            label4.TabIndex = 3;
-            label4.Text = "Estado";
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(txtUsuarioAdmin);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(btnGuardarUsuario);
-            groupBox1.Controls.Add(btnLimpiar);
-            groupBox1.Controls.Add(cmbEstado);
-            groupBox1.Controls.Add(cmbRol);
             groupBox1.Controls.Add(txtCorreo);
             groupBox1.Controls.Add(txtNombreUsuario);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
             groupBox1.Font = new Font("Segoe UI", 10F);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 200);
+            groupBox1.Size = new Size(303, 518);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del Usuario";
             // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Location = new Point(429, 160);
-            button1.Name = "button1";
-            button1.Size = new Size(193, 31);
-            button1.TabIndex = 10;
-            button1.Text = "Reestablecer Contraseña";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // btnGuardarUsuario
             // 
             btnGuardarUsuario.BackColor = SystemColors.ActiveCaption;
-            btnGuardarUsuario.Location = new Point(269, 161);
+            btnGuardarUsuario.Location = new Point(6, 474);
             btnGuardarUsuario.Name = "btnGuardarUsuario";
             btnGuardarUsuario.Size = new Size(138, 30);
             btnGuardarUsuario.TabIndex = 9;
-            btnGuardarUsuario.Text = "Guardar Usuario";
+            btnGuardarUsuario.Text = "Guardar";
             btnGuardarUsuario.UseVisualStyleBackColor = false;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = SystemColors.ActiveCaption;
-            btnLimpiar.Location = new Point(160, 160);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(83, 30);
-            btnLimpiar.TabIndex = 8;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // cmbEstado
-            // 
-            cmbEstado.FormattingEnabled = true;
-            cmbEstado.Location = new Point(405, 114);
-            cmbEstado.Name = "cmbEstado";
-            cmbEstado.Size = new Size(342, 25);
-            cmbEstado.TabIndex = 7;
-            // 
-            // cmbRol
-            // 
-            cmbRol.FormattingEnabled = true;
-            cmbRol.Location = new Point(18, 114);
-            cmbRol.Name = "cmbRol";
-            cmbRol.Size = new Size(306, 25);
-            cmbRol.TabIndex = 6;
             // 
             // txtCorreo
             // 
-            txtCorreo.Location = new Point(405, 51);
+            txtCorreo.Location = new Point(6, 151);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(342, 25);
+            txtCorreo.Size = new Size(290, 25);
             txtCorreo.TabIndex = 5;
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(18, 51);
+            txtNombreUsuario.Location = new Point(6, 51);
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(306, 25);
+            txtNombreUsuario.Size = new Size(290, 25);
             txtNombreUsuario.TabIndex = 4;
             // 
             // groupBox2
@@ -179,9 +126,9 @@
             groupBox2.Controls.Add(textBox1);
             groupBox2.Controls.Add(label5);
             groupBox2.Font = new Font("Segoe UI", 10F);
-            groupBox2.Location = new Point(12, 218);
+            groupBox2.Location = new Point(321, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(776, 298);
+            groupBox2.Size = new Size(477, 518);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Usuarios Registrados";
@@ -191,7 +138,7 @@
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(18, 71);
             dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.Size = new Size(729, 207);
+            dgvUsuarios.Size = new Size(453, 207);
             dgvUsuarios.TabIndex = 3;
             // 
             // btnBuscar
@@ -221,6 +168,70 @@
             label5.TabIndex = 0;
             label5.Text = "Buscar:";
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(6, 101);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(290, 25);
+            textBox2.TabIndex = 11;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(6, 79);
+            label6.Name = "label6";
+            label6.Size = new Size(81, 19);
+            label6.TabIndex = 12;
+            label6.Text = "Documento";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(6, 179);
+            label7.Name = "label7";
+            label7.Size = new Size(60, 19);
+            label7.TabIndex = 13;
+            label7.Text = "Telefono";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(6, 201);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(290, 25);
+            textBox3.TabIndex = 14;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(6, 231);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 19);
+            label8.TabIndex = 15;
+            label8.Text = "Direccion";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(6, 253);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(290, 25);
+            textBox4.TabIndex = 16;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 281);
+            label2.Name = "label2";
+            label2.Size = new Size(56, 19);
+            label2.TabIndex = 17;
+            label2.Text = "Usuario";
+            // 
+            // txtUsuarioAdmin
+            // 
+            txtUsuarioAdmin.Location = new Point(6, 303);
+            txtUsuarioAdmin.Name = "txtUsuarioAdmin";
+            txtUsuarioAdmin.Size = new Size(290, 25);
+            txtUsuarioAdmin.TabIndex = 18;
+            // 
             // GestionUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -241,21 +252,23 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
-        private Label label4;
         private GroupBox groupBox1;
-        private ComboBox cmbEstado;
-        private ComboBox cmbRol;
         private TextBox txtCorreo;
         private TextBox txtNombreUsuario;
         private Button btnGuardarUsuario;
-        private Button btnLimpiar;
-        private Button button1;
         private GroupBox groupBox2;
         private Button btnBuscar;
         private TextBox textBox1;
         private Label label5;
         private DataGridView dgvUsuarios;
+        private Label label6;
+        private TextBox textBox2;
+        private Label label7;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private Label label8;
+        private TextBox txtUsuarioAdmin;
+        private Label label2;
     }
 }

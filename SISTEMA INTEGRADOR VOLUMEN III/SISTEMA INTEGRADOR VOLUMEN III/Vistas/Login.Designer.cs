@@ -39,13 +39,14 @@
             label3 = new Label();
             pnlLogin = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlLogin.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(59, 187);
+            label1.Location = new Point(146, 203);
             label1.Name = "label1";
             label1.Size = new Size(56, 19);
             label1.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(59, 249);
+            label2.Location = new Point(146, 265);
             label2.Name = "label2";
             label2.Size = new Size(79, 19);
             label2.TabIndex = 1;
@@ -64,15 +65,15 @@
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Segoe UI", 10F);
-            txtUsuario.Location = new Point(59, 209);
+            txtUsuario.Location = new Point(146, 225);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(225, 25);
             txtUsuario.TabIndex = 2;
             // 
             // txtContraseña
             // 
-            txtContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            txtContraseña.Location = new Point(59, 271);
+            txtContraseña.Font = new Font("Segoe UI", 10F);
+            txtContraseña.Location = new Point(146, 287);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(225, 25);
             txtContraseña.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             chkMostrar.AutoSize = true;
             chkMostrar.Font = new Font("Segoe UI", 9F);
-            chkMostrar.Location = new Point(59, 302);
+            chkMostrar.Location = new Point(146, 318);
             chkMostrar.Name = "chkMostrar";
             chkMostrar.Size = new Size(130, 19);
             chkMostrar.TabIndex = 4;
@@ -92,7 +93,7 @@
             // 
             btnIngresarSesion.BackColor = SystemColors.ActiveCaption;
             btnIngresarSesion.Font = new Font("Segoe UI", 10F);
-            btnIngresarSesion.Location = new Point(59, 368);
+            btnIngresarSesion.Location = new Point(146, 380);
             btnIngresarSesion.Name = "btnIngresarSesion";
             btnIngresarSesion.Size = new Size(225, 31);
             btnIngresarSesion.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label4.Location = new Point(114, 107);
+            label4.Location = new Point(201, 116);
             label4.Name = "label4";
             label4.Size = new Size(112, 21);
             label4.TabIndex = 8;
@@ -112,7 +113,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources._1000946;
-            pictureBox1.Location = new Point(114, 12);
+            pictureBox1.Location = new Point(201, 35);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(112, 78);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -122,18 +123,29 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 8F);
-            label3.Location = new Point(46, 141);
+            label3.Location = new Point(121, 148);
             label3.Name = "label3";
             label3.Size = new Size(250, 35);
             label3.TabIndex = 10;
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
+            label3.Click += label3_Click;
             // 
             // pnlLogin
             // 
-            pnlLogin.Location = new Point(381, 12);
+            pnlLogin.Anchor = AnchorStyles.None;
+            pnlLogin.Controls.Add(pictureBox1);
+            pnlLogin.Controls.Add(btnIngresarSesion);
+            pnlLogin.Controls.Add(label3);
+            pnlLogin.Controls.Add(chkMostrar);
+            pnlLogin.Controls.Add(label4);
+            pnlLogin.Controls.Add(txtContraseña);
+            pnlLogin.Controls.Add(label1);
+            pnlLogin.Controls.Add(label2);
+            pnlLogin.Controls.Add(txtUsuario);
+            pnlLogin.Location = new Point(141, 24);
             pnlLogin.Name = "pnlLogin";
-            pnlLogin.Size = new Size(331, 459);
+            pnlLogin.Size = new Size(460, 450);
             pnlLogin.TabIndex = 11;
             // 
             // Login
@@ -142,25 +154,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-            ClientSize = new Size(751, 531);
+            ClientSize = new Size(824, 531);
             Controls.Add(pnlLogin);
-            Controls.Add(label3);
-            Controls.Add(pictureBox1);
-            Controls.Add(label4);
-            Controls.Add(btnIngresarSesion);
-            Controls.Add(chkMostrar);
-            Controls.Add(txtContraseña);
-            Controls.Add(txtUsuario);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             Margin = new Padding(5, 6, 5, 6);
             Name = "Login";
             Text = "INICIO SESION";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlLogin.ResumeLayout(false);
+            pnlLogin.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

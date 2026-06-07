@@ -83,9 +83,52 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_7_jun_2026__10_08_33_a_m {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 7 jun 2026, 10_08_33 a.m", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap optimization_icon_editable_stroke_linear_style_sign_for_use_web_design_logo_symbol_illustration_vector {
+            get {
+                object obj = ResourceManager.GetObject("optimization-icon-editable-stroke-linear-style-sign-for-use-web-design-logo-symbo" +
+                        "l-illustration-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("settings-configuration-icon-solid-style-icon-design-element-icon-template-backgro" +
+                        "und-free-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("settings-configuration-icon-solid-style-icon-design-element-icon-template-backgro" +
+                        "und-free-vector-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
