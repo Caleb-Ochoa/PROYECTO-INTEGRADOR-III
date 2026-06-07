@@ -21,103 +21,93 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             clientes = dataManager.GetAll();
 
-            // ── Cargar grid al abrir ─────────────────────────────────────
+            // Cargar grid al abrir
             CargarGrid();
 
-            // ── Guardar ──────────────────────────────────────────────────
-            Vista.btnGuardarCliente.Click += (sender, e) =>
+            // ── Botón Agregar ─────────────────────────────────────────────
+            Vista.btnAgregarCliente.Click += (sender, e) =>
             {
-                Add();
-                Save();
+                string[]? datos = Vista.MostrarPopupAgregar();
+                if (datos == null) return;
+                Agregar(datos);
             };
 
-            // ── Limpiar formulario ───────────────────────────────────────
-            Vista.btnLimpiarCliente.Click += (sender, e) =>
-            {
-                Limpiar();
-            };
-
-            // ── Buscar ───────────────────────────────────────────────────
+            // ── Botón Buscar ──────────────────────────────────────────────
             Vista.btnBuscarCliente.Click += (sender, e) =>
             {
                 Buscar();
             };
 
-            // ── Limpiar búsqueda ─────────────────────────────────────────
+            // Buscar también en tiempo real al escribir
+            Vista.txtBuscarCliente.TextChanged += (sender, e) =>
+            {
+                Buscar();
+            };
+
+            // ── Botón Limpiar filtro ──────────────────────────────────────
             Vista.btnLimpiarFiltro.Click += (sender, e) =>
             {
                 Vista.txtBuscarCliente.Clear();
                 CargarGrid();
             };
-
-            // ── Click en fila del grid → cargar en formulario ────────────
-            Vista.dataGridView1.CellClick += (sender, e) =>
-            {
-                if (e.RowIndex >= 0)
-                    CargarEnFormulario(e.RowIndex);
-            };
         }
 
-        // ── CRUD ─────────────────────────────────────────────────────────
+        // ── CRUD ──────────────────────────────────────────────────────────
 
-        private void Add()
+        private void Agregar(string[] datos)
         {
-            string[] line = Vista.GetInput();
-            // line[0]=Nombre, [1]=Documento, [2]=Correo, [3]=Telefono, [4]=Direccion
-
-            //if (string.IsNullOrWhiteSpace(line[0]) || string.IsNullOrWhiteSpace(line[1]))
-            //{
-            //    MessageBox.Show(
-            //        Idioma.Get("msg_campos_vacios"),
-            //        Idioma.Get("msg_error"),
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
+            // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion
             try
             {
-                // Si hay un id seleccionado → actualizar, si no → crear nuevo
-                int idSeleccionado = Vista.GetIdSeleccionado();
+                if (clientes.Any(c => c.Documento == datos[1].Trim()))
+                    throw new InvalidOperationException(
+                        "Ya existe un cliente con ese número de identificación.");
 
-                if (idSeleccionado > 0)
+                clientes.Add(new Cliente
                 {
-                    // Actualizar cliente existente
-                    int idx = clientes.FindIndex(c => c.Id == idSeleccionado);
-                    if (idx >= 0)
-                    {
-                        clientes[idx].Nombre = line[0];
-                        clientes[idx].Documento = line[1];
-                        clientes[idx].CorreoElectronico = line[2];
-                        clientes[idx].Telefono = line[3];
-                        clientes[idx].Direccion = line[4];
-                    }
-                }
-                else
-                {
-                    // Verificar documento duplicado
-                    if (clientes.Any(c => c.Documento == line[1].Trim()))
-                        throw new InvalidOperationException(
-                            "Ya existe un cliente con ese documento.");
+                    Id = dataManager.GetNextId(),
+                    Nombre = datos[0],
+                    Documento = datos[1],
+                    Telefono = datos[2],
+                    CorreoElectronico = datos[3],
+                    Direccion = datos[4],
+                    FechaRegistro = DateTime.Now
+                });
 
-                    Cliente cliente = new Cliente
-                    {
-                        Id = dataManager.GetNextId(),
-                        Nombre = line[0],
-                        Documento = line[1],
-                        CorreoElectronico = line[2],
-                        Telefono = line[3],
-                        Direccion = line[4],
-                        FechaRegistro = DateTime.Now
-                    };
-
-                    clientes.Add(cliente);
-                }
+                Save();
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message,
-                    //Idioma.Get("msg_error"),
-                    //MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Editar(int id)
+        {
+            Cliente? c = clientes.FirstOrDefault(x => x.Id == id);
+            if (c == null) return;
+
+            string[]? datos = Vista.MostrarPopupEditar(
+                c.Nombre, c.Documento, c.Telefono,
+                c.CorreoElectronico, c.Direccion);
+
+            if (datos == null) return;
+
+            try
+            {
+                int idx = clientes.FindIndex(x => x.Id == id);
+                clientes[idx].Nombre = datos[0];
+                clientes[idx].Documento = datos[1];
+                clientes[idx].Telefono = datos[2];
+                clientes[idx].CorreoElectronico = datos[3];
+                clientes[idx].Direccion = datos[4];
+                Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -125,7 +115,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             dataManager.Save(clientes);
             CargarGrid();
-            Limpiar();
         }
 
         public List<Cliente> Listar()
@@ -134,79 +123,116 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             return clientes;
         }
 
-        // ── Helpers de UI ─────────────────────────────────────────────────
+        // ── Grid ──────────────────────────────────────────────────────────
 
         private void CargarGrid()
         {
             clientes = dataManager.GetAll();
+
             Vista.dataGridView1.DataSource = null;
             Vista.dataGridView1.DataSource = clientes.Select(c => new
             {
                 c.Id,
                 c.Nombre,
-                c.Documento,
-                Correo = c.CorreoElectronico,
+                Identificacion = c.Documento,
                 c.Telefono,
-                c.Direccion,
+                Correo = c.CorreoElectronico,
                 Registro = c.FechaRegistro.ToString("dd/MM/yyyy")
             }).ToList();
+
+            // Ocultar columna Id
+            if (Vista.dataGridView1.Columns.Contains("Id"))
+                Vista.dataGridView1.Columns["Id"].Visible = false;
+
+            EstilizarGrid();
+            AgregarColumnaEditar();
         }
 
-        private void CargarEnFormulario(int rowIndex)
+        private void EstilizarGrid()
         {
-            // Obtener el Id de la fila seleccionada
-            if (Vista.dataGridView1.Rows[rowIndex].Cells["Id"].Value == null) return;
+            Vista.dataGridView1.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor =
+                Color.FromArgb(240, 240, 240);
+            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor =
+                Color.FromArgb(60, 60, 60);
+            Vista.dataGridView1.EnableHeadersVisualStyles = false;
+            Vista.dataGridView1.DefaultCellStyle.Font =
+                new Font("Segoe UI", 9.5F);
+            Vista.dataGridView1.RowTemplate.Height = 32;
+            Vista.dataGridView1.BackgroundColor = Color.White;
+            Vista.dataGridView1.GridColor = Color.FromArgb(230, 230, 230);
+        }
 
-            int id = (int)Vista.dataGridView1.Rows[rowIndex].Cells["Id"].Value;
-            Cliente? c = clientes.FirstOrDefault(x => x.Id == id);
-            if (c == null) return;
+        private void AgregarColumnaEditar()
+        {
+            // Evitar duplicados al recargar
+            if (Vista.dataGridView1.Columns.Contains("Acciones"))
+                Vista.dataGridView1.Columns.Remove("Acciones");
 
-            Vista.SetIdSeleccionado(id);
-            Vista.txtNombreClientec.Text = c.Nombre;
-            Vista.txtDocumentoCliente.Text = c.Documento;
-            Vista.txtCCliente.Text = c.CorreoElectronico;
-            Vista.txtTelefonoCliente.Text = c.Telefono;
-            Vista.txtDireccionCliente.Text = c.Direccion;
+            var colBtn = new DataGridViewButtonColumn
+            {
+                Name = "Acciones",
+                HeaderText = "Acciones",
+                Text = "Editar",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = FlatStyle.Flat,
+                Width = 90,
+                DefaultCellStyle =
+                {
+                    BackColor = Color.FromArgb(16, 185, 129),
+                    ForeColor = Color.White,
+                    Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter,
+                    Padding   = new Padding(0, 2, 0, 2)
+                }
+            };
+
+            Vista.dataGridView1.Columns.Add(colBtn);
+
+            // Reconectar el evento para evitar duplicados
+            Vista.dataGridView1.CellClick -= GridCellClick;
+            Vista.dataGridView1.CellClick += GridCellClick;
+        }
+
+        private void GridCellClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (Vista.dataGridView1.Columns[e.ColumnIndex].Name != "Acciones") return;
+
+            var celda = Vista.dataGridView1.Rows[e.RowIndex].Cells["Id"];
+            if (celda?.Value == null) return;
+
+            int id = (int)celda.Value;
+            Editar(id);
         }
 
         private void Buscar()
         {
             string termino = Vista.txtBuscarCliente.Text.Trim().ToLower();
-            if (string.IsNullOrEmpty(termino))
-            {
-                CargarGrid();
-                return;
-            }
+            if (string.IsNullOrEmpty(termino)) { CargarGrid(); return; }
 
-            var resultado = clientes
-                .Where(c =>
-                    c.Nombre.ToLower().Contains(termino) ||
-                    c.Documento.ToLower().Contains(termino))
+            Vista.dataGridView1.DataSource = null;
+            Vista.dataGridView1.DataSource = clientes
+                .Where(c => c.Nombre.ToLower().Contains(termino) ||
+                            c.Documento.ToLower().Contains(termino))
                 .Select(c => new
                 {
                     c.Id,
                     c.Nombre,
-                    c.Documento,
-                    Correo = c.CorreoElectronico,
+                    Identificacion = c.Documento,
                     c.Telefono,
-                    c.Direccion,
+                    Correo = c.CorreoElectronico,
                     Registro = c.FechaRegistro.ToString("dd/MM/yyyy")
                 }).ToList();
 
-            Vista.dataGridView1.DataSource = null;
-            Vista.dataGridView1.DataSource = resultado;
-        }
+            if (Vista.dataGridView1.Columns.Contains("Id"))
+                Vista.dataGridView1.Columns["Id"].Visible = false;
 
-        private void Limpiar()
-        {
-            Vista.txtNombreClientec.Clear();
-            Vista.txtDocumentoCliente.Clear();
-            Vista.txtCCliente.Clear();
-            Vista.txtTelefonoCliente.Clear();
-            Vista.txtDireccionCliente.Clear();
-            Vista.txtBuscarCliente.Clear();
-            Vista.SetIdSeleccionado(0);
-            Vista.dataGridView1.ClearSelection();
+            EstilizarGrid();
+            AgregarColumnaEditar();
         }
     }
 }

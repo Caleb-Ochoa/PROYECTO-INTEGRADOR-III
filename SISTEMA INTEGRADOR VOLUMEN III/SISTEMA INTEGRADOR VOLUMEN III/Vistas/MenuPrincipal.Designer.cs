@@ -41,15 +41,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             panel1 = new Panel();
             pnlContenido = new Panel();
             pnlEncabezado = new Panel();
+            btnConfiguracion = new Button();
+            btnIdioma = new Button();
             lblFecha = new Label();
             lblRol = new Label();
             lblNombre = new Label();
             lblAvatar = new Label();
-<<<<<<< HEAD
-            btnConfiguracion = new Button();
-=======
-            btnIdioma = new Button();
->>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -137,6 +134,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnClientes.TabIndex = 6;
             btnClientes.Text = "👥 Clientes";
             btnClientes.UseVisualStyleBackColor = true;
+            btnClientes.Click += btnClientes_Click;
             // 
             // splitContainer1
             // 
@@ -179,12 +177,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // pnlEncabezado
             // 
-<<<<<<< HEAD
             pnlEncabezado.Controls.Add(btnConfiguracion);
             pnlEncabezado.Controls.Add(btnCerrarSesion);
-=======
             pnlEncabezado.Controls.Add(btnIdioma);
->>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
             pnlEncabezado.Controls.Add(lblFecha);
             pnlEncabezado.Controls.Add(lblRol);
             pnlEncabezado.Controls.Add(lblNombre);
@@ -194,6 +189,30 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             pnlEncabezado.Name = "pnlEncabezado";
             pnlEncabezado.Size = new Size(761, 93);
             pnlEncabezado.TabIndex = 11;
+            // 
+            // btnConfiguracion
+            // 
+            btnConfiguracion.BackColor = SystemColors.Menu;
+            btnConfiguracion.BackgroundImage = Properties.Resources.settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview;
+            btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;
+            btnConfiguracion.FlatStyle = FlatStyle.Flat;
+            btnConfiguracion.Font = new Font("Segoe UI", 14F);
+            btnConfiguracion.Location = new Point(697, 3);
+            btnConfiguracion.Name = "btnConfiguracion";
+            btnConfiguracion.Size = new Size(52, 36);
+            btnConfiguracion.TabIndex = 6;
+            btnConfiguracion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnConfiguracion.UseVisualStyleBackColor = false;
+            btnConfiguracion.Click += btnConfiguracion_Click;
+            // 
+            // btnIdioma
+            // 
+            btnIdioma.Location = new Point(708, 17);
+            btnIdioma.Name = "btnIdioma";
+            btnIdioma.Size = new Size(23, 21);
+            btnIdioma.TabIndex = 4;
+            btnIdioma.Text = "🌐";
+            btnIdioma.UseVisualStyleBackColor = true;
             // 
             // lblFecha
             // 
@@ -233,32 +252,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblAvatar.TabIndex = 0;
             lblAvatar.Text = "👑";
             // 
-<<<<<<< HEAD
-            // btnConfiguracion
-            // 
-            btnConfiguracion.BackColor = SystemColors.Menu;
-            btnConfiguracion.BackgroundImage = Properties.Resources.settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview;
-            btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;
-            btnConfiguracion.FlatStyle = FlatStyle.Flat;
-            btnConfiguracion.Font = new Font("Segoe UI", 14F);
-            btnConfiguracion.Location = new Point(697, 3);
-            btnConfiguracion.Name = "btnConfiguracion";
-            btnConfiguracion.Size = new Size(52, 36);
-            btnConfiguracion.TabIndex = 6;
-            btnConfiguracion.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnConfiguracion.UseVisualStyleBackColor = false;
-=======
-            // btnIdioma
-            // 
-            btnIdioma.Location = new Point(708, 17);
-            btnIdioma.Name = "btnIdioma";
-            btnIdioma.Size = new Size(23, 21);
-            btnIdioma.TabIndex = 4;
-            btnIdioma.Text = "🌐";
-            btnIdioma.UseVisualStyleBackColor = true;
-            btnIdioma.Click += btnIdioma_Click;
->>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
-            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -296,10 +289,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Label lblAvatar;
         private Label lblFecha;
         private Panel panel1;
-<<<<<<< HEAD
         private Button btnConfiguracion;
-=======
         private Button btnIdioma;
->>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
+
+
+
     }
 }

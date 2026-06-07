@@ -28,250 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            btnLimpiarCliente = new Button();
-            btnGuardarCliente = new Button();
-            txtDireccionCliente = new TextBox();
-            txtTelefonoCliente = new TextBox();
-            txtDocumentoCliente = new TextBox();
-            txtCCliente = new TextBox();
-            txtNombreClientec = new TextBox();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
-            btnLimpiarFiltro = new Button();
-            btnBuscarCliente = new Button();
             txtBuscarCliente = new TextBox();
-            label6 = new Label();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            btnBuscarCliente = new Button();
+            btnLimpiarFiltro = new Button();
+            btnAgregarCliente = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btnLimpiarCliente);
-            groupBox1.Controls.Add(btnGuardarCliente);
-            groupBox1.Controls.Add(txtDireccionCliente);
-            groupBox1.Controls.Add(txtTelefonoCliente);
-            groupBox1.Controls.Add(txtDocumentoCliente);
-            groupBox1.Controls.Add(txtCCliente);
-            groupBox1.Controls.Add(txtNombreClientec);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Font = new Font("Segoe UI", 10F);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 245);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Datos del Cliente";
-            // 
-            // btnLimpiarCliente
-            // 
-            btnLimpiarCliente.BackColor = SystemColors.ActiveCaption;
-            btnLimpiarCliente.Location = new Point(673, 209);
-            btnLimpiarCliente.Name = "btnLimpiarCliente";
-            btnLimpiarCliente.Size = new Size(75, 30);
-            btnLimpiarCliente.TabIndex = 11;
-            btnLimpiarCliente.Text = "Limpiar";
-            btnLimpiarCliente.UseVisualStyleBackColor = false;
-            // 
-            // btnGuardarCliente
-            // 
-            btnGuardarCliente.BackColor = SystemColors.ActiveCaption;
-            btnGuardarCliente.Location = new Point(564, 209);
-            btnGuardarCliente.Name = "btnGuardarCliente";
-            btnGuardarCliente.Size = new Size(75, 30);
-            btnGuardarCliente.TabIndex = 10;
-            btnGuardarCliente.Text = "Guardar";
-            btnGuardarCliente.UseVisualStyleBackColor = false;
-            // 
-            // txtDireccionCliente
-            // 
-            txtDireccionCliente.Location = new Point(21, 174);
-            txtDireccionCliente.Name = "txtDireccionCliente";
-            txtDireccionCliente.Size = new Size(727, 25);
-            txtDireccionCliente.TabIndex = 9;
-            // 
-            // txtTelefonoCliente
-            // 
-            txtTelefonoCliente.Location = new Point(411, 118);
-            txtTelefonoCliente.Name = "txtTelefonoCliente";
-            txtTelefonoCliente.Size = new Size(337, 25);
-            txtTelefonoCliente.TabIndex = 8;
-            // 
-            // txtDocumentoCliente
-            // 
-            txtDocumentoCliente.Location = new Point(405, 51);
-            txtDocumentoCliente.Name = "txtDocumentoCliente";
-            txtDocumentoCliente.Size = new Size(343, 25);
-            txtDocumentoCliente.TabIndex = 7;
-            // 
-            // txtCCliente
-            // 
-            txtCCliente.Location = new Point(21, 114);
-            txtCCliente.Name = "txtCCliente";
-            txtCCliente.Size = new Size(296, 25);
-            txtCCliente.TabIndex = 6;
-            // 
-            // txtNombreClientec
-            // 
-            txtNombreClientec.Location = new Point(18, 51);
-            txtNombreClientec.Name = "txtNombreClientec";
-            txtNombreClientec.Size = new Size(299, 25);
-            txtNombreClientec.TabIndex = 5;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(18, 152);
-            label5.Name = "label5";
-            label5.Size = new Size(65, 19);
-            label5.TabIndex = 4;
-            label5.Text = "Dirección";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(18, 92);
-            label4.Name = "label4";
-            label4.Size = new Size(121, 19);
-            label4.TabIndex = 3;
-            label4.Text = "Correo electronico";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(405, 92);
-            label3.Name = "label3";
-            label3.Size = new Size(60, 19);
-            label3.TabIndex = 2;
-            label3.Text = "Telefono";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(405, 29);
-            label2.Name = "label2";
-            label2.Size = new Size(81, 19);
-            label2.TabIndex = 1;
-            label2.Text = "Documento";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(18, 29);
-            label1.Name = "label1";
-            label1.Size = new Size(123, 19);
-            label1.TabIndex = 0;
-            label1.Text = "Nombre Completo";
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(dataGridView1);
-            groupBox2.Controls.Add(btnLimpiarFiltro);
-            groupBox2.Controls.Add(btnBuscarCliente);
-            groupBox2.Controls.Add(txtBuscarCliente);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Font = new Font("Segoe UI", 10F);
-            groupBox2.Location = new Point(12, 263);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(776, 248);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Clientes Registrados";
-            // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(18, 61);
+            dataGridView1.Location = new Point(0, 55);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(752, 178);
-            dataGridView1.TabIndex = 4;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(800, 459);
+            dataGridView1.TabIndex = 0;
             // 
-            // btnLimpiarFiltro
+            // txtBuscarCliente
             // 
-            btnLimpiarFiltro.BackColor = SystemColors.ActiveCaption;
-            btnLimpiarFiltro.Font = new Font("Segoe UI", 10F);
-            btnLimpiarFiltro.Location = new Point(431, 30);
-            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            btnLimpiarFiltro.Size = new Size(105, 30);
-            btnLimpiarFiltro.TabIndex = 3;
-            btnLimpiarFiltro.Text = "\U0001f9f9 Limpiar";
-            btnLimpiarFiltro.UseVisualStyleBackColor = false;
+            txtBuscarCliente.Location = new Point(20, 15);
+            txtBuscarCliente.Name = "txtBuscarCliente";
+            txtBuscarCliente.PlaceholderText = "Buscar cliente...";
+            txtBuscarCliente.Size = new Size(220, 23);
+            txtBuscarCliente.TabIndex = 1;
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.BackColor = SystemColors.ActiveCaption;
-            btnBuscarCliente.Font = new Font("Segoe UI", 10F);
-            btnBuscarCliente.Location = new Point(387, 30);
+            btnBuscarCliente.BackColor = Color.WhiteSmoke;
+            btnBuscarCliente.FlatAppearance.BorderColor = Color.LightGray;
+            btnBuscarCliente.FlatStyle = FlatStyle.Flat;
+            btnBuscarCliente.Location = new Point(248, 14);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(38, 30);
+            btnBuscarCliente.Size = new Size(36, 30);
             btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "🔍";
             btnBuscarCliente.UseVisualStyleBackColor = false;
             // 
-            // txtBuscarCliente
+            // btnLimpiarFiltro
             // 
-            txtBuscarCliente.Location = new Point(73, 30);
-            txtBuscarCliente.Name = "txtBuscarCliente";
-            txtBuscarCliente.Size = new Size(308, 25);
-            txtBuscarCliente.TabIndex = 1;
+            btnLimpiarFiltro.BackColor = Color.WhiteSmoke;
+            btnLimpiarFiltro.FlatAppearance.BorderColor = Color.LightGray;
+            btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltro.Location = new Point(290, 14);
+            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            btnLimpiarFiltro.Size = new Size(36, 30);
+            btnLimpiarFiltro.TabIndex = 3;
+            btnLimpiarFiltro.Text = "✕";
+            btnLimpiarFiltro.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // btnAgregarCliente
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(18, 33);
-            label6.Name = "label6";
-            label6.Size = new Size(56, 19);
-            label6.TabIndex = 0;
-            label6.Text = "Buscar: ";
+            btnAgregarCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAgregarCliente.BackColor = Color.FromArgb(37, 99, 235);
+            btnAgregarCliente.FlatStyle = FlatStyle.Flat;
+            btnAgregarCliente.Font = new Font("Microsoft Sans Serif", 8.25F);
+            btnAgregarCliente.ForeColor = Color.White;
+            btnAgregarCliente.Location = new Point(620, 12);
+            btnAgregarCliente.Name = "btnAgregarCliente";
+            btnAgregarCliente.Size = new Size(160, 34);
+            btnAgregarCliente.TabIndex = 4;
+            btnAgregarCliente.Text = "+ Agregar Cliente";
+            btnAgregarCliente.UseVisualStyleBackColor = false;
             // 
             // Clientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 514);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(btnAgregarCliente);
+            Controls.Add(btnLimpiarFiltro);
+            Controls.Add(btnBuscarCliente);
+            Controls.Add(txtBuscarCliente);
+            Controls.Add(dataGridView1);
             Name = "Clientes";
             Text = "Clientes";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private GroupBox groupBox2;
-        private Label label6;
-        public Button btnGuardarCliente;
-        public Button btnLimpiarCliente;
-        public Button btnLimpiarFiltro;
-        public TextBox txtCCliente;
-        public TextBox txtNombreClientec;
-        public TextBox txtDireccionCliente;
-        public TextBox txtTelefonoCliente;
-        public TextBox txtDocumentoCliente;
         public DataGridView dataGridView1;
-        public Button btnBuscarCliente;
         public TextBox txtBuscarCliente;
+        public Button btnBuscarCliente;
+        public Button btnLimpiarFiltro;
+        public Button btnAgregarCliente;
     }
 }

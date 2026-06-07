@@ -19,7 +19,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
     internal static class Idioma
     {
         public static string IdiomaActual { get; private set; } = "es";
-
         private static Dictionary<string, string> _textos = new();
 
         // ── Carga el archivo de traducciones ──────────────────────────────
@@ -28,17 +27,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             IdiomaActual = codigoIdioma;
             _textos.Clear();
 
-            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Traducciones.txt");
+            string ruta = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory, "traducciones.txt");
 
-            MessageBox.Show(ruta);
-
-            if (!File.Exists(ruta))
-            {
-                MessageBox.Show(
-                    $"No se encontró Traducciones.txt\nRuta: {ruta}",
-                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (!File.Exists(ruta)) return;
 
             foreach (string linea in File.ReadAllLines(ruta, System.Text.Encoding.UTF8))
             {
@@ -52,7 +44,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                 string clave = $"{p[1].Trim()}|{p[0].Trim()}";
                 _textos[clave] = codigoIdioma == "en" ? p[3].Trim() : p[2].Trim();
             }
-            
         }
 
         // ── Aplica el idioma a todos los controles de un Form ─────────────
@@ -79,76 +70,66 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                 AplicarRecursivo(hijo, nombreForm);
         }
 
-        // ── Selector de idioma inline (sin formulario extra) ──────────────
+        // ── Selector de idioma inline — sin formulario extra ──────────────
         /// <summary>
         /// Muestra un pequeño popup bilingüe para elegir idioma.
         /// Llamar desde btnIdioma_Click en Login, RegistroAdmin y MenuPrincipal.
         /// </summary>
         public static void MostrarSelector(Form owner)
         {
-            // Popup pequeño creado en código — no necesita .Designer.cs
             using Form popup = new Form
             {
                 Text = "Idioma / Language",
-                Size = new System.Drawing.Size(280, 130),
+                Size = new Size(280, 130),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 MaximizeBox = false,
-                MinimizeBox = false
+                MinimizeBox = false,
+                BackColor = Color.White
             };
 
-            var lblTitulo = new Label
+            var lbl = new Label
             {
-                Text = "Seleccione el idioma / Select language:",
+                Text = "Seleccione / Select language:",
                 AutoSize = false,
                 Width = 260,
-                Location = new System.Drawing.Point(10, 10),
-                TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+                Location = new Point(10, 10),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 9F)
             };
 
-            // Botón Español
             var btnEs = new Button
             {
                 Text = "🇨🇴  Español",
-                Size = new System.Drawing.Size(115, 38),
-                Location = new System.Drawing.Point(10, 45),
-                BackColor = IdiomaActual == "es"
-                    ? System.Drawing.Color.SteelBlue
-                    : System.Drawing.SystemColors.Control,
-                ForeColor = IdiomaActual == "es"
-                    ? System.Drawing.Color.White
-                    : System.Drawing.SystemColors.ControlText,
-                FlatStyle = FlatStyle.Flat
+                Size = new Size(115, 40),
+                Location = new Point(10, 45),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = IdiomaActual == "es" ? Color.SteelBlue : Color.WhiteSmoke,
+                ForeColor = IdiomaActual == "es" ? Color.White : Color.Black,
+                Font = new Font("Segoe UI", 9.5F)
             };
             btnEs.FlatAppearance.BorderSize = 0;
 
-            // Botón English
             var btnEn = new Button
             {
                 Text = "🇺🇸  English",
-                Size = new System.Drawing.Size(115, 38),
-                Location = new System.Drawing.Point(145, 45),
-                BackColor = IdiomaActual == "en"
-                    ? System.Drawing.Color.SteelBlue
-                    : System.Drawing.SystemColors.Control,
-                ForeColor = IdiomaActual == "en"
-                    ? System.Drawing.Color.White
-                    : System.Drawing.SystemColors.ControlText,
-                FlatStyle = FlatStyle.Flat
+                Size = new Size(115, 40),
+                Location = new Point(145, 45),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = IdiomaActual == "en" ? Color.SteelBlue : Color.WhiteSmoke,
+                ForeColor = IdiomaActual == "en" ? Color.White : Color.Black,
+                Font = new Font("Segoe UI", 9.5F)
             };
             btnEn.FlatAppearance.BorderSize = 0;
 
-            // Click Español
             btnEs.Click += (s, e) =>
             {
                 Cargar("es");
-                // Aplicar a todos los forms abiertos
                 foreach (Form frm in Application.OpenForms)
                     Aplicar(frm);
                 popup.Close();
             };
 
-            // Click English
             btnEn.Click += (s, e) =>
             {
                 Cargar("en");
@@ -157,16 +138,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                 popup.Close();
             };
 
-            popup.Controls.AddRange(new Control[] { lblTitulo, btnEs, btnEn });
+            popup.Controls.AddRange(new Control[] { lbl, btnEs, btnEn });
             popup.ShowDialog(owner);
-        }
-
-        // ── Cambio directo (para uso programático) ────────────────────────
-        public static void CambiarIdioma(string codigoIdioma)
-        {
-            Cargar(codigoIdioma);
-            foreach (Form frm in Application.OpenForms)
-                Aplicar(frm);
         }
     }
 }

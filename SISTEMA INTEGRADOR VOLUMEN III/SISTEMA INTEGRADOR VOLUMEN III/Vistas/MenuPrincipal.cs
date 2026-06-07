@@ -1,5 +1,8 @@
-﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
+﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Controller;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 using System;
 using System.Collections.Generic;
@@ -67,7 +70,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Clientes());
+
+            Clientes vista = new Clientes();
+
+            IRepository<Cliente> repo =
+                new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
+
+            DataManager<Cliente> dm =
+                new DataManager<Cliente>(repo);
+
+            CtlCliente controlador =
+                new CtlCliente(dm, vista);
+
+            AbrirFormulario(vista);
+
         }
 
         private void btnMateriales_Click(object sender, EventArgs e)
@@ -106,7 +122,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             this.Close();
         }
 
-        private void btnIdioma_Click(object sender, EventArgs e)
+        private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             Idioma.MostrarSelector(this);
         }

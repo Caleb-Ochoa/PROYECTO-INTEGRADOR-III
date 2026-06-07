@@ -165,12 +165,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-<<<<<<< HEAD
+
             ClientSize = new Size(824, 531);
-=======
+
             ClientSize = new Size(751, 531);
             Controls.Add(btnIdioma);
->>>>>>> fdca2ae56d8d638d4f6edcdd37df99701cbfa571
+
             Controls.Add(pnlLogin);
             Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             Margin = new Padding(5, 6, 5, 6);
