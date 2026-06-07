@@ -5,13 +5,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     public partial class Login : Form
     {
-        
+
 
         public Login()
         {
             InitializeComponent();
+            Idioma.Aplicar(this);
 
-            
         }
         public string[] GetInput()
         {
@@ -44,7 +44,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             txtContraseña.Focus();
         }
 
-
-        
+        private void btnIdioma_Click(object sender, EventArgs e)
+        {
+            Idioma.MostrarSelector(this);
+        }
     }
 }

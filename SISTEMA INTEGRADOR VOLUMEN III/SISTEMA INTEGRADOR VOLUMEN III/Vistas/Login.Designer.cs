@@ -38,6 +38,7 @@
             pictureBox1 = new PictureBox();
             label3 = new Label();
             pnlLogin = new Panel();
+            btnIdioma = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -136,6 +137,16 @@
             pnlLogin.Size = new Size(331, 459);
             pnlLogin.TabIndex = 11;
             // 
+            // btnIdioma
+            // 
+            btnIdioma.Location = new Point(333, 12);
+            btnIdioma.Name = "btnIdioma";
+            btnIdioma.Size = new Size(33, 37);
+            btnIdioma.TabIndex = 12;
+            btnIdioma.Text = "🌐";
+            btnIdioma.UseVisualStyleBackColor = true;
+            btnIdioma.Click += btnIdioma_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
@@ -143,6 +154,7 @@
             AutoScroll = true;
             AutoSize = true;
             ClientSize = new Size(751, 531);
+            Controls.Add(btnIdioma);
             Controls.Add(pnlLogin);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
@@ -175,5 +187,6 @@
         public Button btnIngresarSesion;
         public TextBox txtContraseña;
         private Panel pnlLogin;
+        private Button btnIdioma;
     }
 }

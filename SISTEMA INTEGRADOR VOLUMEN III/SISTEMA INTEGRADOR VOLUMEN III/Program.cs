@@ -19,6 +19,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 
 
             ApplicationConfiguration.Initialize();
+            Idioma.Cargar("es"); // Carga el idioma al iniciar la aplicación);
 
             // 2. Crear las dependencias e infraestructura (Archivos, Repositorios, Servicios)
             IRepository<Usuario> repoUsuario = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);

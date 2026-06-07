@@ -48,6 +48,7 @@
             label9 = new Label();
             label10 = new Label();
             txtDireccion = new TextBox();
+            btnIdioma = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -228,12 +229,23 @@
             txtDireccion.Size = new Size(242, 23);
             txtDireccion.TabIndex = 19;
             // 
+            // btnIdioma
+            // 
+            btnIdioma.Location = new Point(311, 6);
+            btnIdioma.Name = "btnIdioma";
+            btnIdioma.Size = new Size(29, 24);
+            btnIdioma.TabIndex = 20;
+            btnIdioma.Text = "🌐";
+            btnIdioma.UseVisualStyleBackColor = true;
+            btnIdioma.Click += btnIdioma_Click;
+            // 
             // RegistroAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(352, 611);
+            Controls.Add(btnIdioma);
             Controls.Add(txtDireccion);
             Controls.Add(label10);
             Controls.Add(txtTelefonoAdmin);
@@ -284,5 +296,6 @@
         private Label label9;
         private Label label10;
         private TextBox txtDireccion;
+        private Button btnIdioma;
     }
 }

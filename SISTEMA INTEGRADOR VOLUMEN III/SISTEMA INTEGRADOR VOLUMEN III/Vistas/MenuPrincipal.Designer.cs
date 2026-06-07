@@ -45,6 +45,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblRol = new Label();
             lblNombre = new Label();
             lblAvatar = new Label();
+            btnIdioma = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -175,6 +176,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // pnlEncabezado
             // 
+            pnlEncabezado.Controls.Add(btnIdioma);
             pnlEncabezado.Controls.Add(lblFecha);
             pnlEncabezado.Controls.Add(lblRol);
             pnlEncabezado.Controls.Add(lblNombre);
@@ -223,6 +225,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblAvatar.TabIndex = 0;
             lblAvatar.Text = "👑";
             // 
+            // btnIdioma
+            // 
+            btnIdioma.Location = new Point(708, 17);
+            btnIdioma.Name = "btnIdioma";
+            btnIdioma.Size = new Size(23, 21);
+            btnIdioma.TabIndex = 4;
+            btnIdioma.Text = "🌐";
+            btnIdioma.UseVisualStyleBackColor = true;
+            btnIdioma.Click += btnIdioma_Click;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -260,5 +272,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Label lblAvatar;
         private Label lblFecha;
         private Panel panel1;
+        private Button btnIdioma;
     }
 }
