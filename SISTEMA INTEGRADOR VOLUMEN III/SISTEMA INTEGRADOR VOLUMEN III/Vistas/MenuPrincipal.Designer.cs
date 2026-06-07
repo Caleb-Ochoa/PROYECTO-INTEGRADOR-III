@@ -38,19 +38,19 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnMateriales = new Button();
             btnClientes = new Button();
             splitContainer1 = new SplitContainer();
+            panel1 = new Panel();
             pnlContenido = new Panel();
             pnlEncabezado = new Panel();
             lblFecha = new Label();
             lblRol = new Label();
             lblNombre = new Label();
             lblAvatar = new Label();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            pnlEncabezado.SuspendLayout();
             panel1.SuspendLayout();
+            pnlEncabezado.SuspendLayout();
             SuspendLayout();
             // 
             // btnGUsuarios
@@ -149,6 +149,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.SplitterDistance = 190;
             splitContainer1.TabIndex = 10;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnCerrarSesion);
+            panel1.Controls.Add(btnGUsuarios);
+            panel1.Controls.Add(btnCambiarContraseña);
+            panel1.Controls.Add(btnClientes);
+            panel1.Controls.Add(btnFactura);
+            panel1.Controls.Add(btnMateriales);
+            panel1.Controls.Add(btnCotizacion);
+            panel1.Controls.Add(btnTerreno);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(184, 423);
+            panel1.TabIndex = 0;
+            // 
             // pnlContenido
             // 
             pnlContenido.Dock = DockStyle.Fill;
@@ -207,22 +223,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblAvatar.TabIndex = 0;
             lblAvatar.Text = "👑";
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnCerrarSesion);
-            panel1.Controls.Add(btnGUsuarios);
-            panel1.Controls.Add(btnCambiarContraseña);
-            panel1.Controls.Add(btnClientes);
-            panel1.Controls.Add(btnFactura);
-            panel1.Controls.Add(btnMateriales);
-            panel1.Controls.Add(btnCotizacion);
-            panel1.Controls.Add(btnTerreno);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(184, 423);
-            panel1.TabIndex = 0;
-            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -232,13 +232,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Controls.Add(splitContainer1);
             Name = "MenuPrincipal";
             Text = "e";
+            WindowState = FormWindowState.Maximized;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             pnlEncabezado.ResumeLayout(false);
             pnlEncabezado.PerformLayout();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 

@@ -37,6 +37,7 @@
             label4 = new Label();
             pictureBox1 = new PictureBox();
             label3 = new Label();
+            pnlLogin = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -128,12 +129,21 @@
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
+            // pnlLogin
+            // 
+            pnlLogin.Location = new Point(381, 12);
+            pnlLogin.Name = "pnlLogin";
+            pnlLogin.Size = new Size(331, 459);
+            pnlLogin.TabIndex = 11;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(348, 483);
+            AutoSize = true;
+            ClientSize = new Size(751, 531);
+            Controls.Add(pnlLogin);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
@@ -147,7 +157,7 @@
             Margin = new Padding(5, 6, 5, 6);
             Name = "Login";
             Text = "INICIO SESION";
-            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -164,5 +174,6 @@
         public CheckBox chkMostrar;
         public Button btnIngresarSesion;
         public TextBox txtContraseña;
+        private Panel pnlLogin;
     }
 }

@@ -256,7 +256,7 @@
             Controls.Add(label1);
             Name = "RegistroAdmin";
             Text = "RegistroAdmin";
-            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
