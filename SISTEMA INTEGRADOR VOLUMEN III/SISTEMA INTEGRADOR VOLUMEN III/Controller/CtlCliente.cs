@@ -129,8 +129,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             clientes = dataManager.GetAll();
 
-            Vista.dataGridView1.DataSource = null;
-            Vista.dataGridView1.DataSource = clientes.Select(c => new
+            Vista.dvgClientes.DataSource = null;
+            Vista.dvgClientes.DataSource = clientes.Select(c => new
             {
                 c.Id,
                 c.Nombre,
@@ -141,8 +141,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }).ToList();
 
             // Ocultar columna Id
-            if (Vista.dataGridView1.Columns.Contains("Id"))
-                Vista.dataGridView1.Columns["Id"].Visible = false;
+            if (Vista.dvgClientes.Columns.Contains("Id"))
+                Vista.dvgClientes.Columns["Id"].Visible = false;
 
             EstilizarGrid();
             AgregarColumnaEditar();
@@ -150,27 +150,27 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         private void EstilizarGrid()
         {
-            Vista.dataGridView1.AutoSizeColumnsMode =
+            Vista.dvgClientes.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.Fill;
-            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor =
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.BackColor =
                 Color.FromArgb(240, 240, 240);
-            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.Font =
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.Font =
                 new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            Vista.dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor =
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor =
                 Color.FromArgb(60, 60, 60);
-            Vista.dataGridView1.EnableHeadersVisualStyles = false;
-            Vista.dataGridView1.DefaultCellStyle.Font =
+            Vista.dvgClientes.EnableHeadersVisualStyles = false;
+            Vista.dvgClientes.DefaultCellStyle.Font =
                 new Font("Segoe UI", 9.5F);
-            Vista.dataGridView1.RowTemplate.Height = 32;
-            Vista.dataGridView1.BackgroundColor = Color.White;
-            Vista.dataGridView1.GridColor = Color.FromArgb(230, 230, 230);
+            Vista.dvgClientes.RowTemplate.Height = 32;
+            Vista.dvgClientes.BackgroundColor = Color.White;
+            Vista.dvgClientes.GridColor = Color.FromArgb(230, 230, 230);
         }
 
         private void AgregarColumnaEditar()
         {
             // Evitar duplicados al recargar
-            if (Vista.dataGridView1.Columns.Contains("Acciones"))
-                Vista.dataGridView1.Columns.Remove("Acciones");
+            if (Vista.dvgClientes.Columns.Contains("Acciones"))
+                Vista.dvgClientes.Columns.Remove("Acciones");
 
             var colBtn = new DataGridViewButtonColumn
             {
@@ -190,19 +190,19 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 }
             };
 
-            Vista.dataGridView1.Columns.Add(colBtn);
+            Vista.dvgClientes.Columns.Add(colBtn);
 
             // Reconectar el evento para evitar duplicados
-            Vista.dataGridView1.CellClick -= GridCellClick;
-            Vista.dataGridView1.CellClick += GridCellClick;
+            Vista.dvgClientes.CellClick -= GridCellClick;
+            Vista.dvgClientes.CellClick += GridCellClick;
         }
 
         private void GridCellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (Vista.dataGridView1.Columns[e.ColumnIndex].Name != "Acciones") return;
+            if (Vista.dvgClientes.Columns[e.ColumnIndex].Name != "Acciones") return;
 
-            var celda = Vista.dataGridView1.Rows[e.RowIndex].Cells["Id"];
+            var celda = Vista.dvgClientes.Rows[e.RowIndex].Cells["Id"];
             if (celda?.Value == null) return;
 
             int id = (int)celda.Value;
@@ -214,8 +214,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             string termino = Vista.txtBuscarCliente.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(termino)) { CargarGrid(); return; }
 
-            Vista.dataGridView1.DataSource = null;
-            Vista.dataGridView1.DataSource = clientes
+            Vista.dvgClientes.DataSource = null;
+            Vista.dvgClientes.DataSource = clientes
                 .Where(c => c.Nombre.ToLower().Contains(termino) ||
                             c.Documento.ToLower().Contains(termino))
                 .Select(c => new
@@ -228,8 +228,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     Registro = c.FechaRegistro.ToString("dd/MM/yyyy")
                 }).ToList();
 
-            if (Vista.dataGridView1.Columns.Contains("Id"))
-                Vista.dataGridView1.Columns["Id"].Visible = false;
+            if (Vista.dvgClientes.Columns.Contains("Id"))
+                Vista.dvgClientes.Columns["Id"].Visible = false;
 
             EstilizarGrid();
             AgregarColumnaEditar();

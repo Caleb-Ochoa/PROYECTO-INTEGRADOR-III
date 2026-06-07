@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dvgClientes = new DataGridView();
             txtBuscarCliente = new TextBox();
             btnBuscarCliente = new Button();
             btnLimpiarFiltro = new Button();
             btnAgregarCliente = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dvgClientes).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dvgClientes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 55);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(800, 459);
-            dataGridView1.TabIndex = 0;
+            dvgClientes.AllowUserToAddRows = false;
+            dvgClientes.AllowUserToDeleteRows = false;
+            dvgClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dvgClientes.BackgroundColor = Color.WhiteSmoke;
+            dvgClientes.BorderStyle = BorderStyle.None;
+            dvgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgClientes.Location = new Point(0, 62);
+            dvgClientes.Name = "dvgClientes";
+            dvgClientes.ReadOnly = true;
+            dvgClientes.RowHeadersVisible = false;
+            dvgClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dvgClientes.Size = new Size(800, 520);
+            dvgClientes.TabIndex = 0;
             // 
             // txtBuscarCliente
             // 
-            txtBuscarCliente.Location = new Point(20, 15);
+            txtBuscarCliente.Location = new Point(22, 22);
             txtBuscarCliente.Name = "txtBuscarCliente";
             txtBuscarCliente.PlaceholderText = "Buscar cliente...";
-            txtBuscarCliente.Size = new Size(220, 23);
+            txtBuscarCliente.Size = new Size(220, 25);
             txtBuscarCliente.TabIndex = 1;
             // 
             // btnBuscarCliente
@@ -65,9 +65,10 @@
             btnBuscarCliente.BackColor = Color.WhiteSmoke;
             btnBuscarCliente.FlatAppearance.BorderColor = Color.LightGray;
             btnBuscarCliente.FlatStyle = FlatStyle.Flat;
-            btnBuscarCliente.Location = new Point(248, 14);
+            btnBuscarCliente.Font = new Font("Segoe UI", 10F);
+            btnBuscarCliente.Location = new Point(248, 16);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(36, 30);
+            btnBuscarCliente.Size = new Size(36, 34);
             btnBuscarCliente.TabIndex = 2;
             btnBuscarCliente.Text = "🔍";
             btnBuscarCliente.UseVisualStyleBackColor = false;
@@ -77,9 +78,10 @@
             btnLimpiarFiltro.BackColor = Color.WhiteSmoke;
             btnLimpiarFiltro.FlatAppearance.BorderColor = Color.LightGray;
             btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
-            btnLimpiarFiltro.Location = new Point(290, 14);
+            btnLimpiarFiltro.Font = new Font("Segoe UI", 10F);
+            btnLimpiarFiltro.Location = new Point(290, 16);
             btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            btnLimpiarFiltro.Size = new Size(36, 30);
+            btnLimpiarFiltro.Size = new Size(36, 34);
             btnLimpiarFiltro.TabIndex = 3;
             btnLimpiarFiltro.Text = "✕";
             btnLimpiarFiltro.UseVisualStyleBackColor = false;
@@ -87,36 +89,38 @@
             // btnAgregarCliente
             // 
             btnAgregarCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAgregarCliente.BackColor = Color.FromArgb(37, 99, 235);
+            btnAgregarCliente.BackColor = Color.Blue;
             btnAgregarCliente.FlatStyle = FlatStyle.Flat;
             btnAgregarCliente.Font = new Font("Microsoft Sans Serif", 8.25F);
             btnAgregarCliente.ForeColor = Color.White;
-            btnAgregarCliente.Location = new Point(620, 12);
+            btnAgregarCliente.Location = new Point(620, 14);
             btnAgregarCliente.Name = "btnAgregarCliente";
-            btnAgregarCliente.Size = new Size(160, 34);
+            btnAgregarCliente.Size = new Size(160, 39);
             btnAgregarCliente.TabIndex = 4;
             btnAgregarCliente.Text = "+ Agregar Cliente";
             btnAgregarCliente.UseVisualStyleBackColor = false;
             // 
             // Clientes
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 514);
+            BackColor = SystemColors.HighlightText;
+            ClientSize = new Size(800, 583);
             Controls.Add(btnAgregarCliente);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(btnBuscarCliente);
             Controls.Add(txtBuscarCliente);
-            Controls.Add(dataGridView1);
+            Controls.Add(dvgClientes);
+            Font = new Font("Segoe UI", 10F);
             Name = "Clientes";
             Text = "Clientes";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dvgClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        public DataGridView dataGridView1;
+        public DataGridView dvgClientes;
         public TextBox txtBuscarCliente;
         public Button btnBuscarCliente;
         public Button btnLimpiarFiltro;
