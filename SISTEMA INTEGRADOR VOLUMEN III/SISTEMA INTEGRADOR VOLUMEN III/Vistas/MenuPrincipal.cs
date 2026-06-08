@@ -3,6 +3,7 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Services;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
+        private AuthService authService;
 
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
+            authService = new AuthService();
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -73,14 +76,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             Clientes vista = new Clientes();
 
-            IRepository<Cliente> repo =
-                new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
+            IRepository<Cliente> repo = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
 
-            DataManager<Cliente> dm =
-                new DataManager<Cliente>(repo);
+            DataManager<Cliente> dm = new DataManager<Cliente>(repo);
 
-            CtlCliente controlador =
-                new CtlCliente(dm, vista);
+            CtlCliente controlador = new CtlCliente(dm, vista);
 
             AbrirFormulario(vista);
 
@@ -108,7 +108,15 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         private void btnGUsuario_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new GestionUsuario());
+            GestionUsuario vista = new GestionUsuario();
+
+            IRepository<Usuario> repo = new RepositorioFile<Usuario>("GestionUsuario.txt", Usuario.FromText);
+
+            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
+
+            CtlUsuario controlador = new CtlUsuario(dm, authService);
+
+            AbrirFormulario(vista);
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
@@ -125,6 +133,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             Idioma.MostrarSelector(this);
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

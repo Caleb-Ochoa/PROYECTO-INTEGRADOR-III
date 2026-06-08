@@ -32,6 +32,7 @@
             btnBuscar = new Button();
             textBox1 = new TextBox();
             btnAgregarUsuarios = new Button();
+            btnLimpiarGestionUsuarios = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -76,17 +77,28 @@
             btnAgregarUsuarios.Text = "+ Agregar Usuario";
             btnAgregarUsuarios.UseVisualStyleBackColor = false;
             // 
+            // btnLimpiarGestionUsuarios
+            // 
+            btnLimpiarGestionUsuarios.BackColor = SystemColors.ActiveCaption;
+            btnLimpiarGestionUsuarios.Font = new Font("Segoe UI", 10F);
+            btnLimpiarGestionUsuarios.Location = new Point(345, 12);
+            btnLimpiarGestionUsuarios.Name = "btnLimpiarGestionUsuarios";
+            btnLimpiarGestionUsuarios.Size = new Size(35, 28);
+            btnLimpiarGestionUsuarios.TabIndex = 5;
+            btnLimpiarGestionUsuarios.Text = "✕";
+            btnLimpiarGestionUsuarios.UseVisualStyleBackColor = false;
+            // 
             // GestionUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 528);
+            Controls.Add(btnLimpiarGestionUsuarios);
             Controls.Add(btnAgregarUsuarios);
             Controls.Add(btnBuscar);
             Controls.Add(dgvUsuarios);
             Controls.Add(textBox1);
-            Cursor = Cursors.Default;
             Name = "GestionUsuario";
             Text = "GestionUsuario";
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
@@ -99,5 +111,6 @@
         private TextBox textBox1;
         public DataGridView dgvUsuarios;
         private Button btnAgregarUsuarios;
+        private Button btnLimpiarGestionUsuarios;
     }
 }
