@@ -15,19 +15,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
     {
         public Login? VistaLogin { get; set; }
         public RegistroAdmin? VistaRegistro { get; set; }
-
+        public GestionUsuario? VistaGestion { get; set; }
         private DataManager<Usuario> dataManager;
         private List<Usuario> usuarios;
         private readonly IAuthService authService;
 
         public Usuario? UsuarioAutenticado { get; private set; }
 
-        public CtlUsuario(DataManager<Usuario> dataManager,IAuthService authService,
+        public CtlUsuario(DataManager<Usuario> dataManager, IAuthService authService,
                 bool iniciarFlujoLogin = true)
         {
             this.dataManager = dataManager;
             this.authService = authService;
+
+
             usuarios = dataManager.GetAll();
+
 
             if (iniciarFlujoLogin)
             {
@@ -37,6 +40,245 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     AbrirRegistroAdmin();
                 else
                     AbrirLogin();
+            }
+        }
+        public CtlUsuario(DataManager<Usuario> dataManager, IAuthService authService, GestionUsuario vistaGestion)
+        {
+            this.dataManager = dataManager;
+            this.authService = authService;
+            VistaGestion = vistaGestion;
+
+            usuarios = dataManager.GetAll();
+            ConfigurarVistaGestion();
+        }
+
+        private void ConfigurarVistaGestion()
+        {
+            if (VistaGestion == null)
+                return;
+
+            CargarGrid();
+
+            // Botón Agregar
+            VistaGestion.btnAgregarUsuarios.Click += (s, e) =>
+            {
+                AgregarUsuario();
+            };
+
+            // Buscar en tiempo real
+            VistaGestion.textBox1.TextChanged += (s, e) =>
+            {
+                BuscarUsuario();
+            };
+
+            // Limpiar filtro
+            VistaGestion.btnLimpiarGestionUsuarios.Click += (s, e) =>
+            {
+                VistaGestion.textBox1.Clear();
+                CargarGrid();
+            };
+
+            // Buscar con botón
+            VistaGestion.btnBuscar.Click += (s, e) =>
+            {
+                BuscarUsuario();
+            };
+
+            // Click en columna Editar del grid
+            VistaGestion.dgvUsuarios.CellClick += (s, e) =>
+            {
+                if (e.RowIndex < 0) return;
+                if (VistaGestion.dgvUsuarios.Columns[e.ColumnIndex].Name != "Acciones") return;
+
+                var celda = VistaGestion.dgvUsuarios.Rows[e.RowIndex].Cells["Id"];
+                if (celda?.Value == null) return;
+
+                int id = (int)celda.Value;
+                EditarUsuario(id);
+            };
+        }
+        private void CargarGrid()
+        {
+            if (VistaGestion == null)
+                return;
+
+            usuarios = dataManager.GetAll();
+
+            VistaGestion.dgvUsuarios.DataSource = null;
+            VistaGestion.dgvUsuarios.DataSource =
+                usuarios.Select(u => new
+                {
+                    u.Id,
+                    u.Nombre,
+                    u.Documento,
+                    Correo = u.CorreoElectronico,
+                    u.Telefono,
+                    u.Username,
+                    Rol = u.Rol.ToString(),
+                    Estado = u.Estado.ToString()
+                }).ToList();
+
+            EstilizarGrid();
+            AgregarColumnaEditar();
+        }
+
+        private void EstilizarGrid()
+        {
+            if (VistaGestion == null) return;
+            VistaGestion.dgvUsuarios.AutoSizeColumnsMode =
+                System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor =
+                System.Drawing.Color.FromArgb(240, 240, 240);
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.Font =
+                new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            VistaGestion.dgvUsuarios.EnableHeadersVisualStyles = false;
+            VistaGestion.dgvUsuarios.DefaultCellStyle.Font =
+                new System.Drawing.Font("Segoe UI", 9.5F);
+            VistaGestion.dgvUsuarios.RowTemplate.Height = 32;
+            VistaGestion.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
+        }
+
+        private void AgregarColumnaEditar()
+        {
+            if (VistaGestion == null) return;
+
+            if (VistaGestion.dgvUsuarios.Columns.Contains("Acciones"))
+                VistaGestion.dgvUsuarios.Columns.Remove("Acciones");
+
+            var colBtn = new System.Windows.Forms.DataGridViewButtonColumn
+            {
+                Name = "Acciones",
+                HeaderText = "Acciones",
+                Text = "Editar",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                Width = 90,
+                DefaultCellStyle =
+                {
+                    BackColor = System.Drawing.Color.FromArgb(16, 185, 129),
+                    ForeColor = System.Drawing.Color.White,
+                    Font      = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold),
+                    Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+                }
+            };
+
+            VistaGestion.dgvUsuarios.Columns.Add(colBtn);
+        }
+
+        private void BuscarUsuario()
+        {
+            if (VistaGestion == null) return;
+
+            string termino = VistaGestion.textBox1.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(termino)) { CargarGrid(); return; }
+
+            VistaGestion.dgvUsuarios.DataSource = null;
+            VistaGestion.dgvUsuarios.DataSource = usuarios
+                .Where(u => u.Nombre.ToLower().Contains(termino) ||
+                            u.Username.ToLower().Contains(termino) ||
+                            u.Documento.ToLower().Contains(termino))
+                .Select(u => new
+                {
+                    u.Id,
+                    u.Nombre,
+                    u.Documento,
+                    Correo = u.CorreoElectronico,
+                    u.Telefono,
+                    u.Username,
+                    Rol = u.Rol.ToString(),
+                    Estado = u.Estado.ToString()
+                }).ToList();
+
+            EstilizarGrid();
+            AgregarColumnaEditar();
+        }
+
+        private void EditarUsuario(int id)
+        {
+            if (VistaGestion == null) return;
+
+            Usuario? u = usuarios.FirstOrDefault(x => x.Id == id);
+            if (u == null) return;
+
+            string[]? datos = VistaGestion.MostrarPopupEditar(
+                u.Nombre, u.Documento, u.Telefono,
+                u.CorreoElectronico, u.Direccion,
+                u.Username, u.Rol.ToString());
+
+            if (datos == null) return;
+
+            try
+            {
+                // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Rol
+                u.Nombre = datos[0];
+                u.Documento = datos[1];
+                u.Telefono = datos[2];
+                u.CorreoElectronico = datos[3];
+                u.Direccion = datos[4];
+                u.Username = datos[5];
+                u.Rol = datos[6] == "Administrador"
+                    ? Rol.Administrador : Rol.Usuario;
+
+                Save();
+                usuarios = dataManager.GetAll();
+                CargarGrid();
+
+                MessageBox.Show("Usuario actualizado correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AgregarUsuario()
+        {
+            if (VistaGestion == null)
+                return;
+
+            string[]? datos = VistaGestion.MostrarPopupAgregar();
+
+            if (datos == null)
+                return;
+
+            try
+            {
+                Usuario usuario = new Usuario
+                {
+                    Id = dataManager.GetNextId(),
+                    Nombre = datos[0],
+                    Documento = datos[1],
+                    Telefono = datos[2],
+                    CorreoElectronico = datos[3],
+                    Direccion = datos[4],
+                    Username = datos[5],
+                    Rol = datos[7] == "Administrador"
+                        ? Rol.Administrador
+                        : Rol.Usuario,
+                    Estado = EstadoUsuario.Activo
+                };
+
+                Add(usuario, datos[6]);
+
+                usuarios = dataManager.GetAll();
+
+                CargarGrid();
+
+                MessageBox.Show(
+                    "Usuario agregado correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -110,7 +352,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             {
                 Autenticar();
             };
-            
+
             VistaLogin.chkMostrar.CheckedChanged += (sender, e) =>
             {
                 VistaLogin.txtContraseña.PasswordChar = VistaLogin.chkMostrar.Checked ? '\0' : '●';

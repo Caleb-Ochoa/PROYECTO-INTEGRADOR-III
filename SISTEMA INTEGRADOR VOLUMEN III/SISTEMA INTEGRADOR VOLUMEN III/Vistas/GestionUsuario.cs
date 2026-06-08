@@ -167,6 +167,23 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     return;
                 }
 
+                // Validar contraseña ANTES de cerrar el popup
+                if (!esEdicion)
+                {
+                    try
+                    {
+                        SISTEMA_INTEGRADOR_VOLUMEN_III.Services.AuthService
+                            .ValidarPassword(txtPassword!.Text);
+                    }
+                    catch (Exception exVal)
+                    {
+                        MessageBox.Show(exVal.Message, "Contraseña inválida",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtPassword!.Focus();
+                        return;  // NO cerrar el popup
+                    }
+                }
+
                 if (esEdicion)
                 {
                     // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Rol
@@ -192,7 +209,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                         txtCorreo.Text.Trim(),
                         txtDireccion.Text.Trim(),
                         txtUsername.Text.Trim(),
-                        txtPassword!.Text.Trim(),
+                        txtPassword!.Text,
                         cmbRol.SelectedItem?.ToString() ?? "Usuario"
                     };
                 }
@@ -202,6 +219,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(btnCancelar);
             popup.Controls.Add(btnGuardar);
             popup.ClientSize = new Size(420, y + 50);
+
+            // Dar foco al primer campo al abrir para que el teclado funcione bien
+            popup.Shown += (s, e) => txtNombre.Focus();
+
             popup.ShowDialog(this);
 
             return resultado;
@@ -240,7 +261,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             string placeholder, ref int y)
         {
             var tb = AgregarCampo(popup, etiqueta, placeholder, "", ref y);
-            tb.PasswordChar = '●';
+            tb.PasswordChar = '*';
             return tb;
         }
     }

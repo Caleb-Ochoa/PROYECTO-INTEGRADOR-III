@@ -38,52 +38,64 @@
             // 
             // dgvUsuarios
             // 
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvUsuarios.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvUsuarios.BackgroundColor = Color.White;
+            dgvUsuarios.BorderStyle = BorderStyle.None;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(0, 55);
             dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(800, 459);
             dgvUsuarios.TabIndex = 3;
             // 
             // btnBuscar
             // 
-            btnBuscar.BackColor = SystemColors.ActiveCaption;
+            btnBuscar.BackColor = Color.WhiteSmoke;
+            btnBuscar.FlatAppearance.BorderColor = Color.LightGray;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Segoe UI", 10F);
-            btnBuscar.Location = new Point(302, 12);
+            btnBuscar.Location = new Point(248, 14);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(37, 28);
+            btnBuscar.Size = new Size(36, 34);
             btnBuscar.TabIndex = 2;
             btnBuscar.Text = "🔍";
             btnBuscar.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(20, 15);
+            textBox1.Location = new Point(22, 22);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(276, 23);
+            textBox1.PlaceholderText = "Buscar usuario...";
+            textBox1.Size = new Size(220, 23);
             textBox1.TabIndex = 1;
             // 
             // btnAgregarUsuarios
             // 
+            btnAgregarUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarUsuarios.BackColor = Color.Blue;
             btnAgregarUsuarios.FlatStyle = FlatStyle.Flat;
             btnAgregarUsuarios.Font = new Font("Microsoft Sans Serif", 8.25F);
             btnAgregarUsuarios.ForeColor = Color.White;
             btnAgregarUsuarios.Location = new Point(620, 12);
             btnAgregarUsuarios.Name = "btnAgregarUsuarios";
-            btnAgregarUsuarios.Size = new Size(160, 34);
+            btnAgregarUsuarios.Size = new Size(160, 39);
             btnAgregarUsuarios.TabIndex = 4;
             btnAgregarUsuarios.Text = "+ Agregar Usuario";
             btnAgregarUsuarios.UseVisualStyleBackColor = false;
             // 
             // btnLimpiarGestionUsuarios
             // 
-            btnLimpiarGestionUsuarios.BackColor = SystemColors.ActiveCaption;
+            btnLimpiarGestionUsuarios.BackColor = Color.WhiteSmoke;
+            btnLimpiarGestionUsuarios.FlatAppearance.BorderColor = Color.LightGray;
+            btnLimpiarGestionUsuarios.FlatStyle = FlatStyle.Flat;
             btnLimpiarGestionUsuarios.Font = new Font("Segoe UI", 10F);
-            btnLimpiarGestionUsuarios.Location = new Point(345, 12);
+            btnLimpiarGestionUsuarios.Location = new Point(290, 14);
             btnLimpiarGestionUsuarios.Name = "btnLimpiarGestionUsuarios";
-            btnLimpiarGestionUsuarios.Size = new Size(35, 28);
+            btnLimpiarGestionUsuarios.Size = new Size(36, 34);
             btnLimpiarGestionUsuarios.TabIndex = 5;
             btnLimpiarGestionUsuarios.Text = "✕";
             btnLimpiarGestionUsuarios.UseVisualStyleBackColor = false;
@@ -107,10 +119,10 @@
         }
 
         #endregion
-        private Button btnBuscar;
-        private TextBox textBox1;
         public DataGridView dgvUsuarios;
-        private Button btnAgregarUsuarios;
-        private Button btnLimpiarGestionUsuarios;
+        public Button btnBuscar;
+        public TextBox textBox1;
+        public Button btnAgregarUsuarios;
+        public Button btnLimpiarGestionUsuarios;
     }
 }

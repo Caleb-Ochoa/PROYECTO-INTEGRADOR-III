@@ -41,7 +41,7 @@
             dvgClientes.AllowUserToAddRows = false;
             dvgClientes.AllowUserToDeleteRows = false;
             dvgClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dvgClientes.BackgroundColor = Color.WhiteSmoke;
+            dvgClientes.BackgroundColor = Color.White;
             dvgClientes.BorderStyle = BorderStyle.None;
             dvgClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dvgClientes.Location = new Point(0, 62);

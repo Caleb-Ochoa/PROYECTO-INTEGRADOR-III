@@ -22,9 +22,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             {
                 txtNombreCompleto.Text.Trim(),// line[0]
                 txtDocumentoAdmin.Text.Trim(),           // line[1]
-                txtDireccion.Text.Trim(),     // line[1] (En tu captura se ve "txtUsuarioAdmin" arriba a la derecha)
-                txtCorreoAdmin.Text.Trim(),
+                txtCorreoAdmin.Text.Trim(),     // line[1] (En tu captura se ve "txtUsuarioAdmin" arriba a la derecha)
                 txtTelefonoAdmin.Text.Trim(),
+                txtDireccion.Text.Trim(),
                 txtUsuarioAdmin.Text.Trim(),
                 txtContraseñaAdmin.Text,                // line[3]
                 txtConfirmarContraseña.Text        // line[4]

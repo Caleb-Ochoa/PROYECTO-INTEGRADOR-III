@@ -63,6 +63,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnGUsuarios.Size = new Size(155, 30);
             btnGUsuarios.TabIndex = 10;
             btnGUsuarios.Text = " 👤 Gestion Usuario";
+            btnGUsuarios.Click += btnGUsuario_Click;
             // 
             // btnCotizacion
             // 
@@ -103,6 +104,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = " 🚪 CERRAR SESIÓN";
             btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // btnCambiarContraseña
             // 
@@ -274,14 +276,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
 
         #endregion
-        private Button btnGUsuarios;
-        private Button btnCotizacion;
-        private Button btnTerreno;
-        private Button btnFactura;
         private Button btnCerrarSesion;
         private Button btnClientes;
-        private Button btnMateriales;
-        private Button btnCambiarContraseña;
         private SplitContainer splitContainer1;
         private Panel pnlContenido;
         private Panel pnlEncabezado;
@@ -292,8 +288,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Panel panel1;
         private Button btnConfiguracion;
         private Button btnIdioma;
-
-
-
+        public Button btnGUsuarios;
+        public Button btnCotizacion;
+        public Button btnTerreno;
+        public Button btnFactura;
+        public Button btnMateriales;
+        public Button btnCambiarContraseña;
     }
 }

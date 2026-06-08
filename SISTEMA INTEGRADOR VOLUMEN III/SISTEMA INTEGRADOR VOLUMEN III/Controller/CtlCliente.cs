@@ -222,7 +222,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 {
                     c.Id,
                     c.Nombre,
-                    Identificacion = c.Documento,
+                    c.Documento,
                     c.Telefono,
                     Correo = c.CorreoElectronico,
                     Registro = c.FechaRegistro.ToString("dd/MM/yyyy")

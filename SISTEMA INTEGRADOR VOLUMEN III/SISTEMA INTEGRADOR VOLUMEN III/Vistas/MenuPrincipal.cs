@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 {
-    internal partial class MenuPrincipal : Form
+    internal partial class  MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
         private AuthService authService;
@@ -110,7 +110,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             GestionUsuario vista = new GestionUsuario();
 
-            IRepository<Usuario> repo =new RepositorioFile<Usuario>("clientes.txt", Usuario.FromText);
+            IRepository<Usuario> repo =new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
 
             DataManager<Usuario> dm =new DataManager<Usuario>(repo);
 
@@ -118,7 +118,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             IAuthService authService =new AuthService(dm, hashService);
 
-            CtlUsuario controlador = new CtlUsuario(dm, authService, false);
+            CtlUsuario controlador = new CtlUsuario(dm, authService, vista);
 
             AbrirFormulario(vista);
         }
