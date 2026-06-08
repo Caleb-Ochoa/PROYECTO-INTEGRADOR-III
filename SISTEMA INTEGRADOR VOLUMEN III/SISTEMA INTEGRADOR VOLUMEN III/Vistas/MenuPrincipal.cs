@@ -25,7 +25,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
-            authService = new AuthService();
+   
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -110,11 +110,15 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             GestionUsuario vista = new GestionUsuario();
 
-            IRepository<Usuario> repo = new RepositorioFile<Usuario>("GestionUsuario.txt", Usuario.FromText);
+            IRepository<Usuario> repo =new RepositorioFile<Usuario>("clientes.txt", Usuario.FromText);
 
-            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
+            DataManager<Usuario> dm =new DataManager<Usuario>(repo);
 
-            CtlUsuario controlador = new CtlUsuario(dm, authService);
+            IHashService hashService =new HashService();
+
+            IAuthService authService =new AuthService(dm, hashService);
+
+            CtlUsuario controlador = new CtlUsuario(dm, authService, false);
 
             AbrirFormulario(vista);
         }

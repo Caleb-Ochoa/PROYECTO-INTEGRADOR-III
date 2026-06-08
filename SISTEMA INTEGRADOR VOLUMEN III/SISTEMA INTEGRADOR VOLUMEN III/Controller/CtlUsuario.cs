@@ -22,19 +22,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         public Usuario? UsuarioAutenticado { get; private set; }
 
-        public CtlUsuario(DataManager<Usuario> dataManager, IAuthService authService)
+        public CtlUsuario(DataManager<Usuario> dataManager,IAuthService authService,
+                bool iniciarFlujoLogin = true)
         {
             this.dataManager = dataManager;
             this.authService = authService;
             usuarios = dataManager.GetAll();
 
-            // ── Decisión: ¿hay algún administrador registrado? ───────────
-            bool hayAdmin = usuarios.Any(u => u.Rol == Rol.Administrador);
+            if (iniciarFlujoLogin)
+            {
+                bool hayAdmin = usuarios.Any(u => u.Rol == Rol.Administrador);
 
-            if (!hayAdmin)
-                AbrirRegistroAdmin();
-            else
-                AbrirLogin();
+                if (!hayAdmin)
+                    AbrirRegistroAdmin();
+                else
+                    AbrirLogin();
+            }
         }
 
         // ── FLUJO 1: Primer uso — registrar administrador ────────────────
