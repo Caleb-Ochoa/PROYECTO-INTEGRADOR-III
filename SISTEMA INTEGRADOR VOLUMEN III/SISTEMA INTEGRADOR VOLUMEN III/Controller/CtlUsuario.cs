@@ -87,15 +87,42 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             // Click en columna Editar del grid
             VistaGestion.dgvUsuarios.CellClick += (s, e) =>
             {
-                if (e.RowIndex < 0) return;
-                if (VistaGestion.dgvUsuarios.Columns[e.ColumnIndex].Name != "Acciones") return;
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
+                string colName = VistaGestion.dgvUsuarios.Columns[e.ColumnIndex].Name;
                 var celda = VistaGestion.dgvUsuarios.Rows[e.RowIndex].Cells["Id"];
                 if (celda?.Value == null) return;
 
                 int id = (int)celda.Value;
-                EditarUsuario(id);
+
+                if (colName == "Acciones")
+                    EditarUsuario(id);
+                else if (colName == "ResetPass")
+                    RestablecerPassword(id);
             };
+        }
+
+        private void RestablecerPassword(int id)
+        {
+            if (VistaGestion == null) return;
+
+            Usuario? u = usuarios.FirstOrDefault(x => x.Id == id);
+            if (u == null) return;
+
+            string? nuevaPassword = VistaGestion.MostrarPopupRestablecerPassword(u.Nombre);
+            if (nuevaPassword == null) return;
+
+            try
+            {
+                authService.RestablecerPassword(u, nuevaPassword);
+                MessageBox.Show($"Contraseña de {u.Nombre} restablecida correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void CargarGrid()
         {
@@ -145,24 +172,44 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (VistaGestion.dgvUsuarios.Columns.Contains("Acciones"))
                 VistaGestion.dgvUsuarios.Columns.Remove("Acciones");
 
-            var colBtn = new System.Windows.Forms.DataGridViewButtonColumn
+            if (VistaGestion.dgvUsuarios.Columns.Contains("ResetPass"))
+                VistaGestion.dgvUsuarios.Columns.Remove("ResetPass");
+
+            // Botón Editar — verde
+            VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "Acciones",
-                HeaderText = "Acciones",
+                HeaderText = "Editar",
                 Text = "Editar",
                 UseColumnTextForButtonValue = true,
-                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
-                Width = 90,
+                FlatStyle = FlatStyle.Flat,
+                Width = 80,
                 DefaultCellStyle =
-                {
-                    BackColor = System.Drawing.Color.FromArgb(16, 185, 129),
-                    ForeColor = System.Drawing.Color.White,
-                    Font      = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold),
-                    Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-                }
-            };
+        {
+            BackColor = Color.FromArgb(16, 185, 129),
+            ForeColor = Color.White,
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
+            });
 
-            VistaGestion.dgvUsuarios.Columns.Add(colBtn);
+            // Botón Restablecer — rojo
+            VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = "ResetPass",
+                HeaderText = "Contraseña",
+                Text = "Restablecer",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = FlatStyle.Flat,
+                Width = 110,
+                DefaultCellStyle =
+        {
+            BackColor = Color.FromArgb(220, 38, 38),
+            ForeColor = Color.White,
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
+            });
         }
 
         private void BuscarUsuario()

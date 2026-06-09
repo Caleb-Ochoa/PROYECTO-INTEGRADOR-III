@@ -55,7 +55,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             // ── Click en fila del grid para editar ────────────────────────
             Vista.GetGrid().CellClick += (s, e) =>
             {
-                if (e.RowIndex < 0) return;
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
                 if (Vista.GetGrid().Columns[e.ColumnIndex].Name != "Acciones") return;
 
                 var celda = Vista.GetGrid().Rows[e.RowIndex].Cells["Id"];

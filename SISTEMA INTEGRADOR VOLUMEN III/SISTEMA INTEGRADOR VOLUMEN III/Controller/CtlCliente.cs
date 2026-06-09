@@ -199,7 +199,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         private void GridCellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
             if (Vista.dvgClientes.Columns[e.ColumnIndex].Name != "Acciones") return;
 
             var celda = Vista.dvgClientes.Rows[e.RowIndex].Cells["Id"];
