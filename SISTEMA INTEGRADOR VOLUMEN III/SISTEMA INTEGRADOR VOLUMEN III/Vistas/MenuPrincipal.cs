@@ -52,14 +52,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
         public void AbrirFormulario(Form formulario)
         {
-           
+            splitContainer1.Panel2.Controls.Clear();
 
-            formulario.TopLevel = false;  // que no abra como ventana nueva
-            formulario.FormBorderStyle = FormBorderStyle.None; // sin bordes
-            formulario.Dock = DockStyle.Fill; // ocupa todo el panel
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
 
             splitContainer1.Panel2.Controls.Add(formulario);
-            
+            formulario.Show();
         }
         private void button3_Click(object sender, EventArgs e)
         {

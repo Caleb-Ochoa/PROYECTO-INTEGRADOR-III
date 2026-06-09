@@ -52,6 +52,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // btnGUsuarios
             // 
+            btnGUsuarios.BackColor = SystemColors.Control;
             btnGUsuarios.Font = new Font("Segoe UI", 10F);
             btnGUsuarios.Location = new Point(12, 17);
             btnGUsuarios.Name = "btnGUsuarios";
@@ -59,6 +60,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnGUsuarios.TabIndex = 10;
             btnGUsuarios.Text = " 👤 Gestion Usuario";
             btnGUsuarios.TextAlign = ContentAlignment.TopLeft;
+            btnGUsuarios.UseVisualStyleBackColor = false;
             btnGUsuarios.Click += btnGUsuario_Click;
             // 
             // btnCotizacion
@@ -97,11 +99,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCerrarSesion
             // 
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
-            btnCerrarSesion.Location = new Point(757, 45);
+            btnCerrarSesion.Location = new Point(821, 52);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(140, 30);
+            btnCerrarSesion.Size = new Size(123, 30);
             btnCerrarSesion.TabIndex = 5;
             btnCerrarSesion.Text = " 🚪 CERRAR SESIÓN";
+            btnCerrarSesion.TextAlign = ContentAlignment.TopLeft;
             btnCerrarSesion.UseVisualStyleBackColor = true;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
@@ -110,7 +113,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCambiarContraseña.Font = new Font("Segoe UI", 9F);
             btnCambiarContraseña.Location = new Point(12, 339);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
-            btnCambiarContraseña.Size = new Size(166, 26);
+            btnCambiarContraseña.Size = new Size(166, 27);
             btnCambiarContraseña.TabIndex = 9;
             btnCambiarContraseña.Text = " 🔑  Cambiar Contraseña";
             btnCambiarContraseña.TextAlign = ContentAlignment.TopLeft;
@@ -183,7 +186,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;
             btnConfiguracion.FlatStyle = FlatStyle.Flat;
             btnConfiguracion.Font = new Font("Segoe UI", 14F);
-            btnConfiguracion.Location = new Point(831, 6);
+            btnConfiguracion.Location = new Point(892, 10);
             btnConfiguracion.Name = "btnConfiguracion";
             btnConfiguracion.Size = new Size(52, 36);
             btnConfiguracion.TabIndex = 6;
