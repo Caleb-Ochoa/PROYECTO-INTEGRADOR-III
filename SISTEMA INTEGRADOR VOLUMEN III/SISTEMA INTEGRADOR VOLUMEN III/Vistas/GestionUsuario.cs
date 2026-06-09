@@ -264,5 +264,109 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             tb.PasswordChar = '*';
             return tb;
         }
+
+        public string? MostrarPopupRestablecerPassword(string nombreUsuario)
+        {
+            string? nuevaPassword = null;
+
+            using Form popup = new Form
+            {
+                Text = "Restablecer Contraseña",
+                Size = new Size(420, 280),
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                BackColor = Color.White
+            };
+
+            var lblTitulo = new Label
+            {
+                Text = "Restablecer Contraseña",
+                Font = new Font("Segoe UI", 13F, FontStyle.Bold),
+                Location = new Point(20, 15),
+                AutoSize = true,
+                ForeColor = Color.FromArgb(30, 30, 30)
+            };
+            var lblSub = new Label
+            {
+                Text = $"Nueva contraseña para: {nombreUsuario}",
+                Font = new Font("Segoe UI", 9F),
+                ForeColor = Color.Gray,
+                Location = new Point(20, 44),
+                AutoSize = true
+            };
+            popup.Controls.Add(lblTitulo);
+            popup.Controls.Add(lblSub);
+
+            int y = 80;
+            var txtNueva = AgregarCampoPassword(popup, "Nueva contraseña", "Mínimo 8 caracteres", ref y);
+            var txtConfirmar = AgregarCampoPassword(popup, "Confirmar contraseña", "Repite la contraseña", ref y);
+
+            var btnCancelar = new Button
+            {
+                Text = "Cancelar",
+                Size = new Size(100, 35),
+                Location = new Point(190, y + 8),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(80, 80, 80),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9.5F)
+            };
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.Click += (s, e) => popup.Close();
+
+            var btnRestablecer = new Button
+            {
+                Text = "Restablecer",
+                Size = new Size(110, 35),
+                Location = new Point(300, y + 8),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(220, 38, 38),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9.5F, FontStyle.Bold)
+            };
+            btnRestablecer.FlatAppearance.BorderSize = 0;
+            btnRestablecer.Click += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(txtNueva.Text) ||
+                    string.IsNullOrWhiteSpace(txtConfirmar.Text))
+                {
+                    MessageBox.Show("Todos los campos son obligatorios.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (txtNueva.Text != txtConfirmar.Text)
+                {
+                    MessageBox.Show("Las contraseñas no coinciden.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                try
+                {
+                    Services.AuthService.ValidarPassword(txtNueva.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Contraseña inválida",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNueva.Focus();
+                    return;
+                }
+
+                nuevaPassword = txtNueva.Text;
+                popup.Close();
+            };
+
+            popup.Controls.Add(btnCancelar);
+            popup.Controls.Add(btnRestablecer);
+            popup.ClientSize = new Size(420, y + 65);
+            popup.Shown += (s, e) => txtNueva.Focus();
+            popup.ShowDialog(this);
+
+            return nuevaPassword;
+        }
     }
 }   

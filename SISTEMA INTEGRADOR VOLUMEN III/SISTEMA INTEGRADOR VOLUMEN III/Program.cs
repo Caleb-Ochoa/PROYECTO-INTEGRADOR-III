@@ -15,29 +15,33 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         [STAThread]
         static void Main()
         {
-            
-
-
             ApplicationConfiguration.Initialize();
-            Idioma.Cargar("es"); // Carga el idioma al iniciar la aplicación);
+            Idioma.Cargar("es");
 
-            // 2. Crear las dependencias e infraestructura (Archivos, Repositorios, Servicios)
-            IRepository<Usuario> repoUsuario = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
-            DataManager<Usuario> dataManager = new DataManager<Usuario>(repoUsuario);
-            IHashService hashService = new HashService();
-            IAuthService authService = new AuthService(dataManager, hashService);
-
-            // 3. Pasarle el control al CtlUsuario
-            // Tu constructor de CtlUsuario ejecutará internamente el Application.Run() correcto
-            CtlUsuario ctlUsuario = new CtlUsuario(dataManager, authService);
-
-            // 4. [Opcional] Flujo posterior al Login exitoso
-            // Cuando las pantallas controladas por CtlUsuario se cierren con éxito, el código seguirá aquí:
-            if (ctlUsuario.UsuarioAutenticado != null)
+            // El loop principal corre aquí — nunca termina hasta que
+            // el usuario cierra la app completamente
+            while (true)
             {
-                // Aquí puedes iniciar tu formulario de menú principal si lo tienes, por ejemplo:
-                // Application.Run(new FrmMenuPrincipal(ctlUsuario.UsuarioAutenticado));
-                Application.Run(new MenuPrincipal(ctlUsuario.UsuarioAutenticado));
+                IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
+                DataManager<Usuario> dm = new DataManager<Usuario>(repo);
+                IHashService hash = new HashService();
+                IAuthService auth = new AuthService(dm, hash);
+
+                CtlUsuario ctlUsuario = new CtlUsuario(dm, auth);
+
+                if (ctlUsuario.UsuarioAutenticado == null)
+                    break;
+
+                MenuPrincipal menu = new MenuPrincipal(ctlUsuario.UsuarioAutenticado);
+
+                // Capturamos el valor ANTES de que el form se destruya
+                bool cerroSesion = false;
+                menu.FormClosed += (s, e) => cerroSesion = menu.CerroSesion;
+
+                Application.Run(menu);
+
+                if (!cerroSesion)
+                    break;
             }
         }
     }

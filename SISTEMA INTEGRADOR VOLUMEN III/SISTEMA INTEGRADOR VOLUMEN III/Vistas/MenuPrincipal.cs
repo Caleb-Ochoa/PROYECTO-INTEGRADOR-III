@@ -19,7 +19,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
-
+        public bool CerroSesion { get; private set; } = false;
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             // Botones exclusivos del admin
             btnGUsuarios.Visible = _usuario.Rol == Rol.Administrador;
-            btnCambiarContraseña.Visible = _usuario.Rol == Rol.Administrador;
+            btnCambiarContraseña.Visible = true;
 
             this.WindowState = FormWindowState.Maximized;
         }
@@ -134,20 +134,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         // ── Cerrar sesión ─────────────────────────────────────────────────
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
-            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
-            IHashService hash = new HashService();
-            IAuthService auth = new AuthService(dm, hash);
-            CtlUsuario ctlUsuario = new CtlUsuario(dm, auth);
-
-            if (ctlUsuario.UsuarioAutenticado != null)
-            {
-                MenuPrincipal nuevoMenu = new MenuPrincipal(ctlUsuario.UsuarioAutenticado);
-                nuevoMenu.Show();
-            }
-
+            CerroSesion = true;
             this.Close();
         }
 
