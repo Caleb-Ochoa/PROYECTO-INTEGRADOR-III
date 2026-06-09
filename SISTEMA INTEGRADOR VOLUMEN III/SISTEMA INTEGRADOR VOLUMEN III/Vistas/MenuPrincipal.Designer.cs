@@ -118,7 +118,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCambiarContraseña.Text = " 🔑  Cambiar Contraseña";
             btnCambiarContraseña.TextAlign = ContentAlignment.TopLeft;
             btnCambiarContraseña.UseVisualStyleBackColor = true;
-            btnCambiarContraseña.Click += button3_Click;
+            btnCambiarContraseña.Click += btnCambiarContraseña_Click;
             // 
             // btnMateriales
             // 

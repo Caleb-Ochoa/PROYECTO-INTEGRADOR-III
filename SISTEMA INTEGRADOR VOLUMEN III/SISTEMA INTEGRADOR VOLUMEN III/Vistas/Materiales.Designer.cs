@@ -50,6 +50,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(btnLimpiarMaterial);
             groupBox1.Controls.Add(btnGuardarMaterial);
             groupBox1.Controls.Add(txtCostoMaterial);
@@ -118,6 +119,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(btnLimpiarMateriales);
             groupBox2.Controls.Add(btnBuscarMateriales);
             groupBox2.Controls.Add(txtBuscarMateriales);
@@ -170,6 +172,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(20, 221);
             dataGridView1.Name = "dataGridView1";

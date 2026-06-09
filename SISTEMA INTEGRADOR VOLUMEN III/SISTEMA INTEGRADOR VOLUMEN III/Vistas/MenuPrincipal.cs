@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -18,18 +19,18 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
-        private AuthService authService;
 
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
-
         }
 
-        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        // ── Un solo Load, con el nombre correcto ──────────────────────────
+        private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+            // Rol e ícono
             if (_usuario.Rol == Rol.Administrador)
             {
                 lblAvatar.Text = "👑";
@@ -42,14 +43,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             }
 
             lblNombre.Text = $"Bienvenido, {_usuario.Nombre}";
-            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
 
-            // Ocultar botones admin si es usuario normal
+            // Fecha en español sin importar la configuración del PC
+            lblFecha.Text = DateTime.Now.ToString(
+                "dddd, dd 'de' MMMM 'de' yyyy",
+                new CultureInfo("es-CO"));
+
+            // Botones exclusivos del admin
             btnGUsuarios.Visible = _usuario.Rol == Rol.Administrador;
             btnCambiarContraseña.Visible = _usuario.Rol == Rol.Administrador;
 
             this.WindowState = FormWindowState.Maximized;
         }
+
+        // ── Abrir módulos en el panel derecho ─────────────────────────────
         public void AbrirFormulario(Form formulario)
         {
             splitContainer1.Panel2.Controls.Clear();
@@ -61,30 +68,18 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.Panel2.Controls.Add(formulario);
             formulario.Show();
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            // Este es tu botón de "Cambiar Contraseña" según tu Designer.
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            //lblRol.Text = usuario.Rol == Rol.Administrador ? "👑 Administrador" : "👤 Usuario";
-        }
+        // ── Clientes ──────────────────────────────────────────────────────
         private void btnClientes_Click(object sender, EventArgs e)
         {
-
             Clientes vista = new Clientes();
-
             IRepository<Cliente> repo = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
-
             DataManager<Cliente> dm = new DataManager<Cliente>(repo);
-
             CtlCliente controlador = new CtlCliente(dm, vista);
-
             AbrirFormulario(vista);
-
         }
 
+        // ── Materiales ────────────────────────────────────────────────────
         private void btnMateriales_Click(object sender, EventArgs e)
         {
             Materiales vista = new Materiales();
@@ -94,82 +89,75 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
+        // ── Terreno ───────────────────────────────────────────────────────
         private void btnTerreno_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new Terreno_y_Calculo());
         }
 
+        // ── Cotizaciones ──────────────────────────────────────────────────
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new Cotizaciones());
         }
 
+        // ── Facturas ──────────────────────────────────────────────────────
         private void btnFactura_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new Facturas());
         }
 
+        // ── Gestión de usuarios (solo admin) ──────────────────────────────
         private void btnGUsuario_Click(object sender, EventArgs e)
         {
             GestionUsuario vista = new GestionUsuario();
-
             IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
-
             DataManager<Usuario> dm = new DataManager<Usuario>(repo);
-
             IHashService hashService = new HashService();
-
             IAuthService authService = new AuthService(dm, hashService);
-
             CtlUsuario controlador = new CtlUsuario(dm, authService, vista);
-
             AbrirFormulario(vista);
         }
 
+        // ── Cambiar contraseña (solo admin) ───────────────────────────────
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new CambioContraseña());
+            CambioContraseña vista = new CambioContraseña();
+            IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
+            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
+            IHashService hash = new HashService();
+            IAuthService auth = new AuthService(dm, hash);
+            CtlCambioContraseña ctrl = new CtlCambioContraseña(auth, hash, _usuario, vista);
+            AbrirFormulario(vista);
         }
+
+        // ── Cerrar sesión ─────────────────────────────────────────────────
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            //Login login = new Login();
-            //login.Show();
-            //this.Close();
-
             this.Hide();
 
-            // Recrear el flujo completo de autenticación
-            IRepository<Usuario> repoUsuario = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
-            DataManager<Usuario> dataManager = new DataManager<Usuario>(repoUsuario);
-            IHashService hashService = new HashService();
-            IAuthService authService = new AuthService(dataManager, hashService);
-
-            CtlUsuario ctlUsuario = new CtlUsuario(dataManager, authService);
+            IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
+            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
+            IHashService hash = new HashService();
+            IAuthService auth = new AuthService(dm, hash);
+            CtlUsuario ctlUsuario = new CtlUsuario(dm, auth);
 
             if (ctlUsuario.UsuarioAutenticado != null)
             {
-                // Login exitoso: abrir un nuevo menú con el nuevo usuario
                 MenuPrincipal nuevoMenu = new MenuPrincipal(ctlUsuario.UsuarioAutenticado);
                 nuevoMenu.Show();
             }
 
-            // Cerrar este menú (ya sea que haya nuevo login o el usuario canceló)
             this.Close();
         }
 
+        // ── Configuración de idioma ───────────────────────────────────────
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             Idioma.MostrarSelector(this);
         }
 
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
     }
 }
