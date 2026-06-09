@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 {
-    internal partial class  MenuPrincipal : Form
+    internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
         private AuthService authService;
@@ -25,7 +25,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
-   
+
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -52,15 +52,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
         public void AbrirFormulario(Form formulario)
         {
-            if (pnlContenido.Controls.Count > 0) pnlContenido.Controls[0].Dispose();
+           
 
             formulario.TopLevel = false;  // que no abra como ventana nueva
             formulario.FormBorderStyle = FormBorderStyle.None; // sin bordes
             formulario.Dock = DockStyle.Fill; // ocupa todo el panel
 
-            pnlContenido.Controls.Add(formulario);
-            pnlContenido.Tag = formulario;
-            formulario.Show();
+            splitContainer1.Panel2.Controls.Add(formulario);
+            
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -110,13 +109,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             GestionUsuario vista = new GestionUsuario();
 
-            IRepository<Usuario> repo =new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
+            IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
 
-            DataManager<Usuario> dm =new DataManager<Usuario>(repo);
+            DataManager<Usuario> dm = new DataManager<Usuario>(repo);
 
-            IHashService hashService =new HashService();
+            IHashService hashService = new HashService();
 
-            IAuthService authService =new AuthService(dm, hashService);
+            IAuthService authService = new AuthService(dm, hashService);
 
             CtlUsuario controlador = new CtlUsuario(dm, authService, vista);
 
@@ -160,6 +159,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
         }

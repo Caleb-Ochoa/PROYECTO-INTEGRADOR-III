@@ -89,6 +89,7 @@
             chkMostrar.TabIndex = 4;
             chkMostrar.Text = "Mostrar Contraseña";
             chkMostrar.UseVisualStyleBackColor = true;
+            chkMostrar.CheckedChanged += chkMostrar_CheckedChanged;
             // 
             // btnIngresarSesion
             // 

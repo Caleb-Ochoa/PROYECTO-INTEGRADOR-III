@@ -64,5 +64,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             Idioma.MostrarSelector(this);
 
         }
+
+        private void chkMostrar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -348,14 +348,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             VistaLogin = new Login();
 
-            VistaLogin.btnIngresarSesion.Click += (sender, e) =>
-            {
-                Autenticar();
-            };
+            VistaLogin.txtContraseña.UseSystemPasswordChar = true;
 
             VistaLogin.chkMostrar.CheckedChanged += (sender, e) =>
             {
-                VistaLogin.txtContraseña.PasswordChar = VistaLogin.chkMostrar.Checked ? '\0' : '●';
+                VistaLogin.txtContraseña.UseSystemPasswordChar = !VistaLogin.chkMostrar.Checked;
+            };
+
+            VistaLogin.btnIngresarSesion.Click += (sender, e) =>
+            {
+                Autenticar();
             };
 
             //Application.Run(VistaLogin);
