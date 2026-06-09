@@ -130,6 +130,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnMateriales.Text = "📦 Materiales";
             btnMateriales.TextAlign = ContentAlignment.TopLeft;
             btnMateriales.UseVisualStyleBackColor = true;
+            btnMateriales.Click += btnMateriales_Click;
             // 
             // btnClientes
             // 

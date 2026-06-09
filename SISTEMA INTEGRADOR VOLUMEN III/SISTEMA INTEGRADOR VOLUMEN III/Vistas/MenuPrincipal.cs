@@ -87,7 +87,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         private void btnMateriales_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Materiales());
+            Materiales vista = new Materiales();
+            IRepository<Material> repo = new RepositorioFile<Material>("materiales.txt", Material.FromText);
+            DataManager<Material> dm = new DataManager<Material>(repo);
+            CtlMaterial controlador = new CtlMaterial(dm, vista);
+            AbrirFormulario(vista);
         }
 
         private void btnTerreno_Click(object sender, EventArgs e)

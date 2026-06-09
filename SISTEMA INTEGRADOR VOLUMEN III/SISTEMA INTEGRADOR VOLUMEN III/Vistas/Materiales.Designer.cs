@@ -36,11 +36,11 @@
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
             btnLimpiarMateriales = new Button();
             btnBuscarMateriales = new Button();
             txtBuscarMateriales = new TextBox();
             label3 = new Label();
+            dataGridView1 = new DataGridView();
             panelmateriales = new Panel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -130,14 +130,6 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Materiales Registrados";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(20, 221);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(766, 293);
-            dataGridView1.TabIndex = 4;
-            // 
             // btnLimpiarMateriales
             // 
             btnLimpiarMateriales.BackColor = SystemColors.ActiveCaption;
@@ -176,6 +168,14 @@
             label3.TabIndex = 0;
             label3.Text = "Buscar:";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(20, 221);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(766, 293);
+            dataGridView1.TabIndex = 4;
+            // 
             // panelmateriales
             // 
             panelmateriales.Controls.Add(dataGridView1);
@@ -209,16 +209,16 @@
         private GroupBox groupBox1;
         private Label label2;
         private Label label1;
-        private Button btnLimpiarMaterial;
-        private Button btnGuardarMaterial;
         private TextBox txtCostoMaterial;
         private TextBox txtNombreMaterial;
         private GroupBox groupBox2;
         private DataGridView dataGridView1;
-        private Button btnLimpiarMateriales;
-        private Button btnBuscarMateriales;
-        private TextBox txtBuscarMateriales;
         private Label label3;
         private Panel panelmateriales;
+        public Button btnLimpiarMateriales;
+        public Button btnBuscarMateriales;
+        public TextBox txtBuscarMateriales;
+        public Button btnLimpiarMaterial;
+        public Button btnGuardarMaterial;
     }
 }
