@@ -140,7 +140,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // splitContainer1
             // 
-            splitContainer1.Location = new Point(12, 99);
+            splitContainer1.Dock = DockStyle.Left;
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -149,9 +149,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Panel1.Controls.Add(panel1);
             splitContainer1.Panel2.Controls.Add(pnlContenido);
-            splitContainer1.Size = new Size(719, 423);
-            splitContainer1.SplitterDistance = 190;
+            splitContainer1.SplitterDistance = 210;
+            splitContainer1.FixedPanel = FixedPanel.Panel1;   // ← panel izquierdo fijo
+            splitContainer1.IsSplitterFixed = true;            // ← no se puede mover
             splitContainer1.TabIndex = 10;
             // 
             // panel1
@@ -163,7 +167,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             panel1.Controls.Add(btnMateriales);
             panel1.Controls.Add(btnCotizacion);
             panel1.Controls.Add(btnTerreno);
-            panel1.Dock = DockStyle.Left;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(184, 423);
@@ -240,9 +244,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             lblNombre.Font = new Font("Segoe UI", 12F);
             lblNombre.Location = new Point(66, 15);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(140, 21);
+            lblNombre.Size = new Size(87, 21);
             lblNombre.TabIndex = 1;
-            lblNombre.Text = "Bienvenido, Admin";
+            lblNombre.Text = "Bienvenido";
             // 
             // lblAvatar
             // 
@@ -259,8 +263,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(761, 534);
-            Controls.Add(pnlEncabezado);
             Controls.Add(splitContainer1);
+            Controls.Add(pnlEncabezado);
             Name = "MenuPrincipal";
             Text = "e";
             WindowState = FormWindowState.Maximized;

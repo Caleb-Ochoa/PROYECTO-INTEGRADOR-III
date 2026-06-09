@@ -41,9 +41,11 @@
             btnBuscarMateriales = new Button();
             txtBuscarMateriales = new TextBox();
             label3 = new Label();
+            panelmateriales = new Panel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panelmateriales.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -55,9 +57,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 10F);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(10, 11);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 136);
+            groupBox1.Size = new Size(779, 136);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del Material";
@@ -116,15 +118,14 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
             groupBox2.Controls.Add(btnLimpiarMateriales);
             groupBox2.Controls.Add(btnBuscarMateriales);
             groupBox2.Controls.Add(txtBuscarMateriales);
             groupBox2.Controls.Add(label3);
             groupBox2.Font = new Font("Segoe UI", 10F);
-            groupBox2.Location = new Point(12, 166);
+            groupBox2.Location = new Point(10, 153);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(776, 347);
+            groupBox2.Size = new Size(779, 367);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Materiales Registrados";
@@ -132,9 +133,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 68);
+            dataGridView1.Location = new Point(20, 221);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(747, 273);
+            dataGridView1.Size = new Size(766, 293);
             dataGridView1.TabIndex = 4;
             // 
             // btnLimpiarMateriales
@@ -175,13 +176,23 @@
             label3.TabIndex = 0;
             label3.Text = "Buscar:";
             // 
+            // panelmateriales
+            // 
+            panelmateriales.Controls.Add(dataGridView1);
+            panelmateriales.Controls.Add(groupBox1);
+            panelmateriales.Controls.Add(groupBox2);
+            panelmateriales.Dock = DockStyle.Fill;
+            panelmateriales.Location = new Point(0, 0);
+            panelmateriales.Name = "panelmateriales";
+            panelmateriales.Size = new Size(800, 525);
+            panelmateriales.TabIndex = 2;
+            // 
             // Materiales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 525);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(panelmateriales);
             Name = "Materiales";
             Text = "Materiales";
             groupBox1.ResumeLayout(false);
@@ -189,6 +200,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panelmateriales.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -207,5 +219,6 @@
         private Button btnBuscarMateriales;
         private TextBox txtBuscarMateriales;
         private Label label3;
+        private Panel panelmateriales;
     }
 }

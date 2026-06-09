@@ -129,8 +129,28 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         }
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            //Login login = new Login();
+            //login.Show();
+            //this.Close();
+
+            this.Hide();
+
+            // Recrear el flujo completo de autenticación
+            IRepository<Usuario> repoUsuario = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);
+            DataManager<Usuario> dataManager = new DataManager<Usuario>(repoUsuario);
+            IHashService hashService = new HashService();
+            IAuthService authService = new AuthService(dataManager, hashService);
+
+            CtlUsuario ctlUsuario = new CtlUsuario(dataManager, authService);
+
+            if (ctlUsuario.UsuarioAutenticado != null)
+            {
+                // Login exitoso: abrir un nuevo menú con el nuevo usuario
+                MenuPrincipal nuevoMenu = new MenuPrincipal(ctlUsuario.UsuarioAutenticado);
+                nuevoMenu.Show();
+            }
+
+            // Cerrar este menú (ya sea que haya nuevo login o el usuario canceló)
             this.Close();
         }
 

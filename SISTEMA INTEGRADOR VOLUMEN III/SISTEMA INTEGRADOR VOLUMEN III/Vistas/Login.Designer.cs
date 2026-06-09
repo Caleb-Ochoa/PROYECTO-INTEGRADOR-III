@@ -47,7 +47,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(146, 203);
+            label1.Location = new Point(145, 203);
             label1.Name = "label1";
             label1.Size = new Size(56, 19);
             label1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(146, 265);
+            label2.Location = new Point(145, 265);
             label2.Name = "label2";
             label2.Size = new Size(79, 19);
             label2.TabIndex = 1;
@@ -66,7 +66,7 @@
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Segoe UI", 10F);
-            txtUsuario.Location = new Point(146, 225);
+            txtUsuario.Location = new Point(145, 225);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(225, 25);
             txtUsuario.TabIndex = 2;
@@ -74,7 +74,7 @@
             // txtContraseña
             // 
             txtContraseña.Font = new Font("Segoe UI", 10F);
-            txtContraseña.Location = new Point(146, 287);
+            txtContraseña.Location = new Point(145, 287);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(225, 25);
             txtContraseña.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             chkMostrar.AutoSize = true;
             chkMostrar.Font = new Font("Segoe UI", 9F);
-            chkMostrar.Location = new Point(146, 318);
+            chkMostrar.Location = new Point(145, 318);
             chkMostrar.Name = "chkMostrar";
             chkMostrar.Size = new Size(130, 19);
             chkMostrar.TabIndex = 4;
@@ -94,7 +94,7 @@
             // 
             btnIngresarSesion.BackColor = SystemColors.ActiveCaption;
             btnIngresarSesion.Font = new Font("Segoe UI", 10F);
-            btnIngresarSesion.Location = new Point(146, 380);
+            btnIngresarSesion.Location = new Point(145, 380);
             btnIngresarSesion.Name = "btnIngresarSesion";
             btnIngresarSesion.Size = new Size(225, 31);
             btnIngresarSesion.TabIndex = 5;
@@ -124,7 +124,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 8F);
-            label3.Location = new Point(121, 148);
+            label3.Location = new Point(132, 147);
             label3.Name = "label3";
             label3.Size = new Size(250, 35);
             label3.TabIndex = 10;
@@ -135,6 +135,7 @@
             // pnlLogin
             // 
             pnlLogin.Anchor = AnchorStyles.None;
+            pnlLogin.Controls.Add(btnIdioma);
             pnlLogin.Controls.Add(pictureBox1);
             pnlLogin.Controls.Add(btnIngresarSesion);
             pnlLogin.Controls.Add(label3);
@@ -146,12 +147,12 @@
             pnlLogin.Controls.Add(txtUsuario);
             pnlLogin.Location = new Point(141, 24);
             pnlLogin.Name = "pnlLogin";
-            pnlLogin.Size = new Size(460, 450);
+            pnlLogin.Size = new Size(496, 450);
             pnlLogin.TabIndex = 11;
             // 
             // btnIdioma
             // 
-            btnIdioma.Location = new Point(333, 12);
+            btnIdioma.Location = new Point(439, 3);
             btnIdioma.Name = "btnIdioma";
             btnIdioma.Size = new Size(33, 37);
             btnIdioma.TabIndex = 12;
@@ -165,12 +166,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-
-            ClientSize = new Size(824, 531);
-
             ClientSize = new Size(751, 531);
-            Controls.Add(btnIdioma);
-
             Controls.Add(pnlLogin);
             Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             Margin = new Padding(5, 6, 5, 6);

@@ -49,14 +49,16 @@
             label10 = new Label();
             txtDireccion = new TextBox();
             btnIdioma = new Button();
+            pnlRegistroAdmin = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlRegistroAdmin.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(46, 140);
+            label1.Location = new Point(39, 183);
             label1.Name = "label1";
             label1.Size = new Size(123, 19);
             label1.TabIndex = 0;
@@ -66,7 +68,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(46, 401);
+            label2.Location = new Point(41, 423);
             label2.Name = "label2";
             label2.Size = new Size(56, 19);
             label2.TabIndex = 1;
@@ -76,7 +78,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(46, 242);
+            label3.Location = new Point(41, 279);
             label3.Name = "label3";
             label3.Size = new Size(121, 19);
             label3.TabIndex = 2;
@@ -86,7 +88,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(46, 448);
+            label4.Location = new Point(43, 471);
             label4.Name = "label4";
             label4.Size = new Size(79, 19);
             label4.TabIndex = 3;
@@ -96,7 +98,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F);
-            label5.Location = new Point(46, 501);
+            label5.Location = new Point(43, 519);
             label5.Name = "label5";
             label5.Size = new Size(141, 19);
             label5.TabIndex = 4;
@@ -104,35 +106,35 @@
             // 
             // txtNombreCompleto
             // 
-            txtNombreCompleto.Location = new Point(46, 162);
+            txtNombreCompleto.Location = new Point(41, 205);
             txtNombreCompleto.Name = "txtNombreCompleto";
             txtNombreCompleto.Size = new Size(242, 23);
             txtNombreCompleto.TabIndex = 5;
             // 
             // txtUsuarioAdmin
             // 
-            txtUsuarioAdmin.Location = new Point(46, 422);
+            txtUsuarioAdmin.Location = new Point(41, 445);
             txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             txtUsuarioAdmin.Size = new Size(242, 23);
             txtUsuarioAdmin.TabIndex = 6;
             // 
             // txtCorreoAdmin
             // 
-            txtCorreoAdmin.Location = new Point(46, 266);
+            txtCorreoAdmin.Location = new Point(41, 301);
             txtCorreoAdmin.Name = "txtCorreoAdmin";
             txtCorreoAdmin.Size = new Size(242, 23);
             txtCorreoAdmin.TabIndex = 7;
             // 
             // txtContraseñaAdmin
             // 
-            txtContraseñaAdmin.Location = new Point(46, 470);
+            txtContraseñaAdmin.Location = new Point(41, 493);
             txtContraseñaAdmin.Name = "txtContraseñaAdmin";
             txtContraseñaAdmin.Size = new Size(242, 23);
             txtContraseñaAdmin.TabIndex = 8;
             // 
             // txtConfirmarContraseña
             // 
-            txtConfirmarContraseña.Location = new Point(46, 523);
+            txtConfirmarContraseña.Location = new Point(45, 541);
             txtConfirmarContraseña.Name = "txtConfirmarContraseña";
             txtConfirmarContraseña.Size = new Size(242, 23);
             txtConfirmarContraseña.TabIndex = 9;
@@ -141,7 +143,7 @@
             // 
             btnRegistarAdmin.BackColor = SystemColors.ActiveCaption;
             btnRegistarAdmin.Font = new Font("Segoe UI", 10F);
-            btnRegistarAdmin.Location = new Point(46, 565);
+            btnRegistarAdmin.Location = new Point(41, 599);
             btnRegistarAdmin.Name = "btnRegistarAdmin";
             btnRegistarAdmin.Size = new Size(242, 34);
             btnRegistarAdmin.TabIndex = 10;
@@ -152,7 +154,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.Location = new Point(61, 85);
+            label6.Location = new Point(59, 103);
             label6.Name = "label6";
             label6.Size = new Size(210, 21);
             label6.TabIndex = 11;
@@ -161,7 +163,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 8F);
-            label7.Location = new Point(46, 108);
+            label7.Location = new Point(37, 143);
             label7.Name = "label7";
             label7.Size = new Size(250, 36);
             label7.TabIndex = 12;
@@ -171,7 +173,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.images;
-            pictureBox1.Location = new Point(107, 6);
+            pictureBox1.Location = new Point(106, 24);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(112, 76);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -180,7 +182,7 @@
             // 
             // txtDocumentoAdmin
             // 
-            txtDocumentoAdmin.Location = new Point(46, 211);
+            txtDocumentoAdmin.Location = new Point(41, 253);
             txtDocumentoAdmin.Name = "txtDocumentoAdmin";
             txtDocumentoAdmin.Size = new Size(242, 23);
             txtDocumentoAdmin.TabIndex = 15;
@@ -189,7 +191,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10F);
-            label8.Location = new Point(46, 189);
+            label8.Location = new Point(41, 231);
             label8.Name = "label8";
             label8.Size = new Size(81, 19);
             label8.TabIndex = 14;
@@ -197,7 +199,7 @@
             // 
             // txtTelefonoAdmin
             // 
-            txtTelefonoAdmin.Location = new Point(46, 318);
+            txtTelefonoAdmin.Location = new Point(41, 349);
             txtTelefonoAdmin.Name = "txtTelefonoAdmin";
             txtTelefonoAdmin.Size = new Size(242, 23);
             txtTelefonoAdmin.TabIndex = 17;
@@ -206,7 +208,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F);
-            label9.Location = new Point(46, 295);
+            label9.Location = new Point(41, 327);
             label9.Name = "label9";
             label9.Size = new Size(60, 19);
             label9.TabIndex = 16;
@@ -216,7 +218,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F);
-            label10.Location = new Point(46, 348);
+            label10.Location = new Point(41, 375);
             label10.Name = "label10";
             label10.Size = new Size(65, 19);
             label10.TabIndex = 18;
@@ -224,54 +226,64 @@
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(46, 371);
+            txtDireccion.Location = new Point(41, 397);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(242, 23);
             txtDireccion.TabIndex = 19;
             // 
             // btnIdioma
             // 
-            btnIdioma.Location = new Point(311, 6);
+            btnIdioma.Font = new Font("Segoe UI", 10F);
+            btnIdioma.Location = new Point(293, 6);
             btnIdioma.Name = "btnIdioma";
-            btnIdioma.Size = new Size(29, 24);
+            btnIdioma.Size = new Size(36, 26);
             btnIdioma.TabIndex = 20;
             btnIdioma.Text = "🌐";
             btnIdioma.UseVisualStyleBackColor = true;
             btnIdioma.Click += btnIdioma_Click;
+            // 
+            // pnlRegistroAdmin
+            // 
+            pnlRegistroAdmin.Controls.Add(btnIdioma);
+            pnlRegistroAdmin.Controls.Add(btnRegistarAdmin);
+            pnlRegistroAdmin.Controls.Add(txtDireccion);
+            pnlRegistroAdmin.Controls.Add(txtConfirmarContraseña);
+            pnlRegistroAdmin.Controls.Add(pictureBox1);
+            pnlRegistroAdmin.Controls.Add(label5);
+            pnlRegistroAdmin.Controls.Add(txtContraseñaAdmin);
+            pnlRegistroAdmin.Controls.Add(label10);
+            pnlRegistroAdmin.Controls.Add(txtUsuarioAdmin);
+            pnlRegistroAdmin.Controls.Add(label4);
+            pnlRegistroAdmin.Controls.Add(label6);
+            pnlRegistroAdmin.Controls.Add(txtTelefonoAdmin);
+            pnlRegistroAdmin.Controls.Add(label7);
+            pnlRegistroAdmin.Controls.Add(label2);
+            pnlRegistroAdmin.Controls.Add(label9);
+            pnlRegistroAdmin.Controls.Add(label1);
+            pnlRegistroAdmin.Controls.Add(txtDocumentoAdmin);
+            pnlRegistroAdmin.Controls.Add(txtNombreCompleto);
+            pnlRegistroAdmin.Controls.Add(label8);
+            pnlRegistroAdmin.Controls.Add(txtCorreoAdmin);
+            pnlRegistroAdmin.Controls.Add(label3);
+            pnlRegistroAdmin.Location = new Point(254, 12);
+            pnlRegistroAdmin.Name = "pnlRegistroAdmin";
+            pnlRegistroAdmin.Size = new Size(332, 645);
+            pnlRegistroAdmin.TabIndex = 21;
             // 
             // RegistroAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(352, 611);
-            Controls.Add(btnIdioma);
-            Controls.Add(txtDireccion);
-            Controls.Add(label10);
-            Controls.Add(txtTelefonoAdmin);
-            Controls.Add(label9);
-            Controls.Add(txtDocumentoAdmin);
-            Controls.Add(label8);
-            Controls.Add(pictureBox1);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(btnRegistarAdmin);
-            Controls.Add(txtConfirmarContraseña);
-            Controls.Add(txtContraseñaAdmin);
-            Controls.Add(txtCorreoAdmin);
-            Controls.Add(txtUsuarioAdmin);
-            Controls.Add(txtNombreCompleto);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(797, 655);
+            Controls.Add(pnlRegistroAdmin);
             Name = "RegistroAdmin";
             Text = "RegistroAdmin";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlRegistroAdmin.ResumeLayout(false);
+            pnlRegistroAdmin.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -297,5 +309,6 @@
         private Label label10;
         private TextBox txtDireccion;
         private Button btnIdioma;
+        private Panel pnlRegistroAdmin;
     }
 }
