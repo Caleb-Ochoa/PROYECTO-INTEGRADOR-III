@@ -1,10 +1,12 @@
 ﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Services;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 {
@@ -41,25 +43,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             CargarCombos();
 
-            // ── Agregar coordenada ────────────────────────────────────────
-            Vista.btnAgragarCoordenada.Click += (s, e) => AgregarCoordenada();
-
-            // ── Quitar última coordenada ──────────────────────────────────
+            Vista.btnAgregarCoordenada.Click += (s, e) => AgregarCoordenada();
             Vista.btnQuitarCoordenada.Click += (s, e) =>
             {
                 if (_coordActuales.Count == 0) return;
                 _coordActuales.RemoveAt(_coordActuales.Count - 1);
                 RefrescarCoordenadas();
             };
-
-            // ── Limpiar todo ──────────────────────────────────────────────
             Vista.btnLimpiarCoordenada.Click += (s, e) => Limpiar();
-
-            // ── Calcular ──────────────────────────────────────────────────
-            Vista.button1.Click += (s, e) => Calcular();
+            Vista.btnCalcular.Click += (s, e) => Calcular();
         }
 
-        // ── Combos ────────────────────────────────────────────────────────
         private void CargarCombos()
         {
             Vista.GetCmbCliente().DataSource = null;
@@ -75,37 +69,50 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Vista.GetCmbMaterial().SelectedIndex = -1;
         }
 
-        // ── Agregar coordenada ────────────────────────────────────────────
         private void AgregarCoordenada()
         {
-            var (x, y, z) = Vista.GetCoordenada();
-
-            // Verificar duplicado
-            if (_coordActuales.Any(c => c.X == x && c.Y == y && c.Z == z))
+            try
             {
-                Vista.MostrarMensaje("Ya existe un punto con esas coordenadas.", esError: true);
-                return;
+                var (x, y, z) = Vista.GetCoordenada();
+
+                if (_coordActuales.Any(c => c.X == x && c.Y == y && c.Z == z))
+                {
+                    Vista.MostrarMensaje("Ya existe un punto con esas coordenadas.", esError: true);
+                    return;
+                }
+
+                _coordActuales.Add(new Coordenada
+                {
+                    Id = _coordActuales.Count + 1,
+                    X = x,
+                    Y = y,
+                    Z = z
+                });
+
+                Vista.LimpiarNumericos();
+                RefrescarCoordenadas();
             }
-
-            _coordActuales.Add(new Coordenada
+            catch (FormatException ex)
             {
-                Id = _coordActuales.Count + 1,
-                X = x,
-                Y = y,
-                Z = z
-            });
-
-            Vista.LimpiarNumericos();
-            RefrescarCoordenadas();
+                Vista.MostrarMensaje(ex.Message, esError: true);
+            }
         }
 
         private void RefrescarCoordenadas()
         {
             Vista.CargarGridCoordenadas(_coordActuales);
-            Vista.ActualizarGrafica(_coordActuales);
+
+            // Si hay 6+ puntos calculamos el modelo para la gráfica continua
+            double[]? coef = null;
+            if (_coordActuales.Count >= 6)
+            {
+                try { coef = CalculoService.AjustarMinCuadrados(_coordActuales); }
+                catch { coef = null; }
+            }
+
+            Vista.ActualizarGrafica(_coordActuales, coef);
         }
 
-        // ── Calcular ──────────────────────────────────────────────────────
         private void Calcular()
         {
             if (_coordActuales.Count < 3)
@@ -113,7 +120,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Vista.MostrarMensaje("Necesitas al menos 3 coordenadas.", esError: true);
                 return;
             }
-
             if (Vista.GetCmbMaterial().SelectedValue == null)
             {
                 Vista.MostrarMensaje("Selecciona un material.", esError: true);
@@ -126,10 +132,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Material mat = _materiales.First(m => m.Id == materialId);
 
                 int clienteId = Vista.GetCmbCliente().SelectedValue != null
-                    ? (int)Vista.GetCmbCliente().SelectedValue
-                    : 0;
+                    ? (int)Vista.GetCmbCliente().SelectedValue : 0;
 
-                // Crear terreno temporal para el cálculo
                 Terreno terreno = new Terreno
                 {
                     Id = _dmTerreno.GetNextId(),
@@ -140,14 +144,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 _ultimoResultado = _calculo.Calcular(terreno, mat);
 
-                Vista.MostrarResultado(_ultimoResultado.Volumen, _ultimoResultado.CostoTotal);
+                Vista.MostrarResultado(
+                    _ultimoResultado.Area,
+                    _ultimoResultado.Volumen,
+                    _ultimoResultado.CostoTotal,
+                    _ultimoResultado.MetodoUsado);
 
-                // Persistir terreno
                 _terrenos.Add(terreno);
                 _dmTerreno.Save(_terrenos);
 
                 Vista.MostrarMensaje(
-                    $"Cálculo completado.\n" +
+                    $"Método: {_ultimoResultado.MetodoUsado}\n" +
                     $"Área:    {_ultimoResultado.Area:F2} m²\n" +
                     $"Volumen: {_ultimoResultado.Volumen:F2} m³\n" +
                     $"Costo:   {_ultimoResultado.CostoTotal:C2}");
@@ -164,11 +171,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             _ultimoResultado = null;
             Vista.LimpiarNumericos();
             Vista.CargarGridCoordenadas(_coordActuales);
-            Vista.ActualizarGrafica(_coordActuales);
-            Vista.MostrarResultado(0, 0);
+            Vista.ActualizarGrafica(_coordActuales, null);
+            Vista.MostrarResultado(0, 0, 0, "");
         }
 
-        // ── Método público para CtlCotizacion ─────────────────────────────
         public List<Terreno> Listar()
         {
             _terrenos = _dmTerreno.GetAll();
