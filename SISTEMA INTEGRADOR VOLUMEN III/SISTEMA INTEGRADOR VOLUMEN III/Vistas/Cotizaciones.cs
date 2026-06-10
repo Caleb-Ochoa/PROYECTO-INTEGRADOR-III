@@ -19,5 +19,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
 
         }
+
+        private void Cotizaciones_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

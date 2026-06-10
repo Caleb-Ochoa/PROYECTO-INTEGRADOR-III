@@ -28,32 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
+            label1 = new Label();
+            dvgFacturas = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dvgFacturas).BeginInit();
             SuspendLayout();
             // 
-            // groupBox1
+            // label1
             // 
-            groupBox1.Font = new Font("Segoe UI", 10F);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(273, 501);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Detalles de la Factura Seleccionada";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            label1.Location = new Point(22, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Facturas";
+            // 
+            // dvgFacturas
+            // 
+            dvgFacturas.AllowUserToAddRows = false;
+            dvgFacturas.AllowUserToDeleteRows = false;
+            dvgFacturas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dvgFacturas.BackgroundColor = Color.White;
+            dvgFacturas.BorderStyle = BorderStyle.None;
+            dvgFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgFacturas.Location = new Point(0, 62);
+            dvgFacturas.Name = "dvgFacturas";
+            dvgFacturas.ReadOnly = true;
+            dvgFacturas.Size = new Size(800, 520);
+            dvgFacturas.TabIndex = 1;
             // 
             // Facturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 525);
-            Controls.Add(groupBox1);
+            BackColor = SystemColors.HighlightText;
+            ClientSize = new Size(800, 583);
+            Controls.Add(dvgFacturas);
+            Controls.Add(label1);
             Name = "Facturas";
             Text = "Facturas";
+            ((System.ComponentModel.ISupportInitialize)dvgFacturas).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private GroupBox groupBox1;
+        private Label label1;
+        private DataGridView dvgFacturas;
     }
 }
