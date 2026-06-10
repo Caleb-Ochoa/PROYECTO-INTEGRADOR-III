@@ -29,40 +29,43 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            groupBox4 = new GroupBox();
-            label8 = new Label();
-            label7 = new Label();
-            button1 = new Button();
-            groupBox3 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            groupBox2 = new GroupBox();
-            btnLimpiarCoordenada = new Button();
+            groupBoxDatos = new GroupBox();
+            lblCliente = new Label();
+            cmbCliente = new ComboBox();
+            lblMaterial = new Label();
+            cmbMaterial = new ComboBox();
+            labelCostoMaterial = new Label();
+            lblCostoMaterial = new Label();
+            groupBoxCoordenadas = new GroupBox();
+            lblX = new Label();
+            txtXLatitud = new TextBox();
+            lblYLongitud = new Label();
+            txtYLongitud = new TextBox();
+            lblElevacion = new Label();
+            txtZElevacion = new TextBox();
+            btnAgregarCoordenada = new Button();
             btnQuitarCoordenada = new Button();
-            btnAgragarCoordenada = new Button();
-            numeriZ = new NumericUpDown();
-            numeriY = new NumericUpDown();
-            numeriX = new NumericUpDown();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
+            btnLimpiarCoordenada = new Button();
             groupBox1 = new GroupBox();
-            txtValorTerreno = new TextBox();
-            cbmMaterialTerreno = new ComboBox();
-            cmbClienteTerreno = new ComboBox();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            lblTotalPuntos = new Label();
+            groupBoxResultados = new GroupBox();
+            lblVolumenTexto = new Label();
+            lblVolumen = new Label();
+            lblTotalTexto = new Label();
+            lblTotal = new Label();
+            btnCalcular = new Button();
+            lblTituloGrafica = new Label();
+            panelOpenGL = new Panel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numeriZ).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numeriY).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numeriX).BeginInit();
+            groupBoxDatos.SuspendLayout();
+            groupBoxCoordenadas.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBoxResultados.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -73,95 +76,89 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(groupBox4);
-            splitContainer1.Panel1.Controls.Add(groupBox3);
-            splitContainer1.Panel1.Controls.Add(groupBox2);
+            splitContainer1.Panel1.Controls.Add(groupBoxResultados);
             splitContainer1.Panel1.Controls.Add(groupBox1);
+            splitContainer1.Panel1.Controls.Add(groupBoxCoordenadas);
+            splitContainer1.Panel1.Controls.Add(groupBoxDatos);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(panelOpenGL);
+            splitContainer1.Panel2.Controls.Add(lblTituloGrafica);
             splitContainer1.Size = new Size(800, 524);
-            splitContainer1.SplitterDistance = 335;
+            splitContainer1.SplitterDistance = 320;
             splitContainer1.TabIndex = 0;
             // 
-            // groupBox4
+            // groupBoxDatos
             // 
-            groupBox4.Controls.Add(label8);
-            groupBox4.Controls.Add(label7);
-            groupBox4.Controls.Add(button1);
-            groupBox4.Font = new Font("Segoe UI", 10F);
-            groupBox4.Location = new Point(12, 407);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(320, 114);
-            groupBox4.TabIndex = 3;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Calculo Volumen";
+            groupBoxDatos.Controls.Add(lblCostoMaterial);
+            groupBoxDatos.Controls.Add(labelCostoMaterial);
+            groupBoxDatos.Controls.Add(cmbMaterial);
+            groupBoxDatos.Controls.Add(lblMaterial);
+            groupBoxDatos.Controls.Add(cmbCliente);
+            groupBoxDatos.Controls.Add(lblCliente);
+            groupBoxDatos.Location = new Point(10, 10);
+            groupBoxDatos.Name = "groupBoxDatos";
+            groupBoxDatos.Size = new Size(300, 140);
+            groupBoxDatos.TabIndex = 0;
+            groupBoxDatos.TabStop = false;
+            groupBoxDatos.Text = "DATOS GENERALES";
             // 
-            // label8
+            // lblCliente
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 48);
-            label8.Name = "label8";
-            label8.Size = new Size(38, 19);
-            label8.TabIndex = 2;
-            label8.Text = "Total";
+            lblCliente.AutoSize = true;
+            lblCliente.Location = new Point(15, 25);
+            lblCliente.Name = "lblCliente";
+            lblCliente.Size = new Size(44, 15);
+            lblCliente.TabIndex = 0;
+            lblCliente.Text = "Cliente";
             // 
-            // label7
+            // cmbCliente
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(6, 21);
-            label7.Name = "label7";
-            label7.Size = new Size(63, 19);
-            label7.TabIndex = 1;
-            label7.Text = "Volumen";
+            cmbCliente.FormattingEnabled = true;
+            cmbCliente.Location = new Point(15, 42);
+            cmbCliente.Name = "cmbCliente";
+            cmbCliente.Size = new Size(260, 23);
+            cmbCliente.TabIndex = 1;
             // 
-            // button1
+            // lblMaterial
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Location = new Point(6, 70);
-            button1.Name = "button1";
-            button1.Size = new Size(308, 30);
-            button1.TabIndex = 0;
-            button1.Text = "Calcular";
-            button1.UseVisualStyleBackColor = false;
+            lblMaterial.AutoSize = true;
+            lblMaterial.Location = new Point(15, 72);
+            lblMaterial.Name = "lblMaterial";
+            lblMaterial.Size = new Size(50, 15);
+            lblMaterial.TabIndex = 2;
+            lblMaterial.Text = "Material";
             // 
-            // groupBox3
+            // cmbMaterial
             // 
-            groupBox3.Controls.Add(dataGridView1);
-            groupBox3.Font = new Font("Segoe UI", 10F);
-            groupBox3.Location = new Point(12, 272);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(320, 129);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Coordenadas del Terreno";
+            cmbMaterial.FormattingEnabled = true;
+            cmbMaterial.Location = new Point(15, 89);
+            cmbMaterial.Name = "cmbMaterial";
+            cmbMaterial.Size = new Size(260, 23);
+            cmbMaterial.TabIndex = 3;
             // 
-            // dataGridView1
+            // labelCostoMaterial
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 24);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(308, 99);
-            dataGridView1.TabIndex = 0;
+            labelCostoMaterial.AutoSize = true;
+            labelCostoMaterial.Location = new Point(15, 118);
+            labelCostoMaterial.Name = "labelCostoMaterial";
+            labelCostoMaterial.Size = new Size(87, 15);
+            labelCostoMaterial.TabIndex = 4;
+            labelCostoMaterial.Text = "Costo material:";
             // 
-            // groupBox2
+            // lblCostoMaterial
             // 
-            groupBox2.Controls.Add(btnLimpiarCoordenada);
-            groupBox2.Controls.Add(btnQuitarCoordenada);
-            groupBox2.Controls.Add(btnAgragarCoordenada);
-            groupBox2.Controls.Add(numeriZ);
-            groupBox2.Controls.Add(numeriY);
-            groupBox2.Controls.Add(numeriX);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Font = new Font("Segoe UI", 10F);
-            groupBox2.Location = new Point(12, 140);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(320, 126);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Agreagar Coordenadas";
+            lblCostoMaterial.AutoSize = true;
+            lblCostoMaterial.Location = new Point(110, 118);
+            lblCostoMaterial.Name = "lblCostoMaterial";
+            lblCostoMaterial.Size = new Size(54, 15);
+            lblCostoMaterial.TabIndex = 5;
+            lblCostoMaterial.Text = "$0.00/m³";
             // 
-            // btnLimpiarCoordenada
+            // groupBoxCoordenadas
             // 
+<<<<<<< HEAD
             btnLimpiarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnLimpiarCoordenada.Location = new Point(213, 89);
             btnLimpiarCoordenada.Name = "btnLimpiarCoordenada";
@@ -174,14 +171,100 @@
             // 
             btnQuitarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnQuitarCoordenada.Location = new Point(132, 90);
+=======
+            groupBoxCoordenadas.Controls.Add(btnLimpiarCoordenada);
+            groupBoxCoordenadas.Controls.Add(btnQuitarCoordenada);
+            groupBoxCoordenadas.Controls.Add(btnAgregarCoordenada);
+            groupBoxCoordenadas.Controls.Add(txtZElevacion);
+            groupBoxCoordenadas.Controls.Add(lblElevacion);
+            groupBoxCoordenadas.Controls.Add(txtYLongitud);
+            groupBoxCoordenadas.Controls.Add(lblYLongitud);
+            groupBoxCoordenadas.Controls.Add(txtXLatitud);
+            groupBoxCoordenadas.Controls.Add(lblX);
+            groupBoxCoordenadas.Location = new Point(10, 160);
+            groupBoxCoordenadas.Name = "groupBoxCoordenadas";
+            groupBoxCoordenadas.Size = new Size(300, 120);
+            groupBoxCoordenadas.TabIndex = 1;
+            groupBoxCoordenadas.TabStop = false;
+            groupBoxCoordenadas.Text = "AGREGAR COORDENADAS";
+            // 
+            // lblX
+            // 
+            lblX.AutoSize = true;
+            lblX.Location = new Point(15, 25);
+            lblX.Name = "lblX";
+            lblX.Size = new Size(44, 15);
+            lblX.TabIndex = 0;
+            lblX.Text = "Latitud";
+            // 
+            // txtXLatitud
+            // 
+            txtXLatitud.Location = new Point(15, 45);
+            txtXLatitud.Name = "txtXLatitud";
+            txtXLatitud.Size = new Size(75, 23);
+            txtXLatitud.TabIndex = 1;
+            // 
+            // lblYLongitud
+            // 
+            lblYLongitud.AutoSize = true;
+            lblYLongitud.Location = new Point(105, 25);
+            lblYLongitud.Name = "lblYLongitud";
+            lblYLongitud.Size = new Size(55, 15);
+            lblYLongitud.TabIndex = 2;
+            lblYLongitud.Text = "Longitud";
+            // 
+            // txtYLongitud
+            // 
+            txtYLongitud.Location = new Point(105, 45);
+            txtYLongitud.Name = "txtYLongitud";
+            txtYLongitud.Size = new Size(75, 23);
+            txtYLongitud.TabIndex = 3;
+            // 
+            // lblElevacion
+            // 
+            lblElevacion.AutoSize = true;
+            lblElevacion.Location = new Point(195, 25);
+            lblElevacion.Name = "lblElevacion";
+            lblElevacion.Size = new Size(79, 15);
+            lblElevacion.TabIndex = 4;
+            lblElevacion.Text = "Elevación (m)";
+            // 
+            // txtZElevacion
+            // 
+            txtZElevacion.Location = new Point(195, 45);
+            txtZElevacion.Name = "txtZElevacion";
+            txtZElevacion.Size = new Size(75, 23);
+            txtZElevacion.TabIndex = 5;
+            // 
+            // btnAgregarCoordenada
+            // 
+            btnAgregarCoordenada.FlatStyle = FlatStyle.Flat;
+            btnAgregarCoordenada.Location = new Point(10, 80);
+            btnAgregarCoordenada.Name = "btnAgregarCoordenada";
+            btnAgregarCoordenada.Size = new Size(92, 34);
+            btnAgregarCoordenada.TabIndex = 6;
+            btnAgregarCoordenada.Text = "Agregar Punto";
+            btnAgregarCoordenada.UseVisualStyleBackColor = true;
+            // 
+            // btnQuitarCoordenada
+            // 
+            btnQuitarCoordenada.FlatStyle = FlatStyle.Flat;
+            btnQuitarCoordenada.Location = new Point(108, 80);
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             btnQuitarCoordenada.Name = "btnQuitarCoordenada";
-            btnQuitarCoordenada.Size = new Size(75, 25);
+            btnQuitarCoordenada.Size = new Size(92, 34);
             btnQuitarCoordenada.TabIndex = 7;
+<<<<<<< HEAD
             btnQuitarCoordenada.Text = "Quitar";
             btnQuitarCoordenada.UseVisualStyleBackColor = false;
+=======
+            btnQuitarCoordenada.Text = "Quitar Punto";
+            btnQuitarCoordenada.UseVisualStyleBackColor = true;
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             // 
-            // btnAgragarCoordenada
+            // btnLimpiarCoordenada
             // 
+<<<<<<< HEAD
             btnAgragarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnAgragarCoordenada.Location = new Point(6, 89);
             btnAgragarCoordenada.Name = "btnAgragarCoordenada";
@@ -240,126 +323,201 @@
             label4.Size = new Size(84, 19);
             label4.TabIndex = 0;
             label4.Text = "X (Longitud)";
+=======
+            btnLimpiarCoordenada.FlatStyle = FlatStyle.Flat;
+            btnLimpiarCoordenada.Location = new Point(206, 80);
+            btnLimpiarCoordenada.Name = "btnLimpiarCoordenada";
+            btnLimpiarCoordenada.Size = new Size(92, 34);
+            btnLimpiarCoordenada.TabIndex = 8;
+            btnLimpiarCoordenada.Text = "Limpiar Todo";
+            btnLimpiarCoordenada.UseVisualStyleBackColor = true;
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtValorTerreno);
-            groupBox1.Controls.Add(cbmMaterialTerreno);
-            groupBox1.Controls.Add(cmbClienteTerreno);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Font = new Font("Segoe UI", 10F);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Controls.Add(lblTotalPuntos);
+            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Location = new Point(10, 290);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(320, 122);
-            groupBox1.TabIndex = 0;
+            groupBox1.Size = new Size(300, 150);
+            groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Datos Generales";
+            groupBox1.Text = "COORDENADAS DEL TERRENO";
             // 
-            // txtValorTerreno
+            // dataGridView1
             // 
+<<<<<<< HEAD
             txtValorTerreno.BackColor = SystemColors.ScrollBar;
             txtValorTerreno.Location = new Point(91, 91);
             txtValorTerreno.Name = "txtValorTerreno";
             txtValorTerreno.Size = new Size(204, 25);
             txtValorTerreno.TabIndex = 5;
+=======
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(10, 25);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(280, 90);
+            dataGridView1.TabIndex = 0;
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             // 
-            // cbmMaterialTerreno
+            // lblTotalPuntos
             // 
+<<<<<<< HEAD
             cbmMaterialTerreno.BackColor = SystemColors.ScrollBar;
             cbmMaterialTerreno.FormattingEnabled = true;
             cbmMaterialTerreno.Location = new Point(91, 59);
             cbmMaterialTerreno.Name = "cbmMaterialTerreno";
             cbmMaterialTerreno.Size = new Size(204, 25);
             cbmMaterialTerreno.TabIndex = 4;
+=======
+            lblTotalPuntos.Location = new Point(10, 120);
+            lblTotalPuntos.Name = "lblTotalPuntos";
+            lblTotalPuntos.Size = new Size(150, 20);
+            lblTotalPuntos.TabIndex = 1;
+            lblTotalPuntos.Text = "Total puntos: 0";
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             // 
-            // cmbClienteTerreno
+            // groupBoxResultados
             // 
+<<<<<<< HEAD
             cmbClienteTerreno.BackColor = SystemColors.ScrollBar;
             cmbClienteTerreno.FormattingEnabled = true;
             cmbClienteTerreno.Location = new Point(91, 24);
             cmbClienteTerreno.Name = "cmbClienteTerreno";
             cmbClienteTerreno.Size = new Size(204, 25);
             cmbClienteTerreno.TabIndex = 3;
+=======
+            groupBoxResultados.Controls.Add(btnCalcular);
+            groupBoxResultados.Controls.Add(lblTotal);
+            groupBoxResultados.Controls.Add(lblTotalTexto);
+            groupBoxResultados.Controls.Add(lblVolumen);
+            groupBoxResultados.Controls.Add(lblVolumenTexto);
+            groupBoxResultados.Location = new Point(10, 450);
+            groupBoxResultados.Name = "groupBoxResultados";
+            groupBoxResultados.Size = new Size(300, 70);
+            groupBoxResultados.TabIndex = 3;
+            groupBoxResultados.TabStop = false;
+            groupBoxResultados.Text = "RESULTADOS";
+>>>>>>> 66c7c93b40be81de7c8def0fbd1144b7ce0ba5f6
             // 
-            // label3
+            // lblVolumenTexto
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 97);
-            label3.Name = "label3";
-            label3.Size = new Size(74, 19);
-            label3.TabIndex = 2;
-            label3.Text = "Valor m^3";
+            lblVolumenTexto.AutoSize = true;
+            lblVolumenTexto.Location = new Point(15, 25);
+            lblVolumenTexto.Name = "lblVolumenTexto";
+            lblVolumenTexto.Size = new Size(57, 15);
+            lblVolumenTexto.TabIndex = 0;
+            lblVolumenTexto.Text = "Volumen:";
             // 
-            // label2
+            // lblVolumen
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 65);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 19);
-            label2.TabIndex = 1;
-            label2.Text = "Material";
+            lblVolumen.Location = new Point(80, 25);
+            lblVolumen.Name = "lblVolumen";
+            lblVolumen.Size = new Size(80, 20);
+            lblVolumen.TabIndex = 1;
+            lblVolumen.Text = "0.00 m³";
             // 
-            // label1
+            // lblTotalTexto
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 19);
-            label1.TabIndex = 0;
-            label1.Text = "Cliente";
+            lblTotalTexto.AutoSize = true;
+            lblTotalTexto.Location = new Point(15, 45);
+            lblTotalTexto.Name = "lblTotalTexto";
+            lblTotalTexto.Size = new Size(35, 15);
+            lblTotalTexto.TabIndex = 2;
+            lblTotalTexto.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            lblTotal.Location = new Point(80, 45);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(100, 20);
+            lblTotal.TabIndex = 3;
+            lblTotal.Text = "$0.00";
+            // 
+            // btnCalcular
+            // 
+            btnCalcular.Location = new Point(190, 18);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(95, 40);
+            btnCalcular.TabIndex = 4;
+            btnCalcular.Text = "Calcular";
+            btnCalcular.UseVisualStyleBackColor = true;
+            // 
+            // lblTituloGrafica
+            // 
+            lblTituloGrafica.Location = new Point(10, 10);
+            lblTituloGrafica.Name = "lblTituloGrafica";
+            lblTituloGrafica.Size = new Size(250, 20);
+            lblTituloGrafica.TabIndex = 0;
+            lblTituloGrafica.Text = "Visualización 3D del Terreno";
+            // 
+            // panelOpenGL
+            // 
+            panelOpenGL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelOpenGL.Location = new Point(10, 40);
+            panelOpenGL.Name = "panelOpenGL";
+            panelOpenGL.Size = new Size(455, 470);
+            panelOpenGL.TabIndex = 1;
             // 
             // Terreno_y_Calculo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
             ClientSize = new Size(800, 524);
             Controls.Add(splitContainer1);
             Name = "Terreno_y_Calculo";
             Text = "Terreno_y_Calculo";
             splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numeriZ).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numeriY).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numeriX).EndInit();
+            groupBoxDatos.ResumeLayout(false);
+            groupBoxDatos.PerformLayout();
+            groupBoxCoordenadas.ResumeLayout(false);
+            groupBoxCoordenadas.PerformLayout();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBoxResultados.ResumeLayout(false);
+            groupBoxResultados.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private SplitContainer splitContainer1;
-        private GroupBox groupBox1;
-        private TextBox txtValorTerreno;
-        private ComboBox cbmMaterialTerreno;
-        private ComboBox cmbClienteTerreno;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private GroupBox groupBox2;
-        private NumericUpDown numeriX;
-        private Label label6;
-        private Label label5;
-        private Label label4;
+        private GroupBox groupBoxDatos;
+        private Label labelCostoMaterial;
+        private ComboBox cmbMaterial;
+        private Label lblMaterial;
+        private ComboBox cmbCliente;
+        private Label lblCliente;
+        private Label lblCostoMaterial;
+        private GroupBox groupBoxCoordenadas;
+        private TextBox txtXLatitud;
+        private Label lblX;
+        private TextBox txtZElevacion;
+        private Label lblElevacion;
+        private TextBox txtYLongitud;
+        private Label lblYLongitud;
         private Button btnLimpiarCoordenada;
         private Button btnQuitarCoordenada;
-        private Button btnAgragarCoordenada;
-        private NumericUpDown numeriZ;
-        private NumericUpDown numeriY;
-        private GroupBox groupBox3;
+        private Button btnAgregarCoordenada;
+        private GroupBox groupBox1;
+        private Label lblTotalPuntos;
         private DataGridView dataGridView1;
-        private GroupBox groupBox4;
-        private Button button1;
-        private Label label8;
-        private Label label7;
+        private GroupBox groupBoxResultados;
+        private Label lblVolumenTexto;
+        private Button btnCalcular;
+        private Label lblTotal;
+        private Label lblTotalTexto;
+        private Label lblVolumen;
+        private Panel panelOpenGL;
+        private Label lblTituloGrafica;
     }
 }

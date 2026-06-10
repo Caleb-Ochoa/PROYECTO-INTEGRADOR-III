@@ -100,7 +100,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         // ── Terreno ───────────────────────────────────────────────────────
         private void btnTerreno_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Terreno_y_Calculo());
+            Terreno_y_Calculo vista = new Terreno_y_Calculo();
+
+            IRepository<Terreno> repoT = new RepositorioFile<Terreno>("terrenos.txt", Terreno.FromText);
+            IRepository<Cliente> repoC = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
+            IRepository<Material> repoM = new RepositorioFile<Material>("materiales.txt", Material.FromText);
+
+            DataManager<Terreno> dmT = new DataManager<Terreno>(repoT);
+            DataManager<Cliente> dmC = new DataManager<Cliente>(repoC);
+            DataManager<Material> dmM = new DataManager<Material>(repoM);
+
+            ICalculoService calculo = new CalculoService();
+
+            CtlTerreno controlador = new CtlTerreno(dmT, dmC, dmM, calculo, vista);
+            AbrirFormulario(vista);
         }
 
         // ── Cotizaciones ──────────────────────────────────────────────────

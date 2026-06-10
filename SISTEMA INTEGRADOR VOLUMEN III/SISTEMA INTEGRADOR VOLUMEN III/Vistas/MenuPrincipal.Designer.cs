@@ -86,6 +86,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnTerreno.Text = "🏔️ Terreno y Cálculo";
             btnTerreno.TextAlign = ContentAlignment.TopLeft;
             btnTerreno.UseVisualStyleBackColor = true;
+            btnTerreno.Click += btnTerreno_Click;
             // 
             // btnFactura
             // 

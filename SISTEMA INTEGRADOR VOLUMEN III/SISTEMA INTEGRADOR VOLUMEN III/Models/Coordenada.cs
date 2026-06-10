@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
-    internal class Coordenada
+    public class Coordenada
     {
         public int Id { get; set; }
         public double X { get; set; }
