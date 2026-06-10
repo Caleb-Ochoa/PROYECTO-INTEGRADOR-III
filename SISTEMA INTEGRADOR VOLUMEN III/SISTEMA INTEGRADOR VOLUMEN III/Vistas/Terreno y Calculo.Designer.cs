@@ -67,8 +67,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(panelOpenGL);
             splitContainer1.Panel2.Controls.Add(lblTituloGrafica);
+            splitContainer1.Panel2.Controls.Add(panelOpenGL);
             splitContainer1.Size = new Size(800, 524);
             splitContainer1.SplitterDistance = 320;
             splitContainer1.TabIndex = 0;
@@ -109,7 +109,7 @@
             lblTotalTexto.AutoSize = true;
             lblTotalTexto.Location = new Point(15, 45);
             lblTotalTexto.Name = "lblTotalTexto";
-            lblTotalTexto.Size = new Size(35, 15);
+            lblTotalTexto.Size = new Size(36, 15);
             lblTotalTexto.TabIndex = 6;
             lblTotalTexto.Text = "Total:";
             // 
@@ -324,15 +324,14 @@
             // 
             // panelOpenGL
             // 
-            panelOpenGL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelOpenGL.Location = new Point(10, 40);
+            panelOpenGL.Location = new Point(3, 32);
             panelOpenGL.Name = "panelOpenGL";
-            panelOpenGL.Size = new Size(455, 470);
+            panelOpenGL.Size = new Size(470, 488);
             panelOpenGL.TabIndex = 1;
             // 
             // lblTituloGrafica
             // 
-            lblTituloGrafica.Location = new Point(10, 8);
+            lblTituloGrafica.Location = new Point(3, 9);
             lblTituloGrafica.Name = "lblTituloGrafica";
             lblTituloGrafica.Size = new Size(250, 20);
             lblTituloGrafica.TabIndex = 2;
