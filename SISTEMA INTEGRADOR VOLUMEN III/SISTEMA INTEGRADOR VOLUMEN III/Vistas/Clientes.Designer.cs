@@ -54,6 +54,7 @@
             // 
             // txtBuscarCliente
             // 
+            txtBuscarCliente.BackColor = SystemColors.ScrollBar;
             txtBuscarCliente.Location = new Point(22, 22);
             txtBuscarCliente.Name = "txtBuscarCliente";
             txtBuscarCliente.PlaceholderText = "Buscar cliente...";
@@ -62,7 +63,7 @@
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.BackColor = Color.WhiteSmoke;
+            btnBuscarCliente.BackColor = SystemColors.ActiveCaption;
             btnBuscarCliente.FlatAppearance.BorderColor = Color.LightGray;
             btnBuscarCliente.FlatStyle = FlatStyle.Flat;
             btnBuscarCliente.Font = new Font("Segoe UI", 10F);
@@ -75,7 +76,7 @@
             // 
             // btnLimpiarFiltro
             // 
-            btnLimpiarFiltro.BackColor = Color.WhiteSmoke;
+            btnLimpiarFiltro.BackColor = SystemColors.ActiveCaption;
             btnLimpiarFiltro.FlatAppearance.BorderColor = Color.LightGray;
             btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
             btnLimpiarFiltro.Font = new Font("Segoe UI", 10F);

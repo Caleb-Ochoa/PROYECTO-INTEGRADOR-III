@@ -106,6 +106,7 @@
             // 
             // txtNombreCompleto
             // 
+            txtNombreCompleto.BackColor = SystemColors.ScrollBar;
             txtNombreCompleto.Location = new Point(41, 205);
             txtNombreCompleto.Name = "txtNombreCompleto";
             txtNombreCompleto.Size = new Size(242, 23);
@@ -113,6 +114,7 @@
             // 
             // txtUsuarioAdmin
             // 
+            txtUsuarioAdmin.BackColor = SystemColors.ScrollBar;
             txtUsuarioAdmin.Location = new Point(41, 445);
             txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             txtUsuarioAdmin.Size = new Size(242, 23);
@@ -120,6 +122,7 @@
             // 
             // txtCorreoAdmin
             // 
+            txtCorreoAdmin.BackColor = SystemColors.ScrollBar;
             txtCorreoAdmin.Location = new Point(41, 301);
             txtCorreoAdmin.Name = "txtCorreoAdmin";
             txtCorreoAdmin.Size = new Size(242, 23);
@@ -127,6 +130,7 @@
             // 
             // txtContraseñaAdmin
             // 
+            txtContraseñaAdmin.BackColor = SystemColors.ScrollBar;
             txtContraseñaAdmin.Location = new Point(41, 493);
             txtContraseñaAdmin.Name = "txtContraseñaAdmin";
             txtContraseñaAdmin.Size = new Size(242, 23);
@@ -134,6 +138,7 @@
             // 
             // txtConfirmarContraseña
             // 
+            txtConfirmarContraseña.BackColor = SystemColors.ScrollBar;
             txtConfirmarContraseña.Location = new Point(45, 541);
             txtConfirmarContraseña.Name = "txtConfirmarContraseña";
             txtConfirmarContraseña.Size = new Size(242, 23);
@@ -182,6 +187,7 @@
             // 
             // txtDocumentoAdmin
             // 
+            txtDocumentoAdmin.BackColor = SystemColors.ScrollBar;
             txtDocumentoAdmin.Location = new Point(41, 253);
             txtDocumentoAdmin.Name = "txtDocumentoAdmin";
             txtDocumentoAdmin.Size = new Size(242, 23);
@@ -199,6 +205,7 @@
             // 
             // txtTelefonoAdmin
             // 
+            txtTelefonoAdmin.BackColor = SystemColors.ScrollBar;
             txtTelefonoAdmin.Location = new Point(41, 349);
             txtTelefonoAdmin.Name = "txtTelefonoAdmin";
             txtTelefonoAdmin.Size = new Size(242, 23);
@@ -226,6 +233,7 @@
             // 
             // txtDireccion
             // 
+            txtDireccion.BackColor = SystemColors.ScrollBar;
             txtDireccion.Location = new Point(41, 397);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(242, 23);

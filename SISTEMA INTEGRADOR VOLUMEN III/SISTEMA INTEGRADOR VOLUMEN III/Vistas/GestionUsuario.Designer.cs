@@ -54,7 +54,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.BackColor = Color.WhiteSmoke;
+            btnBuscar.BackColor = SystemColors.ActiveCaption;
             btnBuscar.FlatAppearance.BorderColor = Color.LightGray;
             btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Segoe UI", 10F);
@@ -67,6 +67,7 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.ScrollBar;
             textBox1.Location = new Point(22, 22);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Buscar usuario...";
@@ -89,7 +90,7 @@
             // 
             // btnLimpiarGestionUsuarios
             // 
-            btnLimpiarGestionUsuarios.BackColor = Color.WhiteSmoke;
+            btnLimpiarGestionUsuarios.BackColor = SystemColors.ActiveCaption;
             btnLimpiarGestionUsuarios.FlatAppearance.BorderColor = Color.LightGray;
             btnLimpiarGestionUsuarios.FlatStyle = FlatStyle.Flat;
             btnLimpiarGestionUsuarios.Font = new Font("Segoe UI", 10F);

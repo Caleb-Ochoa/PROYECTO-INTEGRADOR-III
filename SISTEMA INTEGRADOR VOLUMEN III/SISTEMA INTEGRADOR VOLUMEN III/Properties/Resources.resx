@@ -124,6 +124,12 @@
   <data name="settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="optimization-icon-editable-stroke-linear-style-sign-for-use-web-design-logo-symbol-illustration-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\optimization-icon-editable-stroke-linear-style-sign-for-use-web-design-logo-symbol-illustration-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +142,16 @@
   <data name="ChatGPT Image 3 jun 2026, 01_26_11 p.m." type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 3 jun 2026, 01_26_11 p.m..png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings-configuration-icon-solid-style-icon-design-element-icon-template-background-free-vector-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="illustration-of-change-password-symbol-editable-icon-design-for-user-interface-element-vector-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\illustration-of-change-password-symbol-editable-icon-design-for-user-interface-element-vector-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlechaDerecha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlechaDerecha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlechaIzquierda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlechaIzquierda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -19,12 +19,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
+        bool menuOculto = false;
+
         public bool CerroSesion { get; private set; } = false;
+
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
+            ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
+            ptbMostrarMenu.Click += pbToggle_Click;
         }
 
         // ── Un solo Load, con el nombre correcto ──────────────────────────
@@ -54,6 +59,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCambiarContraseña.Visible = true;
 
             this.WindowState = FormWindowState.Maximized;
+
+            splitContainer1.Panel1MinSize = 0;
+            
         }
 
         // ── Abrir módulos en el panel derecho ─────────────────────────────
@@ -146,5 +154,29 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
+
+        private void pnlEncabezado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pbToggle_Click(object sender, EventArgs e)
+        {
+            if (menuOculto)
+            {
+                // Mostrar el menú
+                splitContainer1.Panel1Collapsed = false;
+                ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
+                menuOculto = false;
+            }
+            else
+            {
+                // Ocultar el menú
+                splitContainer1.Panel1Collapsed = true;
+                ptbMostrarMenu.Image = Properties.Resources.FlechaDerecha;
+                menuOculto = true;
+            }
+        }
+
     }
 }

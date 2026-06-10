@@ -162,33 +162,37 @@
             // 
             // btnLimpiarCoordenada
             // 
+            btnLimpiarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnLimpiarCoordenada.Location = new Point(213, 89);
             btnLimpiarCoordenada.Name = "btnLimpiarCoordenada";
             btnLimpiarCoordenada.Size = new Size(75, 26);
             btnLimpiarCoordenada.TabIndex = 8;
             btnLimpiarCoordenada.Text = "Limpiar";
-            btnLimpiarCoordenada.UseVisualStyleBackColor = true;
+            btnLimpiarCoordenada.UseVisualStyleBackColor = false;
             // 
             // btnQuitarCoordenada
             // 
+            btnQuitarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnQuitarCoordenada.Location = new Point(132, 90);
             btnQuitarCoordenada.Name = "btnQuitarCoordenada";
             btnQuitarCoordenada.Size = new Size(75, 25);
             btnQuitarCoordenada.TabIndex = 7;
             btnQuitarCoordenada.Text = "Quitar";
-            btnQuitarCoordenada.UseVisualStyleBackColor = true;
+            btnQuitarCoordenada.UseVisualStyleBackColor = false;
             // 
             // btnAgragarCoordenada
             // 
+            btnAgragarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnAgragarCoordenada.Location = new Point(6, 89);
             btnAgragarCoordenada.Name = "btnAgragarCoordenada";
             btnAgragarCoordenada.Size = new Size(120, 26);
             btnAgragarCoordenada.TabIndex = 6;
             btnAgragarCoordenada.Text = "Agregar Punto";
-            btnAgragarCoordenada.UseVisualStyleBackColor = true;
+            btnAgragarCoordenada.UseVisualStyleBackColor = false;
             // 
             // numeriZ
             // 
+            numeriZ.BackColor = SystemColors.ScrollBar;
             numeriZ.Location = new Point(213, 43);
             numeriZ.Name = "numeriZ";
             numeriZ.Size = new Size(72, 25);
@@ -196,6 +200,7 @@
             // 
             // numeriY
             // 
+            numeriY.BackColor = SystemColors.ScrollBar;
             numeriY.Location = new Point(109, 43);
             numeriY.Name = "numeriY";
             numeriY.Size = new Size(72, 25);
@@ -203,6 +208,7 @@
             // 
             // numeriX
             // 
+            numeriX.BackColor = SystemColors.ScrollBar;
             numeriX.Location = new Point(6, 43);
             numeriX.Name = "numeriX";
             numeriX.Size = new Size(74, 25);
@@ -253,6 +259,7 @@
             // 
             // txtValorTerreno
             // 
+            txtValorTerreno.BackColor = SystemColors.ScrollBar;
             txtValorTerreno.Location = new Point(91, 91);
             txtValorTerreno.Name = "txtValorTerreno";
             txtValorTerreno.Size = new Size(204, 25);
@@ -260,6 +267,7 @@
             // 
             // cbmMaterialTerreno
             // 
+            cbmMaterialTerreno.BackColor = SystemColors.ScrollBar;
             cbmMaterialTerreno.FormattingEnabled = true;
             cbmMaterialTerreno.Location = new Point(91, 59);
             cbmMaterialTerreno.Name = "cbmMaterialTerreno";
@@ -268,6 +276,7 @@
             // 
             // cmbClienteTerreno
             // 
+            cmbClienteTerreno.BackColor = SystemColors.ScrollBar;
             cmbClienteTerreno.FormattingEnabled = true;
             cmbClienteTerreno.Location = new Point(91, 24);
             cmbClienteTerreno.Name = "cmbClienteTerreno";

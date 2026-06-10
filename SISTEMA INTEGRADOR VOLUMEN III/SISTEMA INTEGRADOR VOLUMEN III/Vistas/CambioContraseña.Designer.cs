@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
             txtConfirNuevaContraseña = new TextBox();
             txtContraseñaNueva = new TextBox();
             txtContraseñaActual = new TextBox();
@@ -36,52 +35,41 @@
             label2 = new Label();
             label1 = new Label();
             btnCambiarContraseña = new Button();
-            groupBox1.SuspendLayout();
+            label4 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(txtConfirNuevaContraseña);
-            groupBox1.Controls.Add(txtContraseñaNueva);
-            groupBox1.Controls.Add(txtContraseñaActual);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(btnCambiarContraseña);
-            groupBox1.Font = new Font("Segoe UI", 10F);
-            groupBox1.Location = new Point(204, 40);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(385, 366);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Cambio de Contraseña";
             // 
             // txtConfirNuevaContraseña
             // 
-            txtConfirNuevaContraseña.Location = new Point(49, 211);
+            txtConfirNuevaContraseña.BackColor = SystemColors.ScrollBar;
+            txtConfirNuevaContraseña.Location = new Point(383, 329);
             txtConfirNuevaContraseña.Name = "txtConfirNuevaContraseña";
-            txtConfirNuevaContraseña.Size = new Size(281, 25);
+            txtConfirNuevaContraseña.Size = new Size(281, 23);
             txtConfirNuevaContraseña.TabIndex = 6;
             txtConfirNuevaContraseña.TextChanged += textBox3_TextChanged;
             // 
             // txtContraseñaNueva
             // 
-            txtContraseñaNueva.Location = new Point(49, 136);
+            txtContraseñaNueva.BackColor = SystemColors.ScrollBar;
+            txtContraseñaNueva.Location = new Point(383, 259);
             txtContraseñaNueva.Name = "txtContraseñaNueva";
-            txtContraseñaNueva.Size = new Size(281, 25);
+            txtContraseñaNueva.Size = new Size(281, 23);
             txtContraseñaNueva.TabIndex = 5;
             // 
             // txtContraseñaActual
             // 
-            txtContraseñaActual.Location = new Point(49, 66);
+            txtContraseñaActual.BackColor = SystemColors.ScrollBar;
+            txtContraseñaActual.Location = new Point(383, 192);
             txtContraseñaActual.Name = "txtContraseñaActual";
-            txtContraseñaActual.Size = new Size(281, 25);
+            txtContraseñaActual.Size = new Size(281, 23);
             txtContraseñaActual.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(49, 189);
+            label3.Font = new Font("Segoe UI", 10F);
+            label3.Location = new Point(383, 307);
             label3.Name = "label3";
             label3.Size = new Size(187, 19);
             label3.TabIndex = 3;
@@ -90,7 +78,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(49, 114);
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.Location = new Point(383, 237);
             label2.Name = "label2";
             label2.Size = new Size(122, 19);
             label2.TabIndex = 2;
@@ -99,7 +88,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(49, 44);
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(383, 170);
             label1.Name = "label1";
             label1.Size = new Size(121, 19);
             label1.TabIndex = 1;
@@ -108,29 +98,56 @@
             // btnCambiarContraseña
             // 
             btnCambiarContraseña.BackColor = SystemColors.ActiveCaption;
-            btnCambiarContraseña.Location = new Point(49, 276);
+            btnCambiarContraseña.Font = new Font("Segoe UI", 10F);
+            btnCambiarContraseña.Location = new Point(383, 395);
             btnCambiarContraseña.Name = "btnCambiarContraseña";
             btnCambiarContraseña.Size = new Size(281, 30);
             btnCambiarContraseña.TabIndex = 0;
             btnCambiarContraseña.Text = "Actualizar Contraseña";
             btnCambiarContraseña.UseVisualStyleBackColor = false;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label4.Location = new Point(441, 118);
+            label4.Name = "label4";
+            label4.Size = new Size(164, 21);
+            label4.TabIndex = 7;
+            label4.Text = "Cambiar Contraseña";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.illustration_of_change_password_symbol_editable_icon_design_for_user_interface_element_vector_removebg_preview;
+            pictureBox1.Location = new Point(459, 29);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(129, 86);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
             // CambioContraseña
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(945, 501);
+            Controls.Add(pictureBox1);
+            Controls.Add(label4);
+            Controls.Add(label1);
+            Controls.Add(txtContraseñaActual);
+            Controls.Add(txtContraseñaNueva);
+            Controls.Add(label2);
+            Controls.Add(txtConfirNuevaContraseña);
+            Controls.Add(label3);
+            Controls.Add(btnCambiarContraseña);
             Name = "CambioContraseña";
             Text = "CambioContraseña";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
         private Label label3;
         private Label label2;
         private Label label1;
@@ -138,5 +155,7 @@
         private TextBox txtContraseñaNueva;
         private TextBox txtContraseñaActual;
         public Button btnCambiarContraseña;
+        private Label label4;
+        private PictureBox pictureBox1;
     }
 }

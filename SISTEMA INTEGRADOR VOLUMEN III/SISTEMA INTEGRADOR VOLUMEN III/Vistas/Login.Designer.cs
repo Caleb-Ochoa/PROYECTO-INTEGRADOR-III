@@ -65,6 +65,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.BackColor = SystemColors.ScrollBar;
             txtUsuario.Font = new Font("Segoe UI", 10F);
             txtUsuario.Location = new Point(145, 225);
             txtUsuario.Name = "txtUsuario";
@@ -73,6 +74,7 @@
             // 
             // txtContraseña
             // 
+            txtContraseña.BackColor = SystemColors.ScrollBar;
             txtContraseña.Font = new Font("Segoe UI", 10F);
             txtContraseña.Location = new Point(145, 287);
             txtContraseña.Name = "txtContraseña";

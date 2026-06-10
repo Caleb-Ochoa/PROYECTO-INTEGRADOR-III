@@ -93,6 +93,37 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FlechaDerecha {
+            get {
+                object obj = ResourceManager.GetObject("FlechaDerecha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlechaIzquierda {
+            get {
+                object obj = ResourceManager.GetObject("FlechaIzquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap illustration_of_change_password_symbol_editable_icon_design_for_user_interface_element_vector_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("illustration-of-change-password-symbol-editable-icon-design-for-user-interface-el" +
+                        "ement-vector-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
@@ -107,6 +138,27 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Properties {
             get {
                 object obj = ResourceManager.GetObject("optimization-icon-editable-stroke-linear-style-sign-for-use-web-design-logo-symbo" +
                         "l-illustration-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_arrowhead_button_computer_icons_arrow_angle_navigation_bar {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_arrowhead_button_computer_icons_arrow_angle_navigation_bar_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-arrowhead-button-computer-icons-arrow-angle-navigation-bar-removebg-p" +
+                        "review", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
