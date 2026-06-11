@@ -1,10 +1,14 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "sEZI+pFOpVw=",
 =======
   "dgSpecHash": "kg9TTQhONmo=",
 >>>>>>> 7f0649f5d6e24a61991d94185c60df9c35fc40d7
+=======
+  "dgSpecHash": "kg9TTQhONmo=",
+>>>>>>> 22e146d4590b14856137a67684dd1bae91a21ef6
   "success": true,
   "projectFilePath": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
   "expectedPackageFiles": [
@@ -15,10 +19,10 @@
     {
       "code": "Undefined",
       "level": "Warning",
-      "message": "Problema al leer el archivo de caché C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\project.nuget.cache : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+      "message": "Problema al leer el archivo de caché C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+      "filePath": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
       "targetGraphs": []
     }
   ]

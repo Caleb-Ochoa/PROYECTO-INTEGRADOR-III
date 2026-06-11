@@ -247,7 +247,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -546,7 +546,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\project.nuget.cache : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0."
+      "message": "Problema al leer el archivo de caché C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
     }
   ]
 }
