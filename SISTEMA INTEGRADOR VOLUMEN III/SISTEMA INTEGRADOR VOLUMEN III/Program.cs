@@ -15,6 +15,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         [STAThread]
         static void Main()
         {
+            // ← AGREGA ESTAS 3 LÍNEAS
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += (s, e) =>
+                MessageBox.Show(e.Exception.ToString(), "Error no manejado");
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                MessageBox.Show(e.ExceptionObject.ToString(), "Error crítico");
+
+            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
             ApplicationConfiguration.Initialize();
             Idioma.Cargar("es");
 

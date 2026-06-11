@@ -48,13 +48,13 @@
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows",
           "dependencies": {
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.3967.48, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
-            },
-            "OpenTK.GLControl": {
-              "target": "Package",
-              "version": "[4.0.2, )"
             }
           },
           "imports": [
