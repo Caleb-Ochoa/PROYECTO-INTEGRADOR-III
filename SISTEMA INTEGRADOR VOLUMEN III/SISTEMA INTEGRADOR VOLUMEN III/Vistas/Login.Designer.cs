@@ -148,7 +148,7 @@
             pnlLogin.Controls.Add(label1);
             pnlLogin.Controls.Add(label2);
             pnlLogin.Controls.Add(txtUsuario);
-            pnlLogin.Location = new Point(141, 24);
+            pnlLogin.Location = new Point(132, 24);
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(496, 450);
             pnlLogin.TabIndex = 11;

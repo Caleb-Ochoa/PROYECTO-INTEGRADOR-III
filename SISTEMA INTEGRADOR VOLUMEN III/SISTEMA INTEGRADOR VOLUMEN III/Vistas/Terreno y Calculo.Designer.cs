@@ -39,8 +39,9 @@
             lblMaterial = new Label();
             cmbCliente = new ComboBox();
             lblCliente = new Label();
-            panelOpenGL = new Panel();
             lblTituloGrafica = new Label();
+            panelOpenGL = new Panel();
+            btnGuardarCotizacion = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -67,34 +68,37 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(panelOpenGL);
             splitContainer1.Panel2.Controls.Add(lblTituloGrafica);
-            splitContainer1.Size = new Size(800, 524);
+            splitContainer1.Panel2.Controls.Add(panelOpenGL);
+            splitContainer1.Size = new Size(800, 532);
             splitContainer1.SplitterDistance = 320;
             splitContainer1.TabIndex = 0;
             // 
             // groupBoxResultados
             // 
+            groupBoxResultados.Controls.Add(btnGuardarCotizacion);
             groupBoxResultados.Controls.Add(btnCalcular);
             groupBoxResultados.Controls.Add(lblTotal);
             groupBoxResultados.Controls.Add(lblTotalTexto);
             groupBoxResultados.Controls.Add(lblVolumen);
             groupBoxResultados.Controls.Add(lblVolumenTexto);
-            groupBoxResultados.Location = new Point(10, 450);
+            groupBoxResultados.Location = new Point(10, 431);
             groupBoxResultados.Name = "groupBoxResultados";
-            groupBoxResultados.Size = new Size(300, 70);
+            groupBoxResultados.Size = new Size(300, 98);
             groupBoxResultados.TabIndex = 3;
             groupBoxResultados.TabStop = false;
             groupBoxResultados.Text = "RESULTADOS";
             // 
             // btnCalcular
             // 
+            btnCalcular.BackColor = SystemColors.ActiveCaption;
             btnCalcular.FlatStyle = FlatStyle.Flat;
-            btnCalcular.Location = new Point(190, 18);
+            btnCalcular.Location = new Point(6, 63);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(95, 40);
+            btnCalcular.Size = new Size(95, 27);
             btnCalcular.TabIndex = 4;
             btnCalcular.Text = "Calcular";
+            btnCalcular.UseVisualStyleBackColor = false;
             // 
             // lblTotal
             // 
@@ -109,7 +113,7 @@
             lblTotalTexto.AutoSize = true;
             lblTotalTexto.Location = new Point(15, 45);
             lblTotalTexto.Name = "lblTotalTexto";
-            lblTotalTexto.Size = new Size(35, 15);
+            lblTotalTexto.Size = new Size(36, 15);
             lblTotalTexto.TabIndex = 6;
             lblTotalTexto.Text = "Total:";
             // 
@@ -134,7 +138,7 @@
             // 
             groupBox1.Controls.Add(lblTotalPuntos);
             groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Location = new Point(10, 295);
+            groupBox1.Location = new Point(10, 275);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(300, 150);
             groupBox1.TabIndex = 2;
@@ -173,7 +177,7 @@
             groupBoxCoordenadas.Controls.Add(lblYLongitud);
             groupBoxCoordenadas.Controls.Add(txtXLatitud);
             groupBoxCoordenadas.Controls.Add(lblX);
-            groupBoxCoordenadas.Location = new Point(10, 160);
+            groupBoxCoordenadas.Location = new Point(10, 149);
             groupBoxCoordenadas.Name = "groupBoxCoordenadas";
             groupBoxCoordenadas.Size = new Size(300, 120);
             groupBoxCoordenadas.TabIndex = 1;
@@ -182,30 +186,36 @@
             // 
             // btnLimpiarCoordenada
             // 
+            btnLimpiarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnLimpiarCoordenada.FlatStyle = FlatStyle.Flat;
             btnLimpiarCoordenada.Location = new Point(198, 78);
             btnLimpiarCoordenada.Name = "btnLimpiarCoordenada";
-            btnLimpiarCoordenada.Size = new Size(88, 32);
+            btnLimpiarCoordenada.Size = new Size(88, 30);
             btnLimpiarCoordenada.TabIndex = 5;
             btnLimpiarCoordenada.Text = "Limpiar";
+            btnLimpiarCoordenada.UseVisualStyleBackColor = false;
             // 
             // btnQuitarCoordenada
             // 
+            btnQuitarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnQuitarCoordenada.FlatStyle = FlatStyle.Flat;
             btnQuitarCoordenada.Location = new Point(104, 78);
             btnQuitarCoordenada.Name = "btnQuitarCoordenada";
-            btnQuitarCoordenada.Size = new Size(88, 32);
+            btnQuitarCoordenada.Size = new Size(88, 30);
             btnQuitarCoordenada.TabIndex = 4;
             btnQuitarCoordenada.Text = "Quitar";
+            btnQuitarCoordenada.UseVisualStyleBackColor = false;
             // 
             // btnAgregarCoordenada
             // 
+            btnAgregarCoordenada.BackColor = SystemColors.ActiveCaption;
             btnAgregarCoordenada.FlatStyle = FlatStyle.Flat;
             btnAgregarCoordenada.Location = new Point(10, 78);
             btnAgregarCoordenada.Name = "btnAgregarCoordenada";
-            btnAgregarCoordenada.Size = new Size(88, 32);
+            btnAgregarCoordenada.Size = new Size(88, 30);
             btnAgregarCoordenada.TabIndex = 3;
             btnAgregarCoordenada.Text = "Agregar";
+            btnAgregarCoordenada.UseVisualStyleBackColor = false;
             // 
             // txtZElevacion
             // 
@@ -265,7 +275,7 @@
             groupBoxDatos.Controls.Add(lblCliente);
             groupBoxDatos.Location = new Point(10, 10);
             groupBoxDatos.Name = "groupBoxDatos";
-            groupBoxDatos.Size = new Size(300, 140);
+            groupBoxDatos.Size = new Size(300, 133);
             groupBoxDatos.TabIndex = 0;
             groupBoxDatos.TabStop = false;
             groupBoxDatos.Text = "DATOS GENERALES";
@@ -273,7 +283,7 @@
             // lblCostoMaterial
             // 
             lblCostoMaterial.AutoSize = true;
-            lblCostoMaterial.Location = new Point(115, 118);
+            lblCostoMaterial.Location = new Point(108, 112);
             lblCostoMaterial.Name = "lblCostoMaterial";
             lblCostoMaterial.Size = new Size(54, 15);
             lblCostoMaterial.TabIndex = 0;
@@ -282,7 +292,7 @@
             // labelCostoMaterial
             // 
             labelCostoMaterial.AutoSize = true;
-            labelCostoMaterial.Location = new Point(15, 118);
+            labelCostoMaterial.Location = new Point(15, 112);
             labelCostoMaterial.Name = "labelCostoMaterial";
             labelCostoMaterial.Size = new Size(87, 15);
             labelCostoMaterial.TabIndex = 1;
@@ -291,7 +301,7 @@
             // cmbMaterial
             // 
             cmbMaterial.FormattingEnabled = true;
-            cmbMaterial.Location = new Point(15, 89);
+            cmbMaterial.Location = new Point(15, 86);
             cmbMaterial.Name = "cmbMaterial";
             cmbMaterial.Size = new Size(270, 23);
             cmbMaterial.TabIndex = 2;
@@ -299,7 +309,7 @@
             // lblMaterial
             // 
             lblMaterial.AutoSize = true;
-            lblMaterial.Location = new Point(15, 72);
+            lblMaterial.Location = new Point(15, 68);
             lblMaterial.Name = "lblMaterial";
             lblMaterial.Size = new Size(50, 15);
             lblMaterial.TabIndex = 3;
@@ -322,28 +332,38 @@
             lblCliente.TabIndex = 4;
             lblCliente.Text = "Cliente";
             // 
-            // panelOpenGL
-            // 
-            panelOpenGL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelOpenGL.Location = new Point(10, 40);
-            panelOpenGL.Name = "panelOpenGL";
-            panelOpenGL.Size = new Size(455, 470);
-            panelOpenGL.TabIndex = 1;
-            // 
             // lblTituloGrafica
             // 
-            lblTituloGrafica.Location = new Point(10, 8);
+            lblTituloGrafica.Location = new Point(3, 9);
             lblTituloGrafica.Name = "lblTituloGrafica";
             lblTituloGrafica.Size = new Size(250, 20);
             lblTituloGrafica.TabIndex = 2;
             lblTituloGrafica.Text = "Visualización 3D del Terreno";
+            // 
+            // panelOpenGL
+            // 
+            panelOpenGL.Location = new Point(3, 32);
+            panelOpenGL.Name = "panelOpenGL";
+            panelOpenGL.Size = new Size(470, 488);
+            panelOpenGL.TabIndex = 1;
+            // 
+            // btnGuardarCotizacion
+            // 
+            btnGuardarCotizacion.BackColor = SystemColors.ActiveCaption;
+            btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
+            btnGuardarCotizacion.Location = new Point(122, 63);
+            btnGuardarCotizacion.Name = "btnGuardarCotizacion";
+            btnGuardarCotizacion.Size = new Size(119, 27);
+            btnGuardarCotizacion.TabIndex = 9;
+            btnGuardarCotizacion.Text = "Guardar Cotización";
+            btnGuardarCotizacion.UseVisualStyleBackColor = false;
             // 
             // Terreno_y_Calculo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(800, 524);
+            ClientSize = new Size(800, 532);
             Controls.Add(splitContainer1);
             Name = "Terreno_y_Calculo";
             Text = "Terreno y Cálculo";
@@ -391,5 +411,6 @@
         public System.Windows.Forms.Button btnQuitarCoordenada;
         public System.Windows.Forms.Button btnLimpiarCoordenada;
         public System.Windows.Forms.Button btnCalcular;
+        private Button btnGuardarCotizacion;
     }
 }
