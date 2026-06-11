@@ -8,63 +8,111 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 {
     internal class CalculoService : ICalculoService
     {
-        // ── Método principal — elige el mejor método según los puntos ─────
+        // ── Método principal ──────────────────────────────────────────────
+        // Con 6+ puntos: Mínimos Cuadrados + Integral Doble sobre área REAL (Shoelace)
+        // Con 3-5 puntos: Triangulación TIN + suma de prismas (Delaunay manual)
         public ResultadoCalculo Calcular(Terreno terreno, Material material)
         {
             if (terreno.Coordenadas.Count < 3)
-                throw new InvalidOperationException(
-                    "Se necesitan al menos 3 coordenadas.");
+                throw new InvalidOperationException("Se necesitan al menos 3 coordenadas.");
 
-            // Con 6+ puntos usamos Mínimos Cuadrados + Integral Doble (más preciso)
-            // Con menos puntos usamos Shoelace + Prismoide
             if (terreno.Coordenadas.Count >= 6)
                 return CalcularConModeloCuadratico(terreno, material);
             else
-                return CalcularConShoelace(terreno, material);
+                return CalcularConTIN(terreno, material);
         }
 
-        // ── MÉTODO 1: Mínimos Cuadrados + Integral Doble ──────────────────
-        // Ajusta z = ax²+by²+cxy+dx+ey+f y luego integra numéricamente
-        private ResultadoCalculo CalcularConModeloCuadratico(
-            Terreno terreno, Material material)
+        // ── MÉTODO 1: Mínimos Cuadrados + Integral Doble sobre polígono REAL ──
+        private ResultadoCalculo CalcularConModeloCuadratico(Terreno terreno, Material material)
         {
-            var coef = AjustarMinCuadrados(terreno.Coordenadas);
+            var pts = terreno.Coordenadas;
+            var coef = AjustarMinCuadrados(pts);
 
-            double xMin = terreno.Coordenadas.Min(c => c.X);
-            double xMax = terreno.Coordenadas.Max(c => c.X);
-            double yMin = terreno.Coordenadas.Min(c => c.Y);
-            double yMax = terreno.Coordenadas.Max(c => c.Y);
+            // Área REAL del polígono (Shoelace con X e Y)
+            double areaReal = CalcularAreaShoelace(pts);
 
-            double volumen = IntegralDoble(coef, xMin, xMax, yMin, yMax, pasos: 100);
-            double area = (xMax - xMin) * (yMax - yMin);
+            // Triangulación del polígono para integrar solo dentro del polígono
+            var triangulos = TriangularPolígono(pts);
+            double volumen = 0;
+            foreach (var tri in triangulos)
+                volumen += VolumenPrismaTriangular(tri.a, tri.b, tri.c, coef);
+
             decimal costo = (decimal)Math.Abs(volumen) * material.CostoMetroCubico;
 
-            return new ResultadoCalculo(area, Math.Abs(volumen), costo,
+            return new ResultadoCalculo(areaReal, Math.Abs(volumen), costo,
                 "Mínimos Cuadrados + Integral Doble");
         }
 
-        // ── MÉTODO 2: Shoelace + Prismoide (fallback con pocos puntos) ────
-        private ResultadoCalculo CalcularConShoelace(
-            Terreno terreno, Material material)
+        // ── MÉTODO 2: Triangulación TIN — polígono de 3-5 puntos ─────────
+        // Divide el polígono en triángulos y calcula el volumen de cada prisma
+        private ResultadoCalculo CalcularConTIN(Terreno terreno, Material material)
         {
-            double area = CalcularAreaShoelace(terreno.Coordenadas);
-            double zProm = terreno.Coordenadas.Average(c => c.Z);
-            double volumen = area * zProm;
+            var pts = terreno.Coordenadas;
+            double area = CalcularAreaShoelace(pts);
+
+            var triangulos = TriangularPolígono(pts);
+            double volumen = 0;
+            foreach (var tri in triangulos)
+                volumen += VolumenPrismaTriangularSimple(tri.a, tri.b, tri.c);
+
             decimal costo = (decimal)Math.Abs(volumen) * material.CostoMetroCubico;
 
             return new ResultadoCalculo(area, Math.Abs(volumen), costo,
-                "Shoelace + Prismoide");
+                "Triangulación TIN (Fan)");
+        }
+
+        // ── Triangulación Fan desde el centroide ──────────────────────────
+        // Divide el polígono convexo (o casi convexo) en triángulos
+        // desde el primer punto hacia todos los demás pares consecutivos
+        private static List<(Coordenada a, Coordenada b, Coordenada c)> TriangularPolígono(
+            List<Coordenada> pts)
+        {
+            var tris = new List<(Coordenada, Coordenada, Coordenada)>();
+            // Fan triangulation desde pts[0]
+            for (int i = 1; i < pts.Count - 1; i++)
+                tris.Add((pts[0], pts[i], pts[i + 1]));
+            return tris;
+        }
+
+        // Volumen del prisma triangular usando la fórmula:
+        // V = (1/2) * |base triangular en XY| * (z_promedio del triángulo)
+        // donde z se evalúa desde el modelo cuadrático
+        private static double VolumenPrismaTriangular(
+            Coordenada a, Coordenada b, Coordenada c, double[] coef)
+        {
+            // Área del triángulo en 2D (XY)
+            double areaT = Math.Abs(
+                (b.X - a.X) * (c.Y - a.Y) -
+                (c.X - a.X) * (b.Y - a.Y)) / 2.0;
+
+            // Z evaluado en el centroide del triángulo
+            double cx = (a.X + b.X + c.X) / 3.0;
+            double cy = (a.Y + b.Y + c.Y) / 3.0;
+            double z = EvaluarModelo(coef, cx, cy);
+
+            return areaT * z;
+        }
+
+        // Volumen del prisma triangular usando alturas medidas directamente
+        // V = (1/6) * |base 2D| * (z_a + z_b + z_c)
+        private static double VolumenPrismaTriangularSimple(
+            Coordenada a, Coordenada b, Coordenada c)
+        {
+            double areaT = Math.Abs(
+                (b.X - a.X) * (c.Y - a.Y) -
+                (c.X - a.X) * (b.Y - a.Y)) / 2.0;
+
+            double zProm = (a.Z + b.Z + c.Z) / 3.0;
+            return areaT * zProm;
         }
 
         // ── Ajuste por Mínimos Cuadrados ──────────────────────────────────
-        // Resuelve el sistema [x²,y²,xy,x,y,1] para cada punto
-        // Retorna [A,B,C,D,E,F]
+        // z = ax² + by² + cxy + dx + ey + f
         public static double[] AjustarMinCuadrados(List<Coordenada> pts)
         {
             int n = pts.Count;
-            int m = 6; // número de coeficientes
+            int m = 6;
 
-            // Matriz A (n x 6) y vector b (n x 1)
             double[,] A = new double[n, m];
             double[] b = new double[n];
 
@@ -80,38 +128,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
                 b[i] = pts[i].Z;
             }
 
-            // Normal equations: (Aᵀ·A)·coef = Aᵀ·b
             double[,] AtA = MultiplicarMatrices(Transponer(A, n, m), m, n, A, n, m);
             double[] Atb = MultiplicarMatrizVector(Transponer(A, n, m), m, n, b);
 
             return GaussJordan(AtA, Atb, m);
         }
 
-        // ── Integral Doble por Sumas de Riemann ───────────────────────────
-        public static double IntegralDoble(double[] coef,
-            double xMin, double xMax, double yMin, double yMax, int pasos = 100)
-        {
-            double dx = (xMax - xMin) / pasos;
-            double dy = (yMax - yMin) / pasos;
-            double vol = 0;
-
-            for (int i = 0; i < pasos; i++)
-            {
-                double x = xMin + (i + 0.5) * dx;
-                for (int j = 0; j < pasos; j++)
-                {
-                    double y = yMin + (j + 0.5) * dy;
-                    double z = EvaluarModelo(coef, x, y);
-                    vol += z * dx * dy;
-                }
-            }
-            return vol;
-        }
-
         public static double EvaluarModelo(double[] c, double x, double y) =>
             c[0] * x * x + c[1] * y * y + c[2] * x * y + c[3] * x + c[4] * y + c[5];
 
-        // ── Shoelace ──────────────────────────────────────────────────────
+        // ── Shoelace — área real del polígono ─────────────────────────────
         public static double CalcularAreaShoelace(List<Coordenada> coords)
         {
             int n = coords.Count;
@@ -125,7 +151,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return Math.Abs(area) / 2.0;
         }
 
-        // ── Álgebra lineal básica ─────────────────────────────────────────
+        // ── Álgebra lineal ────────────────────────────────────────────────
         private static double[,] Transponer(double[,] M, int filas, int cols)
         {
             double[,] T = new double[cols, filas];
@@ -157,7 +183,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return r;
         }
 
-        // Eliminación de Gauss-Jordan para resolver Ax=b
         private static double[] GaussJordan(double[,] A, double[] b, int n)
         {
             double[,] M = new double[n, n + 1];
@@ -169,7 +194,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 
             for (int col = 0; col < n; col++)
             {
-                // Pivoteo parcial
                 int max = col;
                 for (int row = col + 1; row < n; row++)
                     if (Math.Abs(M[row, col]) > Math.Abs(M[max, col])) max = row;
