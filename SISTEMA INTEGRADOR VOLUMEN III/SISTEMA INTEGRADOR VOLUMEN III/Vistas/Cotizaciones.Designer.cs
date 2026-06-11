@@ -114,11 +114,10 @@
         }
 
         #endregion
-
-        private DataGridView dvgCotizaciones;
-        private TextBox txtBuscarCotizaciones;
-        private Button btnBuscarCotizaciones;
-        private Button btnLimpiarCotizaciones;
-        private Button btnAgregarCotizacion;
+        public DataGridView dvgCotizaciones;
+        public TextBox txtBuscarCotizaciones;
+        public Button btnAgregarCotizacion;
+        public Button btnBuscarCotizaciones;
+        public Button btnLimpiarCotizaciones;
     }
 }
