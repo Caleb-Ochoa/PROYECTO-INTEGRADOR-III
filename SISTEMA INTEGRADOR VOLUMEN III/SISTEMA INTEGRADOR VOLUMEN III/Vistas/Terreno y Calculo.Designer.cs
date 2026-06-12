@@ -14,6 +14,7 @@
         {
             splitContainer1 = new SplitContainer();
             groupBoxResultados = new GroupBox();
+            btnGuardarCotizacion = new Button();
             btnCalcular = new Button();
             lblTotal = new Label();
             lblTotalTexto = new Label();
@@ -41,7 +42,6 @@
             lblCliente = new Label();
             lblTituloGrafica = new Label();
             panelOpenGL = new Panel();
-            btnGuardarCotizacion = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -89,6 +89,17 @@
             groupBoxResultados.TabStop = false;
             groupBoxResultados.Text = "RESULTADOS";
             // 
+            // btnGuardarCotizacion
+            // 
+            btnGuardarCotizacion.BackColor = SystemColors.ActiveCaption;
+            btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
+            btnGuardarCotizacion.Location = new Point(122, 63);
+            btnGuardarCotizacion.Name = "btnGuardarCotizacion";
+            btnGuardarCotizacion.Size = new Size(119, 27);
+            btnGuardarCotizacion.TabIndex = 9;
+            btnGuardarCotizacion.Text = "Guardar Cotización";
+            btnGuardarCotizacion.UseVisualStyleBackColor = false;
+            // 
             // btnCalcular
             // 
             btnCalcular.BackColor = SystemColors.ActiveCaption;
@@ -102,7 +113,7 @@
             // 
             // lblTotal
             // 
-            lblTotal.Location = new Point(80, 25);
+            lblTotal.Location = new Point(80, 45);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(80, 20);
             lblTotal.TabIndex = 5;
@@ -113,13 +124,13 @@
             lblTotalTexto.AutoSize = true;
             lblTotalTexto.Location = new Point(15, 45);
             lblTotalTexto.Name = "lblTotalTexto";
-            lblTotalTexto.Size = new Size(36, 15);
+            lblTotalTexto.Size = new Size(35, 15);
             lblTotalTexto.TabIndex = 6;
             lblTotalTexto.Text = "Total:";
             // 
             // lblVolumen
             // 
-            lblVolumen.Location = new Point(80, 45);
+            lblVolumen.Location = new Point(80, 25);
             lblVolumen.Name = "lblVolumen";
             lblVolumen.Size = new Size(100, 20);
             lblVolumen.TabIndex = 7;
@@ -346,17 +357,6 @@
             panelOpenGL.Name = "panelOpenGL";
             panelOpenGL.Size = new Size(470, 488);
             panelOpenGL.TabIndex = 1;
-            // 
-            // btnGuardarCotizacion
-            // 
-            btnGuardarCotizacion.BackColor = SystemColors.ActiveCaption;
-            btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
-            btnGuardarCotizacion.Location = new Point(122, 63);
-            btnGuardarCotizacion.Name = "btnGuardarCotizacion";
-            btnGuardarCotizacion.Size = new Size(119, 27);
-            btnGuardarCotizacion.TabIndex = 9;
-            btnGuardarCotizacion.Text = "Guardar Cotización";
-            btnGuardarCotizacion.UseVisualStyleBackColor = false;
             // 
             // Terreno_y_Calculo
             // 

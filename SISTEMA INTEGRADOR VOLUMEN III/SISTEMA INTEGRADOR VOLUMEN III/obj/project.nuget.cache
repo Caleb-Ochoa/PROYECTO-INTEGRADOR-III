@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "3ji1cxUk0us=",
+=======
+  "dgSpecHash": "kg9TTQhONmo=",
+>>>>>>> c9f56b8153365b24e522532426dc02c5b914cee0
   "success": true,
   "projectFilePath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
   "expectedPackageFiles": [
