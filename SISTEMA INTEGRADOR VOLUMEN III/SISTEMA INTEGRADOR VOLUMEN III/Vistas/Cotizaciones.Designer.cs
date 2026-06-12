@@ -107,18 +107,17 @@
             Controls.Add(dvgCotizaciones);
             Name = "Cotizaciones";
             Text = "Cotizaciones";
-            Load += Cotizaciones_Load;
+            
             ((System.ComponentModel.ISupportInitialize)dvgCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dvgCotizaciones;
-        private TextBox txtBuscarCotizaciones;
-        private Button btnBuscarCotizaciones;
-        private Button btnLimpiarCotizaciones;
-        private Button btnAgregarCotizacion;
+        public DataGridView dvgCotizaciones;
+        public TextBox txtBuscarCotizaciones;
+        public Button btnAgregarCotizacion;
+        public Button btnBuscarCotizaciones;
+        public Button btnLimpiarCotizaciones;
     }
 }

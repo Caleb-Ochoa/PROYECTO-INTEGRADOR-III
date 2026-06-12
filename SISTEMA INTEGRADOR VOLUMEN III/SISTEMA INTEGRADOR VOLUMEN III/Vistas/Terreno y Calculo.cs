@@ -63,19 +63,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 double dx = (xMax - xMin) / pasos;
                 double dy = (yMax - yMin) / pasos;
 
-                // X es un vector simple de valores
                 var xList = new List<string>();
                 for (int i = 0; i <= pasos; i++)
                     xList.Add((xMin + i * dx).ToString(System.Globalization.CultureInfo.InvariantCulture));
                 xVec = "[" + string.Join(",", xList) + "]";
 
-                // Y es un vector simple de valores
                 var yList = new List<string>();
                 for (int j = 0; j <= pasos; j++)
                     yList.Add((yMin + j * dy).ToString(System.Globalization.CultureInfo.InvariantCulture));
                 yVec = "[" + string.Join(",", yList) + "]";
 
-                // Z es una matriz [filas=Y, cols=X]
                 for (int j = 0; j <= pasos; j++)
                 {
                     zData.Append("[");
@@ -242,6 +239,11 @@ Plotly.newPlot('plot', [surface, puntos], layout, {{ responsive: true }});
             else
                 lblCostoMaterial.Text = "$0.00/m³";
         }
+
+        // ── Nombre del terreno ──────────────────────────────────────────
+        public string GetNombreTerreno() => txtNombreTerreno.Text.Trim();
+
+        public void LimpiarNombreTerreno() => txtNombreTerreno.Clear();
 
         public void MostrarMensaje(string msg, bool esError = false)
         {

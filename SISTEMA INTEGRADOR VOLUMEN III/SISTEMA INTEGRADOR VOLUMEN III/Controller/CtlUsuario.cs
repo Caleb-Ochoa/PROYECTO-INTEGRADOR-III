@@ -152,15 +152,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         private void EstilizarGrid()
         {
             if (VistaGestion == null) return;
-            VistaGestion.dgvUsuarios.AutoSizeColumnsMode =
-                System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor =
-                System.Drawing.Color.FromArgb(240, 240, 240);
-            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.Font =
-                new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            VistaGestion.dgvUsuarios.AutoSizeColumnsMode =System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor =System.Drawing.Color.FromArgb(240, 240, 240);
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.Font =new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             VistaGestion.dgvUsuarios.EnableHeadersVisualStyles = false;
-            VistaGestion.dgvUsuarios.DefaultCellStyle.Font =
-                new System.Drawing.Font("Segoe UI", 9.5F);
+            VistaGestion.dgvUsuarios.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             VistaGestion.dgvUsuarios.RowTemplate.Height = 32;
             VistaGestion.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
         }
@@ -270,13 +266,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 usuarios = dataManager.GetAll();
                 CargarGrid();
 
-                MessageBox.Show("Usuario actualizado correctamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario actualizado correctamente.","Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -301,31 +295,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     CorreoElectronico = datos[3],
                     Direccion = datos[4],
                     Username = datos[5],
-                    Rol = datos[7] == "Administrador"
-                        ? Rol.Administrador
-                        : Rol.Usuario,
+                    Rol = datos[7] == "Administrador"? Rol.Administrador: Rol.Usuario,
                     Estado = EstadoUsuario.Activo
                 };
 
                 Add(usuario, datos[6]);
 
                 usuarios = dataManager.GetAll();
-
                 CargarGrid();
 
-                MessageBox.Show(
-                    "Usuario agregado correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Usuario agregado correctamente.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -377,8 +360,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 VistaRegistro.Hide();
 
-                MessageBox.Show(
-                    "Administrador registrado.\nAhora puede iniciar sesión.",
+                MessageBox.Show("Administrador registrado.\nAhora puede iniciar sesión.",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 VistaRegistro.Close();
@@ -470,11 +452,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         public void ToggleEstado(int id)
         {
-            var u = usuarios.FirstOrDefault(x => x.Id == id)
-                ?? throw new InvalidOperationException("Usuario no encontrado.");
-            u.Estado = u.Estado == EstadoUsuario.Activo
-                ? EstadoUsuario.Inactivo
-                : EstadoUsuario.Activo;
+            var u = usuarios.FirstOrDefault(x => x.Id == id)?? throw new InvalidOperationException("Usuario no encontrado.");
+            u.Estado = u.Estado == EstadoUsuario.Activo? EstadoUsuario.Inactivo: EstadoUsuario.Activo;
             Save();
         }
 

@@ -60,8 +60,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             try
             {
                 if (clientes.Any(c => c.Documento == datos[1].Trim()))
-                    throw new InvalidOperationException(
-                        "Ya existe un cliente con ese número de identificación.");
+                    throw new InvalidOperationException("Ya existe un cliente con ese número de identificación.");
 
                 clientes.Add(new Cliente
                 {

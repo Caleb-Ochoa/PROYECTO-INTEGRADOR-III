@@ -75,6 +75,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCotizacion.Text = "🗃️ Cotizaciones";
             btnCotizacion.TextAlign = ContentAlignment.TopLeft;
             btnCotizacion.UseVisualStyleBackColor = true;
+            btnCotizacion.Click += btnCotizacion_Click;
             // 
             // btnTerreno
             // 

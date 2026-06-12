@@ -52,6 +52,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             };
             Vista.btnLimpiarCoordenada.Click += (s, e) => Limpiar();
             Vista.btnCalcular.Click += (s, e) => Calcular();
+            Vista.btnGuardarTerreno.Click += (s, e) => GuardarTerreno();
         }
 
         private void CargarCombos()
@@ -102,7 +103,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             Vista.CargarGridCoordenadas(_coordActuales);
 
-            // Si hay 6+ puntos calculamos el modelo para la gráfica continua
             double[]? coef = null;
             if (_coordActuales.Count >= 6)
             {
@@ -113,6 +113,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Vista.ActualizarGrafica(_coordActuales, coef);
         }
 
+        // ── Calcular (no persiste, solo muestra resultado) ────────────────
         private void Calcular()
         {
             if (_coordActuales.Count < 3)
@@ -131,18 +132,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 int materialId = (int)Vista.GetCmbMaterial().SelectedValue!;
                 Material mat = _materiales.First(m => m.Id == materialId);
 
-                int clienteId = Vista.GetCmbCliente().SelectedValue != null
-                    ? (int)Vista.GetCmbCliente().SelectedValue : 0;
-
-                Terreno terreno = new Terreno
+                var terrenoTemporal = new Terreno
                 {
-                    Id = _dmTerreno.GetNextId(),
-                    ClienteId = clienteId,
-                    Nombre = $"Terreno-{DateTime.Now:yyyyMMddHHmmss}",
                     Coordenadas = _coordActuales
                 };
 
-                _ultimoResultado = _calculo.Calcular(terreno, mat);
+                _ultimoResultado = _calculo.Calcular(terrenoTemporal, mat);
 
                 Vista.MostrarResultado(
                     _ultimoResultado.Area,
@@ -150,14 +145,65 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     _ultimoResultado.CostoTotal,
                     _ultimoResultado.MetodoUsado);
 
-                _terrenos.Add(terreno);
-                _dmTerreno.Save(_terrenos);
-
                 Vista.MostrarMensaje(
                     $"Método: {_ultimoResultado.MetodoUsado}\n" +
                     $"Área:    {_ultimoResultado.Area:F2} m²\n" +
                     $"Volumen: {_ultimoResultado.Volumen:F2} m³\n" +
                     $"Costo:   {_ultimoResultado.CostoTotal:C2}");
+            }
+            catch (Exception ex)
+            {
+                Vista.MostrarMensaje(ex.Message, esError: true);
+            }
+        }
+
+        // ── Guardar Terreno ────────────────────────────────────────────────
+        private void GuardarTerreno()
+        {
+            string nombre = Vista.GetNombreTerreno();
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                Vista.MostrarMensaje("Ingresa un nombre para el terreno.", esError: true);
+                return;
+            }
+
+            if (_coordActuales.Count < 3)
+            {
+                Vista.MostrarMensaje("Necesitas al menos 3 coordenadas.", esError: true);
+                return;
+            }
+
+            if (Vista.GetCmbCliente().SelectedValue == null)
+            {
+                Vista.MostrarMensaje("Selecciona un cliente.", esError: true);
+                return;
+            }
+
+            if (_terrenos.Any(t => string.Equals(t.Nombre, nombre, StringComparison.OrdinalIgnoreCase)))
+            {
+                Vista.MostrarMensaje("Ya existe un terreno con ese nombre.", esError: true);
+                return;
+            }
+
+            try
+            {
+                int clienteId = (int)Vista.GetCmbCliente().SelectedValue!;
+
+                Terreno terreno = new Terreno
+                {
+                    Id = _dmTerreno.GetNextId(),
+                    ClienteId = clienteId,
+                    Nombre = nombre,
+                    Coordenadas = _coordActuales.ToList()
+                };
+
+                _terrenos.Add(terreno);
+                _dmTerreno.Save(_terrenos);
+
+                Vista.MostrarMensaje($"Terreno '{nombre}' guardado correctamente.");
+
+                Vista.LimpiarNombreTerreno();
+                Limpiar();
             }
             catch (Exception ex)
             {

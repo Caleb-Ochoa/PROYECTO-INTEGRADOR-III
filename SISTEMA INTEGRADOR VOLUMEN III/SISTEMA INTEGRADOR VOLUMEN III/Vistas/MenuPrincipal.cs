@@ -119,7 +119,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         // ── Cotizaciones ──────────────────────────────────────────────────
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Cotizaciones());
+            Cotizaciones vista = new Cotizaciones();
+
+            IRepository<Cotizacion> repoCot = new RepositorioFile<Cotizacion>("cotizaciones.txt", Cotizacion.FromText);
+            IRepository<Cliente> repoCli = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
+            IRepository<Terreno> repoTer = new RepositorioFile<Terreno>("terrenos.txt", Terreno.FromText);
+            IRepository<Material> repoMat = new RepositorioFile<Material>("materiales.txt", Material.FromText);
+
+            DataManager<Cotizacion> dmCot = new DataManager<Cotizacion>(repoCot);
+            DataManager<Cliente> dmCli = new DataManager<Cliente>(repoCli);
+            DataManager<Terreno> dmTer = new DataManager<Terreno>(repoTer);
+            DataManager<Material> dmMat = new DataManager<Material>(repoMat);
+
+            ICalculoService calculo = new CalculoService();
+
+            CtlCotizacion controlador = new CtlCotizacion(dmCot, dmCli, dmTer, dmMat, calculo, vista);
+            AbrirFormulario(vista);
         }
 
         // ── Facturas ──────────────────────────────────────────────────────
