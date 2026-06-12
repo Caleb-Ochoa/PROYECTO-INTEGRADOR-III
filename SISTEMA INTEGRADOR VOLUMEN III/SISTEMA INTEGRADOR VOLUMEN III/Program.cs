@@ -9,18 +9,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             // ← AGREGA ESTAS 3 LÍNEAS
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            Application.ThreadException += (s, e) =>
-                MessageBox.Show(e.Exception.ToString(), "Error no manejado");
-            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
-                MessageBox.Show(e.ExceptionObject.ToString(), "Error crítico");
+            Application.ThreadException += (s, e) =>MessageBox.Show(e.Exception.ToString(), "Error no manejado");
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>MessageBox.Show(e.ExceptionObject.ToString(), "Error crítico");
 
             Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
             ApplicationConfiguration.Initialize();
