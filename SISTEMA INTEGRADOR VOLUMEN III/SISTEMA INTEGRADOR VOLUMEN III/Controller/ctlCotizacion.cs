@@ -5,8 +5,11 @@ using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 {
@@ -88,6 +91,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     AnularCotizacion(id);
             };
         }
+
         // ── Nueva cotización ──────────────────────────────────────────────
         private void NuevaCotizacion()
         {
@@ -116,10 +120,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 if (terreno == null || material == null)
                     throw new InvalidOperationException("Terreno o material no encontrado.");
 
-                if (terreno.Coordenadas.Count < 6)
+                if (terreno.Coordenadas.Count < 3)
                     throw new InvalidOperationException(
                         $"El terreno '{terreno.Nombre}' tiene {terreno.Coordenadas.Count} coordenadas. " +
-                        "Se necesitan al menos 6 para calcular el volumen.");
+                        "Se necesitan al menos 3 para calcular el volumen.");
 
                 // Calcular volumen con el servicio
                 var resultado = calculoService.Calcular(terreno, material);
@@ -142,6 +146,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 MessageBox.Show(
                     $"Cotización generada exitosamente.\n\n" +
+                    $"Método: {resultado.MetodoUsado}\n" +
                     $"Volumen: {resultado.Volumen:F4} m³\n" +
                     $"Costo total: {resultado.CostoTotal:C2}",
                     "Cotización creada",
@@ -175,7 +180,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 $"Fecha:          {cot.Fecha:dd/MM/yyyy HH:mm}\n" +
                 $"Estado:         {cot.Estado}";
 
-            MessageBox.Show(detalle, "Detalle de cotización",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(detalle, "Detalle de cotización", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // ── Anular ────────────────────────────────────────────────────────
@@ -185,7 +190,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (cot == null) return;
 
             if (cot.Estado == EstadoCotizacion.Cancelada)
-            { MessageBox.Show("Esta cotización ya está anulada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            {
+                // Ya está anulada — el botón se ve deshabilitado, no hacer nada
+                return;
+            }
 
             if (MessageBox.Show("¿Está seguro de anular esta cotización?", "Confirmar",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
@@ -234,11 +242,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             EstilizarGrid();
             AgregarColumnasAccion();
+            AplicarColoresEstado();
         }
 
         private void EstilizarGrid()
         {
-            Vista.dvgCotizaciones.AutoSizeColumnsMode =DataGridViewAutoSizeColumnsMode.Fill;
+            Vista.dvgCotizaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Vista.dvgCotizaciones.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             Vista.dvgCotizaciones.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             Vista.dvgCotizaciones.EnableHeadersVisualStyles = false;
@@ -291,6 +300,39 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             });
         }
 
+        // ── Colores de fila según estado ───────────────────────────────────
+        private void AplicarColoresEstado()
+        {
+            foreach (DataGridViewRow row in Vista.dvgCotizaciones.Rows)
+            {
+                string estado = row.Cells["Estado"].Value?.ToString() ?? "";
+
+                if (estado == "Cancelada")
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 235);
+                    row.DefaultCellStyle.ForeColor = Color.FromArgb(180, 60, 60);
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Italic);
+
+                    if (row.Cells["ColAnular"] is DataGridViewButtonCell btnAnular)
+                    {
+                        btnAnular.Style.BackColor = Color.FromArgb(200, 200, 200);
+                        btnAnular.Style.ForeColor = Color.FromArgb(150, 150, 150);
+                        btnAnular.Value = "Anulada";
+                    }
+                }
+                else if (estado == "Facturada")
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(235, 245, 255);
+                    row.DefaultCellStyle.ForeColor = Color.FromArgb(40, 80, 160);
+                }
+                else // Activa
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.FromArgb(20, 130, 60);
+                }
+            }
+        }
+
         private void Buscar()
         {
             string termino = Vista.txtBuscarCotizaciones.Text.Trim().ToLower();
@@ -302,21 +344,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     (clientes.FirstOrDefault(x => x.Id == c.ClienteId)?.Nombre ?? "").ToLower().Contains(termino) ||
                     (terrenos.FirstOrDefault(x => x.Id == c.TerrenoId)?.Nombre ?? "").ToLower().Contains(termino) ||
                     c.Estado.ToString().ToLower().Contains(termino)).Select(c => new
-                {
-                    c.Id,
-                    Cliente = clientes.FirstOrDefault(x => x.Id == c.ClienteId)?.Nombre ?? "N/A",
-                    Terreno = terrenos.FirstOrDefault(x => x.Id == c.TerrenoId)?.Nombre ?? "N/A",
-                    Material = materiales.FirstOrDefault(x => x.Id == c.MaterialId)?.Nombre ?? "N/A",
-                    Volumen = $"{c.Volumen:F2} m³",
-                    Costo = c.CostoTotal.ToString("C2", CultureInfo.GetCultureInfo("es-CO")),
-                    Fecha = c.Fecha.ToString("dd/MM/yyyy"),
-                    Estado = c.Estado.ToString()
-                }).ToList();
+                    {
+                        c.Id,
+                        Cliente = clientes.FirstOrDefault(x => x.Id == c.ClienteId)?.Nombre ?? "N/A",
+                        Terreno = terrenos.FirstOrDefault(x => x.Id == c.TerrenoId)?.Nombre ?? "N/A",
+                        Material = materiales.FirstOrDefault(x => x.Id == c.MaterialId)?.Nombre ?? "N/A",
+                        Volumen = $"{c.Volumen:F2} m³",
+                        Costo = c.CostoTotal.ToString("C2", CultureInfo.GetCultureInfo("es-CO")),
+                        Fecha = c.Fecha.ToString("dd/MM/yyyy"),
+                        Estado = c.Estado.ToString()
+                    }).ToList();
 
             if (Vista.dvgCotizaciones.Columns.Contains("Id")) Vista.dvgCotizaciones.Columns["Id"].Visible = false;
 
             EstilizarGrid();
             AgregarColumnasAccion();
+            AplicarColoresEstado();
         }
     }
 }

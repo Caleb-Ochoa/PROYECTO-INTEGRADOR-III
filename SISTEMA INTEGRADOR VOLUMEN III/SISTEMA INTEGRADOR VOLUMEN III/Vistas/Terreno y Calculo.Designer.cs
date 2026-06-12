@@ -14,7 +14,7 @@
         {
             splitContainer1 = new SplitContainer();
             groupBoxResultados = new GroupBox();
-            btnGuardarCotizacion = new Button();
+            btnGuardarTerreno = new Button();
             btnCalcular = new Button();
             lblTotal = new Label();
             lblTotalTexto = new Label();
@@ -34,6 +34,8 @@
             txtXLatitud = new TextBox();
             lblX = new Label();
             groupBoxDatos = new GroupBox();
+            txtNombreTerreno = new TextBox();
+            lblNombreTerreno = new Label();
             lblCostoMaterial = new Label();
             labelCostoMaterial = new Label();
             cmbMaterial = new ComboBox();
@@ -76,7 +78,7 @@
             // 
             // groupBoxResultados
             // 
-            groupBoxResultados.Controls.Add(btnGuardarCotizacion);
+            groupBoxResultados.Controls.Add(btnGuardarTerreno);
             groupBoxResultados.Controls.Add(btnCalcular);
             groupBoxResultados.Controls.Add(lblTotal);
             groupBoxResultados.Controls.Add(lblTotalTexto);
@@ -89,16 +91,16 @@
             groupBoxResultados.TabStop = false;
             groupBoxResultados.Text = "RESULTADOS";
             // 
-            // btnGuardarCotizacion
+            // btnGuardarTerreno
             // 
-            btnGuardarCotizacion.BackColor = SystemColors.ActiveCaption;
-            btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
-            btnGuardarCotizacion.Location = new Point(122, 63);
-            btnGuardarCotizacion.Name = "btnGuardarCotizacion";
-            btnGuardarCotizacion.Size = new Size(119, 27);
-            btnGuardarCotizacion.TabIndex = 9;
-            btnGuardarCotizacion.Text = "Guardar Cotización";
-            btnGuardarCotizacion.UseVisualStyleBackColor = false;
+            btnGuardarTerreno.BackColor = SystemColors.ActiveCaption;
+            btnGuardarTerreno.FlatStyle = FlatStyle.Flat;
+            btnGuardarTerreno.Location = new Point(122, 63);
+            btnGuardarTerreno.Name = "btnGuardarTerreno";
+            btnGuardarTerreno.Size = new Size(119, 27);
+            btnGuardarTerreno.TabIndex = 9;
+            btnGuardarTerreno.Text = "Guardar Terreno";
+            btnGuardarTerreno.UseVisualStyleBackColor = false;
             // 
             // btnCalcular
             // 
@@ -278,6 +280,8 @@
             // 
             // groupBoxDatos
             // 
+            groupBoxDatos.Controls.Add(txtNombreTerreno);
+            groupBoxDatos.Controls.Add(lblNombreTerreno);
             groupBoxDatos.Controls.Add(lblCostoMaterial);
             groupBoxDatos.Controls.Add(labelCostoMaterial);
             groupBoxDatos.Controls.Add(cmbMaterial);
@@ -290,6 +294,22 @@
             groupBoxDatos.TabIndex = 0;
             groupBoxDatos.TabStop = false;
             groupBoxDatos.Text = "DATOS GENERALES";
+            // 
+            // txtNombreTerreno
+            // 
+            txtNombreTerreno.Location = new Point(130, 78);
+            txtNombreTerreno.Name = "txtNombreTerreno";
+            txtNombreTerreno.Size = new Size(155, 23);
+            txtNombreTerreno.TabIndex = 6;
+            // 
+            // lblNombreTerreno
+            // 
+            lblNombreTerreno.AutoSize = true;
+            lblNombreTerreno.Location = new Point(15, 82);
+            lblNombreTerreno.Name = "lblNombreTerreno";
+            lblNombreTerreno.Size = new Size(96, 15);
+            lblNombreTerreno.TabIndex = 5;
+            lblNombreTerreno.Text = "Nombre Terreno:";
             // 
             // lblCostoMaterial
             // 
@@ -312,15 +332,15 @@
             // cmbMaterial
             // 
             cmbMaterial.FormattingEnabled = true;
-            cmbMaterial.Location = new Point(15, 86);
+            cmbMaterial.Location = new Point(150, 42);
             cmbMaterial.Name = "cmbMaterial";
-            cmbMaterial.Size = new Size(270, 23);
+            cmbMaterial.Size = new Size(135, 23);
             cmbMaterial.TabIndex = 2;
             // 
             // lblMaterial
             // 
             lblMaterial.AutoSize = true;
-            lblMaterial.Location = new Point(15, 68);
+            lblMaterial.Location = new Point(150, 25);
             lblMaterial.Name = "lblMaterial";
             lblMaterial.Size = new Size(50, 15);
             lblMaterial.TabIndex = 3;
@@ -331,7 +351,7 @@
             cmbCliente.FormattingEnabled = true;
             cmbCliente.Location = new Point(15, 42);
             cmbCliente.Name = "cmbCliente";
-            cmbCliente.Size = new Size(270, 23);
+            cmbCliente.Size = new Size(125, 23);
             cmbCliente.TabIndex = 1;
             // 
             // lblCliente
@@ -411,6 +431,8 @@
         public System.Windows.Forms.Button btnQuitarCoordenada;
         public System.Windows.Forms.Button btnLimpiarCoordenada;
         public System.Windows.Forms.Button btnCalcular;
-        private Button btnGuardarCotizacion;
+        private Label lblNombreTerreno;
+        public Button btnGuardarTerreno;
+        public TextBox txtNombreTerreno;
     }
 }

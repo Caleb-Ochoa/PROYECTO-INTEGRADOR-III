@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             using Form popup = new Form
             {
                 Text = "Nueva Cotización",
-                Size = new Size(440, 360),
+                Size = new Size(460, 360),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 MaximizeBox = false,
@@ -62,55 +63,92 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var cboCliente = new ComboBox
             {
                 Location = new Point(20, 92),
-                Size = new Size(390, 28),
+                Size = new Size(400, 28),
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 10F)
             };
-            cboCliente.DataSource = clientes;
-            cboCliente.DisplayMember = "Nombre";
-            cboCliente.ValueMember = "Id";
 
             // ── Combo Terreno (se filtra por cliente) ─────────────────────
             var lblTerreno = new Label { Text = "Terreno", Font = new Font("Segoe UI", 9F, FontStyle.Bold), Location = new Point(20, 128), AutoSize = true };
             var cboTerreno = new ComboBox
             {
                 Location = new Point(20, 148),
-                Size = new Size(390, 28),
+                Size = new Size(400, 28),
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 10F)
+            };
+
+            var lblSinTerrenos = new Label
+            {
+                Text = "Este cliente no tiene terrenos registrados.",
+                Font = new Font("Segoe UI", 8.5F, FontStyle.Italic),
+                ForeColor = Color.Red,
+                Location = new Point(20, 180),
+                AutoSize = true,
+                Visible = false
             };
 
             // Filtrar terrenos cuando cambia el cliente
             void FiltrarTerrenos()
             {
-                if (cboCliente.SelectedItem is not Cliente cli) return;
+                if (cboCliente.SelectedItem is not Cliente cli)
+                {
+                    cboTerreno.DataSource = null;
+                    return;
+                }
+
                 var filtrados = terrenos.Where(t => t.ClienteId == cli.Id).ToList();
+                cboTerreno.DataSource = null;
                 cboTerreno.DataSource = filtrados;
                 cboTerreno.DisplayMember = "Nombre";
                 cboTerreno.ValueMember = "Id";
+
+                if (filtrados.Count > 0)
+                {
+                    cboTerreno.SelectedIndex = 0;
+                    cboTerreno.Enabled = true;
+                    lblSinTerrenos.Visible = false;
+                }
+                else
+                {
+                    cboTerreno.Enabled = false;
+                    lblSinTerrenos.Visible = true;
+                }
             }
+
             cboCliente.SelectedIndexChanged += (s, e) => FiltrarTerrenos();
+
+            // Asignar DataSource del cliente DESPUÉS de suscribir el evento
+            cboCliente.DataSource = clientes;
+            cboCliente.DisplayMember = "Nombre";
+            cboCliente.ValueMember = "Id";
+
+            if (clientes.Count > 0)
+                cboCliente.SelectedIndex = 0;
+
+            // Forzar el primer filtrado
             FiltrarTerrenos();
 
             // ── Combo Material ────────────────────────────────────────────
-            var lblMaterial = new Label { Text = "Material", Font = new Font("Segoe UI", 9F, FontStyle.Bold), Location = new Point(20, 184), AutoSize = true };
+            var lblMaterial = new Label { Text = "Material", Font = new Font("Segoe UI", 9F, FontStyle.Bold), Location = new Point(20, 200), AutoSize = true };
             var cboMaterial = new ComboBox
             {
-                Location = new Point(20, 204),
-                Size = new Size(390, 28),
+                Location = new Point(20, 220),
+                Size = new Size(400, 28),
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 10F)
             };
             cboMaterial.DataSource = materiales;
             cboMaterial.DisplayMember = "Nombre";
             cboMaterial.ValueMember = "Id";
+            if (materiales.Count > 0) cboMaterial.SelectedIndex = 0;
 
             // ── Botones ───────────────────────────────────────────────────
             var btnCancelar = new Button
             {
                 Text = "Cancelar",
                 Size = new Size(100, 35),
-                Location = new Point(195, 260),
+                Location = new Point(190, 270),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(80, 80, 80),
                 ForeColor = Color.White,
@@ -122,8 +160,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var btnGuardar = new Button
             {
                 Text = "Guardar cotización",
-                Size = new Size(150, 35),
-                Location = new Point(255, 260),
+                Size = new Size(160, 35),
+                Location = new Point(300, 270),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(37, 99, 235),
                 ForeColor = Color.White,
@@ -136,7 +174,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     cboTerreno.SelectedItem == null ||
                     cboMaterial.SelectedItem == null)
                 {
-                    MessageBox.Show("Debe seleccionar Cliente, Terreno y Material.","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe seleccionar Cliente, Terreno y Material.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -151,7 +189,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             {
                 lblTitulo, lblSub,
                 lblCliente, cboCliente,
-                lblTerreno, cboTerreno,
+                lblTerreno, cboTerreno, lblSinTerrenos,
                 lblMaterial, cboMaterial,
                 btnCancelar, btnGuardar
             });
@@ -159,16 +197,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Shown += (s, e) => cboCliente.Focus();
             popup.ShowDialog(this);
             return resultado;
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Cotizaciones_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

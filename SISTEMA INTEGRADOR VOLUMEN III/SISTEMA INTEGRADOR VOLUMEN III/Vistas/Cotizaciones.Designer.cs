@@ -107,7 +107,7 @@
             Controls.Add(dvgCotizaciones);
             Name = "Cotizaciones";
             Text = "Cotizaciones";
-            Load += Cotizaciones_Load;
+            
             ((System.ComponentModel.ISupportInitialize)dvgCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();

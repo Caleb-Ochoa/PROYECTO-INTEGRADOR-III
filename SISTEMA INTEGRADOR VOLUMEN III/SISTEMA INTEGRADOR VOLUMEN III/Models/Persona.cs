@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
-    internal abstract class Persona
+    public abstract class Persona
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;

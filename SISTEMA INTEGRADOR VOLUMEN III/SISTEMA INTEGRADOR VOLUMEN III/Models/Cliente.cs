@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
-    internal class Cliente : Persona
+    public class Cliente : Persona
     {
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
