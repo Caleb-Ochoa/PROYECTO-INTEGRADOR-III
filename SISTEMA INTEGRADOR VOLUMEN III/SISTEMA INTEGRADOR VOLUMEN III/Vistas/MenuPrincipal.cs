@@ -127,15 +127,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             IRepository<Cliente> repoCli = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
             IRepository<Terreno> repoTer = new RepositorioFile<Terreno>("terrenos.txt", Terreno.FromText);
             IRepository<Material> repoMat = new RepositorioFile<Material>("materiales.txt", Material.FromText);
+            IRepository<Factura> repoFac = new RepositorioFile<Factura>("facturas.txt", Factura.FromText);
 
             DataManager<Cotizacion> dmCot = new DataManager<Cotizacion>(repoCot);
             DataManager<Cliente> dmCli = new DataManager<Cliente>(repoCli);
             DataManager<Terreno> dmTer = new DataManager<Terreno>(repoTer);
             DataManager<Material> dmMat = new DataManager<Material>(repoMat);
+            DataManager<Factura> dmFac = new DataManager<Factura>(repoFac);
 
             ICalculoService calculo = new CalculoService();
 
-            CtlCotizacion controlador = new CtlCotizacion(dmCot, dmCli, dmTer, dmMat, calculo, vista);
+            CtlCotizacion controlador = new CtlCotizacion(dmCot, dmCli, dmTer, dmMat, dmFac, calculo, vista);
             AbrirFormulario(vista);
         }
 

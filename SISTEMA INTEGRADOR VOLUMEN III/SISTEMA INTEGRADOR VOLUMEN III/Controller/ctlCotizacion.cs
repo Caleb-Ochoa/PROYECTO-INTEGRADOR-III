@@ -16,7 +16,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
     internal class CtlCotizacion
     {
         public Cotizaciones Vista { get; set; }
-
+        private DataManager<Factura> dataManagerFac;
         private DataManager<Cotizacion> dataManagerCot;
         private DataManager<Cliente> dataManagerCli;
         private DataManager<Terreno> dataManagerTer;
@@ -33,6 +33,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             DataManager<Cliente> dmCli,
             DataManager<Terreno> dmTer,
             DataManager<Material> dmMat,
+            DataManager<Factura> dmFac,
             ICalculoService calculo,
             Cotizaciones vista)
         {
@@ -40,6 +41,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             dataManagerCli = dmCli;
             dataManagerTer = dmTer;
             dataManagerMat = dmMat;
+            dataManagerFac = dmFac;
             calculoService = calculo;
             Vista = vista;
 
@@ -54,36 +56,67 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Vista.dvgCotizaciones.CellPainting += (sender, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-                if (Vista.dvgCotizaciones.Columns[e.ColumnIndex].Name != "ColAnular") return;
 
+                string colName = Vista.dvgCotizaciones.Columns[e.ColumnIndex].Name;
                 string estado = Vista.dvgCotizaciones.Rows[e.RowIndex]
                     .Cells["Estado"].Value?.ToString() ?? "";
 
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                Color btnColor = estado == "Cancelada"
-                    ? Color.FromArgb(160, 160, 160)
-                    : Color.FromArgb(220, 38, 38);
-
-                string btnText = estado == "Cancelada" ? "Anulada" : "Anular";
-
-                using var brush = new SolidBrush(btnColor);
-                var rect = new Rectangle(
-                    e.CellBounds.X + 2, e.CellBounds.Y + 2,
-                    e.CellBounds.Width - 4, e.CellBounds.Height - 4);
-                e.Graphics.FillRectangle(brush, rect);
-
-                using var txtBrush = new SolidBrush(Color.White);
-                var fmt = new StringFormat
+                if (colName == "ColFacturar")
                 {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center
-                };
-                e.Graphics.DrawString(btnText,
-                    new Font("Segoe UI", 9F, FontStyle.Bold),
-                    txtBrush, rect, fmt);
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                e.Handled = true;
+                    Color btnColor = estado == "Activa"
+                        ? Color.FromArgb(234, 179, 8)    // amarillo — se puede facturar
+                        : Color.FromArgb(200, 200, 200);  // gris — ya facturada o cancelada
+
+                    string btnText = estado == "Facturada" ? "✓ Facturada" : "Facturar";
+
+                    using var brush = new SolidBrush(btnColor);
+                    var rect = new Rectangle(
+                        e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                        e.CellBounds.Width - 4, e.CellBounds.Height - 4);
+                    e.Graphics.FillRectangle(brush, rect);
+
+                    using var txtBrush = new SolidBrush(Color.White);
+                    var fmt = new StringFormat
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center
+                    };
+                    e.Graphics.DrawString(btnText,
+                        new Font("Segoe UI", 9F, FontStyle.Bold),
+                        txtBrush, rect, fmt);
+
+                    e.Handled = true;
+                }
+                else if (colName == "ColAnular")
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    Color btnColor = estado == "Cancelada"
+                        ? Color.FromArgb(160, 160, 160)
+                        : Color.FromArgb(220, 38, 38);
+
+                    string btnText = estado == "Cancelada" ? "Anulada" : "Anular";
+
+                    using var brush = new SolidBrush(btnColor);
+                    var rect = new Rectangle(
+                        e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                        e.CellBounds.Width - 4, e.CellBounds.Height - 4);
+                    e.Graphics.FillRectangle(brush, rect);
+
+                    using var txtBrush = new SolidBrush(Color.White);
+                    var fmt = new StringFormat
+                    {
+                        Alignment = StringAlignment.Center,
+                        LineAlignment = StringAlignment.Center
+                    };
+                    e.Graphics.DrawString(btnText,
+                        new Font("Segoe UI", 9F, FontStyle.Bold),
+                        txtBrush, rect, fmt);
+
+                    e.Handled = true;
+                }
             };
 
             // ── Botón Nueva Cotización ────────────────────────────────────
@@ -123,6 +156,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 if (col == "ColVer")
                     VerCotizacion(id);
+                else if (col == "ColFacturar")
+                    FacturarCotizacion(id);
                 else if (col == "ColAnular")
                     AnularCotizacion(id);
             };
@@ -296,6 +331,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             if (Vista.dvgCotizaciones.Columns.Contains("ColVer"))
                 Vista.dvgCotizaciones.Columns.Remove("ColVer");
+            if (Vista.dvgCotizaciones.Columns.Contains("ColFacturar"))
+                Vista.dvgCotizaciones.Columns.Remove("ColFacturar");
             if (Vista.dvgCotizaciones.Columns.Contains("ColAnular"))
                 Vista.dvgCotizaciones.Columns.Remove("ColAnular");
 
@@ -309,30 +346,44 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 FlatStyle = FlatStyle.Flat,
                 Width = 60,
                 DefaultCellStyle =
-                {
-                    BackColor = Color.FromArgb(37, 99, 235),
-                    ForeColor = Color.White,
-                    Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
-                    Alignment = DataGridViewContentAlignment.MiddleCenter
-                }
+        {
+            BackColor = Color.FromArgb(37, 99, 235),
+            ForeColor = Color.White,
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
             });
 
-            // Botón Anular — rojo
+            // Botón Facturar — dinámico via CellPainting
+            Vista.dvgCotizaciones.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = "ColFacturar",
+                HeaderText = "",
+                Text = "Facturar",
+                UseColumnTextForButtonValue = false,
+                FlatStyle = FlatStyle.Flat,
+                Width = 90,
+                DefaultCellStyle =
+        {
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
+            });
+
+            // Botón Anular — dinámico via CellPainting
             Vista.dvgCotizaciones.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColAnular",
                 HeaderText = "",
                 Text = "Anular",
-                UseColumnTextForButtonValue = true,
+                UseColumnTextForButtonValue = false,
                 FlatStyle = FlatStyle.Flat,
-                Width = 70,
+                Width = 80,
                 DefaultCellStyle =
-                {
-                    BackColor = Color.FromArgb(220, 38, 38),
-                    ForeColor = Color.White,
-                    Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
-                    Alignment = DataGridViewContentAlignment.MiddleCenter
-                }
+        {
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
             });
         }
 
@@ -396,6 +447,65 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             EstilizarGrid();
             AgregarColumnasAccion();
             AplicarColoresEstado();
+        }
+
+        private void FacturarCotizacion(int id)
+        {
+            Cotizacion? cot = cotizaciones.FirstOrDefault(c => c.Id == id);
+            if (cot == null) return;
+
+            if (cot.Estado != EstadoCotizacion.Activa)
+            {
+                MessageBox.Show(
+                    cot.Estado == EstadoCotizacion.Facturada
+                        ? "Esta cotización ya fue facturada."
+                        : "No se puede facturar una cotización cancelada.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show(
+                    "¿Desea generar una factura para esta cotización?",
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                != DialogResult.Yes) return;
+
+            try
+            {
+                // Crear factura directamente desde aquí
+                string codigo = $"FAC-{DateTime.Now:yyyyMMdd}-{id:D4}";
+
+                Factura factura = new Factura
+                {
+                    Id = dataManagerFac.GetNextId(),
+                    CodigoFiscal = codigo,
+                    CotizacionId = cot.Id,
+                    ClienteId = cot.ClienteId,
+                    Total = cot.CostoTotal,
+                    FechaEmision = DateTime.Now,
+                    Estado = EstadoFactura.Emitida
+                };
+
+                // Guardar factura
+                var facturas = dataManagerFac.GetAll();
+                facturas.Add(factura);
+                dataManagerFac.Save(facturas);
+
+                // Marcar cotización como Facturada
+                cot.Estado = EstadoCotizacion.Facturada;
+                dataManagerCot.Save(cotizaciones);
+
+                CargarGrid();
+
+                MessageBox.Show(
+                    $"Factura generada exitosamente.\n" +
+                    $"Código: {codigo}\n" +
+                    $"Total: {factura.Total:C2}",
+                    "Factura creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
