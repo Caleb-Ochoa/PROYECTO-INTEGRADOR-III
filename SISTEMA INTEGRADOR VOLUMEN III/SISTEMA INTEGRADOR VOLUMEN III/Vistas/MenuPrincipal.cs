@@ -19,7 +19,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
-        bool menuOculto = false;
+        bool menuOculto = true      ;
 
         public bool CerroSesion { get; private set; } = false;
 
@@ -205,6 +205,5 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 menuOculto = true;
             }
         }
-
     }
 }

@@ -63,25 +63,23 @@
             // btnBuscarCotizaciones
             // 
             btnBuscarCotizaciones.BackColor = SystemColors.ActiveCaption;
-            btnBuscarCotizaciones.FlatStyle = FlatStyle.Flat;
             btnBuscarCotizaciones.Font = new Font("Segoe UI", 10F);
             btnBuscarCotizaciones.Location = new Point(248, 18);
             btnBuscarCotizaciones.Name = "btnBuscarCotizaciones";
-            btnBuscarCotizaciones.Size = new Size(40, 27);
+            btnBuscarCotizaciones.Size = new Size(75, 30);
             btnBuscarCotizaciones.TabIndex = 2;
-            btnBuscarCotizaciones.Text = "🔍";
+            btnBuscarCotizaciones.Text = "Buscar";
             btnBuscarCotizaciones.UseVisualStyleBackColor = false;
             // 
             // btnLimpiarCotizaciones
             // 
             btnLimpiarCotizaciones.BackColor = SystemColors.ActiveCaption;
-            btnLimpiarCotizaciones.FlatStyle = FlatStyle.Flat;
             btnLimpiarCotizaciones.Font = new Font("Segoe UI", 10F);
-            btnLimpiarCotizaciones.Location = new Point(294, 18);
+            btnLimpiarCotizaciones.Location = new Point(329, 18);
             btnLimpiarCotizaciones.Name = "btnLimpiarCotizaciones";
-            btnLimpiarCotizaciones.Size = new Size(35, 27);
+            btnLimpiarCotizaciones.Size = new Size(75, 30);
             btnLimpiarCotizaciones.TabIndex = 3;
-            btnLimpiarCotizaciones.Text = "✕";
+            btnLimpiarCotizaciones.Text = "Limpiar";
             btnLimpiarCotizaciones.UseVisualStyleBackColor = false;
             // 
             // btnAgregarCotizacion
