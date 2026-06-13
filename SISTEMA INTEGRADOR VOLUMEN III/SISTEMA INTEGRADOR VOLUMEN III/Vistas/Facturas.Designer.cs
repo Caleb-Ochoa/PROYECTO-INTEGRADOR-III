@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             dvgFacturas = new DataGridView();
+            txtBuscarFacturas = new TextBox();
+            btnBuscarFacturas = new Button();
+            btnLimpiarFacturas = new Button();
             ((System.ComponentModel.ISupportInitialize)dvgFacturas).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            label1.Location = new Point(22, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Facturas";
             // 
             // dvgFacturas
             // 
@@ -57,14 +49,44 @@
             dvgFacturas.Size = new Size(800, 520);
             dvgFacturas.TabIndex = 1;
             // 
+            // txtBuscarFacturas
+            // 
+            txtBuscarFacturas.BackColor = SystemColors.ScrollBar;
+            txtBuscarFacturas.Location = new Point(31, 21);
+            txtBuscarFacturas.Name = "txtBuscarFacturas";
+            txtBuscarFacturas.Size = new Size(220, 23);
+            txtBuscarFacturas.TabIndex = 2;
+            // 
+            // btnBuscarFacturas
+            // 
+            btnBuscarFacturas.BackColor = SystemColors.ActiveCaption;
+            btnBuscarFacturas.Location = new Point(257, 21);
+            btnBuscarFacturas.Name = "btnBuscarFacturas";
+            btnBuscarFacturas.Size = new Size(75, 30);
+            btnBuscarFacturas.TabIndex = 3;
+            btnBuscarFacturas.Text = "Buscar";
+            btnBuscarFacturas.UseVisualStyleBackColor = false;
+            // 
+            // btnLimpiarFacturas
+            // 
+            btnLimpiarFacturas.BackColor = SystemColors.ActiveCaption;
+            btnLimpiarFacturas.Location = new Point(338, 21);
+            btnLimpiarFacturas.Name = "btnLimpiarFacturas";
+            btnLimpiarFacturas.Size = new Size(75, 30);
+            btnLimpiarFacturas.TabIndex = 4;
+            btnLimpiarFacturas.Text = "Limpiar";
+            btnLimpiarFacturas.UseVisualStyleBackColor = false;
+            // 
             // Facturas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HighlightText;
             ClientSize = new Size(800, 583);
+            Controls.Add(btnLimpiarFacturas);
+            Controls.Add(btnBuscarFacturas);
+            Controls.Add(txtBuscarFacturas);
             Controls.Add(dvgFacturas);
-            Controls.Add(label1);
             Name = "Facturas";
             Text = "Facturas";
             ((System.ComponentModel.ISupportInitialize)dvgFacturas).EndInit();
@@ -73,8 +95,9 @@
         }
 
         #endregion
-
-        private Label label1;
-        private DataGridView dvgFacturas;
+        public Button btnBuscarFacturas;
+        public Button btnLimpiarFacturas;
+        public TextBox txtBuscarFacturas;
+        public DataGridView dvgFacturas;
     }
 }

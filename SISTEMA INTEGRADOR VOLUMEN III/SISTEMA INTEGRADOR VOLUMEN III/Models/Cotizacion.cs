@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
-    internal class Cotizacion
+    public class Cotizacion
     {
         public int Id { get; set; }
         public int ClienteId { get; set; }

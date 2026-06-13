@@ -99,6 +99,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnFactura.Text = "\U0001f9fe  Facturas";
             btnFactura.TextAlign = ContentAlignment.TopLeft;
             btnFactura.UseVisualStyleBackColor = true;
+            btnFactura.Click += btnFactura_Click;
             // 
             // btnCerrarSesion
             // 

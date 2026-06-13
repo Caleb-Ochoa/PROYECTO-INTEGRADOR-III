@@ -142,7 +142,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         // ── Facturas ──────────────────────────────────────────────────────
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Facturas());
+            Facturas vista = new Facturas();
+
+            IRepository<Factura> repoFac = new RepositorioFile<Factura>("facturas.txt", Factura.FromText);
+            IRepository<Cotizacion> repoCot = new RepositorioFile<Cotizacion>("cotizaciones.txt", Cotizacion.FromText);
+            IRepository<Cliente> repoCli = new RepositorioFile<Cliente>("clientes.txt", Cliente.FromText);
+            IRepository<Terreno> repoTer = new RepositorioFile<Terreno>("terrenos.txt", Terreno.FromText);
+            IRepository<Material> repoMat = new RepositorioFile<Material>("materiales.txt", Material.FromText);
+
+            DataManager<Factura> dmFac = new DataManager<Factura>(repoFac);
+            DataManager<Cotizacion> dmCot = new DataManager<Cotizacion>(repoCot);
+            DataManager<Cliente> dmCli = new DataManager<Cliente>(repoCli);
+            DataManager<Terreno> dmTer = new DataManager<Terreno>(repoTer);
+            DataManager<Material> dmMat = new DataManager<Material>(repoMat);
+
+            CtlFactura controlador = new CtlFactura(dmFac, dmCot, dmCli, dmTer, dmMat, vista);
+            AbrirFormulario(vista);
         }
 
         // ── Gestión de usuarios (solo admin) ──────────────────────────────
