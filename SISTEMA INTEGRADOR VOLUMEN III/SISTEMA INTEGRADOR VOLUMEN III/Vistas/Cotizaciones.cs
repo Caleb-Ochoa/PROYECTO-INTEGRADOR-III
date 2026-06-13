@@ -123,8 +123,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             cboCliente.DisplayMember = "Nombre";
             cboCliente.ValueMember = "Id";
 
-            if (clientes.Count > 0)
-                cboCliente.SelectedIndex = 0;
+            if (clientes.Count > 0)cboCliente.SelectedIndex = 0;
 
             // Forzar el primer filtrado
             FiltrarTerrenos();
