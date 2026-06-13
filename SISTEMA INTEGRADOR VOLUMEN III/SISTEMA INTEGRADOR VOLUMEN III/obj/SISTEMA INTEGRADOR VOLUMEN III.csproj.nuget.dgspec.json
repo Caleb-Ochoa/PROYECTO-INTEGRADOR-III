@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {}
+    "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {
+    "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
         "projectName": "SISTEMA INTEGRADOR VOLUMEN III",
-        "projectPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
-        "packagesPath": "C:\\Users\\cocho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cocho\\Downloads\\Git Hub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\",
+        "projectPath": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III.csproj",
+        "packagesPath": "C:\\Users\\USUARIO02\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USUARIO02\\Documents\\GitHub\\PROYECTO-INTEGRADOR-III\\SISTEMA INTEGRADOR VOLUMEN III\\SISTEMA INTEGRADOR VOLUMEN III\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cocho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\USUARIO02\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,6 +55,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.6.0, )"
             }
           },
           "imports": [
@@ -80,7 +80,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

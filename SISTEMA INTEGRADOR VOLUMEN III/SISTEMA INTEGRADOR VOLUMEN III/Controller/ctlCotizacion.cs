@@ -50,6 +50,42 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             CargarGrid();
 
+            // ── Pintar botón Anular según estado ──────────────────────────────
+            Vista.dvgCotizaciones.CellPainting += (sender, e) =>
+            {
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+                if (Vista.dvgCotizaciones.Columns[e.ColumnIndex].Name != "ColAnular") return;
+
+                string estado = Vista.dvgCotizaciones.Rows[e.RowIndex]
+                    .Cells["Estado"].Value?.ToString() ?? "";
+
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                Color btnColor = estado == "Cancelada"
+                    ? Color.FromArgb(160, 160, 160)
+                    : Color.FromArgb(220, 38, 38);
+
+                string btnText = estado == "Cancelada" ? "Anulada" : "Anular";
+
+                using var brush = new SolidBrush(btnColor);
+                var rect = new Rectangle(
+                    e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                    e.CellBounds.Width - 4, e.CellBounds.Height - 4);
+                e.Graphics.FillRectangle(brush, rect);
+
+                using var txtBrush = new SolidBrush(Color.White);
+                var fmt = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+                e.Graphics.DrawString(btnText,
+                    new Font("Segoe UI", 9F, FontStyle.Bold),
+                    txtBrush, rect, fmt);
+
+                e.Handled = true;
+            };
+
             // ── Botón Nueva Cotización ────────────────────────────────────
             Vista.btnAgregarCotizacion.Click += (sender, e) =>
             {
