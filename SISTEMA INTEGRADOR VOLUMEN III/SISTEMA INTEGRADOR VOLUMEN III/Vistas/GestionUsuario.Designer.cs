@@ -56,13 +56,12 @@
             // 
             btnBuscar.BackColor = SystemColors.ActiveCaption;
             btnBuscar.FlatAppearance.BorderColor = Color.LightGray;
-            btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Segoe UI", 10F);
-            btnBuscar.Location = new Point(248, 14);
+            btnBuscar.Location = new Point(248, 15);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(36, 34);
+            btnBuscar.Size = new Size(75, 30);
             btnBuscar.TabIndex = 2;
-            btnBuscar.Text = "🔍";
+            btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
             // 
             // textBox1
@@ -92,13 +91,12 @@
             // 
             btnLimpiarGestionUsuarios.BackColor = SystemColors.ActiveCaption;
             btnLimpiarGestionUsuarios.FlatAppearance.BorderColor = Color.LightGray;
-            btnLimpiarGestionUsuarios.FlatStyle = FlatStyle.Flat;
             btnLimpiarGestionUsuarios.Font = new Font("Segoe UI", 10F);
-            btnLimpiarGestionUsuarios.Location = new Point(290, 14);
+            btnLimpiarGestionUsuarios.Location = new Point(329, 15);
             btnLimpiarGestionUsuarios.Name = "btnLimpiarGestionUsuarios";
-            btnLimpiarGestionUsuarios.Size = new Size(36, 34);
+            btnLimpiarGestionUsuarios.Size = new Size(75, 30);
             btnLimpiarGestionUsuarios.TabIndex = 5;
-            btnLimpiarGestionUsuarios.Text = "✕";
+            btnLimpiarGestionUsuarios.Text = "Limpiar";
             btnLimpiarGestionUsuarios.UseVisualStyleBackColor = false;
             // 
             // GestionUsuario

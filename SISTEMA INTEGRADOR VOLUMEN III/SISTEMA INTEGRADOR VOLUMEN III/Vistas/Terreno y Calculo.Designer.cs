@@ -72,7 +72,7 @@
             // 
             splitContainer1.Panel2.Controls.Add(lblTituloGrafica);
             splitContainer1.Panel2.Controls.Add(panelOpenGL);
-            splitContainer1.Size = new Size(800, 532);
+            splitContainer1.Size = new Size(800, 570);
             splitContainer1.SplitterDistance = 320;
             splitContainer1.TabIndex = 0;
             // 
@@ -84,7 +84,7 @@
             groupBoxResultados.Controls.Add(lblTotalTexto);
             groupBoxResultados.Controls.Add(lblVolumen);
             groupBoxResultados.Controls.Add(lblVolumenTexto);
-            groupBoxResultados.Location = new Point(10, 431);
+            groupBoxResultados.Location = new Point(10, 460);
             groupBoxResultados.Name = "groupBoxResultados";
             groupBoxResultados.Size = new Size(300, 98);
             groupBoxResultados.TabIndex = 3;
@@ -94,7 +94,6 @@
             // btnGuardarTerreno
             // 
             btnGuardarTerreno.BackColor = SystemColors.ActiveCaption;
-            btnGuardarTerreno.FlatStyle = FlatStyle.Flat;
             btnGuardarTerreno.Location = new Point(122, 63);
             btnGuardarTerreno.Name = "btnGuardarTerreno";
             btnGuardarTerreno.Size = new Size(119, 27);
@@ -105,7 +104,6 @@
             // btnCalcular
             // 
             btnCalcular.BackColor = SystemColors.ActiveCaption;
-            btnCalcular.FlatStyle = FlatStyle.Flat;
             btnCalcular.Location = new Point(6, 63);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(95, 27);
@@ -126,7 +124,7 @@
             lblTotalTexto.AutoSize = true;
             lblTotalTexto.Location = new Point(15, 45);
             lblTotalTexto.Name = "lblTotalTexto";
-            lblTotalTexto.Size = new Size(35, 15);
+            lblTotalTexto.Size = new Size(36, 15);
             lblTotalTexto.TabIndex = 6;
             lblTotalTexto.Text = "Total:";
             // 
@@ -151,16 +149,16 @@
             // 
             groupBox1.Controls.Add(lblTotalPuntos);
             groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Location = new Point(10, 275);
+            groupBox1.Location = new Point(10, 284);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(300, 150);
+            groupBox1.Size = new Size(300, 170);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "COORDENADAS DEL TERRENO";
             // 
             // lblTotalPuntos
             // 
-            lblTotalPuntos.Location = new Point(10, 128);
+            lblTotalPuntos.Location = new Point(10, 147);
             lblTotalPuntos.Name = "lblTotalPuntos";
             lblTotalPuntos.Size = new Size(150, 20);
             lblTotalPuntos.TabIndex = 0;
@@ -176,7 +174,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(280, 100);
+            dataGridView1.Size = new Size(280, 122);
             dataGridView1.TabIndex = 0;
             // 
             // groupBoxCoordenadas
@@ -190,7 +188,7 @@
             groupBoxCoordenadas.Controls.Add(lblYLongitud);
             groupBoxCoordenadas.Controls.Add(txtXLatitud);
             groupBoxCoordenadas.Controls.Add(lblX);
-            groupBoxCoordenadas.Location = new Point(10, 149);
+            groupBoxCoordenadas.Location = new Point(10, 158);
             groupBoxCoordenadas.Name = "groupBoxCoordenadas";
             groupBoxCoordenadas.Size = new Size(300, 120);
             groupBoxCoordenadas.TabIndex = 1;
@@ -200,7 +198,6 @@
             // btnLimpiarCoordenada
             // 
             btnLimpiarCoordenada.BackColor = SystemColors.ActiveCaption;
-            btnLimpiarCoordenada.FlatStyle = FlatStyle.Flat;
             btnLimpiarCoordenada.Location = new Point(198, 78);
             btnLimpiarCoordenada.Name = "btnLimpiarCoordenada";
             btnLimpiarCoordenada.Size = new Size(88, 30);
@@ -211,7 +208,6 @@
             // btnQuitarCoordenada
             // 
             btnQuitarCoordenada.BackColor = SystemColors.ActiveCaption;
-            btnQuitarCoordenada.FlatStyle = FlatStyle.Flat;
             btnQuitarCoordenada.Location = new Point(104, 78);
             btnQuitarCoordenada.Name = "btnQuitarCoordenada";
             btnQuitarCoordenada.Size = new Size(88, 30);
@@ -222,7 +218,6 @@
             // btnAgregarCoordenada
             // 
             btnAgregarCoordenada.BackColor = SystemColors.ActiveCaption;
-            btnAgregarCoordenada.FlatStyle = FlatStyle.Flat;
             btnAgregarCoordenada.Location = new Point(10, 78);
             btnAgregarCoordenada.Name = "btnAgregarCoordenada";
             btnAgregarCoordenada.Size = new Size(88, 30);
@@ -290,40 +285,40 @@
             groupBoxDatos.Controls.Add(lblCliente);
             groupBoxDatos.Location = new Point(10, 10);
             groupBoxDatos.Name = "groupBoxDatos";
-            groupBoxDatos.Size = new Size(300, 133);
+            groupBoxDatos.Size = new Size(300, 142);
             groupBoxDatos.TabIndex = 0;
             groupBoxDatos.TabStop = false;
             groupBoxDatos.Text = "DATOS GENERALES";
             // 
             // txtNombreTerreno
             // 
-            txtNombreTerreno.Location = new Point(130, 78);
+            txtNombreTerreno.Location = new Point(14, 86);
             txtNombreTerreno.Name = "txtNombreTerreno";
-            txtNombreTerreno.Size = new Size(155, 23);
+            txtNombreTerreno.Size = new Size(270, 23);
             txtNombreTerreno.TabIndex = 6;
             // 
             // lblNombreTerreno
             // 
             lblNombreTerreno.AutoSize = true;
-            lblNombreTerreno.Location = new Point(15, 82);
+            lblNombreTerreno.Location = new Point(14, 68);
             lblNombreTerreno.Name = "lblNombreTerreno";
-            lblNombreTerreno.Size = new Size(96, 15);
+            lblNombreTerreno.Size = new Size(94, 15);
             lblNombreTerreno.TabIndex = 5;
-            lblNombreTerreno.Text = "Nombre Terreno:";
+            lblNombreTerreno.Text = "Nombre Terreno";
             // 
             // lblCostoMaterial
             // 
             lblCostoMaterial.AutoSize = true;
-            lblCostoMaterial.Location = new Point(108, 112);
+            lblCostoMaterial.Location = new Point(100, 121);
             lblCostoMaterial.Name = "lblCostoMaterial";
-            lblCostoMaterial.Size = new Size(54, 15);
+            lblCostoMaterial.Size = new Size(66, 15);
             lblCostoMaterial.TabIndex = 0;
-            lblCostoMaterial.Text = "$0.00/m³";
+            lblCostoMaterial.Text = "$ 0.00  / m³";
             // 
             // labelCostoMaterial
             // 
             labelCostoMaterial.AutoSize = true;
-            labelCostoMaterial.Location = new Point(15, 112);
+            labelCostoMaterial.Location = new Point(15, 121);
             labelCostoMaterial.Name = "labelCostoMaterial";
             labelCostoMaterial.Size = new Size(87, 15);
             labelCostoMaterial.TabIndex = 1;
@@ -365,6 +360,7 @@
             // 
             // lblTituloGrafica
             // 
+            lblTituloGrafica.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTituloGrafica.Location = new Point(3, 9);
             lblTituloGrafica.Name = "lblTituloGrafica";
             lblTituloGrafica.Size = new Size(250, 20);
@@ -373,9 +369,9 @@
             // 
             // panelOpenGL
             // 
-            panelOpenGL.Location = new Point(3, 32);
+            panelOpenGL.Location = new Point(3, 35);
             panelOpenGL.Name = "panelOpenGL";
-            panelOpenGL.Size = new Size(470, 488);
+            panelOpenGL.Size = new Size(470, 532);
             panelOpenGL.TabIndex = 1;
             // 
             // Terreno_y_Calculo
@@ -383,7 +379,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(800, 532);
+            ClientSize = new Size(800, 570);
             Controls.Add(splitContainer1);
             Name = "Terreno_y_Calculo";
             Text = "Terreno y Cálculo";

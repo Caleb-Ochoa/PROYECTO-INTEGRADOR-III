@@ -78,9 +78,9 @@
             // btnGuardarMaterial
             // 
             btnGuardarMaterial.BackColor = SystemColors.ActiveCaption;
-            btnGuardarMaterial.Location = new Point(587, 95);
+            btnGuardarMaterial.Location = new Point(568, 95);
             btnGuardarMaterial.Name = "btnGuardarMaterial";
-            btnGuardarMaterial.Size = new Size(75, 30);
+            btnGuardarMaterial.Size = new Size(104, 30);
             btnGuardarMaterial.TabIndex = 4;
             btnGuardarMaterial.Text = "Guardar";
             btnGuardarMaterial.UseVisualStyleBackColor = false;

@@ -65,26 +65,24 @@
             // 
             btnBuscarCliente.BackColor = SystemColors.ActiveCaption;
             btnBuscarCliente.FlatAppearance.BorderColor = Color.LightGray;
-            btnBuscarCliente.FlatStyle = FlatStyle.Flat;
             btnBuscarCliente.Font = new Font("Segoe UI", 10F);
             btnBuscarCliente.Location = new Point(248, 16);
             btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(36, 34);
+            btnBuscarCliente.Size = new Size(75, 30);
             btnBuscarCliente.TabIndex = 2;
-            btnBuscarCliente.Text = "🔍";
+            btnBuscarCliente.Text = "Buscar";
             btnBuscarCliente.UseVisualStyleBackColor = false;
             // 
             // btnLimpiarFiltro
             // 
             btnLimpiarFiltro.BackColor = SystemColors.ActiveCaption;
             btnLimpiarFiltro.FlatAppearance.BorderColor = Color.LightGray;
-            btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
             btnLimpiarFiltro.Font = new Font("Segoe UI", 10F);
-            btnLimpiarFiltro.Location = new Point(290, 16);
+            btnLimpiarFiltro.Location = new Point(336, 16);
             btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            btnLimpiarFiltro.Size = new Size(36, 34);
+            btnLimpiarFiltro.Size = new Size(75, 30);
             btnLimpiarFiltro.TabIndex = 3;
-            btnLimpiarFiltro.Text = "✕";
+            btnLimpiarFiltro.Text = "Limpiar";
             btnLimpiarFiltro.UseVisualStyleBackColor = false;
             // 
             // btnAgregarCliente
