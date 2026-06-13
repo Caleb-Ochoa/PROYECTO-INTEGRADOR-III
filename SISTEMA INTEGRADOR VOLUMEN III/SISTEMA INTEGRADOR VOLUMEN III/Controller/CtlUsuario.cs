@@ -99,6 +99,43 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     EditarUsuario(id);
                 else if (colName == "ResetPass")
                     RestablecerPassword(id);
+                else if (colName == "ColEstado")    // ← NUEVO
+                    CambiarEstado(id);
+            };
+
+            VistaGestion.dgvUsuarios.CellPainting += (s, e) =>
+            {
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+                if (VistaGestion.dgvUsuarios.Columns[e.ColumnIndex].Name != "ColEstado") return;
+
+                string estado = VistaGestion.dgvUsuarios.Rows[e.RowIndex]
+                    .Cells["Estado"].Value?.ToString() ?? "";
+
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                Color btnColor = estado == "Activo"
+                    ? Color.FromArgb(16, 185, 129)   // verde — clic lo inactiva
+                    : Color.FromArgb(107, 114, 128); // gris  — clic lo activa
+
+                string btnText = estado == "Activo" ? "✓ Activo" : "✗ Inactivo";
+
+                using var brush = new SolidBrush(btnColor);
+                var rect = new Rectangle(
+                    e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                    e.CellBounds.Width - 4, e.CellBounds.Height - 4);
+                e.Graphics.FillRectangle(brush, rect);
+
+                using var txtBrush = new SolidBrush(Color.White);
+                var fmt = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+                e.Graphics.DrawString(btnText,
+                    new Font("Segoe UI", 9F, FontStyle.Bold),
+                    txtBrush, rect, fmt);
+
+                e.Handled = true;
             };
         }
 
@@ -167,9 +204,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             if (VistaGestion.dgvUsuarios.Columns.Contains("Acciones"))
                 VistaGestion.dgvUsuarios.Columns.Remove("Acciones");
-
             if (VistaGestion.dgvUsuarios.Columns.Contains("ResetPass"))
                 VistaGestion.dgvUsuarios.Columns.Remove("ResetPass");
+            if (VistaGestion.dgvUsuarios.Columns.Contains("ColEstado"))
+                VistaGestion.dgvUsuarios.Columns.Remove("ColEstado");
 
             // Botón Editar — verde
             VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
@@ -202,6 +240,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             BackColor = Color.FromArgb(220, 38, 38),
             ForeColor = Color.White,
+            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
+            Alignment = DataGridViewContentAlignment.MiddleCenter
+        }
+            });
+
+            // Botón Toggle Estado — naranja/gris dinámico via CellPainting
+            VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = "ColEstado",
+                HeaderText = "Estado",
+                Text = "Toggle",
+                UseColumnTextForButtonValue = false,
+                FlatStyle = FlatStyle.Flat,
+                Width = 100,
+                DefaultCellStyle =
+        {
             Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
             Alignment = DataGridViewContentAlignment.MiddleCenter
         }
@@ -460,6 +514,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         private void Save()
         {
             dataManager.Save(usuarios);
+        }
+
+        private void CambiarEstado(int id)
+        {
+            try
+            {
+                ToggleEstado(id);
+                usuarios = dataManager.GetAll();
+                CargarGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

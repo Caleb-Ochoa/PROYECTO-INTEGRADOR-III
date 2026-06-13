@@ -265,7 +265,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Controls.Add(splitContainer1);
             Controls.Add(pnlEncabezado);
             Name = "MenuPrincipal";
-            Text = "e";
             WindowState = FormWindowState.Maximized;
             Load += MenuPrincipal_Load;
             splitContainer1.Panel1.ResumeLayout(false);

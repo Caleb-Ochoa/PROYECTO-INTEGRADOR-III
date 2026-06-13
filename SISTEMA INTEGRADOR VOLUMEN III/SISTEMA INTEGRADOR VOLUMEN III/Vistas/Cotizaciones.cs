@@ -115,7 +115,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     lblSinTerrenos.Visible = true;
                 }
             }
-
+            
             cboCliente.SelectedIndexChanged += (s, e) => FiltrarTerrenos();
 
             // Asignar DataSource del cliente DESPUÉS de suscribir el evento
@@ -123,7 +123,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             cboCliente.DisplayMember = "Nombre";
             cboCliente.ValueMember = "Id";
 
-            if (clientes.Count > 0)cboCliente.SelectedIndex = 0;
+            if (cboCliente.Items.Count > 0)
+                cboCliente.SelectedIndex = 0;
 
             // Forzar el primer filtrado
             FiltrarTerrenos();
@@ -140,7 +141,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             cboMaterial.DataSource = materiales;
             cboMaterial.DisplayMember = "Nombre";
             cboMaterial.ValueMember = "Id";
-            if (materiales.Count > 0) cboMaterial.SelectedIndex = 0;
+            if (cboMaterial.Items.Count > 0) cboMaterial.SelectedIndex = 0;
 
             // ── Botones ───────────────────────────────────────────────────
             var btnCancelar = new Button
