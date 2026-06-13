@@ -44,9 +44,11 @@
             dvgCotizaciones.BackgroundColor = Color.White;
             dvgCotizaciones.BorderStyle = BorderStyle.None;
             dvgCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgCotizaciones.Location = new Point(-2, 62);
+            dvgCotizaciones.Location = new Point(0, 62);
             dvgCotizaciones.Name = "dvgCotizaciones";
             dvgCotizaciones.ReadOnly = true;
+            dvgCotizaciones.RowHeadersVisible = false;
+            dvgCotizaciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dvgCotizaciones.Size = new Size(800, 520);
             dvgCotizaciones.TabIndex = 0;
             // 
@@ -84,6 +86,7 @@
             // 
             // btnAgregarCotizacion
             // 
+            btnAgregarCotizacion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarCotizacion.BackColor = Color.Blue;
             btnAgregarCotizacion.FlatStyle = FlatStyle.Flat;
             btnAgregarCotizacion.ForeColor = Color.White;
@@ -107,7 +110,6 @@
             Controls.Add(dvgCotizaciones);
             Name = "Cotizaciones";
             Text = "Cotizaciones";
-            
             ((System.ComponentModel.ISupportInitialize)dvgCotizaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();

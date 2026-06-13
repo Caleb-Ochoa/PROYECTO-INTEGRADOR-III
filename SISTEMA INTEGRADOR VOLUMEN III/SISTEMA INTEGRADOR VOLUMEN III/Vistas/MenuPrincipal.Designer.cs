@@ -102,6 +102,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // btnCerrarSesion
             // 
+            btnCerrarSesion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
             btnCerrarSesion.Location = new Point(821, 52);
             btnCerrarSesion.Name = "btnCerrarSesion";
@@ -201,6 +202,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // 
             // btnConfiguracion
             // 
+            btnConfiguracion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnConfiguracion.BackColor = SystemColors.ActiveCaption;
             btnConfiguracion.BackgroundImage = Properties.Resources.settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview;
             btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;

@@ -252,6 +252,7 @@
             // 
             // pnlRegistroAdmin
             // 
+            pnlRegistroAdmin.Anchor = AnchorStyles.None;
             pnlRegistroAdmin.Controls.Add(btnIdioma);
             pnlRegistroAdmin.Controls.Add(btnRegistarAdmin);
             pnlRegistroAdmin.Controls.Add(txtDireccion);
@@ -273,7 +274,7 @@
             pnlRegistroAdmin.Controls.Add(label8);
             pnlRegistroAdmin.Controls.Add(txtCorreoAdmin);
             pnlRegistroAdmin.Controls.Add(label3);
-            pnlRegistroAdmin.Location = new Point(254, 12);
+            pnlRegistroAdmin.Location = new Point(262, 11);
             pnlRegistroAdmin.Name = "pnlRegistroAdmin";
             pnlRegistroAdmin.Size = new Size(332, 645);
             pnlRegistroAdmin.TabIndex = 21;
