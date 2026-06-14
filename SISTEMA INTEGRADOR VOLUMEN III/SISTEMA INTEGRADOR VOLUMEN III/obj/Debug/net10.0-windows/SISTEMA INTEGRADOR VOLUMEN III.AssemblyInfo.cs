@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SISTEMA INTEGRADOR VOLUMEN III")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4c5655503840937ccd0b2d4ba2970213aa2aa32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a3ef4528ef2180d92772073f00ce723a53145e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SISTEMA INTEGRADOR VOLUMEN III")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SISTEMA INTEGRADOR VOLUMEN III")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
