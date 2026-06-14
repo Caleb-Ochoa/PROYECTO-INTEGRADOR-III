@@ -28,8 +28,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
                 Nombre = p[1],
                 CostoMetroCubico = decimal.Parse(p[2], System.Globalization.CultureInfo.InvariantCulture)
             };
-        }
-
-        
+        } 
     }
 }

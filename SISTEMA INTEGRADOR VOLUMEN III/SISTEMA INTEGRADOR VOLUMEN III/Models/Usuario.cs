@@ -27,7 +27,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         public override string ToString() =>
             $"{base.ToString()}|{Username}|{PasswordHash}|{Rol}|{Estado}";
 
-        // Usa | como separador — robusto ante comas en nombres/direcciones
         public static Usuario FromText(string line)
         {
             string[] p = line.Split('|');

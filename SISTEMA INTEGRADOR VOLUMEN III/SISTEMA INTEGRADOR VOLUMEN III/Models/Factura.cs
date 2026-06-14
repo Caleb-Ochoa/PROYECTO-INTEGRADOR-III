@@ -44,6 +44,5 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
                 Estado = (EstadoFactura)Enum.Parse(typeof(EstadoFactura), p[6])
             };
         }
-
     }
 }

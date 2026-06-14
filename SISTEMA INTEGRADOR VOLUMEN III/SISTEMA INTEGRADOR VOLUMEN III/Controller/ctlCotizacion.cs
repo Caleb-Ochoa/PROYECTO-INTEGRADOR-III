@@ -16,6 +16,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
     internal class CtlCotizacion
     {
         public Cotizaciones Vista { get; set; }
+
         private DataManager<Factura> dataManagerFac;
         private DataManager<Cotizacion> dataManagerCot;
         private DataManager<Cliente> dataManagerCli;

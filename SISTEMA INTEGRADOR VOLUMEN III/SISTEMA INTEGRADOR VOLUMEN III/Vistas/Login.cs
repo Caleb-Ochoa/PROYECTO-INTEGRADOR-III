@@ -45,11 +45,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
             txtContraseña.Clear();
             txtContraseña.Focus();
         }
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-
-        }
+        
         private void CentrarPanel()
         {
             pnlLogin.Left = (this.ClientSize.Width - pnlLogin.Width) / 2;
@@ -67,7 +63,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 
         private void chkMostrar_CheckedChanged(object sender, EventArgs e)
         {
-
+            txtContraseña.UseSystemPasswordChar = !chkMostrar.Checked;
         }
     }
 }

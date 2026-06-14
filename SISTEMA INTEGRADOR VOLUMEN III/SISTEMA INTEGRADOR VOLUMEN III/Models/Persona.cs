@@ -23,7 +23,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             CorreoElectronico = correo; Telefono = telefono; Direccion = direccion;
         }
 
-        // Separa con | para evitar conflictos con comas en los datos
         public override string ToString() =>
             $"{Id}|{Nombre}|{Documento}|{CorreoElectronico}|{Telefono}|{Direccion}";
     }

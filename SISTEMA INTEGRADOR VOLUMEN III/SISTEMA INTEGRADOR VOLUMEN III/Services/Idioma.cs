@@ -7,15 +7,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
 {
     /// <summary>
     /// Sistema de traducción basado en un único archivo plano: traducciones.txt
-    ///
-    /// Formato de cada línea:
-    ///   nombreControl|NombreFormulario|Texto en español|Text in English
-    ///
-    /// USO:
-    ///   Idioma.Cargar("es");       // al iniciar el programa
-    ///   Idioma.Aplicar(this);      // en el constructor de cada Form
-    ///   Idioma.MostrarSelector(this); // desde el botón 🌐 de cualquier Form
-    /// </summary>
+    
     internal static class Idioma
     {
         public static string IdiomaActual { get; private set; } = "es";

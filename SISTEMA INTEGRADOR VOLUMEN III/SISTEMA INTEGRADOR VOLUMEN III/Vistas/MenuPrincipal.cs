@@ -199,30 +199,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Idioma.MostrarSelector(this);
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-
-        private void pnlEncabezado_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void pbToggle_Click(object sender, EventArgs e)
         {
-            //if (menuOculto)
-            //{
-            //    // Mostrar el menú
-            //    splitContainer1.Panel1 = false;
-            //    ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
-            //    menuOculto = false;
-            //}
-            //else
-            //{
-            //    // Ocultar el menú
-            //    splitContainer1.Panel1 = true;
-            //    ptbMostrarMenu.Image = Properties.Resources.FlechaDerecha;
-            //    menuOculto = true;
-            //}
             if (menuOculto)
             {
                 // Mostrar menú

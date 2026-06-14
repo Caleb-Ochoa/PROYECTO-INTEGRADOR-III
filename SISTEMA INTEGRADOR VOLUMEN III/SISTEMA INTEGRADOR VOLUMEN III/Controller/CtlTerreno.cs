@@ -25,10 +25,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         private List<Coordenada> _coordActuales = new();
         private ResultadoCalculo? _ultimoResultado;
 
-        public CtlTerreno(DataManager<Terreno> dmTerreno,
-                          DataManager<Cliente> dmCliente,
-                          DataManager<Material> dmMaterial,
-                          ICalculoService calculo,
+        public CtlTerreno(DataManager<Terreno> dmTerreno,DataManager<Cliente> dmCliente,
+                          DataManager<Material> dmMaterial,ICalculoService calculo,
                           Terreno_y_Calculo vista)
         {
             _dmTerreno = dmTerreno;
@@ -157,7 +155,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
         }
 
-        // ── Guardar Terreno ────────────────────────────────────────────────
+        // Guardar Terreno 
         private void GuardarTerreno()
         {
             string nombre = Vista.GetNombreTerreno();

@@ -26,8 +26,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
                 return false;
             // Comparación en tiempo constante para evitar timing attacks
             string calculado = Hash(textoPlano);
-            return CryptographicOperations.FixedTimeEquals(
-                Encoding.UTF8.GetBytes(calculado),
+            return CryptographicOperations.FixedTimeEquals(Encoding.UTF8.GetBytes(calculado),
                 Encoding.UTF8.GetBytes(hashGuardado));
         }
     }
