@@ -51,6 +51,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             materiales = dataManagerMat.GetAll();
 
             CargarGrid();
+            Idioma.AplicarGrid(Vista.dvgCotizaciones, "Cotizaciones");
 
             // ── Pintar botón Anular según estado ──────────────────────────────
             Vista.dvgCotizaciones.CellPainting += (sender, e) =>

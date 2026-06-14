@@ -20,6 +20,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Terreno_y_Calculo()
         {
             InitializeComponent();
+            Idioma.Aplicar(this);
+            lblTotalPuntos.Text = $"{Idioma.T("Total puntos", "Total points")}: 0";
             cmbMaterial.SelectedIndexChanged += (s, e) => MostrarCostoMaterial();
             this.Load += async (s, e) => await InicializarWebView();
         }
@@ -223,7 +225,7 @@ Plotly.newPlot('plot', [surface, puntos], layout, {{ responsive: true }});
                 Z = c.Z
             }).ToList();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            lblTotalPuntos.Text = $"Total puntos: {coords.Count}";
+            lblTotalPuntos.Text = $"{Idioma.T("Total puntos", "Total points")}: {coords.Count}";
         }
 
         public void MostrarResultado(double area, double volumen, decimal costo, string metodo)

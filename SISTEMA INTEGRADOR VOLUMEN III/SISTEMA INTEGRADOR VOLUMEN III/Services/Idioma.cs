@@ -38,13 +38,33 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                 if (string.IsNullOrEmpty(l) || l.StartsWith("#")) continue;
 
                 string[] p = l.Split('|');
-                if (p.Length != 4) continue;
 
-                // Clave: "Formulario|control"
-                string clave = $"{p[1].Trim()}|{p[0].Trim()}";
-                _textos[clave] = codigoIdioma == "en" ? p[3].Trim() : p[2].Trim();
+                if (p.Length == 4)
+                {
+                    // Control normal: nombreControl|NombreFormulario|ES|EN
+                    string clave = $"{p[1].Trim()}|{p[0].Trim()}";
+                    _textos[clave] = codigoIdioma == "en" ? p[3].Trim() : p[2].Trim();
+                }
+                else if (p.Length == 5)
+                {
+                    // Columna de grid: nombreGrid|NombreFormulario|nombreColumna|ES|EN
+                    string clave = $"{p[1].Trim()}|{p[0].Trim()}|{p[2].Trim()}";
+                    _textos[clave] = codigoIdioma == "en" ? p[4].Trim() : p[3].Trim();
+                }
             }
         }
+
+        public static void AplicarGrid(DataGridView dgv, string nombreForm)
+        {
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                string clave = $"{nombreForm}|{dgv.Name}|{col.Name}";
+                if (_textos.TryGetValue(clave, out string? headerTexto))
+                    col.HeaderText = headerTexto;
+            }
+        }
+        public static string T(string español, string english)
+    => IdiomaActual == "en" ? english : español;
 
         // ── Aplica el idioma a todos los controles de un Form ─────────────
         public static void Aplicar(Form form)
@@ -64,8 +84,22 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
                     case GroupBox g: g.Text = texto; break;
                     case CheckBox c: c.Text = texto; break;
                     case TabPage t: t.Text = texto; break;
+                        // DataGridView: NO tocar columnas, solo el control en sí no tiene Text
                 }
             }
+
+            // Si es DataGridView, traducir columnas por nombre
+            if (ctrl is DataGridView dgv)
+            {
+                foreach (DataGridViewColumn col in dgv.Columns)
+                {
+                    string clavCol = $"{nombreForm}|{dgv.Name}|{col.Name}";
+                    if (_textos.TryGetValue(clavCol, out string? headerTexto))
+                        col.HeaderText = headerTexto;
+                }
+                return; // No seguir recursión dentro del grid
+            }
+
             foreach (Control hijo in ctrl.Controls)
                 AplicarRecursivo(hijo, nombreForm);
         }

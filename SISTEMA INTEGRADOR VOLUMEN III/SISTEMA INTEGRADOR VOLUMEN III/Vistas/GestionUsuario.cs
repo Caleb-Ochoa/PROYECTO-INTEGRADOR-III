@@ -1,12 +1,6 @@
-﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Controller;
-using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
-using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
+﻿using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
@@ -21,42 +15,33 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Idioma.Aplicar(this);
         }
 
-        // ── Métodos que usa CtlGestionUsuario ─────────────────────────────
-
         public int GetIdSeleccionado() => _idSeleccionado;
         public void SetIdSeleccionado(int id) => _idSeleccionado = id;
 
-        /// <summary>
-        /// Abre popup vacío para agregar.
-        /// Devuelve datos o null si canceló.
-        /// [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Password [7]Rol
-        /// </summary>
         public string[]? MostrarPopupAgregar() =>
             MostrarPopup("Agregar Usuario", "Registrar información del usuario",
                 "", "", "", "", "", "", "Usuario", false);
 
-        /// <summary>
-        /// Abre popup con datos pre-rellenos para editar.
-        /// Devuelve datos modificados o null si canceló.
-        /// [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Rol
-        /// </summary>
         public string[]? MostrarPopupEditar(string nombre, string documento,
             string telefono, string correo, string direccion,
             string username, string rol) =>
             MostrarPopup("Editar Usuario", "Modificar información del usuario",
                 nombre, documento, telefono, correo, direccion, username, rol, true);
 
-        // ── Popup genérico ────────────────────────────────────────────────
         private string[]? MostrarPopup(string titulo, string subtitulo,
             string nombre, string documento, string telefono,
             string correo, string direccion, string username,
             string rolActual, bool esEdicion)
         {
             string[]? resultado = null;
+            bool esAgregar = !esEdicion;
 
             using Form popup = new Form
             {
-                Text = titulo,
+                Text = esAgregar
+                    ? Idioma.T("Agregar Usuario", "Add User")
+                    : Idioma.T("Editar Usuario", "Edit User"),
+                Name = "PopupUsuario",
                 Size = new Size(430, esEdicion ? 500 : 560),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
@@ -65,10 +50,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 BackColor = Color.White
             };
 
-            // Título y subtítulo
             var lblTitulo = new Label
             {
-                Text = titulo,
+                Name = "lblTitulo",
+                Text = popup.Text,
                 Font = new Font("Segoe UI", 13F, FontStyle.Bold),
                 Location = new Point(20, 15),
                 AutoSize = true,
@@ -76,7 +61,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             };
             var lblSub = new Label
             {
-                Text = subtitulo,
+                Name = "lblSub",
+                Text = Idioma.T(subtitulo, esAgregar
+                    ? "Register user information" : "Modify user information"),
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 44),
@@ -85,24 +72,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(lblTitulo);
             popup.Controls.Add(lblSub);
 
-            // Campos
             int y = 78;
-            var txtNombre = AgregarCampo(popup, "Nombre", "Nombre del usuario", nombre, ref y);
-            var txtDocumento = AgregarCampo(popup, "Identificación", "Número de identificación", documento, ref y);
-            var txtTelefono = AgregarCampo(popup, "Teléfono", "Número telefónico", telefono, ref y);
-            var txtCorreo = AgregarCampo(popup, "Correo", "Correo electrónico", correo, ref y);
-            var txtDireccion = AgregarCampo(popup, "Dirección", "Dirección", direccion, ref y);
-            var txtUsername = AgregarCampo(popup, "Usuario", "Nombre de usuario", username, ref y);
+            var txtNombre = AgregarCampo(popup, "lblNombre", Idioma.T("Nombre", "Name"), Idioma.T("Nombre del usuario", "User name"), nombre, ref y);
+            var txtDocumento = AgregarCampo(popup, "lblDocumento", Idioma.T("Identificación", "ID"), Idioma.T("Número de identificación", "ID number"), documento, ref y);
+            var txtTelefono = AgregarCampo(popup, "lblTelefono", Idioma.T("Teléfono", "Phone"), Idioma.T("Número telefónico", "Phone number"), telefono, ref y);
+            var txtCorreo = AgregarCampo(popup, "lblCorreo", Idioma.T("Correo", "Email"), Idioma.T("Correo electrónico", "Email address"), correo, ref y);
+            var txtDireccion = AgregarCampo(popup, "lblDireccion", Idioma.T("Dirección", "Address"), Idioma.T("Dirección", "Address"), direccion, ref y);
+            var txtUsername = AgregarCampo(popup, "lblUsername", Idioma.T("Usuario", "Username"), Idioma.T("Nombre de usuario", "Username"), username, ref y);
 
-            // Contraseña solo al crear
             TextBox? txtPassword = null;
             if (!esEdicion)
-                txtPassword = AgregarCampoPassword(popup, "Contraseña", "Contraseña", ref y);
+                txtPassword = AgregarCampoPassword(popup, "lblPassword",
+                    Idioma.T("Contraseña", "Password"),
+                    Idioma.T("Contraseña", "Password"), ref y);
 
-            // ComboBox Rol
             var lblRol = new Label
             {
-                Text = "Rol",
+                Name = "lblRol",
+                Text = Idioma.T("Rol", "Role"),
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, y),
                 AutoSize = true,
@@ -117,17 +104,21 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 FlatStyle = FlatStyle.Flat,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cmbRol.Items.AddRange(new object[] { "Usuario", "Administrador" });
-            cmbRol.SelectedItem = rolActual == "Administrador" ? "Administrador" : "Usuario";
+            cmbRol.Items.AddRange(new object[]
+            {
+                Idioma.T("Usuario", "User"),
+                Idioma.T("Administrador", "Administrator")
+            });
+            cmbRol.SelectedIndex = rolActual == "Administrador" ? 1 : 0;
             popup.Controls.Add(lblRol);
             popup.Controls.Add(cmbRol);
             y += 38;
 
-            // Botones  ← idénticos a Clientes.cs
             y += 8;
             var btnCancelar = new Button
             {
-                Text = "Cancelar",
+                Name = "btnCancelar",
+                Text = Idioma.T("Cancelar", "Cancel"),
                 Size = new Size(100, 35),
                 Location = new Point(195, y),
                 FlatStyle = FlatStyle.Flat,
@@ -140,7 +131,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             var btnGuardar = new Button
             {
-                Text = "Guardar",
+                Name = "btnGuardar",
+                Text = Idioma.T("Guardar", "Save"),
                 Size = new Size(100, 35),
                 Location = new Point(305, y),
                 FlatStyle = FlatStyle.Flat,
@@ -155,85 +147,63 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     string.IsNullOrWhiteSpace(txtDocumento.Text) ||
                     string.IsNullOrWhiteSpace(txtUsername.Text))
                 {
-                    MessageBox.Show("Nombre, Identificación y Usuario son obligatorios.",
-                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        Idioma.T("Nombre, Identificación y Usuario son obligatorios.",
+                                 "Name, ID and Username are required."),
+                        Idioma.T("Advertencia", "Warning"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 if (!esEdicion && string.IsNullOrWhiteSpace(txtPassword!.Text))
                 {
-                    MessageBox.Show("La contraseña es obligatoria.",
-                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        Idioma.T("La contraseña es obligatoria.", "Password is required."),
+                        Idioma.T("Advertencia", "Warning"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // Validar contraseña ANTES de cerrar el popup
                 if (!esEdicion)
                 {
-                    try
-                    {
-                        SISTEMA_INTEGRADOR_VOLUMEN_III.Services.AuthService
-                            .ValidarPassword(txtPassword!.Text);
-                    }
+                    try { Services.AuthService.ValidarPassword(txtPassword!.Text); }
                     catch (Exception exVal)
                     {
-                        MessageBox.Show(exVal.Message, "Contraseña inválida",
+                        MessageBox.Show(exVal.Message,
+                            Idioma.T("Contraseña inválida", "Invalid password"),
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtPassword!.Focus();
-                        return;  // NO cerrar el popup
+                        return;
                     }
                 }
 
-                if (esEdicion)
-                {
-                    // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Rol
-                    resultado = new[]
-                    {
-                        txtNombre.Text.Trim(),
-                        txtDocumento.Text.Trim(),
-                        txtTelefono.Text.Trim(),
-                        txtCorreo.Text.Trim(),
-                        txtDireccion.Text.Trim(),
-                        txtUsername.Text.Trim(),
-                        cmbRol.SelectedItem?.ToString() ?? "Usuario"
-                    };
-                }
-                else
-                {
-                    // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Password [7]Rol
-                    resultado = new[]
-                    {
-                        txtNombre.Text.Trim(),
-                        txtDocumento.Text.Trim(),
-                        txtTelefono.Text.Trim(),
-                        txtCorreo.Text.Trim(),
-                        txtDireccion.Text.Trim(),
-                        txtUsername.Text.Trim(),
-                        txtPassword!.Text,
-                        cmbRol.SelectedItem?.ToString() ?? "Usuario"
-                    };
-                }
+                // Mapear rol de vuelta a valor en español para el modelo
+                string rolElegido = cmbRol.SelectedIndex == 1 ? "Administrador" : "Usuario";
+
+                resultado = esEdicion
+                    ? new[] { txtNombre.Text.Trim(), txtDocumento.Text.Trim(),
+                              txtTelefono.Text.Trim(), txtCorreo.Text.Trim(),
+                              txtDireccion.Text.Trim(), txtUsername.Text.Trim(),
+                              rolElegido }
+                    : new[] { txtNombre.Text.Trim(), txtDocumento.Text.Trim(),
+                              txtTelefono.Text.Trim(), txtCorreo.Text.Trim(),
+                              txtDireccion.Text.Trim(), txtUsername.Text.Trim(),
+                              txtPassword!.Text, rolElegido };
                 popup.Close();
             };
 
             popup.Controls.Add(btnCancelar);
             popup.Controls.Add(btnGuardar);
             popup.ClientSize = new Size(420, y + 50);
-
-            // Dar foco al primer campo al abrir para que el teclado funcione bien
             popup.Shown += (s, e) => txtNombre.Focus();
-
             popup.ShowDialog(this);
-
             return resultado;
         }
 
-        // ── Helper: Label + TextBox apilados (igual que Clientes.cs) ─────
-        private static TextBox AgregarCampo(Form popup, string etiqueta,
-            string placeholder, string valor, ref int y)
+        private static TextBox AgregarCampo(Form popup, string lblName,
+            string etiqueta, string placeholder, string valor, ref int y)
         {
             var lbl = new Label
             {
+                Name = lblName,
                 Text = etiqueta,
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, y),
@@ -256,11 +226,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             return tb;
         }
 
-        // ── Helper extra: TextBox con PasswordChar ────────────────────────
-        private static TextBox AgregarCampoPassword(Form popup, string etiqueta,
-            string placeholder, ref int y)
+        private static TextBox AgregarCampoPassword(Form popup, string lblName,
+            string etiqueta, string placeholder, ref int y)
         {
-            var tb = AgregarCampo(popup, etiqueta, placeholder, "", ref y);
+            var tb = AgregarCampo(popup, lblName, etiqueta, placeholder, "", ref y);
             tb.PasswordChar = '*';
             return tb;
         }
@@ -271,7 +240,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             using Form popup = new Form
             {
-                Text = "Restablecer Contraseña",
+                Text = Idioma.T("Restablecer Contraseña", "Reset Password"),
+                Name = "PopupResetPass",
                 Size = new Size(420, 280),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
@@ -282,7 +252,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             var lblTitulo = new Label
             {
-                Text = "Restablecer Contraseña",
+                Name = "lblTitulo",
+                Text = Idioma.T("Restablecer Contraseña", "Reset Password"),
                 Font = new Font("Segoe UI", 13F, FontStyle.Bold),
                 Location = new Point(20, 15),
                 AutoSize = true,
@@ -290,7 +261,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             };
             var lblSub = new Label
             {
-                Text = $"Nueva contraseña para: {nombreUsuario}",
+                Name = "lblSub",
+                Text = Idioma.T($"Nueva contraseña para: {nombreUsuario}",
+                                $"New password for: {nombreUsuario}"),
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 44),
@@ -300,12 +273,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(lblSub);
 
             int y = 80;
-            var txtNueva = AgregarCampoPassword(popup, "Nueva contraseña", "Mínimo 8 caracteres", ref y);
-            var txtConfirmar = AgregarCampoPassword(popup, "Confirmar contraseña", "Repite la contraseña", ref y);
+            var txtNueva = AgregarCampoPassword(popup, "lblNueva",
+                Idioma.T("Nueva contraseña", "New password"),
+                Idioma.T("Mínimo 8 caracteres", "Minimum 8 characters"), ref y);
+            var txtConfirmar = AgregarCampoPassword(popup, "lblConfirmar",
+                Idioma.T("Confirmar contraseña", "Confirm password"),
+                Idioma.T("Repite la contraseña", "Repeat password"), ref y);
 
             var btnCancelar = new Button
             {
-                Text = "Cancelar",
+                Name = "btnCancelar",
+                Text = Idioma.T("Cancelar", "Cancel"),
                 Size = new Size(100, 35),
                 Location = new Point(190, y + 8),
                 FlatStyle = FlatStyle.Flat,
@@ -318,7 +296,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             var btnRestablecer = new Button
             {
-                Text = "Restablecer",
+                Name = "btnRestablecer",
+                Text = Idioma.T("Restablecer", "Reset"),
                 Size = new Size(110, 35),
                 Location = new Point(300, y + 8),
                 FlatStyle = FlatStyle.Flat,
@@ -332,30 +311,29 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 if (string.IsNullOrWhiteSpace(txtNueva.Text) ||
                     string.IsNullOrWhiteSpace(txtConfirmar.Text))
                 {
-                    MessageBox.Show("Todos los campos son obligatorios.",
-                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        Idioma.T("Todos los campos son obligatorios.", "All fields are required."),
+                        Idioma.T("Advertencia", "Warning"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 if (txtNueva.Text != txtConfirmar.Text)
                 {
-                    MessageBox.Show("Las contraseñas no coinciden.",
-                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        Idioma.T("Las contraseñas no coinciden.", "Passwords do not match."),
+                        Idioma.T("Advertencia", "Warning"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                try
-                {
-                    Services.AuthService.ValidarPassword(txtNueva.Text);
-                }
+                try { Services.AuthService.ValidarPassword(txtNueva.Text); }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Contraseña inválida",
+                    MessageBox.Show(ex.Message,
+                        Idioma.T("Contraseña inválida", "Invalid password"),
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtNueva.Focus();
                     return;
                 }
-
                 nuevaPassword = txtNueva.Text;
                 popup.Close();
             };
@@ -365,8 +343,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.ClientSize = new Size(420, y + 65);
             popup.Shown += (s, e) => txtNueva.Focus();
             popup.ShowDialog(this);
-
             return nuevaPassword;
         }
     }
-}   
+}

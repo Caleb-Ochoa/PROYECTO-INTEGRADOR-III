@@ -104,6 +104,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // btnCerrarSesion
             // 
             btnCerrarSesion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarSesion.AutoSize = true;
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
             btnCerrarSesion.Location = new Point(821, 52);
             btnCerrarSesion.Name = "btnCerrarSesion";

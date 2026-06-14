@@ -57,6 +57,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 return;
 
             CargarGrid();
+            Idioma.AplicarGrid(VistaGestion.dgvUsuarios, "GestionUsuario");
 
             VistaGestion.btnAgregarUsuarios.Click += (s, e) =>
             {

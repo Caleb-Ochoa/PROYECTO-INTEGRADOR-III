@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
@@ -18,39 +15,32 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             Idioma.Aplicar(this);
         }
 
-        // ── Métodos que usa CtlCliente ────────────────────────────────────
-
         public int GetIdSeleccionado() => _idSeleccionado;
         public void SetIdSeleccionado(int id) => _idSeleccionado = id;
 
-        /// <summary>
-        /// Abre popup vacío para agregar.
-        /// Devuelve datos o null si canceló.
-        /// [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion
-        /// </summary>
         public string[]? MostrarPopupAgregar() =>
             MostrarPopup("Agregar Cliente", "Registrar información del cliente",
                 "", "", "", "", "");
 
-        /// <summary>
-        /// Abre popup con datos pre-rellenos para editar.
-        /// Devuelve datos modificados o null si canceló.
-        /// </summary>
         public string[]? MostrarPopupEditar(string nombre, string documento,
             string telefono, string correo, string direccion) =>
-            MostrarPopup("Editar Cliente", "Registrar información del cliente",
+            MostrarPopup("Editar Cliente", "Modificar información del cliente",
                 nombre, documento, telefono, correo, direccion);
 
-        // ── Popup genérico ────────────────────────────────────────────────
         private string[]? MostrarPopup(string titulo, string subtitulo,
             string nombre, string documento, string telefono,
             string correo, string direccion)
         {
             string[]? resultado = null;
 
+            bool esAgregar = titulo == "Agregar Cliente";
+
             using Form popup = new Form
             {
-                Text = titulo,
+                Text = esAgregar
+                    ? Idioma.T("Agregar Cliente", "Add Client")
+                    : Idioma.T("Editar Cliente", "Edit Client"),
+                Name = "PopupCliente",
                 Size = new Size(430, 420),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
@@ -59,10 +49,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 BackColor = Color.White
             };
 
-            // Título y subtítulo
             var lblTitulo = new Label
             {
-                Text = titulo,
+                Name = "lblTitulo",
+                Text = popup.Text,
                 Font = new Font("Segoe UI", 13F, FontStyle.Bold),
                 Location = new Point(20, 15),
                 AutoSize = true,
@@ -70,7 +60,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             };
             var lblSub = new Label
             {
-                Text = subtitulo,
+                Name = "lblSub",
+                Text = Idioma.T(subtitulo, esAgregar
+                    ? "Register client information"
+                    : "Modify client information"),
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 44),
@@ -79,19 +72,18 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(lblTitulo);
             popup.Controls.Add(lblSub);
 
-            // Campos
             int y = 78;
-            var txtNombre = AgregarCampo(popup, "Nombre", "Nombre del cliente", nombre, ref y);
-            var txtDocumento = AgregarCampo(popup, "Identificación", "Número de identificación", documento, ref y);
-            var txtTelefono = AgregarCampo(popup, "Teléfono", "Número telefónico", telefono, ref y);
-            var txtCorreo = AgregarCampo(popup, "Correo", "Correo electrónico", correo, ref y);
-            var txtDireccion = AgregarCampo(popup, "Dirección", "Dirección", direccion, ref y);
+            var txtNombre = AgregarCampo(popup, "lblNombre", Idioma.T("Nombre", "Name"), Idioma.T("Nombre del cliente", "Client name"), nombre, ref y);
+            var txtDocumento = AgregarCampo(popup, "lblDocumento", Idioma.T("Identificación", "ID"), Idioma.T("Número de identificación", "ID number"), documento, ref y);
+            var txtTelefono = AgregarCampo(popup, "lblTelefono", Idioma.T("Teléfono", "Phone"), Idioma.T("Número telefónico", "Phone number"), telefono, ref y);
+            var txtCorreo = AgregarCampo(popup, "lblCorreo", Idioma.T("Correo", "Email"), Idioma.T("Correo electrónico", "Email address"), correo, ref y);
+            var txtDireccion = AgregarCampo(popup, "lblDireccion", Idioma.T("Dirección", "Address"), Idioma.T("Dirección", "Address"), direccion, ref y);
 
-            // Botones
             y += 8;
             var btnCancelar = new Button
             {
-                Text = "Cancelar",
+                Name = "btnCancelar",
+                Text = Idioma.T("Cancelar", "Cancel"),
                 Size = new Size(100, 35),
                 Location = new Point(195, y),
                 FlatStyle = FlatStyle.Flat,
@@ -104,7 +96,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             var btnGuardar = new Button
             {
-                Text = "Guardar",
+                Name = "btnGuardar",
+                Text = Idioma.T("Guardar", "Save"),
                 Size = new Size(100, 35),
                 Location = new Point(305, y),
                 FlatStyle = FlatStyle.Flat,
@@ -118,16 +111,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtDocumento.Text))
                 {
-                    MessageBox.Show("Nombre e Identificación son obligatorios.",
-                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        Idioma.T("Nombre e Identificación son obligatorios.",
+                                 "Name and ID are required."),
+                        Idioma.T("Advertencia", "Warning"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 resultado = new[]
                 {
-                    txtNombre.Text.Trim(),
-                    txtDocumento.Text.Trim(),
-                    txtTelefono.Text.Trim(),
-                    txtCorreo.Text.Trim(),
+                    txtNombre.Text.Trim(), txtDocumento.Text.Trim(),
+                    txtTelefono.Text.Trim(), txtCorreo.Text.Trim(),
                     txtDireccion.Text.Trim()
                 };
                 popup.Close();
@@ -136,17 +130,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(btnCancelar);
             popup.Controls.Add(btnGuardar);
             popup.ClientSize = new Size(420, y + 50);
+            popup.Shown += (s, e) => txtNombre.Focus();
             popup.ShowDialog(this);
-
             return resultado;
         }
 
-        // ── Helper: Label + TextBox apilados ─────────────────────────────
-        private static TextBox AgregarCampo(Form popup, string etiqueta,
-            string placeholder, string valor, ref int y)
+        private static TextBox AgregarCampo(Form popup, string lblName,
+            string etiqueta, string placeholder, string valor, ref int y)
         {
             var lbl = new Label
             {
+                Name = lblName,
                 Text = etiqueta,
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, y),
@@ -167,7 +161,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(tb);
             y += 38;
             return tb;
-
         }
     }
 }

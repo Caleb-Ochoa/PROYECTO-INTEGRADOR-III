@@ -106,13 +106,13 @@
             // 
             // label4
             // 
-            label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.Location = new Point(201, 116);
             label4.Name = "label4";
             label4.Size = new Size(112, 21);
             label4.TabIndex = 8;
             label4.Text = "Iniciar Sesión";
+            label4.TextAlign = ContentAlignment.BottomCenter;
             // 
             // pictureBox1
             // 
@@ -155,7 +155,7 @@
             // 
             // btnIdioma
             // 
-            btnIdioma.Location = new Point(439, 3);
+            btnIdioma.Location = new Point(349, 3);
             btnIdioma.Name = "btnIdioma";
             btnIdioma.Size = new Size(33, 37);
             btnIdioma.TabIndex = 12;

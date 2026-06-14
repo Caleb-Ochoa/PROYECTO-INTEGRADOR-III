@@ -47,6 +47,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             _materiales = _dmMat.GetAll();
 
             CargarGrid();
+            Idioma.AplicarGrid(Vista.dvgFacturas, "Facturas");
 
             // ── Buscar ────────────────────────────────────────────────────
             Vista.btnBuscarFacturas.Click += (s, e) => Buscar();
