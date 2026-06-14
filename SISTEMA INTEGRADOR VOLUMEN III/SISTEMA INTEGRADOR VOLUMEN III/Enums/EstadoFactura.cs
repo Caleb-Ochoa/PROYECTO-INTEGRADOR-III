@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Enums
 {
-    internal enum EstadoFactura
+    public enum EstadoFactura
     {
         Emitida,
         Anulada

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
 {
-    internal class Factura
+    public class Factura
     {
         public int Id { get; set; }
         public string CodigoFiscal { get; set; } = string.Empty;

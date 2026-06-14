@@ -1,11 +1,8 @@
-﻿using QuestPDF.Infrastructure;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 
@@ -60,7 +57,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private void GenerarPDF(string ruta, Factura factura, Cliente cliente,
             Cotizacion cotizacion, Terreno terreno, Material material)
         {
-            Document.Create(container =>
+            QuestPDF.Fluent.Document.Create(container =>
             {
                 container.Page(page =>
                 {
