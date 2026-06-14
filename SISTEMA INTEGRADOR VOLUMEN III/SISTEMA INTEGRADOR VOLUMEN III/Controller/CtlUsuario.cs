@@ -28,9 +28,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             this.dataManager = dataManager;
             this.authService = authService;
 
-
             usuarios = dataManager.GetAll();
-
 
             if (iniciarFlujoLogin)
             {
@@ -42,6 +40,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     AbrirLogin();
             }
         }
+
         public CtlUsuario(DataManager<Usuario> dataManager, IAuthService authService, GestionUsuario vistaGestion)
         {
             this.dataManager = dataManager;
@@ -59,32 +58,27 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             CargarGrid();
 
-            // Botón Agregar
             VistaGestion.btnAgregarUsuarios.Click += (s, e) =>
             {
                 AgregarUsuario();
             };
 
-            // Buscar en tiempo real
             VistaGestion.textBox1.TextChanged += (s, e) =>
             {
                 BuscarUsuario();
             };
 
-            // Limpiar filtro
             VistaGestion.btnLimpiarGestionUsuarios.Click += (s, e) =>
             {
                 VistaGestion.textBox1.Clear();
                 CargarGrid();
             };
 
-            // Buscar con botón
             VistaGestion.btnBuscar.Click += (s, e) =>
             {
                 BuscarUsuario();
             };
 
-            // Click en columna Editar del grid
             VistaGestion.dgvUsuarios.CellClick += (s, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -99,7 +93,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     EditarUsuario(id);
                 else if (colName == "ResetPass")
                     RestablecerPassword(id);
-                else if (colName == "ColEstado")    // ← NUEVO
+                else if (colName == "ColEstado")
                     CambiarEstado(id);
             };
 
@@ -114,8 +108,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                 Color btnColor = estado == "Activo"
-                    ? Color.FromArgb(16, 185, 129)   // verde — clic lo inactiva
-                    : Color.FromArgb(107, 114, 128); // gris  — clic lo activa
+                    ? Color.FromArgb(16, 185, 129)
+                    : Color.FromArgb(107, 114, 128);
 
                 string btnText = estado == "Activo" ? "✓ Activo" : "✗ Inactivo";
 
@@ -139,28 +133,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             };
         }
 
-        private void RestablecerPassword(int id)
-        {
-            if (VistaGestion == null) return;
-
-            Usuario? u = usuarios.FirstOrDefault(x => x.Id == id);
-            if (u == null) return;
-
-            string? nuevaPassword = VistaGestion.MostrarPopupRestablecerPassword(u.Nombre);
-            if (nuevaPassword == null) return;
-
-            try
-            {
-                authService.RestablecerPassword(u, nuevaPassword);
-                MessageBox.Show($"Contraseña de {u.Nombre} restablecida correctamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void CargarGrid()
         {
             if (VistaGestion == null)
@@ -183,15 +155,20 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 }).ToList();
 
             EstilizarGrid();
+
+            // Ocultar columna texto Estado (el botón ColEstado ya lo muestra)
+            if (VistaGestion.dgvUsuarios.Columns.Contains("Estado"))
+                VistaGestion.dgvUsuarios.Columns["Estado"].Visible = false;
+
             AgregarColumnaEditar();
         }
 
         private void EstilizarGrid()
         {
             if (VistaGestion == null) return;
-            VistaGestion.dgvUsuarios.AutoSizeColumnsMode =System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor =System.Drawing.Color.FromArgb(240, 240, 240);
-            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.Font =new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            VistaGestion.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            VistaGestion.dgvUsuarios.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             VistaGestion.dgvUsuarios.EnableHeadersVisualStyles = false;
             VistaGestion.dgvUsuarios.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             VistaGestion.dgvUsuarios.RowTemplate.Height = 32;
@@ -209,7 +186,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (VistaGestion.dgvUsuarios.Columns.Contains("ColEstado"))
                 VistaGestion.dgvUsuarios.Columns.Remove("ColEstado");
 
-            // Botón Editar — verde
             VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "Acciones",
@@ -219,15 +195,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 FlatStyle = FlatStyle.Flat,
                 Width = 80,
                 DefaultCellStyle =
-        {
-            BackColor = Color.FromArgb(16, 185, 129),
-            ForeColor = Color.White,
-            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
-            Alignment = DataGridViewContentAlignment.MiddleCenter
-        }
+                {
+                    BackColor = Color.FromArgb(16, 185, 129),
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
             });
 
-            // Botón Restablecer — rojo
             VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ResetPass",
@@ -237,15 +212,14 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 FlatStyle = FlatStyle.Flat,
                 Width = 110,
                 DefaultCellStyle =
-        {
-            BackColor = Color.FromArgb(220, 38, 38),
-            ForeColor = Color.White,
-            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
-            Alignment = DataGridViewContentAlignment.MiddleCenter
-        }
+                {
+                    BackColor = Color.FromArgb(220, 38, 38),
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
             });
 
-            // Botón Toggle Estado — naranja/gris dinámico via CellPainting
             VistaGestion.dgvUsuarios.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColEstado",
@@ -255,10 +229,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 FlatStyle = FlatStyle.Flat,
                 Width = 100,
                 DefaultCellStyle =
-        {
-            Font      = new Font("Segoe UI", 9F, FontStyle.Bold),
-            Alignment = DataGridViewContentAlignment.MiddleCenter
-        }
+                {
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
             });
         }
 
@@ -287,6 +261,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 }).ToList();
 
             EstilizarGrid();
+
+            // Ocultar columna texto Estado
+            if (VistaGestion.dgvUsuarios.Columns.Contains("Estado"))
+                VistaGestion.dgvUsuarios.Columns["Estado"].Visible = false;
+
             AgregarColumnaEditar();
         }
 
@@ -306,7 +285,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             try
             {
-                // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion [5]Username [6]Rol
                 u.Nombre = datos[0];
                 u.Documento = datos[1];
                 u.Telefono = datos[2];
@@ -320,11 +298,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 usuarios = dataManager.GetAll();
                 CargarGrid();
 
-                MessageBox.Show("Usuario actualizado correctamente.","Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -349,7 +327,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     CorreoElectronico = datos[3],
                     Direccion = datos[4],
                     Username = datos[5],
-                    Rol = datos[7] == "Administrador"? Rol.Administrador: Rol.Usuario,
+                    Rol = datos[7] == "Administrador" ? Rol.Administrador : Rol.Usuario,
                     Estado = EstadoUsuario.Activo
                 };
 
@@ -358,15 +336,36 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 usuarios = dataManager.GetAll();
                 CargarGrid();
 
-                MessageBox.Show("Usuario agregado correctamente.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Usuario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ── FLUJO 1: Primer uso — registrar administrador ────────────────
+        private void RestablecerPassword(int id)
+        {
+            if (VistaGestion == null) return;
+
+            Usuario? u = usuarios.FirstOrDefault(x => x.Id == id);
+            if (u == null) return;
+
+            string? nuevaPassword = VistaGestion.MostrarPopupRestablecerPassword(u.Nombre);
+            if (nuevaPassword == null) return;
+
+            try
+            {
+                authService.RestablecerPassword(u, nuevaPassword);
+                MessageBox.Show($"Contraseña de {u.Nombre} restablecida correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void AbrirRegistroAdmin()
         {
             VistaRegistro = new RegistroAdmin();
@@ -376,7 +375,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 RegistrarAdmin();
             };
 
-            //Application.Run(VistaRegistro);
             VistaRegistro.ShowDialog();
         }
 
@@ -384,7 +382,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             string[] line = VistaRegistro!.GetInput();
 
-            // 1. Validar contraseñas (ahora son los índices 6 y 7)
             if (line[6] != line[7])
             {
                 VistaRegistro.MostrarError("Las contraseñas no coinciden");
@@ -393,21 +390,19 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             try
             {
-                // 2. Mapear los 10 campos del Usuario
                 Usuario usuario = new Usuario
                 {
                     Id = dataManager.GetNextId(),
-                    Nombre = line[0],             // Nombre Completo
-                    Documento = line[1],          // Documento
-                    CorreoElectronico = line[2],  // Correo Electronico
-                    Telefono = line[3],           // Telefono
-                    Direccion = line[4],          // Dirección
-                    Username = line[5],           // Usuario
+                    Nombre = line[0],
+                    Documento = line[1],
+                    CorreoElectronico = line[2],
+                    Telefono = line[3],
+                    Direccion = line[4],
+                    Username = line[5],
                     Rol = Rol.Administrador,
                     Estado = EstadoUsuario.Activo
                 };
 
-                // 3. Registrar usando la contraseña (índice 6)
                 authService.Registrar(usuario, line[6]);
 
                 usuarios = dataManager.GetAll();
@@ -426,7 +421,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
         }
 
-        // ── FLUJO 2: Login normal ────────────────────────────────────────
         private void AbrirLogin()
         {
             VistaLogin = new Login();
@@ -443,14 +437,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Autenticar();
             };
 
-            //Application.Run(VistaLogin);
             VistaLogin.ShowDialog();
         }
 
         private void Autenticar()
         {
             string[] line = VistaLogin!.GetInput();
-            // line[0]=Username, line[1]=Password
 
             if (string.IsNullOrWhiteSpace(line[0]) || string.IsNullOrWhiteSpace(line[1]))
             {
@@ -470,7 +462,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 }
 
                 UsuarioAutenticado = usuario;
-                VistaLogin.Close();    // Program.cs abre el menú principal
+                VistaLogin.Close();
             }
             catch (InvalidOperationException ex) when (ex.Message == "INACTIVO")
             {
@@ -482,7 +474,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
         }
 
-        // ── Operaciones CRUD (las usan los demás controladores) ──────────
         public List<Usuario> Listar()
         {
             usuarios = dataManager.GetAll();
@@ -499,15 +490,18 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             int idx = usuarios.FindIndex(u => u.Id == usuarioEditado.Id);
             if (idx < 0) throw new InvalidOperationException("Usuario no encontrado.");
-            usuarioEditado.PasswordHash = usuarios[idx].PasswordHash; // preservar hash
+            usuarioEditado.PasswordHash = usuarios[idx].PasswordHash;
             usuarios[idx] = usuarioEditado;
             Save();
         }
 
         public void ToggleEstado(int id)
         {
-            var u = usuarios.FirstOrDefault(x => x.Id == id)?? throw new InvalidOperationException("Usuario no encontrado.");
-            u.Estado = u.Estado == EstadoUsuario.Activo? EstadoUsuario.Inactivo: EstadoUsuario.Activo;
+            var u = usuarios.FirstOrDefault(x => x.Id == id)
+                ?? throw new InvalidOperationException("Usuario no encontrado.");
+            u.Estado = u.Estado == EstadoUsuario.Activo
+                ? EstadoUsuario.Inactivo
+                : EstadoUsuario.Activo;
             Save();
         }
 
