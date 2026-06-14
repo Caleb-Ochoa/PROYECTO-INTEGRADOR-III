@@ -133,7 +133,7 @@
             label3.TabIndex = 10;
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
-            label3.Click += label3_Click;
+            
             // 
             // pnlLogin
             // 

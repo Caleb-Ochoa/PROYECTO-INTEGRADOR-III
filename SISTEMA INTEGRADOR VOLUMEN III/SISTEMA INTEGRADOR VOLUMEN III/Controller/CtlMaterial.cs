@@ -189,13 +189,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             var dgv = Vista.GetGrid();
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv.ColumnHeadersDefaultCellStyle.BackColor =
-                System.Drawing.Color.FromArgb(240, 240, 240);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor =System.Drawing.Color.FromArgb(240, 240, 240);
             dgv.ColumnHeadersDefaultCellStyle.Font =
                 new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             dgv.EnableHeadersVisualStyles = false;
-            dgv.DefaultCellStyle.Font =
-                new System.Drawing.Font("Segoe UI", 9.5F);
+            dgv.DefaultCellStyle.Font =new System.Drawing.Font("Segoe UI", 9.5F);
             dgv.RowTemplate.Height = 32;
             dgv.BackgroundColor = System.Drawing.Color.White;
 
@@ -223,8 +221,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 {
                     BackColor = System.Drawing.Color.FromArgb(16, 185, 129),
                     ForeColor = System.Drawing.Color.White,
-                    Font      = new System.Drawing.Font("Segoe UI", 9F,
-                                    System.Drawing.FontStyle.Bold),
+                    Font      = new System.Drawing.Font("Segoe UI", 9F,System.Drawing.FontStyle.Bold),
                     Alignment = DataGridViewContentAlignment.MiddleCenter
                 }
             });
@@ -237,9 +234,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             var dgv = Vista.GetGrid();
             dgv.DataSource = null;
-            dgv.DataSource = _materiales
-                .Where(m => m.Nombre.ToLower().Contains(termino))
-                .Select(m => new
+            dgv.DataSource = _materiales.Where(m => m.Nombre.ToLower().Contains(termino)).Select(m => new
                 {
                     m.Id,
                     m.Nombre,

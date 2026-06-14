@@ -149,17 +149,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         private void EstilizarGrid()
         {
-            Vista.dvgClientes.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.BackColor =
-                Color.FromArgb(240, 240, 240);
-            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.Font =
-                new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor =
-                Color.FromArgb(60, 60, 60);
+            Vista.dvgClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.BackColor =Color.FromArgb(240, 240, 240);
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.Font =new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            Vista.dvgClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 60);
             Vista.dvgClientes.EnableHeadersVisualStyles = false;
-            Vista.dvgClientes.DefaultCellStyle.Font =
-                new Font("Segoe UI", 9.5F);
+            Vista.dvgClientes.DefaultCellStyle.Font =new Font("Segoe UI", 9.5F);
             Vista.dvgClientes.RowTemplate.Height = 32;
             Vista.dvgClientes.BackgroundColor = Color.White;
             Vista.dvgClientes.GridColor = Color.FromArgb(230, 230, 230);

@@ -15,7 +15,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         public Coordenada(int id, double x, double y, double z)
         { Id = id; X = x; Y = y; Z = z; }
 
-        // Formato: id;x;y;z (punto y coma interno para no chocar con el separador del Terreno)
         public override string ToString() =>
             $"{Id};{X:R};{Y:R};{Z:R}";
 

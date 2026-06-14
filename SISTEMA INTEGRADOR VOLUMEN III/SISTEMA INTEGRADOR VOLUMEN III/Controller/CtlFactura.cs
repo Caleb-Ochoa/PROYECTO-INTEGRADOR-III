@@ -25,12 +25,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         private List<Terreno> _terrenos;
         private List<Material> _materiales;
 
-        public CtlFactura(
-            DataManager<Factura> dmFac,
-            DataManager<Cotizacion> dmCot,
-            DataManager<Cliente> dmCli,
-            DataManager<Terreno> dmTer,
-            DataManager<Material> dmMat,
+        public CtlFactura(DataManager<Factura> dmFac,DataManager<Cotizacion> dmCot,
+            DataManager<Cliente> dmCli,DataManager<Terreno> dmTer,DataManager<Material> dmMat,
             Facturas vista)
         {
             _dmFac = dmFac;
@@ -83,14 +79,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                Color btnColor = estado == "Anulada"
-                    ? Color.FromArgb(160, 160, 160)
-                    : Color.FromArgb(220, 38, 38);
+                Color btnColor = estado == "Anulada" ? Color.FromArgb(160, 160, 160) : Color.FromArgb(220, 38, 38);
                 string btnText = estado == "Anulada" ? "Anulada" : "Anular";
 
                 using var brush = new SolidBrush(btnColor);
-                var rect = new Rectangle(
-                    e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                var rect = new Rectangle(e.CellBounds.X + 2, e.CellBounds.Y + 2,
                     e.CellBounds.Width - 4, e.CellBounds.Height - 4);
                 e.Graphics.FillRectangle(brush, rect);
 
@@ -101,8 +94,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     LineAlignment = StringAlignment.Center
                 };
                 e.Graphics.DrawString(btnText,
-                    new Font("Segoe UI", 9F, FontStyle.Bold),
-                    txtBrush, rect, fmt);
+                    new Font("Segoe UI", 9F, FontStyle.Bold),txtBrush, rect, fmt);
                 e.Handled = true;
             };
         }
@@ -130,7 +122,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Vista.DescargarFacturaPDF(fac, cli, cot, ter, mat);
         }
 
-        // ── Anular ────────────────────────────────────────────────────────
+        // Anular
         private void AnularFactura(int id)
         {
             Factura? fac = _facturas.FirstOrDefault(f => f.Id == id);
@@ -174,8 +166,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     Codigo = f.CodigoFiscal,
                     Cliente = _clientes.FirstOrDefault(c => c.Id == f.ClienteId)?.Nombre ?? "N/A",
                     Terreno = cot != null
-                        ? _terrenos.FirstOrDefault(t => t.Id == cot.TerrenoId)?.Nombre ?? "N/A"
-                        : "N/A",
+                        ? _terrenos.FirstOrDefault(t => t.Id == cot.TerrenoId)?.Nombre ?? "N/A": "N/A",
                     Total = f.Total.ToString("C2", CultureInfo.GetCultureInfo("es-CO")),
                     Fecha = f.FechaEmision.ToString("dd/MM/yyyy"),
                     Estado = f.Estado.ToString()
@@ -192,10 +183,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
         private void EstilizarGrid()
         {
-            Vista.dvgFacturas.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-            Vista.dvgFacturas.ColumnHeadersDefaultCellStyle.BackColor =
-                Color.FromArgb(240, 240, 240);
+            Vista.dvgFacturas.AutoSizeColumnsMode =DataGridViewAutoSizeColumnsMode.Fill;
+            Vista.dvgFacturas.ColumnHeadersDefaultCellStyle.BackColor =Color.FromArgb(240, 240, 240);
             Vista.dvgFacturas.ColumnHeadersDefaultCellStyle.Font =
                 new Font("Segoe UI", 9.5F, FontStyle.Bold);
             Vista.dvgFacturas.EnableHeadersVisualStyles = false;

@@ -23,7 +23,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         {
             Id = id; ClienteId = clienteId; TerrenoId = terrenoId;
             MaterialId = materialId; Volumen = volumen; CostoTotal = costoTotal;
-            Fecha = fecha; Estado = estado;
+            Fecha = fecha; Estado = estado; 
         }
 
         public override string ToString() =>

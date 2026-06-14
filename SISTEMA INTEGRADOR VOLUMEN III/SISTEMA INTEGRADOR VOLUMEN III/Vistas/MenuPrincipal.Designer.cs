@@ -171,7 +171,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.Size = new Size(956, 441);
             splitContainer1.SplitterDistance = 191;
             splitContainer1.TabIndex = 10;
-            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
             // 
             // ptbMostrarMenu
             // 
@@ -199,7 +198,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             pnlEncabezado.Name = "pnlEncabezado";
             pnlEncabezado.Size = new Size(956, 93);
             pnlEncabezado.TabIndex = 11;
-            pnlEncabezado.Paint += pnlEncabezado_Paint;
             // 
             // btnConfiguracion
             // 

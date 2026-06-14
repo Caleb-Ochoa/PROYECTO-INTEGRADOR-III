@@ -8,7 +8,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 {
     internal class CalculoService : ICalculoService
     {
-        // ── Método principal ──────────────────────────────────────────────
+        // Método principal
         // Con 6+ puntos: Mínimos Cuadrados + Integral Doble sobre área REAL (Shoelace)
         // Con 3-5 puntos: Triangulación TIN + suma de prismas (Delaunay manual)
         public ResultadoCalculo Calcular(Terreno terreno, Material material)
@@ -39,8 +39,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 
             decimal costo = (decimal)Math.Abs(volumen) * material.CostoMetroCubico;
 
-            return new ResultadoCalculo(areaReal, Math.Abs(volumen), costo,
-                "Mínimos Cuadrados + Integral Doble");
+            return new ResultadoCalculo(areaReal, Math.Abs(volumen), costo,"Mínimos Cuadrados + Integral Doble");
         }
 
         // ── MÉTODO 2: Triangulación TIN — polígono de 3-5 puntos ─────────
@@ -57,8 +56,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 
             decimal costo = (decimal)Math.Abs(volumen) * material.CostoMetroCubico;
 
-            return new ResultadoCalculo(area, Math.Abs(volumen), costo,
-                "Triangulación TIN (Fan)");
+            return new ResultadoCalculo(area, Math.Abs(volumen), costo,"Triangulación TIN (Fan)");
         }
 
         // ── Triangulación Fan desde el centroide ──────────────────────────
@@ -106,7 +104,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return areaT * zProm;
         }
 
-        // ── Ajuste por Mínimos Cuadrados ──────────────────────────────────
+        // ── Ajuste por Mínimos Cuadrados
         // z = ax² + by² + cxy + dx + ey + f
         public static double[] AjustarMinCuadrados(List<Coordenada> pts)
         {
@@ -137,7 +135,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
         public static double EvaluarModelo(double[] c, double x, double y) =>
             c[0] * x * x + c[1] * y * y + c[2] * x * y + c[3] * x + c[4] * y + c[5];
 
-        // ── Shoelace — área real del polígono ─────────────────────────────
+        //Shoelace — área real del polígono
         public static double CalcularAreaShoelace(List<Coordenada> coords)
         {
             int n = coords.Count;
@@ -151,7 +149,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return Math.Abs(area) / 2.0;
         }
 
-        // ── Álgebra lineal ────────────────────────────────────────────────
+        // Álgebra lineal
         private static double[,] Transponer(double[,] M, int filas, int cols)
         {
             double[,] T = new double[cols, filas];

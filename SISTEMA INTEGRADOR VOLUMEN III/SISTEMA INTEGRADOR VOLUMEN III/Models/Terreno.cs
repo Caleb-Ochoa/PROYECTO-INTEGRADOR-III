@@ -15,7 +15,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
         public Terreno(int id, int clienteId, string nombre, List<Coordenada> coords)
         { Id = id; ClienteId = clienteId; Nombre = nombre; Coordenadas = coords ?? new(); }
 
-        // Formato: id|clienteId|nombre|coord1~coord2~coord3...
         public override string ToString()
         {
             string coords = string.Join("~", Coordenadas.Select(c => c.ToString()));

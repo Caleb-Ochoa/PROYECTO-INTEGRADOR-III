@@ -17,7 +17,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
         public AuthService(DataManager<Usuario> dm, IHashService hash)
         { _dm = dm; _hash = hash; }
 
-        // ── Login ────────────────────────────────────────────────────────
+        // Login 
         public Usuario? Login(string username, string password)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
@@ -35,7 +35,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return _hash.Verify(password, usuario.PasswordHash) ? usuario : null;
         }
 
-        // ── Registrar ────────────────────────────────────────────────────
+        // Registrar
         public void Registrar(Usuario usuario, string password)
         {
             ValidarCamposObligatorios(usuario);
@@ -55,10 +55,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             usuario.Id = _dm.GetNextId();
 
             todos.Add(usuario);
-            _dm.Save(todos);    // ← BUG CORREGIDO: ahora sí persiste
+            _dm.Save(todos);  
         }
 
-        // ── Cambiar contraseña (el propio usuario) ────────────────────────
+        // Cambiar contraseña (el propio usuario)
         public void CambiarPassword(Usuario usuario, string nuevaPassword)
         {
             ValidarPassword(nuevaPassword);
@@ -70,7 +70,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             _dm.Save(todos);
         }
 
-        // ── Restablecer contraseña (admin) ────────────────────────────────
+        // Restablecer contraseña (admin)
         public void RestablecerPassword(Usuario usuario, string nuevaPassword)
         {
             ValidarPassword(nuevaPassword);
@@ -82,7 +82,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             _dm.Save(todos);
         }
 
-        // ── Validaciones privadas ─────────────────────────────────────────
+        // Validaciones privadas
         private static void ValidarCamposObligatorios(Usuario u)
         {
             if (string.IsNullOrWhiteSpace(u.Nombre))

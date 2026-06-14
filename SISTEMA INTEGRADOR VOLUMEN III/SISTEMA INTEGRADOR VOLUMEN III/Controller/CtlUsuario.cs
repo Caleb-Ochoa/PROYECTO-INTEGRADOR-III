@@ -244,10 +244,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (string.IsNullOrEmpty(termino)) { CargarGrid(); return; }
 
             VistaGestion.dgvUsuarios.DataSource = null;
-            VistaGestion.dgvUsuarios.DataSource = usuarios
-                .Where(u => u.Nombre.ToLower().Contains(termino) ||
-                            u.Username.ToLower().Contains(termino) ||
-                            u.Documento.ToLower().Contains(termino))
+            VistaGestion.dgvUsuarios.DataSource = usuarios.Where(u => u.Nombre.ToLower().Contains(termino) ||
+                u.Username.ToLower().Contains(termino) ||
+                u.Documento.ToLower().Contains(termino))
                 .Select(u => new
                 {
                     u.Id,
@@ -427,11 +426,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             VistaLogin.txtContraseña.UseSystemPasswordChar = true;
 
-            VistaLogin.chkMostrar.CheckedChanged += (sender, e) =>
-            {
-                VistaLogin.txtContraseña.UseSystemPasswordChar = !VistaLogin.chkMostrar.Checked;
-            };
-
             VistaLogin.btnIngresarSesion.Click += (sender, e) =>
             {
                 Autenticar();
@@ -499,8 +493,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         {
             var u = usuarios.FirstOrDefault(x => x.Id == id)
                 ?? throw new InvalidOperationException("Usuario no encontrado.");
-            u.Estado = u.Estado == EstadoUsuario.Activo
-                ? EstadoUsuario.Inactivo
+            u.Estado = u.Estado == EstadoUsuario.Activo ? EstadoUsuario.Inactivo
                 : EstadoUsuario.Activo;
             Save();
         }
