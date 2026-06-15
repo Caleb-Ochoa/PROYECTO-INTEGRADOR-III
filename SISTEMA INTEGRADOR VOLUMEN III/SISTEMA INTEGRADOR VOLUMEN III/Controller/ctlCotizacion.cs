@@ -2,6 +2,7 @@
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Interfaces;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Models;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Repository;
+using SISTEMA_INTEGRADOR_VOLUMEN_III.Services;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
     internal class CtlCotizacion
     {
         public Cotizaciones Vista { get; set; }
-
+        private readonly CodigoFiscalGenerator _codigoGen;
         private DataManager<Factura> dataManagerFac;
         private DataManager<Cotizacion> dataManagerCot;
         private DataManager<Cliente> dataManagerCli;
@@ -36,6 +37,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             DataManager<Material> dmMat,
             DataManager<Factura> dmFac,
             ICalculoService calculo,
+            CodigoFiscalGenerator codigoGen,
             Cotizaciones vista)
         {
             dataManagerCot = dmCot;
@@ -44,6 +46,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             dataManagerMat = dmMat;
             dataManagerFac = dmFac;
             calculoService = calculo;
+            _codigoGen = codigoGen;
             Vista = vista;
 
             cotizaciones = dataManagerCot.GetAll();
@@ -474,7 +477,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             try
             {
                 // Crear factura directamente desde aquí
-                string codigo = $"FAC-{DateTime.Now:yyyyMMdd}-{id:D4}";
+                string codigo = _codigoGen.Generar();
 
                 Factura factura = new Factura
                 {

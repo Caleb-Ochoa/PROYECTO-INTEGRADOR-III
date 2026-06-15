@@ -38,7 +38,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnMateriales = new Button();
             btnClientes = new Button();
             splitContainer1 = new SplitContainer();
-            ptbMostrarMenu = new PictureBox();
             pnlEncabezado = new Panel();
             btnConfiguracion = new Button();
             lblFecha = new Label();
@@ -48,7 +47,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ptbMostrarMenu).BeginInit();
             pnlEncabezado.SuspendLayout();
             SuspendLayout();
             // 
@@ -161,7 +159,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.BackColor = SystemColors.ActiveCaption;
-            splitContainer1.Panel1.Controls.Add(ptbMostrarMenu);
             splitContainer1.Panel1.Controls.Add(btnTerreno);
             splitContainer1.Panel1.Controls.Add(btnFactura);
             splitContainer1.Panel1.Controls.Add(btnCambiarContraseña);
@@ -172,18 +169,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.Size = new Size(956, 441);
             splitContainer1.SplitterDistance = 191;
             splitContainer1.TabIndex = 10;
-            // 
-            // ptbMostrarMenu
-            // 
-            ptbMostrarMenu.BackColor = SystemColors.ActiveCaption;
-            ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
-            ptbMostrarMenu.Location = new Point(3, 3);
-            ptbMostrarMenu.Name = "ptbMostrarMenu";
-            ptbMostrarMenu.Size = new Size(38, 35);
-            ptbMostrarMenu.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbMostrarMenu.TabIndex = 11;
-            ptbMostrarMenu.TabStop = false;
-            ptbMostrarMenu.Click += pbToggle_Click;
             // 
             // pnlEncabezado
             // 
@@ -270,7 +255,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)ptbMostrarMenu).EndInit();
             pnlEncabezado.ResumeLayout(false);
             pnlEncabezado.PerformLayout();
             ResumeLayout(false);
@@ -292,6 +276,5 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Button btnFactura;
         public Button btnMateriales;
         public Button btnCambiarContraseña;
-        private PictureBox ptbMostrarMenu;
     }
 }
