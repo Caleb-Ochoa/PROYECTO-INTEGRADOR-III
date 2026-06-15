@@ -23,8 +23,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 return null;
 
-            Usuario? usuario = _dm.GetAll()
-                .FirstOrDefault(u => string.Equals(u.Username, username.Trim(),
+            Usuario? usuario = _dm.GetAll().FirstOrDefault(u => string.Equals(u.Username, username.Trim(),
                     StringComparison.OrdinalIgnoreCase));
 
             if (usuario == null) return null;
