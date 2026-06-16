@@ -59,8 +59,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
         {
             try
             {
-                string logPath = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory, "errores.log");
+                string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "errores.log");
                 File.AppendAllText(logPath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {mensaje}{Environment.NewLine}");
             }
             catch { }
