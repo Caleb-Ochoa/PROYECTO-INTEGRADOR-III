@@ -12,7 +12,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public GestionUsuario()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
         }
 
         public int GetIdSeleccionado() => _idSeleccionado;
@@ -39,8 +38,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             using Form popup = new Form
             {
                 Text = esAgregar
-                    ? Idioma.T("Agregar Usuario", "Add User")
-                    : Idioma.T("Editar Usuario", "Edit User"),
+("Agregar Usuario", "Editar Usuario"),
                 Name = "PopupUsuario",
                 Size = new Size(430, esEdicion ? 500 : 560),
                 StartPosition = FormStartPosition.CenterParent,

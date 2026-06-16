@@ -12,8 +12,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
 
         public CodigoFiscalGenerator(DataManager<Factura> dm) => _dm = dm;
 
-        /// Genera un código único basado en la fecha y el siguiente Id de factura,
-        /// garantizando que no haya duplicados aunque el programa se reinicie.
         public string Generar()
         {
             int nextId = _dm.GetNextId();

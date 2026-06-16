@@ -23,7 +23,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             // Cargar grid al abrir
             CargarGrid();
-            Idioma.AplicarGrid(Vista.dvgClientes, "Clientes");
 
             // ── Botón Agregar ─────────────────────────────────────────────
             Vista.btnAgregarCliente.Click += (sender, e) =>

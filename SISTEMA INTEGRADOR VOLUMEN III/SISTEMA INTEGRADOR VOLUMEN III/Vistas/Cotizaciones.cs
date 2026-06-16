@@ -12,7 +12,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Cotizaciones()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
         }
 
         public (int clienteId, int terrenoId, int materialId)? MostrarPopupNuevaCotizacion(
@@ -22,7 +21,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             using Form popup = new Form
             {
-                Text = Idioma.T("Nueva Cotización", "New Quotation"),
+                Text = "Nueva Cotización",
                 Name = "PopupCotizacion",
                 Size = new Size(460, 360),
                 StartPosition = FormStartPosition.CenterParent,
@@ -35,7 +34,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblTitulo = new Label
             {
                 Name = "lblTitulo",
-                Text = Idioma.T("Nueva Cotización", "New Quotation"),
+                Text = "Nueva Cotización",
                 Font = new Font("Segoe UI", 13F, FontStyle.Bold),
                 Location = new Point(20, 15),
                 AutoSize = true
@@ -43,7 +42,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblSub = new Label
             {
                 Name = "lblSub",
-                Text = Idioma.T("Registrar información de la cotización", "Register quotation information"),
+                Text = "Registrar información de la cotización",
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 42),
@@ -52,7 +51,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblCliente = new Label
             {
                 Name = "lblCliente",
-                Text = Idioma.T("Cliente", "Client"),
+                Text = "Cliente",
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, 72),
                 AutoSize = true
@@ -67,7 +66,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblTerreno = new Label
             {
                 Name = "lblTerreno",
-                Text = Idioma.T("Terreno", "Terrain"),
+                Text = "Terreno",
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, 128),
                 AutoSize = true
@@ -82,8 +81,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblSinTerrenos = new Label
             {
                 Name = "lblSinTerrenos",
-                Text = Idioma.T("Este cliente no tiene terrenos registrados.",
-                                     "This client has no registered terrains."),
+                Text = "Este cliente no tiene terrenos registrados.",
                 Font = new Font("Segoe UI", 8.5F, FontStyle.Italic),
                 ForeColor = Color.Red,
                 Location = new Point(20, 180),
@@ -93,7 +91,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblMaterial = new Label
             {
                 Name = "lblMaterial",
-                Text = Idioma.T("Material", "Material"),
+                Text = "Material",
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(20, 200),
                 AutoSize = true
@@ -138,7 +136,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var btnCancelar = new Button
             {
                 Name = "btnCancelar",
-                Text = Idioma.T("Cancelar", "Cancel"),
+                Text = "Cancelar",
                 Size = new Size(100, 35),
                 Location = new Point(190, 270),
                 FlatStyle = FlatStyle.Flat,
@@ -152,7 +150,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var btnGuardar = new Button
             {
                 Name = "btnGuardar",
-                Text = Idioma.T("Guardar cotización", "Save quotation"),
+                Text = "Guardar cotización",
                 Size = new Size(160, 35),
                 Location = new Point(300, 270),
                 FlatStyle = FlatStyle.Flat,
@@ -167,10 +165,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     cboTerreno.SelectedItem == null ||
                     cboMaterial.SelectedItem == null)
                 {
-                    MessageBox.Show(
-                        Idioma.T("Debe seleccionar Cliente, Terreno y Material.",
-                                 "You must select Client, Terrain and Material."),
-                        Idioma.T("Advertencia", "Warning"),
+                    MessageBox.Show("Debe seleccionar Cliente, Terreno y Material.","Advertencia"),
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

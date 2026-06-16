@@ -13,7 +13,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public CambioContraseña()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
 
             // Ocultar caracteres en los campos de contraseña
 

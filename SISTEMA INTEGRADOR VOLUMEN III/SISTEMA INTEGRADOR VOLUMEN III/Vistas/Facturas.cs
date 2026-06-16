@@ -13,7 +13,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Facturas()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
             QuestPDF.Settings.License = LicenseType.Community;
         }
 

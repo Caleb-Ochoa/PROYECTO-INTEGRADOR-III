@@ -23,7 +23,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             // Carga inicial del grid
             CargarGrid();
-            Idioma.AplicarGrid(Vista.GetGrid(), "Materiales");
 
             // ── Guardar / Actualizar ──────────────────────────────────────
             Vista.btnGuardarMaterial.Click += (s, e) =>

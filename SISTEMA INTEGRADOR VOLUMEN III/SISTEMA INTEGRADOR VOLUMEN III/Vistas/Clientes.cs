@@ -12,7 +12,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Clientes()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
         }
 
         public int GetIdSeleccionado() => _idSeleccionado;
@@ -38,8 +37,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             using Form popup = new Form
             {
                 Text = esAgregar
-                    ? Idioma.T("Agregar Cliente", "Add Client")
-                    : Idioma.T("Editar Cliente", "Edit Client"),
+                   ( "Agregar Cliente",
+                    "Editar Cliente"),
                 Name = "PopupCliente",
                 Size = new Size(430, 420),
                 StartPosition = FormStartPosition.CenterParent,
@@ -61,9 +60,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblSub = new Label
             {
                 Name = "lblSub",
-                Text = Idioma.T(subtitulo, esAgregar
-                    ? "Register client information"
-                    : "Modify client information"),
+                Text = subtitulo, esAgregar
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 44),
@@ -73,17 +70,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             popup.Controls.Add(lblSub);
 
             int y = 78;
-            var txtNombre = AgregarCampo(popup, "lblNombre", Idioma.T("Nombre", "Name"), Idioma.T("Nombre del cliente", "Client name"), nombre, ref y);
-            var txtDocumento = AgregarCampo(popup, "lblDocumento", Idioma.T("Identificación", "ID"), Idioma.T("Número de identificación", "ID number"), documento, ref y);
-            var txtTelefono = AgregarCampo(popup, "lblTelefono", Idioma.T("Teléfono", "Phone"), Idioma.T("Número telefónico", "Phone number"), telefono, ref y);
-            var txtCorreo = AgregarCampo(popup, "lblCorreo", Idioma.T("Correo", "Email"), Idioma.T("Correo electrónico", "Email address"), correo, ref y);
-            var txtDireccion = AgregarCampo(popup, "lblDireccion", Idioma.T("Dirección", "Address"), Idioma.T("Dirección", "Address"), direccion, ref y);
+            var txtNombre = AgregarCampo(popup, "lblNombre", "Nombre", "Nombre del cliente", nombre, ref y);
+            var txtDocumento = AgregarCampo(popup, "lblDocumento", "Identificación", "Número de identificación", documento, ref y);
+            var txtTelefono = AgregarCampo(popup, "lblTelefono", "Teléfono", "Número telefónico", telefono, ref y);
+            var txtCorreo = AgregarCampo(popup, "lblCorreo", "Correo", "Correo electrónico",  correo, ref y);
+            var txtDireccion = AgregarCampo(popup, "lblDireccion","Dirección","Dirección", direccion, ref y);
 
             y += 8;
             var btnCancelar = new Button
             {
                 Name = "btnCancelar",
-                Text = Idioma.T("Cancelar", "Cancel"),
+                Text = "Cancelar",
                 Size = new Size(100, 35),
                 Location = new Point(195, y),
                 FlatStyle = FlatStyle.Flat,
@@ -97,7 +94,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var btnGuardar = new Button
             {
                 Name = "btnGuardar",
-                Text = Idioma.T("Guardar", "Save"),
+                Text = "Guardar",
                 Size = new Size(100, 35),
                 Location = new Point(305, y),
                 FlatStyle = FlatStyle.Flat,
@@ -112,9 +109,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     string.IsNullOrWhiteSpace(txtDocumento.Text))
                 {
                     MessageBox.Show(
-                        Idioma.T("Nombre e Identificación son obligatorios.",
-                                 "Name and ID are required."),
-                        Idioma.T("Advertencia", "Warning"),
+                        "Nombre e Identificación son obligatorios.","Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

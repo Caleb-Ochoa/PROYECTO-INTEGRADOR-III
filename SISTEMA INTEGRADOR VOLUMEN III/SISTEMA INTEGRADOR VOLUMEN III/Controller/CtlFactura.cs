@@ -43,7 +43,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             _materiales = _dmMat.GetAll();
 
             CargarGrid();
-            Idioma.AplicarGrid(Vista.dvgFacturas, "Facturas");
 
             // ── Buscar ────────────────────────────────────────────────────
             Vista.btnBuscarFacturas.Click += (s, e) => Buscar();
@@ -108,10 +107,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             Cotizacion? cot = _cotizaciones.FirstOrDefault(c => c.Id == fac.CotizacionId);
             Cliente? cli = _clientes.FirstOrDefault(c => c.Id == fac.ClienteId);
-            Terreno? ter = cot != null
-                ? _terrenos.FirstOrDefault(t => t.Id == cot.TerrenoId) : null;
-            Material? mat = cot != null
-                ? _materiales.FirstOrDefault(m => m.Id == cot.MaterialId) : null;
+            Terreno? ter = cot != null? _terrenos.FirstOrDefault(t => t.Id == cot.TerrenoId) : null;
+            Material? mat = cot != null ? _materiales.FirstOrDefault(m => m.Id == cot.MaterialId) : null;
 
             if (cot == null || cli == null || ter == null || mat == null)
             {
