@@ -16,7 +16,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             using SHA256 sha = SHA256.Create();
             byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
             var sb = new StringBuilder(64);
-            foreach (byte b in bytes) sb.Append(b.ToString("x2"));
+            foreach (byte b in bytes) 
+                sb.Append(b.ToString("x2"));
             return sb.ToString();
         }
 

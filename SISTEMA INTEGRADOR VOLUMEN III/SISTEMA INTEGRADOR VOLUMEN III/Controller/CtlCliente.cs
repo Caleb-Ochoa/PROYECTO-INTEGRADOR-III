@@ -78,8 +78,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,8 +87,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Cliente? c = clientes.FirstOrDefault(x => x.Id == id);
             if (c == null) return;
 
-            string[]? datos = Vista.MostrarPopupEditar(
-                c.Nombre, c.Documento, c.Telefono,
+            string[]? datos = Vista.MostrarPopupEditar(c.Nombre, c.Documento, c.Telefono,
                 c.CorreoElectronico, c.Direccion);
 
             if (datos == null) return;
@@ -106,8 +104,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -210,8 +207,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (string.IsNullOrEmpty(termino)) { CargarGrid(); return; }
 
             Vista.dvgClientes.DataSource = null;
-            Vista.dvgClientes.DataSource = clientes
-                .Where(c => c.Nombre.ToLower().Contains(termino) ||
+            Vista.dvgClientes.DataSource = clientes.Where(c => c.Nombre.ToLower().Contains(termino) ||
                             c.Documento.ToLower().Contains(termino))
                 .Select(c => new
                 {

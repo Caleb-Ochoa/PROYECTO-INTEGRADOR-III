@@ -19,8 +19,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
     internal partial class MenuPrincipal : Form
     {
         private readonly Usuario _usuario;
-        bool menuOculto = false;
-        private int anchoMenu = 185;
 
         public bool CerroSesion { get; private set; } = false;
 
@@ -29,8 +27,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             InitializeComponent();
             Idioma.Aplicar(this);
             _usuario = usuario;
-            ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
-            ptbMostrarMenu.Click += pbToggle_Click;
         }
 
         // ── Un solo Load, con el nombre correcto ──────────────────────────
@@ -60,9 +56,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCambiarContraseña.Visible = true;
 
             this.WindowState = FormWindowState.Maximized;
-
-            anchoMenu = splitContainer1.SplitterDistance; // guarda el ancho real al cargar
-            splitContainer1.Panel1MinSize = ptbMostrarMenu.Width;
 
         }
 
@@ -136,8 +129,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             DataManager<Factura> dmFac = new DataManager<Factura>(repoFac);
 
             ICalculoService calculo = new CalculoService();
+            var codigoGen = new CodigoFiscalGenerator(dmFac);
 
-            CtlCotizacion controlador = new CtlCotizacion(dmCot, dmCli, dmTer, dmMat, dmFac, calculo, vista);
+            CtlCotizacion controlador = new CtlCotizacion(dmCot, dmCli, dmTer, dmMat, dmFac, calculo, codigoGen, vista);
             AbrirFormulario(vista);
         }
 
@@ -197,41 +191,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
             Idioma.MostrarSelector(this);
-        }
-
-        private void pbToggle_Click(object sender, EventArgs e)
-        {
-            if (menuOculto)
-            {
-                // Mostrar menú
-                splitContainer1.SplitterDistance = anchoMenu;
-                ptbMostrarMenu.Image = Properties.Resources.FlechaIzquierda;
-
-                // Mostrar todos los botones del menú
-                foreach (Control c in splitContainer1.Panel1.Controls)
-                {
-                    if (c != ptbMostrarMenu)
-                        c.Visible = true;
-                }
-
-                menuOculto = false;
-            }
-            else
-            {
-                // Ocultar menú
-                anchoMenu = splitContainer1.SplitterDistance; // guarda antes de reducir
-                splitContainer1.SplitterDistance = ptbMostrarMenu.Width;
-                ptbMostrarMenu.Image = Properties.Resources.FlechaDerecha;
-
-                // Ocultar todos los botones del menú
-                foreach (Control c in splitContainer1.Panel1.Controls)
-                {
-                    if (c != ptbMostrarMenu)
-                        c.Visible = false;
-                }
-
-                menuOculto = true;
-            }
-        }
+        }  
     }
 }

@@ -23,10 +23,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
             string[] p = s.Split(';');
             if (p.Length != 4)
                 throw new FormatException($"Coordenada inválida: {s}");
-            return new Coordenada(int.Parse(p[0]),
+            return new Coordenada(
+                int.Parse(p[0]),
                 double.Parse(p[1], System.Globalization.CultureInfo.InvariantCulture),
                 double.Parse(p[2], System.Globalization.CultureInfo.InvariantCulture),
-                double.Parse(p[3], System.Globalization.CultureInfo.InvariantCulture));
+                double.Parse(p[3], System.Globalization.CultureInfo.InvariantCulture)
+            );
         }
     }
 }
