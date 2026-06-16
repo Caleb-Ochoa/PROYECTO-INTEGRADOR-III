@@ -36,9 +36,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             using Form popup = new Form
             {
-                Text = esAgregar
-                   ( "Agregar Cliente",
-                    "Editar Cliente"),
+                Text = esAgregar ? "Agregar Cliente" : "Editar Cliente",
                 Name = "PopupCliente",
                 Size = new Size(430, 420),
                 StartPosition = FormStartPosition.CenterParent,
@@ -60,7 +58,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             var lblSub = new Label
             {
                 Name = "lblSub",
-                Text = subtitulo, esAgregar
+                Text = subtitulo,
                 Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 44),

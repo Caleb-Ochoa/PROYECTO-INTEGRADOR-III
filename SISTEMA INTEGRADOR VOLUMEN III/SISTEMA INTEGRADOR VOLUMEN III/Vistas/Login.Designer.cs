@@ -38,7 +38,6 @@
             pictureBox1 = new PictureBox();
             label3 = new Label();
             pnlLogin = new Panel();
-            btnIdioma = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlLogin.SuspendLayout();
             SuspendLayout();
@@ -133,12 +132,10 @@
             label3.TabIndex = 10;
             label3.Text = "Ingrese sus credenciales para acceder al sistema.";
             label3.TextAlign = ContentAlignment.TopCenter;
-            
             // 
             // pnlLogin
             // 
             pnlLogin.Anchor = AnchorStyles.None;
-            pnlLogin.Controls.Add(btnIdioma);
             pnlLogin.Controls.Add(pictureBox1);
             pnlLogin.Controls.Add(btnIngresarSesion);
             pnlLogin.Controls.Add(label3);
@@ -152,16 +149,6 @@
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(496, 450);
             pnlLogin.TabIndex = 11;
-            // 
-            // btnIdioma
-            // 
-            btnIdioma.Location = new Point(349, 3);
-            btnIdioma.Name = "btnIdioma";
-            btnIdioma.Size = new Size(33, 37);
-            btnIdioma.TabIndex = 12;
-            btnIdioma.Text = "🌐";
-            btnIdioma.UseVisualStyleBackColor = true;
-            btnIdioma.Click += btnIdioma_Click;
             // 
             // Login
             // 
@@ -194,6 +181,5 @@
         public Button btnIngresarSesion;
         public TextBox txtContraseña;
         private Panel pnlLogin;
-        private Button btnIdioma;
     }
 }

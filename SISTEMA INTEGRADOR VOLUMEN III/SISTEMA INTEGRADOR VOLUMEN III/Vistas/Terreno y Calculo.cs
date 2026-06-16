@@ -20,8 +20,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Terreno_y_Calculo()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
-            lblTotalPuntos.Text = $"{Idioma.T("Total puntos", "Total points")}: 0";
+            lblTotalPuntos.Text = $"{"Total puntos"}: 0";
             cmbMaterial.SelectedIndexChanged += (s, e) => MostrarCostoMaterial();
             this.Load += async (s, e) => await InicializarWebView();
         }
@@ -83,8 +82,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                         double x = xMin + i * dx;
                         double y = yMin + j * dy;
                         double z = coef != null
-                            ? CalculoService.EvaluarModelo(coef, x, y)
-                            : InterpolarIDW(coords, x, y);
+                            ? CalculoService.EvaluarModelo(coef, x, y): InterpolarIDW(coords, x, y);
                         zData.Append(z.ToString(System.Globalization.CultureInfo.InvariantCulture));
                         if (i < pasos) zData.Append(",");
                     }
@@ -225,7 +223,7 @@ Plotly.newPlot('plot', [surface, puntos], layout, {{ responsive: true }});
                 Z = c.Z
             }).ToList();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            lblTotalPuntos.Text = $"{Idioma.T("Total puntos", "Total points")}: {coords.Count}";
+            lblTotalPuntos.Text = $"{"Total puntos"}: {coords.Count}";
         }
 
         public void MostrarResultado(double area, double volumen, decimal costo, string metodo)
@@ -242,16 +240,13 @@ Plotly.newPlot('plot', [surface, puntos], layout, {{ responsive: true }});
                 lblCostoMaterial.Text = "$0.00/m³";
         }
 
-        // ── Nombre del terreno ──────────────────────────────────────────
         public string GetNombreTerreno() => txtNombreTerreno.Text.Trim();
 
         public void LimpiarNombreTerreno() => txtNombreTerreno.Clear();
 
         public void MostrarMensaje(string msg, bool esError = false)
         {
-            MessageBox.Show(msg,
-                esError ? "Error" : "Información",
-                MessageBoxButtons.OK,
+            MessageBox.Show(msg,esError ? "Error" : "Información",MessageBoxButtons.OK,
                 esError ? MessageBoxIcon.Error : MessageBoxIcon.Information);
         }
     }

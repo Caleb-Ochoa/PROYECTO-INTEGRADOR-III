@@ -12,17 +12,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III
         [STAThread]
         static void Main()
         {
-            // ← AGREGA ESTAS 3 LÍNEAS
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += (s, e) =>MessageBox.Show(e.Exception.ToString(), "Error no manejado");
             AppDomain.CurrentDomain.UnhandledException += (s, e) =>MessageBox.Show(e.ExceptionObject.ToString(), "Error crítico");
 
             Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
             ApplicationConfiguration.Initialize();
-            Idioma.Cargar("es");
 
-            // El loop principal corre aquí — nunca termina hasta que
-            // el usuario cierra la app completamente
             while (true)
             {
                 IRepository<Usuario> repo = new RepositorioFile<Usuario>("usuarios.txt", Usuario.FromText);

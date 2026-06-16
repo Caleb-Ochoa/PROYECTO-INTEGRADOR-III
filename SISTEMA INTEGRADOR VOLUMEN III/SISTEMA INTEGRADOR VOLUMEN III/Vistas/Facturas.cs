@@ -23,8 +23,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 MessageBoxButtons.OK,
                 esError ? MessageBoxIcon.Error : MessageBoxIcon.Information);
         }
-
-        // ── Descargar factura con QuestPDF ────────────────────────────────
         public void DescargarFacturaPDF(Factura factura, Cliente cliente,
             Cotizacion cotizacion, Terreno terreno, Material material)
         {

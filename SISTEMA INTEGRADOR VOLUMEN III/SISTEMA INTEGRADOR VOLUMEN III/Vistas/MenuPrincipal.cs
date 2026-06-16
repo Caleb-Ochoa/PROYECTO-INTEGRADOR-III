@@ -25,14 +25,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public MenuPrincipal(Usuario usuario)
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
             _usuario = usuario;
         }
 
-        // ── Un solo Load, con el nombre correcto ──────────────────────────
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            // Rol e ícono
             if (_usuario.Rol == Rol.Administrador)
             {
                 lblAvatar.Text = "👑";
@@ -46,12 +43,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
             lblNombre.Text = $"Bienvenido, {_usuario.Nombre}";
 
-            // Fecha en español sin importar la configuración del PC
-            lblFecha.Text = DateTime.Now.ToString(
-                "dddd, dd 'de' MMMM 'de' yyyy",
-                new CultureInfo("es-CO"));
+            lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy",new CultureInfo("es-CO"));
 
-            // Botones exclusivos del admin
             btnGUsuarios.Visible = _usuario.Rol == Rol.Administrador;
             btnCambiarContraseña.Visible = true;
 
@@ -59,7 +52,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         }
 
-        // ── Abrir módulos en el panel derecho ─────────────────────────────
         public void AbrirFormulario(Form formulario)
         {
             splitContainer1.Panel2.Controls.Clear();
@@ -72,7 +64,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             formulario.Show();
         }
 
-        // ── Clientes ──────────────────────────────────────────────────────
         private void btnClientes_Click(object sender, EventArgs e)
         {
             Clientes vista = new Clientes();
@@ -82,7 +73,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Materiales ────────────────────────────────────────────────────
         private void btnMateriales_Click(object sender, EventArgs e)
         {
             Materiales vista = new Materiales();
@@ -92,7 +82,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Terreno ───────────────────────────────────────────────────────
         private void btnTerreno_Click(object sender, EventArgs e)
         {
             Terreno_y_Calculo vista = new Terreno_y_Calculo();
@@ -111,7 +100,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Cotizaciones ──────────────────────────────────────────────────
         private void btnCotizacion_Click(object sender, EventArgs e)
         {
             Cotizaciones vista = new Cotizaciones();
@@ -135,7 +123,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Facturas ──────────────────────────────────────────────────────
         private void btnFactura_Click(object sender, EventArgs e)
         {
             Facturas vista = new Facturas();
@@ -156,7 +143,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Gestión de usuarios (solo admin) ──────────────────────────────
         private void btnGUsuario_Click(object sender, EventArgs e)
         {
             GestionUsuario vista = new GestionUsuario();
@@ -168,7 +154,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Cambiar contraseña (solo admin) ───────────────────────────────
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
             CambioContraseña vista = new CambioContraseña();
@@ -180,17 +165,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             AbrirFormulario(vista);
         }
 
-        // ── Cerrar sesión ─────────────────────────────────────────────────
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             CerroSesion = true;
             this.Close();
         }
-
-        // ── Configuración de idioma ───────────────────────────────────────
-        private void btnConfiguracion_Click(object sender, EventArgs e)
-        {
-            Idioma.MostrarSelector(this);
-        }  
     }
 }

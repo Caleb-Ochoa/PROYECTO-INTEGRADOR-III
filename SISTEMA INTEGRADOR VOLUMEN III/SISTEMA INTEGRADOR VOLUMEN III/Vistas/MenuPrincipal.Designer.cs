@@ -39,7 +39,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnClientes = new Button();
             splitContainer1 = new SplitContainer();
             pnlEncabezado = new Panel();
-            btnConfiguracion = new Button();
             lblFecha = new Label();
             lblRol = new Label();
             lblNombre = new Label();
@@ -104,7 +103,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnCerrarSesion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCerrarSesion.AutoSize = true;
             btnCerrarSesion.Font = new Font("Segoe UI", 9F);
-            btnCerrarSesion.Location = new Point(821, 52);
+            btnCerrarSesion.Location = new Point(821, 28);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(123, 30);
             btnCerrarSesion.TabIndex = 5;
@@ -173,7 +172,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             // pnlEncabezado
             // 
             pnlEncabezado.BackColor = SystemColors.ActiveCaption;
-            pnlEncabezado.Controls.Add(btnConfiguracion);
             pnlEncabezado.Controls.Add(lblFecha);
             pnlEncabezado.Controls.Add(lblRol);
             pnlEncabezado.Controls.Add(btnCerrarSesion);
@@ -184,23 +182,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             pnlEncabezado.Name = "pnlEncabezado";
             pnlEncabezado.Size = new Size(956, 93);
             pnlEncabezado.TabIndex = 11;
-            // 
-            // btnConfiguracion
-            // 
-            btnConfiguracion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnConfiguracion.BackColor = SystemColors.ActiveCaption;
-            btnConfiguracion.BackgroundImage = Properties.Resources.settings_configuration_icon_solid_style_icon_design_element_icon_template_background_free_vector_removebg_preview;
-            btnConfiguracion.BackgroundImageLayout = ImageLayout.Zoom;
-            btnConfiguracion.FlatAppearance.BorderSize = 0;
-            btnConfiguracion.FlatStyle = FlatStyle.Flat;
-            btnConfiguracion.Font = new Font("Segoe UI", 24F);
-            btnConfiguracion.Location = new Point(881, 10);
-            btnConfiguracion.Name = "btnConfiguracion";
-            btnConfiguracion.Size = new Size(63, 36);
-            btnConfiguracion.TabIndex = 6;
-            btnConfiguracion.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnConfiguracion.UseVisualStyleBackColor = false;
-            btnConfiguracion.Click += btnConfiguracion_Click;
             // 
             // lblFecha
             // 
@@ -269,7 +250,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         private Label lblNombre;
         private Label lblAvatar;
         private Label lblFecha;
-        private Button btnConfiguracion;
         public Button btnGUsuarios;
         public Button btnCotizacion;
         public Button btnTerreno;

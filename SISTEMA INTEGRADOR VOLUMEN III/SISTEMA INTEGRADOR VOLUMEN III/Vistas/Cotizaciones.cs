@@ -165,12 +165,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                     cboTerreno.SelectedItem == null ||
                     cboMaterial.SelectedItem == null)
                 {
-                    MessageBox.Show("Debe seleccionar Cliente, Terreno y Material.","Advertencia"),
+                    MessageBox.Show("Debe seleccionar Cliente, Terreno y Material.","Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                resultado = ((int)cboCliente.SelectedValue!,
-                             (int)cboTerreno.SelectedValue!,
+                resultado = ((int)cboCliente.SelectedValue!,(int)cboTerreno.SelectedValue!,
                              (int)cboMaterial.SelectedValue!);
                 popup.Close();
             };

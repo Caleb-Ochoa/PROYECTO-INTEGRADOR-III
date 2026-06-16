@@ -14,12 +14,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         public Materiales()
         {
             InitializeComponent();
-            Idioma.Aplicar(this);
         }
 
-        // ── Métodos que usa CtlMaterial ───────────────────────────────────
-
-        /// <summary>Devuelve [0]Nombre [1]CostoMetroCubico como string.</summary>
         public string[] GetInput() => new[]
         {
             txtNombreMaterial.Text.Trim(),
@@ -39,7 +35,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         public bool EstaEditando() => _idEditando > 0;
 
-        /// <summary>Pre-rellena el formulario para editar un material.</summary>
         public void CargarEnFormulario(int id, string nombre, string costo)
         {
             _idEditando = id;
@@ -48,7 +43,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
             btnGuardarMaterial.Text = "Actualizar";
             txtNombreMaterial.Focus();
         }
-        /// <summary>Carga la lista de materiales en el grid.</summary>
+
         public void CargarGrid(object datos)
         {
             dataGridView1.DataSource = null;
@@ -61,16 +56,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
 
         public void MostrarMensaje(string mensaje, bool esError = false)
         {
-            MessageBox.Show(mensaje,
-                esError ? "Error" : "Éxito",
-                MessageBoxButtons.OK,
+            MessageBox.Show(mensaje,esError ? "Error" : "Éxito",MessageBoxButtons.OK,
                 esError ? MessageBoxIcon.Error : MessageBoxIcon.Information);
         }
 
         public void MostrarAdvertencia(string mensaje)
         {
-            MessageBox.Show(mensaje, "Advertencia",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(mensaje, "Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

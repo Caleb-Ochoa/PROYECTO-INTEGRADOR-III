@@ -48,7 +48,6 @@
             label9 = new Label();
             label10 = new Label();
             txtDireccion = new TextBox();
-            btnIdioma = new Button();
             pnlRegistroAdmin = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlRegistroAdmin.SuspendLayout();
@@ -239,21 +238,9 @@
             txtDireccion.Size = new Size(242, 23);
             txtDireccion.TabIndex = 19;
             // 
-            // btnIdioma
-            // 
-            btnIdioma.Font = new Font("Segoe UI", 10F);
-            btnIdioma.Location = new Point(293, 6);
-            btnIdioma.Name = "btnIdioma";
-            btnIdioma.Size = new Size(36, 26);
-            btnIdioma.TabIndex = 20;
-            btnIdioma.Text = "🌐";
-            btnIdioma.UseVisualStyleBackColor = true;
-            btnIdioma.Click += btnIdioma_Click;
-            // 
             // pnlRegistroAdmin
             // 
             pnlRegistroAdmin.Anchor = AnchorStyles.None;
-            pnlRegistroAdmin.Controls.Add(btnIdioma);
             pnlRegistroAdmin.Controls.Add(btnRegistarAdmin);
             pnlRegistroAdmin.Controls.Add(txtDireccion);
             pnlRegistroAdmin.Controls.Add(txtConfirmarContraseña);
@@ -317,7 +304,6 @@
         private Label label9;
         private Label label10;
         private TextBox txtDireccion;
-        private Button btnIdioma;
         private Panel pnlRegistroAdmin;
     }
 }
