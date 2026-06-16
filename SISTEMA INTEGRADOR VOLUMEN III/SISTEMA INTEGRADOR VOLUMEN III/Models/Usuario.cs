@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json;
 using SISTEMA_INTEGRADOR_VOLUMEN_III.Enums;
 
 namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Models
