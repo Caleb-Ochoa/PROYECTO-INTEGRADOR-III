@@ -44,18 +44,15 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             CargarGrid();
 
-            // ── Buscar ────────────────────────────────────────────────────
             Vista.btnBuscarFacturas.Click += (s, e) => Buscar();
             Vista.txtBuscarFacturas.TextChanged += (s, e) => Buscar();
 
-            // ── Limpiar ───────────────────────────────────────────────────
             Vista.btnLimpiarFacturas.Click += (s, e) =>
             {
                 Vista.txtBuscarFacturas.Clear();
                 CargarGrid();
             };
 
-            // ── Click en grid ─────────────────────────────────────────────
             Vista.dvgFacturas.CellClick += (s, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -68,14 +65,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 else if (col == "ColAnular") AnularFactura(id);
             };
 
-            // ── CellPainting botón Anular ─────────────────────────────────
             Vista.dvgFacturas.CellPainting += (s, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
                 if (Vista.dvgFacturas.Columns[e.ColumnIndex].Name != "ColAnular") return;
 
-                string estado = Vista.dvgFacturas.Rows[e.RowIndex]
-                    .Cells["Estado"].Value?.ToString() ?? "";
+                string estado = Vista.dvgFacturas.Rows[e.RowIndex].Cells["Estado"].Value?.ToString() ?? "";
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
@@ -93,13 +88,11 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Center
                 };
-                e.Graphics.DrawString(btnText,
-                    new Font("Segoe UI", 9F, FontStyle.Bold),txtBrush, rect, fmt);
+                e.Graphics.DrawString(btnText,new Font("Segoe UI", 9F, FontStyle.Bold),txtBrush, rect, fmt);
                 e.Handled = true;
             };
         }
 
-        // ── Descargar ─────────────────────────────────────────────────────
         private void DescargarFactura(int id)
         {
             Factura? fac = _facturas.FirstOrDefault(f => f.Id == id);
@@ -112,15 +105,13 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             if (cot == null || cli == null || ter == null || mat == null)
             {
-                Vista.MostrarMensaje("No se encontraron todos los datos de la factura.",
-                    esError: true);
+                Vista.MostrarMensaje("No se encontraron todos los datos de la factura.",esError: true);
                 return;
             }
 
             Vista.DescargarFacturaPDF(fac, cli, cot, ter, mat);
         }
 
-        // Anular
         private void AnularFactura(int id)
         {
             Factura? fac = _facturas.FirstOrDefault(f => f.Id == id);
@@ -133,7 +124,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             fac.Estado = EstadoFactura.Anulada;
 
-            // Reactivar la cotización
             Cotizacion? cot = _cotizaciones.FirstOrDefault(c => c.Id == fac.CotizacionId);
             if (cot != null)
             {
@@ -145,7 +135,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             CargarGrid();
         }
 
-        // ── Grid ──────────────────────────────────────────────────────────
         private void CargarGrid()
         {
             _facturas = _dmFac.GetAll();
@@ -198,7 +187,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (Vista.dvgFacturas.Columns.Contains("ColAnular"))
                 Vista.dvgFacturas.Columns.Remove("ColAnular");
 
-            // Botón Descargar — verde
             Vista.dvgFacturas.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColDescargar",
@@ -216,7 +204,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 }
             });
 
-            // Botón Anular — dinámico via CellPainting
             Vista.dvgFacturas.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColAnular",

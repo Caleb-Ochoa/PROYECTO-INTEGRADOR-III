@@ -33,7 +33,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             string nueva = Vista.GetContraseñaNueva();
             string confirmar = Vista.GetContraseñaConfirmar();
 
-            // 1. Campos vacíos
             if (string.IsNullOrWhiteSpace(actual) ||
                 string.IsNullOrWhiteSpace(nueva) ||
                 string.IsNullOrWhiteSpace(confirmar))
@@ -42,28 +41,24 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 return;
             }
 
-            // 2. Contraseña actual correcta
             if (!_hash.Verify(actual, _usuarioActual.PasswordHash))
             {
                 Vista.MostrarMensaje("La contraseña actual es incorrecta.", esError: true);
                 return;
             }
 
-            // 3. Nueva y confirmación coinciden
             if (nueva != confirmar)
             {
                 Vista.MostrarMensaje("La nueva contraseña y la confirmación no coinciden.", esError: true);
                 return;
             }
 
-            // 4. Nueva no puede ser igual a la actual
             if (_hash.Verify(nueva, _usuarioActual.PasswordHash))
             {
                 Vista.MostrarMensaje("La nueva contraseña no puede ser igual a la actual.", esError: true);
                 return;
             }
 
-            // 5. Validar requisitos (longitud, mayúscula, número, especial)
             try
             {
                 AuthService.ValidarPassword(nueva);
@@ -74,7 +69,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 return;
             }
 
-            // 6. Persistir
             try
             {
                 _auth.CambiarPassword(_usuarioActual, nueva);

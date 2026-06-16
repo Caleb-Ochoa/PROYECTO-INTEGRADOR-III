@@ -21,10 +21,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             clientes = dataManager.GetAll();
 
-            // Cargar grid al abrir
             CargarGrid();
 
-            // ── Botón Agregar ─────────────────────────────────────────────
             Vista.btnAgregarCliente.Click += (sender, e) =>
             {
                 string[]? datos = Vista.MostrarPopupAgregar();
@@ -32,19 +30,16 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Agregar(datos);
             };
 
-            // ── Botón Buscar ──────────────────────────────────────────────
             Vista.btnBuscarCliente.Click += (sender, e) =>
             {
                 Buscar();
             };
 
-            // Buscar también en tiempo real al escribir
             Vista.txtBuscarCliente.TextChanged += (sender, e) =>
             {
                 Buscar();
             };
 
-            // ── Botón Limpiar filtro ──────────────────────────────────────
             Vista.btnLimpiarFiltro.Click += (sender, e) =>
             {
                 Vista.txtBuscarCliente.Clear();
@@ -52,11 +47,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             };
         }
 
-        // ── CRUD ──────────────────────────────────────────────────────────
-
         private void Agregar(string[] datos)
         {
-            // [0]Nombre [1]Documento [2]Telefono [3]Correo [4]Direccion
             try
             {
                 if (clientes.Any(c => c.Documento == datos[1].Trim()))
@@ -119,8 +111,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             return clientes;
         }
 
-        // ── Grid ──────────────────────────────────────────────────────────
-
         private void CargarGrid()
         {
             clientes = dataManager.GetAll();
@@ -136,7 +126,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Registro = c.FechaRegistro.ToString("dd/MM/yyyy")
             }).ToList();
 
-            // Ocultar columna Id
             if (Vista.dvgClientes.Columns.Contains("Id"))
                 Vista.dvgClientes.Columns["Id"].Visible = false;
 
@@ -158,8 +147,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         }
 
         private void AgregarColumnaEditar()
-        {
-            // Evitar duplicados al recargar
+        {  
             if (Vista.dvgClientes.Columns.Contains("Acciones"))
                 Vista.dvgClientes.Columns.Remove("Acciones");
 
@@ -183,7 +171,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             Vista.dvgClientes.Columns.Add(colBtn);
 
-            // Reconectar el evento para evitar duplicados
             Vista.dvgClientes.CellClick -= GridCellClick;
             Vista.dvgClientes.CellClick += GridCellClick;
         }

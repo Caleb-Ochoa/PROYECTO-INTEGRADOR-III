@@ -157,7 +157,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             EstilizarGrid();
 
-            // Ocultar columna texto Estado (el botón ColEstado ya lo muestra)
             if (VistaGestion.dgvUsuarios.Columns.Contains("Estado"))
                 VistaGestion.dgvUsuarios.Columns["Estado"].Visible = false;
 
@@ -262,7 +261,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             EstilizarGrid();
 
-            // Ocultar columna texto Estado
             if (VistaGestion.dgvUsuarios.Columns.Contains("Estado"))
                 VistaGestion.dgvUsuarios.Columns["Estado"].Visible = false;
 
@@ -305,7 +303,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void AgregarUsuario()
         {
             if (VistaGestion == null)
@@ -409,8 +406,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
                 VistaRegistro.Hide();
 
-                MessageBox.Show("Administrador registrado.\nAhora puede iniciar sesión.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Administrador registrado.\nAhora puede iniciar sesión.","Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 VistaRegistro.Close();
                 AbrirLogin();

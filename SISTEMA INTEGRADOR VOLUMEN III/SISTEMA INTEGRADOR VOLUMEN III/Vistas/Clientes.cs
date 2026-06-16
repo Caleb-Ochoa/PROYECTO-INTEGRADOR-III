@@ -106,9 +106,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtDocumento.Text))
                 {
-                    MessageBox.Show(
-                        "Nombre e Identificación son obligatorios.","Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Nombre e Identificación son obligatorios.","Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 resultado = new[]

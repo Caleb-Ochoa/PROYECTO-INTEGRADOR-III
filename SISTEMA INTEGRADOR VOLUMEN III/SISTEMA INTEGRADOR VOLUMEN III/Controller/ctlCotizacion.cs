@@ -56,7 +56,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             CargarGrid();
 
-            // ── Pintar botón Anular según estado ──────────────────────────────
             Vista.dvgCotizaciones.CellPainting += (sender, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -70,8 +69,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                     Color btnColor = estado == "Activa"
-                        ? Color.FromArgb(234, 179, 8)    // amarillo — se puede facturar
-                        : Color.FromArgb(200, 200, 200);  // gris — ya facturada o cancelada
+                        ? Color.FromArgb(234, 179, 8)    
+                        : Color.FromArgb(200, 200, 200);  
 
                     string btnText = estado == "Facturada" ? "✓ Facturada" : "Facturar";
 
@@ -115,21 +114,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Center
                     };
-                    e.Graphics.DrawString(btnText,
-                        new Font("Segoe UI", 9F, FontStyle.Bold),
-                        txtBrush, rect, fmt);
+                    e.Graphics.DrawString(btnText,new Font("Segoe UI", 9F, FontStyle.Bold),txtBrush, rect, fmt);
 
                     e.Handled = true;
                 }
             };
 
-            // ── Botón Nueva Cotización ────────────────────────────────────
             Vista.btnAgregarCotizacion.Click += (sender, e) =>
             {
                 NuevaCotizacion();
             };
 
-            // ── Buscar ────────────────────────────────────────────────────
             Vista.btnBuscarCotizaciones.Click += (sender, e) =>
             {
                 Buscar();
@@ -140,14 +135,12 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Buscar();
             };
 
-            // ── Limpiar filtro ────────────────────────────────────────────
             Vista.btnLimpiarCotizaciones.Click += (sender, e) =>
             {
                 Vista.txtBuscarCotizaciones.Clear();
                 CargarGrid();
             };
 
-            // ── Click en columnas del grid (Ver / Anular) ─────────────────
             Vista.dvgCotizaciones.CellClick += (sender, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -166,11 +159,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     AnularCotizacion(id);
             };
         }
-
-        // ── Nueva cotización ──────────────────────────────────────────────
         private void NuevaCotizacion()
         {
-            // Recargar listas frescas
             clientes = dataManagerCli.GetAll();
             terrenos = dataManagerTer.GetAll();
             materiales = dataManagerMat.GetAll();
@@ -200,10 +190,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                         $"El terreno '{terreno.Nombre}' tiene {terreno.Coordenadas.Count} coordenadas. " +
                         "Se necesitan al menos 3 para calcular el volumen.");
 
-                // Calcular volumen con el servicio
                 var resultado = calculoService.Calcular(terreno, material);
 
-                // Crear cotización
                 var cot = new Cotizacion
                 {
                     Id = dataManagerCot.GetNextId(),
@@ -229,12 +217,10 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ── Ver detalle ───────────────────────────────────────────────────
         private void VerCotizacion(int id)
         {
             Cotizacion? cot = cotizaciones.FirstOrDefault(c => c.Id == id);
@@ -258,7 +244,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             MessageBox.Show(detalle, "Detalle de cotización", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // ── Anular ────────────────────────────────────────────────────────
         private void AnularCotizacion(int id)
         {
             Cotizacion? cot = cotizaciones.FirstOrDefault(c => c.Id == id);
@@ -266,7 +251,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             if (cot.Estado == EstadoCotizacion.Cancelada)
             {
-                // Ya está anulada — el botón se ve deshabilitado, no hacer nada
                 return;
             }
 
@@ -277,7 +261,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Save();
         }
 
-        // ── CRUD ──────────────────────────────────────────────────────────
         private void Save()
         {
             dataManagerCot.Save(cotizaciones);
@@ -290,7 +273,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             return cotizaciones;
         }
 
-        // ── Grid ──────────────────────────────────────────────────────────
         private void CargarGrid()
         {
             cotizaciones = dataManagerCot.GetAll();
@@ -311,7 +293,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 Estado = c.Estado.ToString()
             }).ToList();
 
-            // Ocultar Id
             if (Vista.dvgCotizaciones.Columns.Contains("Id"))
                 Vista.dvgCotizaciones.Columns["Id"].Visible = false;
 
@@ -340,7 +321,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             if (Vista.dvgCotizaciones.Columns.Contains("ColAnular"))
                 Vista.dvgCotizaciones.Columns.Remove("ColAnular");
 
-            // Botón Ver — azul
             Vista.dvgCotizaciones.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColVer",
@@ -358,7 +338,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         }
             });
 
-            // Botón Facturar — dinámico via CellPainting
             Vista.dvgCotizaciones.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColFacturar",
@@ -374,7 +353,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
         }
             });
 
-            // Botón Anular — dinámico via CellPainting
             Vista.dvgCotizaciones.Columns.Add(new DataGridViewButtonColumn
             {
                 Name = "ColAnular",
@@ -391,7 +369,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             });
         }
 
-        // ── Colores de fila según estado ───────────────────────────────────
         private void AplicarColoresEstado()
         {
             foreach (DataGridViewRow row in Vista.dvgCotizaciones.Rows)
@@ -416,7 +393,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     row.DefaultCellStyle.BackColor = Color.FromArgb(235, 245, 255);
                     row.DefaultCellStyle.ForeColor = Color.FromArgb(40, 80, 160);
                 }
-                else // Activa
+                else 
                 {
                     row.DefaultCellStyle.BackColor = Color.White;
                     row.DefaultCellStyle.ForeColor = Color.FromArgb(20, 130, 60);
@@ -475,7 +452,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             try
             {
-                // Crear factura directamente desde aquí
                 string codigo = _codigoGen.Generar();
 
                 Factura factura = new Factura
@@ -489,21 +465,17 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     Estado = EstadoFactura.Emitida
                 };
 
-                // Guardar factura
                 var facturas = dataManagerFac.GetAll();
                 facturas.Add(factura);
                 dataManagerFac.Save(facturas);
 
-                // Marcar cotización como Facturada
                 cot.Estado = EstadoCotizacion.Facturada;
                 dataManagerCot.Save(cotizaciones);
 
                 CargarGrid();
 
                 MessageBox.Show(
-                    $"Factura generada exitosamente.\n" +
-                    $"Código: {codigo}\n" +
-                    $"Total: {factura.Total:C2}",
+                    $"Factura generada exitosamente.\n" +$"Código: {codigo}\n" +$"Total: {factura.Total:C2}",
                     "Factura creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

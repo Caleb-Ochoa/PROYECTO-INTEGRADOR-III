@@ -59,9 +59,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Services
             return new ResultadoCalculo(area, Math.Abs(volumen), costo,"Triangulación TIN (Fan)");
         }
 
-        // ── Triangulación Fan desde el centroide ──────────────────────────
-        // Divide el polígono convexo (o casi convexo) en triángulos
-        // desde el primer punto hacia todos los demás pares consecutivos
         private static List<(Coordenada a, Coordenada b, Coordenada c)> TriangularPolígono(
             List<Coordenada> pts)
         {

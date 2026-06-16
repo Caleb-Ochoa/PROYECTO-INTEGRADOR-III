@@ -34,7 +34,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
                 }
                 catch (Exception ex)
                 {
-                    // Registra línea corrupta en log pero NO aborta la carga
                     LogError($"[RepositorioFile] Error en '{Source}' línea {i + 1}: {ex.Message}");
                 }
             }
@@ -45,7 +44,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
         {
             try
             {
-                // Escritura atómica: primero a .tmp, luego reemplaza
                 string tmpPath = Source + ".tmp";
                 File.WriteAllLines(tmpPath, entities.Select(e => e.ToString() ?? string.Empty));
                 if (File.Exists(Source)) File.Delete(Source);
@@ -65,7 +63,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
                     AppDomain.CurrentDomain.BaseDirectory, "errores.log");
                 File.AppendAllText(logPath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {mensaje}{Environment.NewLine}");
             }
-            catch { /* no lanzar excepciones dentro del manejo de errores */ }
+            catch { }
         }
     }
 }

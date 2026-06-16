@@ -14,8 +14,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Vistas
         {
             InitializeComponent();
 
-            // Ocultar caracteres en los campos de contraseña
-
             txtContraseñaActual.PasswordChar = '●';
             txtContraseñaNueva.PasswordChar = '●';
             txtConfirNuevaContraseña.PasswordChar = '●';

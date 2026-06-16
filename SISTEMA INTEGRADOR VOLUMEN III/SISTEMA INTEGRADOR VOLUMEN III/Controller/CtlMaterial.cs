@@ -21,10 +21,8 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             _materiales = _dm.GetAll();
 
-            // Carga inicial del grid
             CargarGrid();
 
-            // ── Guardar / Actualizar ──────────────────────────────────────
             Vista.btnGuardarMaterial.Click += (s, e) =>
             {
                 if (Vista.EstaEditando())
@@ -33,26 +31,21 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                     Agregar();
             };
 
-            // ── Limpiar formulario ────────────────────────────────────────
             Vista.btnLimpiarMaterial.Click += (s, e) =>
             {
                 Vista.LimpiarFormulario();
             };
 
-            // ── Buscar en tiempo real ─────────────────────────────────────
             Vista.txtBuscarMateriales.TextChanged += (s, e) => Buscar();
 
-            // ── Botón Buscar ──────────────────────────────────────────────
             Vista.btnBuscarMateriales.Click += (s, e) => Buscar();
 
-            // ── Limpiar filtro ────────────────────────────────────────────
             Vista.btnLimpiarMateriales.Click += (s, e) =>
             {
                 Vista.txtBuscarMateriales.Clear();
                 CargarGrid();
             };
 
-            // ── Click en fila del grid para editar ────────────────────────
             Vista.GetGrid().CellClick += (s, e) =>
             {
                 if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -66,8 +59,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             };
         }
 
-        // ── CRUD ──────────────────────────────────────────────────────────
-
         private void Agregar()
         {
             string[] datos = Vista.GetInput();
@@ -80,10 +71,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
 
             try
             {
-                // Verificar nombre duplicado
-                if (_materiales.Any(m =>
-                        string.Equals(m.Nombre, datos[0],
-                            StringComparison.OrdinalIgnoreCase)))
+                if (_materiales.Any(m =>string.Equals(m.Nombre, datos[0],StringComparison.OrdinalIgnoreCase)))
                 {
                     Vista.MostrarAdvertencia("Ya existe un material con ese nombre.");
                     return;
@@ -93,8 +81,7 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 {
                     Id = _dm.GetNextId(),
                     Nombre = datos[0],
-                    CostoMetroCubico = decimal.Parse(datos[1],
-                        System.Globalization.CultureInfo.InvariantCulture)
+                    CostoMetroCubico = decimal.Parse(datos[1],System.Globalization.CultureInfo.InvariantCulture)
                 });
 
                 Save();
@@ -123,11 +110,9 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
                 int idx = _materiales.FindIndex(m => m.Id == id);
                 if (idx < 0) throw new InvalidOperationException("Material no encontrado.");
 
-                // Verificar nombre duplicado en otro registro
                 if (_materiales.Any(m =>
                         m.Id != id &&
-                        string.Equals(m.Nombre, datos[0],
-                            StringComparison.OrdinalIgnoreCase)))
+                        string.Equals(m.Nombre, datos[0],StringComparison.OrdinalIgnoreCase)))
                 {
                     Vista.MostrarAdvertencia("Ya existe otro material con ese nombre.");
                     return;
@@ -166,8 +151,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             CargarGrid();
         }
 
-        // ── Grid ──────────────────────────────────────────────────────────
-
         private void CargarGrid()
         {
             _materiales = _dm.GetAll();
@@ -197,7 +180,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             dgv.RowTemplate.Height = 32;
             dgv.BackgroundColor = System.Drawing.Color.White;
 
-            // Ocultar columna Id — no necesita verla el usuario
             if (dgv.Columns.Contains("Id"))
                 dgv.Columns["Id"].Visible = false;
         }
@@ -245,8 +227,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             AgregarColumnaEditar();
         }
 
-        // ── Validación ────────────────────────────────────────────────────
-
         private static bool ValidarInput(string[] datos, out string error)
         {
             if (string.IsNullOrWhiteSpace(datos[0]))
@@ -267,8 +247,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             error = string.Empty;
             return true;
         }
-
-        // ── Método público para que otros controladores consulten ─────────
         public List<Material> Listar()
         {
             _materiales = _dm.GetAll();

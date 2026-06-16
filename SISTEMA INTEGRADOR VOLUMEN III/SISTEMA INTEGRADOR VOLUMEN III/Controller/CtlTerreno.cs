@@ -111,7 +111,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             Vista.ActualizarGrafica(_coordActuales, coef);
         }
 
-        // ── Calcular (no persiste, solo muestra resultado) ────────────────
         private void Calcular()
         {
             if (_coordActuales.Count < 3)
@@ -155,7 +154,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Controller
             }
         }
 
-        // Guardar Terreno 
         private void GuardarTerreno()
         {
             string nombre = Vista.GetNombreTerreno();

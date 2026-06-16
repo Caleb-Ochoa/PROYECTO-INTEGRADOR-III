@@ -15,10 +15,6 @@ namespace SISTEMA_INTEGRADOR_VOLUMEN_III.Repository
 
         public void Save(List<T> entities) => _repo.Sync(entities);
 
-        /// <summary>
-        /// Obtiene el siguiente Id sin usar reflexión: requiere que T tenga propiedad Id.
-        /// Usa la interfaz IEntidad cuando sea posible; cae a reflexión de respaldo.
-        /// </summary>
         public int GetNextId()
         {
             var entities = GetAll();
